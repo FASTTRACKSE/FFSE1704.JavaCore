@@ -2,11 +2,12 @@ package ffse1703012.bai1.practice;
 
 import java.util.Scanner;
 
-public class Assignment2 {
+public class Assignment3 {
 	public static Scanner print = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		System.out.print("Nhập số phần tử của mảng: ");
+		int bubbleSort;
 		int n = print.nextInt();
 		int[] array = new int[n];// khai báo mảng
 		System.out.println("Nhập phần tử của mảng: \n");// dùng \n để con trỏ xuống dòng tiếp theo
@@ -14,7 +15,7 @@ public class Assignment2 {
 			System.out.printf("a[%d] = ", i);// %d: số thập phân, số nguyên
 			array[i] = print.nextInt();
 		}
-		System.out.println("Các phần từ của mảng: ");
+		System.out.println("Các phần từ của mảng ban đầu: ");
 		show(array);
 		int max = array[0];// khởi tạo biến max và min tại vị trí phần tử đầu tiên của mảng
 		int min = array[0];
@@ -33,13 +34,26 @@ public class Assignment2 {
 		
 		System.out.println("Phần tử lớn nhất của mảng là " + max + " và nằm ở vị trí thứ " + pmax);
 		System.out.println("Phần tử lớn nhỏ của mảng là " + min + " và nằm ở vị trí thứ " + pmin);
-		
+		for(int i=0; i< n -1; i++) {
+			for(int j =n-1; j>=1;j--) {
+				if(array[j] < array[j - 1]) {
+					bubbleSort = array[j];
+	                array[j] = array[j-1];
+	                array[j-1] = bubbleSort;
+				}
+			}
+		}
+		System.out.print("Mảng sau khi sắp sếp: ");
+		for(int t=0;t<n;t++) {
+			System.out.print(array[t]+" ");
+		}
 	}
 
 	public static void show(int[] array) {
 		for (int i = 0; i < array.length; i++) {
-			System.out.println(array[i] + " ");
+			System.out.print(array[i] + " \n");
 		}
 	}
+	
 
 }
