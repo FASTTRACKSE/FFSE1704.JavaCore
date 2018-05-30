@@ -7,7 +7,7 @@ public class phuongtrinhbac1 {
 	
 	public static void main(String[] args) {
 		 int soA, soB;
-		 double nghiemX;
+		 
 		 Scanner sc = new Scanner(System.in);
 		 
 		 	System.out.println("----------------------------");

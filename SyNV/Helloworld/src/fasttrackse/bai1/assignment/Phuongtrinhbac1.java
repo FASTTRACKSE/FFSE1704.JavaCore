@@ -3,7 +3,7 @@ package fasttrackse.bai1.assignment;
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
-public class phuongtrinhbac1 {
+public class Phuongtrinhbac1 {
 
 	private static Scanner scanner;
 
