@@ -22,8 +22,9 @@ public class CtNhapDuLieuChoMang {
 			myArray[i]= myInput.nextInt();
 		}
 		//
+		System.out.println("Giá Trị Của Mảng :");
 		for(int i=0;i<N;i++) {
-			System.out.println("Số Thứ "+(i+1)+" trong mảng là : " + myArray[i]);
+			System.out.print( myArray[i]+"\t");
 		}
 		//Bài 2+3 tìm giá trị và vị trí lớn bé cho mảng
 		int gtMin,gtMax,vtMin,vtMax;
@@ -41,9 +42,24 @@ public class CtNhapDuLieuChoMang {
 				vtMax= (i+1);
 			}
 		}
-        System.out.println("Giá Trị Lớn nhất là "+ gtMax +" Vị Trí của số lớn nhất là : "+ vtMax);
+        System.out.println("\nGiá Trị Lớn nhất là "+ gtMax +" Vị Trí của số lớn nhất là : "+ vtMax);
         System.out.println("Giá Trị Nhỏ nhất là "+ gtMin + " Vị Trí của số nhỏ nhất là : "+ vtMin);
-        
+        // Sắp xếp
+        for(int i=0; i< N-1;i++) {
+        	for(int j=i+1;j<=N-1;j++) {
+        		if(myArray[j] < myArray[i]) {
+        			int temp = myArray[i];
+        			myArray[i]=myArray[j];
+        			myArray[j]=temp;
+        		}
+        	}
+        }
+        System.out.println("Mảng sau khi sắp xếp là");
+        for(int i=0;i<N;i++) {
+        	System.out.print( myArray[i] +"\t" );
+        	
+        }
 	}
+        
 
 }
