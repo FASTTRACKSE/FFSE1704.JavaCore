@@ -16,7 +16,7 @@ public class Assignment2 {
 		}
 		System.out.println("Các phần từ của mảng: ");
 		show(array);
-		int max = array[0];// khởi tạo biến max và min bằng 0
+		int max = array[0];// khởi tạo biến max và min tại vị trí phần tử đầu tiên của mảng
 		int min = array[0];
 		int pmax = 0;
 		int pmin = 0;
