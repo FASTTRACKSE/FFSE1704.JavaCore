@@ -14,3 +14,5 @@ https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/Phuongnh_ffse1704/k
  
 bài 5 asignment 3 
 https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/Phuongnh_ffse1704/asignmet3/src/fasttrackse/asignment/NhapVaInRadanhSachMang.java
+     - thiết kế menu
+       https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/Phuongnh_ffse1704/asignmet3/src/fasttrackse/asignment/ThietKeMenu.java

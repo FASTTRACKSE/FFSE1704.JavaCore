@@ -10,41 +10,45 @@ import java.util.Scanner;
  *
  */
 public class QuanLiThucDon {
+	public static Scanner myInput = new Scanner(System.in);
+
 	public static void main(String[] args) {
 		menu();
 	}
 
 	public static void menu() {
-		System.out.println(">>     MÁY TÍNH CÁ NHÂN     <<");
-		System.out.println("+----------------------------+");
-		System.out.println("| 1. Phương trình bậc nhất   |");
-		System.out.println("| 2. Phương trình bậc hai    |");
-		System.out.println("| 3. Nhập mảng               |");
-		System.out.println("| 4. Sắp xếp mảng tăng dần   |");
-		System.out.println("| 5. Kết thúc                |");
-		System.out.println("+----------------------------+");
-		System.out.println(">>     Chọn chức năng?      <<");
+		int answer;
 
-		Scanner scanner = new Scanner(System.in);
-		int answer = scanner.nextInt();
-		if (answer == 1) {
-			GiaiPhuongTrinhBacNhat();
-		} else if (answer == 2) {
-			GiaiPhuongTrinhBacHai();
-		} else if (answer == 3) {
-			NhapMang();
-		} else if (answer == 4) {
-			SapXepMangTangDan();
-		} else if (answer == 5) {
-			KetThuc();
+		while (true) {
+			System.out.println(">>     MÁY TÍNH CÁ NHÂN     <<");
+			System.out.println("+----------------------------+");
+			System.out.println("| 1. Phương trình bậc nhất   |");
+			System.out.println("| 2. Phương trình bậc hai    |");
+			System.out.println("| 3. Nhập mảng               |");
+			System.out.println("| 4. Sắp xếp mảng tăng dần   |");
+			System.out.println("| 5. Kết thúc                |");
+			System.out.println("+----------------------------+");
+			System.out.println(">>     Chọn chức năng?      <<");
+
+			 answer = myInput.nextInt();
+			if (answer == 1) {
+				GiaiPhuongTrinhBacNhat();
+			} else if (answer == 2) {
+				GiaiPhuongTrinhBacHai();
+			} else if (answer == 3) {
+				NhapMang();
+			} else if (answer == 4) {
+				SapXepMangTangDan();
+			} else if (answer == 5) {
+				KetThuc();
+			}
 		}
 	}
 
 	public static void GiaiPhuongTrinhBacNhat() {
 		int thamSoA, thamSoB;
 		double nghiemX;
-		Scanner myInput = new Scanner(System.in);
-
+		
 		System.out.print("Nhập tham số a = ");
 		thamSoA = myInput.nextInt();
 
@@ -68,7 +72,6 @@ public class QuanLiThucDon {
 		double nghiemX;
 		double nghiemX1;
 		double nghiemX2;
-		Scanner myInput = new Scanner(System.in);
 
 		System.out.print("Nhập tham số a = ");
 		thamSoA = myInput.nextInt();
@@ -95,7 +98,6 @@ public class QuanLiThucDon {
 		int[] myArray;
 		int gtMin, gtMax, vtMin, vtMax;
 
-		Scanner myInput = new Scanner(System.in);
 
 		// Phần Thân
 		System.out.print("Mời bạn nhập tổng số X = ");
@@ -132,7 +134,6 @@ public class QuanLiThucDon {
 		System.out.println("Phần tử nhỏ nhất của mảng là " + gtMin + " và ở vị trí " + vtMin);
 
 		// Kết thúc
-		myInput.close();
 	}
 
 	public static void SapXepMangTangDan() {
@@ -184,7 +185,10 @@ public class QuanLiThucDon {
 			System.out.print(A[i] + "\t");
 		}
 	}
+
 	public static void KetThuc() {
-		System.out.println("Cảm ơn bạn đã sử dụng chương trình");
+		myInput.close();
+		System.out.println("Cảm ơn bạn đã sử dụng chương trình!!!");
+		System.exit(0);
 	}
 }
