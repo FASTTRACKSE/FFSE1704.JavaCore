@@ -7,3 +7,5 @@
 (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Bai2/Giaiptbac2.java)
 3. [Mảng và duyệt mảng]
 (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Mang/assgnment3.java)
+4. [Thiết kê thực đơn]
+(https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/ThietKeThucDon/ThucDon.java)
