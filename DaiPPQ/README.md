@@ -12,3 +12,6 @@
 
 4. [Số Nguyên Tố]
 (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/DaiPPQ/HelloWorld/src/fasttrackse/bai1/pratice/SoNguyenTo.java)
+
+5. [ Assignment 3]
+(https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/DaiPPQ/HelloWorld/src/fasttrackse/bai1/assignment/MangSoNguyen.java)
