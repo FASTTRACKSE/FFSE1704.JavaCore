@@ -42,8 +42,8 @@ public class CtNhapDuLieuChoMang {
 				vtMax= (i+1);
 			}
 		}
-        System.out.println("\nGiá Trị Lớn nhất là "+ gtMax +" Vị Trí của số lớn nhất là : "+ vtMax);
-        System.out.println("Giá Trị Nhỏ nhất là "+ gtMin + " Vị Trí của số nhỏ nhất là : "+ vtMin);
+        System.out.println("\nGiá Trị Lớn nhất là "+ gtMax +"Nằm ở Vị trí thứ : "+ vtMax);
+        System.out.println("Giá Trị Nhỏ nhất là "+ gtMin + "Nằm ở vị trí thứ : "+ vtMin);
         // Sắp xếp
         for(int i=0; i< N-1;i++) {
         	for(int j=i+1;j<=N-1;j++) {
