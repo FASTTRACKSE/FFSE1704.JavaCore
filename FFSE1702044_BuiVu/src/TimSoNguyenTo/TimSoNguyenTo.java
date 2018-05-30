@@ -1,3 +1,8 @@
+/************************
+ *Tìm Số Nguyên Tố 
+ *Bùi Lê Anh Vũ
+ *29/05/2018
+ **********************/
 package TimSoNguyenTo;
 
 import java.util.Scanner;
@@ -5,11 +10,12 @@ import java.util.Scanner;
 public class TimSoNguyenTo {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Scanner timSoNguyenTo = new Scanner(System.in);
+		// khai báo
+		Scanner nhapSoNguyenTo = new Scanner(System.in);
 		int n;
-		System.out.println("Nhập n để kiểm tra số nguyên tố");
-		n = timSoNguyenTo.nextInt();
+		int dem=1;
+		System.out.print("Nhập n để kiểm tra số nguyên tố : ");
+		n = nhapSoNguyenTo.nextInt();
 		//for (int i=1; i <= n; i++) {
 			//if(n%i==0) {
 			//dem= dem+1;
@@ -20,10 +26,16 @@ public class TimSoNguyenTo {
 		//}else {
 			//System.out.println("Là số nguyên tố");
 		//}
-	while(n%2==1 && n%3==1) {
-		System.out.println("Là số nguyên tố");
-		return;
+		int i=2;
+	while(i<n || n%i!=0  ) {
+		dem= dem++;
+		System.out.print(dem);
+		break;
 	}
-	System.out.println("Ko phải số nguyên tố");
+		if(dem == 2) {
+			System.out.println("Ko phải số nguyên tố");
+		}else {
+			System.out.println("Là số nguyên tố");
+		}
 	}
 }

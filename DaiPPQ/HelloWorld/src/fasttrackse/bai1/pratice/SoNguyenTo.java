@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class SoNguyenTo {
 
 	/**
-	 *	Nhập 1 số từ bàn phím xem số  đó có phải là số nguyên tố
+	 *	Nhập 1 số từ bàn phím xem số đó có phải là số nguyên tố
 	 *	@author: Phan Phạm Quang Dai
 	 *	Date: 29/05/2018
 	 */
