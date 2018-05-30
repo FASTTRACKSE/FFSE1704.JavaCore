@@ -2,17 +2,17 @@ package fasttrackse.bai1.assignment;
 
 import java.util.Scanner;
 
-public class phuongtrinhbac2 {
+public class Phuongtrinhbac2 {
 	private static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		System.out.print("Nhập hệ số  a = ");
-		float a = phuongtrinhbac2.scanner.nextFloat();
+		float a = Phuongtrinhbac2.scanner.nextFloat();
 		System.out.print("Nhập hệ số  b = ");
-		float b = phuongtrinhbac2.scanner.nextFloat();
+		float b = Phuongtrinhbac2.scanner.nextFloat();
 		System.out.print("Nhập hằng số  c = ");
 		float c = scanner.nextFloat();
-		phuongtrinhbac2.giaiPTBac2(a, b, c);
+		Phuongtrinhbac2.giaiPTBac2(a, b, c);
 	}
 
 	/**
