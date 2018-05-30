@@ -188,7 +188,7 @@ public class QuanLiThucDon {
 
 	public static void KetThuc() {
 		myInput.close();
-		System.out.println("Cảm ơn bạn đã sử dụng chương trình");
+		System.out.println("Cảm ơn bạn đã sử dụng chương trình!!!");
 		System.exit(0);
 	}
 }
