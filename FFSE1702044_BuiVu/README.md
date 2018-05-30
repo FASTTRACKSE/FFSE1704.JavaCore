@@ -5,4 +5,4 @@
 
 3. [Mảng java](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1702044_BuiVu/src/CtNhapDuLieuChoMang/CtNhapDuLieuChoMang.java) 
 
-4.[Menu Chương Trình Java: ](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1702044_BuiVu/src/CtNhapDuLieuChoMang/CtNhapDuLieuChoMang.java)
+4.[Menu Chương Trình Java: ](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1702044_BuiVu/src/ChuongTrinh/MenuChuongTrinh.java)
