@@ -36,7 +36,7 @@ public class QuanLiThucDon {
 		} else if (answer == 4) {
 			SapXepMangTangDan();
 		} else if (answer == 5) {
-			System.exit(0);
+			KetThuc();
 		}
 	}
 
@@ -183,5 +183,8 @@ public class QuanLiThucDon {
 		for (int i = 0; i < n; i++) {
 			System.out.print(A[i] + "\t");
 		}
+	}
+	public static void KetThuc() {
+		System.out.println("Cảm ơn bạn đã sử dụng chương trình");
 	}
 }
