@@ -6,9 +6,13 @@ public class Assignment3 {
 	public static Scanner print = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		int n;
+		do {
 		System.out.print("Nhập số phần tử của mảng: ");
+		 n = print.nextInt();
+		}while(n<=0);
 		int bubbleSort;
-		int n = print.nextInt();
+		
 		int[] array = new int[n];// khai báo mảng
 		System.out.println("Nhập phần tử của mảng: \n");// dùng \n để con trỏ xuống dòng tiếp theo
 		for (int i = 0; i < n; i++) {
@@ -33,7 +37,7 @@ public class Assignment3 {
 		}
 		
 		System.out.println("Phần tử lớn nhất của mảng là " + max + " và nằm ở vị trí thứ " + pmax);
-		System.out.println("Phần tử lớn nhỏ của mảng là " + min + " và nằm ở vị trí thứ " + pmin);
+		System.out.println("Phần tử nhỏ nhất của mảng là " + min + " và nằm ở vị trí thứ " + pmin);
 		for(int i=0; i< n -1; i++) {
 			for(int j =n-1; j>=1;j--) {
 				if(array[j] < array[j - 1]) {
