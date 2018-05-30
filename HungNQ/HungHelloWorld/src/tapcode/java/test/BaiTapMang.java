@@ -24,7 +24,7 @@ public class BaiTapMang {
 		}
 		
 		//In mảng
-		System.out.print("Danh sách phần tử mảng:");
+		System.out.print("Danh sách phần tử mảng: ");
 		for(int i=0;i<X;i++) {
 			System.out.print(myArray[i] + " ");
 		}
