@@ -2,12 +2,12 @@ package ffse1703012.bai1.practice;
 
 import java.util.Scanner;
 
-public class Assignment2 {
+public class Assignment3 {
 	public static Scanner print = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		System.out.print("Nhập số phần tử của mảng: ");
-		int tempSort;
+		int bubbleSort;
 		int n = print.nextInt();
 		int[] array = new int[n];// khai báo mảng
 		System.out.println("Nhập phần tử của mảng: \n");// dùng \n để con trỏ xuống dòng tiếp theo
@@ -37,13 +37,13 @@ public class Assignment2 {
 		for(int i=0; i< n -1; i++) {
 			for(int j =n-1; j>=1;j--) {
 				if(array[j] < array[j - 1]) {
-					tempSort = array[j];
+					bubbleSort = array[j];
 	                array[j] = array[j-1];
-	                array[j-1] = tempSort;
+	                array[j-1] = bubbleSort;
 				}
 			}
 		}
-		System.out.print("Mảng sau khi sắp sếp: \n");
+		System.out.print("Mảng sau khi sắp sếp: ");
 		for(int t=0;t<n;t++) {
 			System.out.print(array[t]+" ");
 		}
