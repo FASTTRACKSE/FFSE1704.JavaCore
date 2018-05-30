@@ -8,39 +8,74 @@ import java.util.Scanner;
 public class CtNhapDuLieuChoMang {
 
 	public static void main(String[] args) {
-		//Nhập Số lượng
-		int N;
+		//Khai Báo
+		int N;	
+		
+		Scanner myInput = new Scanner (System.in);
 		System.out.print("Nhập Số lượng mảng : ");
-		int a[]= new int[50];
-		Scanner nhap = new Scanner (System.in);
-		N = nhap.nextInt();
+		N = myInput.nextInt();
+		int[] myArray = new int[N];
+		
 		//Kiểm tra Số lượng muốn tạo, và cho phép người dùng nhập giá trị trong mảng.
 		for(int i=0;i<N;i++) {
-			a[i]= nhap.nextInt();
+			System.out.print("Nhập Phần tử thứ "+ (i+1)+ " của mảng: ");
+			myArray[i]= myInput.nextInt();
 		}
+		//
+		System.out.println("Giá Trị Của Mảng :");
 		for(int i=0;i<N;i++) {
-			System.out.println("Số Thứ "+i+" trong mảng là : " + a[i]);
+			System.out.print( myArray[i]+"\t");
 		}
+		myInput.close();
 		//Bài 2+3 tìm giá trị và vị trí lớn bé cho mảng
-		int max=a[0];
-		int min=a[0];
-		int i;
-		int maxi=0;
-		int mini=0;
-		for (i=0;i<N;i++)
-        {
-            if(max<a[i]) {
-                max=a[i];
-                maxi=i;
-            }
-            if(min>a[i]) {
-             min=a[i];
-             mini=i;
-            }
+		int gtMin,gtMax,vtMin,vtMax;
+		gtMin=myArray[0];
+		gtMax=myArray[0];
+		vtMin=0;
+		vtMax=0;
+		for(int i=1;i<N;i++) {
+			if(gtMin>myArray[i]) {
+				gtMin=myArray[i];
+				vtMin= (i+1);
+			}
+			if(gtMax<myArray[i]) {
+				gtMax=myArray[i];
+				vtMax= (i+1);
+			}
+		}
+        System.out.print("\nGiá Trị Lớn nhất là "+ gtMax +"\nNằm ở Vị trí thứ : "+ vtMax + "\n**************************");
+        System.out.println("\nGiá Trị Nhỏ nhất là "+ gtMin + "\nNằm ở vị trí thứ : "+ vtMin);
+        // Sắp xếp
+        for(int i=0; i< N-1;i++) {
+        	for(int j=i+1;j<=N-1;j++) {
+        		if(myArray[j] < myArray[i]) {
+        			int temp = myArray[i];
+        			myArray[i]=myArray[j];
+        			myArray[j]=temp;
+        		}
+        	}
         }
-        System.out.println("Giá Trị Lớn nhất là "+ max +" Vị Trí của số lớn nhất là : "+ maxi);
-        System.out.println("Giá Trị Nhỏ nhất là "+ min + " Vị Trí của số nhỏ nhất là : "+ mini);
+        System.out.println("Mảng sau khi sắp xếp nhỏ đến lớn là");
+        for(int i=0;i<N;i++) {
+        	System.out.print( myArray[i] +"\t" );
+        	
+        }
         
+        for(int i=0; i< N-1;i++) {
+        	for(int j=i+1;j<=N-1;j++) {
+        		if(myArray[j] > myArray[i]) {
+        			int temp = myArray[i];
+        			myArray[i]=myArray[j];
+        			myArray[j]=temp;
+        		}
+        	}
+        }
+        System.out.println("\nMảng sau khi sắp xếp lớn đến nhỏ là");
+        for(int i=0;i<N;i++) {
+        	System.out.print( myArray[i] +"\t" );
+        	
+        }
 	}
+        
 
 }
