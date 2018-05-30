@@ -16,7 +16,7 @@ public class Assignment2 {
 		}
 		System.out.println("Các phần từ của mảng: ");
 		show(array);
-		int max = array[0];// khởi tạo biến max và min bằng 0
+		int max = array[0];// khởi tạo biến max và min tại vị trí phần tử đầu tiên của mảng
 		int min = array[0];
 		int pmax = 0;
 		int pmin = 0;
@@ -30,9 +30,10 @@ public class Assignment2 {
 				pmin = i;
 			}
 		}
+		
 		System.out.println("Phần tử lớn nhất của mảng là " + max + " và nằm ở vị trí thứ " + pmax);
 		System.out.println("Phần tử lớn nhỏ của mảng là " + min + " và nằm ở vị trí thứ " + pmin);
-
+		
 	}
 
 	public static void show(int[] array) {
