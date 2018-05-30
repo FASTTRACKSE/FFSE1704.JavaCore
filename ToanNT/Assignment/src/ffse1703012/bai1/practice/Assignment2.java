@@ -30,9 +30,10 @@ public class Assignment2 {
 				pmin = i;
 			}
 		}
+		
 		System.out.println("Phần tử lớn nhất của mảng là " + max + " và nằm ở vị trí thứ " + pmax);
 		System.out.println("Phần tử lớn nhỏ của mảng là " + min + " và nằm ở vị trí thứ " + pmin);
-
+		
 	}
 
 	public static void show(int[] array) {
