@@ -117,7 +117,7 @@ public class Menujava {
 		for ( i = 0; i < array.length-1; i++) {
 			for ( d = i + 1; d < array.length; d++) {
 				
-				if (array[i] > array[d]) {
+				if (array[i] < array[d]) {
 					temp = array[d];
 					array[d] = array[i];
 					array[i] = temp;
