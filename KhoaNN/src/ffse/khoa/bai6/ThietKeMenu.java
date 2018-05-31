@@ -36,6 +36,8 @@ public class ThietKeMenu {
 			NhapMang();
 		}else if (answer == 4) {
 			Sapsepmang();
+		}else if (answer == 5) {
+			System.exit(0);
 		}
 		}
 	}
