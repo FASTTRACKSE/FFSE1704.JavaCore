@@ -11,3 +11,8 @@ https://github.com/FASTTRACKSE/FFSE1704.JavaCore/commit/47eb835eec5c3a5b15bcf4ea
 
 bài 4 kiểm tra số nguyên tố 
 https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/Phuongnh_ffse1704/kiemtrasonguyento/src/fasttrackse/kiemtrasonguyento/KiemTraSoNguyeTo.java
+ 
+bài 5 asignment 3 
+https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/Phuongnh_ffse1704/asignmet3/src/fasttrackse/asignment/NhapVaInRadanhSachMang.java
+     - thiết kế menu
+       https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/Phuongnh_ffse1704/asignmet3/src/fasttrackse/asignment/ThietKeMenu.java
