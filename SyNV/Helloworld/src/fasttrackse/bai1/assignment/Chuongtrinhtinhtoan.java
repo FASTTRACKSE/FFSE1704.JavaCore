@@ -114,25 +114,25 @@ public class Chuongtrinhtinhtoan {
 		}while(n<=0);
 		int bubbleSort;
 		
-		int[] array = new int[n];// khai báo mảng
-		System.out.println("Nhập phần tử của mảng: \n");// dùng \n để con trỏ xuống dòng tiếp theo
+		int[] array = new int[n];
+		System.out.println("Nhập phần tử của mảng: \n");
 		for (int i = 0; i < n; i++) {
-			System.out.printf("a[%d] = ", i);// %d: số thập phân, số nguyên
+			System.out.printf("a[%d] = ", i);
 			array[i] = print.nextInt();
 		}
 		System.out.println("Các phần từ của mảng ban đầu: ");
 		show(array);
-		int max = array[0];// khởi tạo biến max và min tại vị trí phần tử đầu tiên của mảng
+		int max = array[0];
 		int min = array[0];
 		int pmax = 0;
 		int pmin = 0;
 		for (int i = 0; i < n; i++) {
 			if (max < array[i]) {
-				max = array[i];// nếu max nhỏ hơn phần tử nào trong mảng thì cho max bằng phần tử đó
+				max = array[i];
 				pmax = i;
 			}
 			if (min > array[i]) {
-				min = array[i];// nếu min lớn hơn phần tử nào trong mảng thì cho min bằng phần tử đó
+				min = array[i];
 				pmin = i;
 			}
 		}
