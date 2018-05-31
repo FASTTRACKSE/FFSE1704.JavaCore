@@ -95,7 +95,7 @@ public class SinhVien {
 		
 	}*/
 	public String toString() {
-		return "Sinh Viên: " + this.tenSinhVien+" -- Giới Tính: "+this.gioiTinh + "  Năm Sinh " + this.namSinh;
+		return "Sinh Viên: " + this.tenSinhVien+" -- Giới Tính: "+this.gioiTinh + "---|\n|-----------  Năm Sinh " + this.namSinh;
 	}
 	
 }

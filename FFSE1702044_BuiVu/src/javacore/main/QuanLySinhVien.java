@@ -85,7 +85,7 @@ public class QuanLySinhVien {
 		System.out.println("|---------------------DANH SÁCH SINH VIÊN-----------------|");
 		System.out.println("|---------------------------------------------------------|");
 		for(int i=0;i<N;i++) {
-			System.out.println("|--Sinh Viên Thứ :"+(i+1)+" " +sv[i].toString()+ "\n Điểm Trung Bình "+sv[i].tinhDiemTrungBinhMon()+"--|");
+			System.out.println("|--Sinh Viên Thứ :"+(i+1)+" " +sv[i].toString()+ " Điểm Trung Bình "+sv[i].tinhDiemTrungBinhMon()+"-----------|");
 			
 	}
 		System.out.println("|---------------------------------------------------------|");
@@ -112,6 +112,8 @@ public class QuanLySinhVien {
         System.out.println("+----------------------------------------------+");
         System.out.println("+----------------------------------------------+");
         System.out.println("+----------------------------------------------+");
+        System.exit(0);
 	}
+	
 
 }
