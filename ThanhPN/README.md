@@ -6,5 +6,6 @@
 
 2. [Assignment 2: Giải Phương Trình Bậc Nhất 2](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/ThanhPN/HelloWorld/src/GiaiPTBac2/GiaiPTBac2.java)
 
-3. [Assignment 3: Bài Tập Về Mảng]
-(https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/ThanhPN/HelloWorld/src/GiaiPTBac2/BaiTapMang.java)
+3. [Assignment 3: Bài Tập Về Mảng](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/ThanhPN/HelloWorld/src/GiaiPTBac2/BaiTapMang.java)
+
+4. [Assignment 4: Bài Tập MeNu](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/ThanhPN/HelloWorld/src/GiaiPTBac2/Menu.java)
