@@ -9,28 +9,26 @@ public class Phuongtrinhbac1 {
 
 	public static void main(String[] args) {
 
-		int aNumber, bNumber;
-		double nghiem;
-		DecimalFormat decimalFormat = new DecimalFormat("#.##");
-		scanner = new Scanner(System.in);
-
-		System.out.println("Nhập vào số a: ");
-		aNumber = scanner.nextInt();
-		System.out.println("Nhập vào số b: ");
-		bNumber = scanner.nextInt();
-		System.out.println("Phương trình bạn vừa nhập vào là: " + aNumber + "x + " + bNumber + " = 0.");
-		if (aNumber == 0) {
-			if (bNumber == 0) {
-				System.out.println("Phương trình này có vô số nghiệm.");
-			} else {
-				System.out.println("Phương trình vô nghiệm.");
+		int soA, soB;
+		 
+		 Scanner sc = new Scanner(System.in);
+		 
+		 	System.out.println("----------------------------");
+		 	System.out.println("|Giải phương trình bậc nhất|");
+		 	System.out.println("----------------------------");
+			System.out.println("Nhập số a: ");
+			soA= sc.nextInt();
+			System.out.println("Nhập số b: ");
+			soB= sc.nextInt();
+		if(soA == 0) {
+			if(soB ==0) {
+				System.out.println("Phương trình vô số nghiệm");
+			}else {
+				System.out.println("Phương trình vô nghiệm!");
 			}
-		} else {
-			nghiem = (double) -bNumber / aNumber;
-
-			System.out.println("Phương trình có nghiệm x = " + decimalFormat.format(nghiem) + ".");
+		}else {
+			System.out.println("Phương trình có nghiệm X = " + (-soB/soA));
 		}
+		System.out.println("Nhấn Enter để chọn chức năng khác");
 
-	}
-
-}
+}}
