@@ -45,18 +45,20 @@ public class QuanLySinhVien {
 		N = myInput.nextInt();
 		SinhVien[] sv = new SinhVien[N];
 		for(int i=0;i<N;i++) {
-		System.out.print("Nhap ten sinh vien: ");
+		System.out.print("Nhập Tên sinh viên: ");
 		myInput.nextLine();
 		String tenSinhVien = myInput.nextLine();
-		System.out.print("Nhap nam sinh sinh vien: ");
+		System.out.print("Nhập Giới Tính Sinh vien: ");
+		String gioiTinh = myInput.nextLine();
+		System.out.print("Nhập năm sinh sinh viên: ");
 		int namSinh = myInput.nextInt();
-		System.out.print("Nhap Điểm LP1 sinh vien: ");
+		System.out.print("Nhập Điểm LP1 sinh viên: ");
 		int diemLP1 = myInput.nextInt();
-		System.out.print("Nhap Điểm LP2 sinh vien: ");
+		System.out.print("Nhập Điểm LP2 sinh viên: ");
 		int diemLP2 = myInput.nextInt();
-		System.out.print("Nhap Điểm LP3 sinh vien: ");
+		System.out.print("Nhập Điểm LP3 sinh viên: ");
 		int diemLP3 = myInput.nextInt();
-		sv[i]= new SinhVien(tenSinhVien, namSinh, diemLP1, diemLP2, diemLP3);
+		sv[i]= new SinhVien(tenSinhVien,gioiTinh, namSinh, diemLP1, diemLP2, diemLP3);
 		sv[i].tinhDiemTrungBinhMon();
 		/*if(sv[i].tinhDiemTrungBinhMon()<=5) {
 			
@@ -79,10 +81,15 @@ public class QuanLySinhVien {
 		
 		
 		}
+		System.out.println("+*********************************************************+");
+		System.out.println("|---------------------DANH SÁCH SINH VIÊN-----------------|");
+		System.out.println("|---------------------------------------------------------|");
 		for(int i=0;i<N;i++) {
-			System.out.println(sv[i].toString()+ " -- Điểm Trung Bình "+sv[i].tinhDiemTrungBinhMon());
+			System.out.println("|--Sinh Viên Thứ :"+(i+1)+" " +sv[i].toString()+ " Điểm Trung Bình "+sv[i].tinhDiemTrungBinhMon()+"-----------|");
 			
 	}
+		System.out.println("|---------------------------------------------------------|");
+		System.out.println("+*********************************************************+");
 		for(int i=0; i< N-1;i++) {
         	for(int j=i+1;j<=N-1;j++) {
         		if(sv[j].tinhDiemTrungBinhMon() < sv[i].tinhDiemTrungBinhMon()) {
@@ -95,11 +102,18 @@ public class QuanLySinhVien {
         
 		// In thông tin sinh viên 1
 		
-		System.out.println("Điểm Trung Bình sắp xếp nhỏ đến lớn là");
+		 System.out.println("+----------------------------------------------+");
+		 System.out.println("+------Danh Sách Sinh Viên Đã Sắp Xếp----------+");
+		 System.out.println("+----------------------------------------------+");
         for(int i=0;i<N;i++) {
-        	System.out.print( "Sinh Viên"+(i+1) +" : "+sv[i].getSinhVien()  +sv[i].tinhDiemTrungBinhMon()+ " Điểm   ---\t");
+        	System.out.print( "+------Sinh Viên"+(i+1) +" : "+sv[i].getSinhVien() +" --" +sv[i].tinhDiemTrungBinhMon()+ " Điểm   -------+\n");
         	
         }
+        System.out.println("+----------------------------------------------+");
+        System.out.println("+----------------------------------------------+");
+        System.out.println("+----------------------------------------------+");
+        System.exit(0);
 	}
+	
 
 }
