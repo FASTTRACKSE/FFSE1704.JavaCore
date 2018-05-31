@@ -5,3 +5,4 @@
 [Kiểmtrasốnguyêntố]https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/SoNguyenTo/SoNguyenTo.java
 [InGiáTrịTrongMảng]https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/MangSo/src/MangSo/BtMangSo.java
 [TìmMinMax]https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/MangSo/src/MangSo/MinMax.java
+[VịTríPhầnTử]https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/MangSo/src/MangSo/Menu.java [MenuChứcNăng]https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/MangSo/src/MangSo/ViTriPhanTu.java
