@@ -1,3 +1,8 @@
+/************************
+ *CtNhapDuLieuChoMang
+ *Bùi Lê Anh Vũ
+ *31/05/2018
+ **********************/
 package javacore.entity;
 
 import java.util.Scanner;
