@@ -81,10 +81,15 @@ public class QuanLySinhVien {
 		
 		
 		}
+		System.out.println("+*********************************************************+");
+		System.out.println("|---------------------DANH SÁCH SINH VIÊN-----------------|");
+		System.out.println("|---------------------------------------------------------|");
 		for(int i=0;i<N;i++) {
-			System.out.println(sv[i].toString()+ " -- Điểm Trung Bình "+sv[i].tinhDiemTrungBinhMon());
+			System.out.println("|--Sinh Viên Thứ :"+(i+1)+" " +sv[i].toString()+ "\n Điểm Trung Bình "+sv[i].tinhDiemTrungBinhMon()+"--|");
 			
 	}
+		System.out.println("|---------------------------------------------------------|");
+		System.out.println("+*********************************************************+");
 		for(int i=0; i< N-1;i++) {
         	for(int j=i+1;j<=N-1;j++) {
         		if(sv[j].tinhDiemTrungBinhMon() < sv[i].tinhDiemTrungBinhMon()) {
@@ -98,13 +103,15 @@ public class QuanLySinhVien {
 		// In thông tin sinh viên 1
 		
 		 System.out.println("+----------------------------------------------+");
-		 System.out.println("+------ĐIỂM  SINH VIÊN ĐÃ SẮP XẾP--------------+");
+		 System.out.println("+------Danh Sách Sinh Viên Đã Sắp Xếp----------+");
 		 System.out.println("+----------------------------------------------+");
         for(int i=0;i<N;i++) {
-        	System.out.print( "Sinh Viên"+(i+1) +" : "+sv[i].getSinhVien() +" " +sv[i].tinhDiemTrungBinhMon()+ " Điểm   ---\t");
+        	System.out.print( "+------Sinh Viên"+(i+1) +" : "+sv[i].getSinhVien() +" --" +sv[i].tinhDiemTrungBinhMon()+ " Điểm   -------+\n");
         	
         }
-       
+        System.out.println("+----------------------------------------------+");
+        System.out.println("+----------------------------------------------+");
+        System.out.println("+----------------------------------------------+");
 	}
 
 }
