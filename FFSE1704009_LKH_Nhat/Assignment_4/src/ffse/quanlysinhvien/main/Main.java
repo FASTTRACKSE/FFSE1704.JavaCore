@@ -1,6 +1,8 @@
-/**
- * 
- */
+/************************
+ *Prog: QUẢN LÝ SINH VIÊN
+ *@AUTHOR: LÊ KHẢ HỒNG NHẬT
+ *Date: 31/05/2018
+ **********************/
 package ffse.quanlysinhvien.main;
 
 /**
