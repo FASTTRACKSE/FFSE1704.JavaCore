@@ -1,12 +1,12 @@
-
 /*****************************
  * Prog: ỨNG DỤNG TÍNH TOÁN
- * @author LEE KHAR HOONG NHAT
+ * @author LÊ KHẢ HỒNG NHẬT
  * Date: 30-05-2018
  *****************************/
 import java.util.Scanner;
 
-public class ViDuDay3 {
+public class BaiTapChuongTrinhTinhToan {
+	//khai báo
 	static int n, i, j, Tang, Giam, app;
 	static int array[] = new int[n];
 
@@ -21,6 +21,8 @@ public class ViDuDay3 {
 		System.out.println("| 5. KẾT THÚC CHƯƠNG TRÌNH          |");
 		System.out.println("|                                   |");
 		System.out.println("*************************************");
+		
+		//menu chương trình
 		while (true) {
 			System.out.print("Nhập chương trình tính toán bạn cần: ");
 			Scanner nhap = new Scanner(System.in);
@@ -219,5 +221,6 @@ public class ViDuDay3 {
 		System.exit(0);
 
 	}
+
 
 }
