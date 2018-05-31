@@ -27,7 +27,12 @@ public class BaiTapMang {
 				 arr[i] = scanner.nextInt();
 				
 			 }
-			
+			 System.out.println("Các phần tử của mảng: ");
+			 for (int i = 0; i< arr.length; i++) {
+				 System.out.println(arr[i] + " ");
+				 
+			 }
+			 
 			 // tính giá trị nhỏ nhất , lớn nhất 
 			 // vị trí lớn nhất , nhỏ nhất
 			 
