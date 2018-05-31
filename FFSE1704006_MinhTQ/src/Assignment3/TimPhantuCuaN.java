@@ -24,7 +24,7 @@ public class TimPhantuCuaN {
 		System.out.println("danh sách các mảng của n là : ");
 		for (int q = 0; q < n; q++) {
 
-			System.out.print(array[q] + "");
+			System.out.println(array[q] + "");
 		}
 
 		System.out.println("*****************");
@@ -52,14 +52,29 @@ public class TimPhantuCuaN {
 		for (int s = 0; s < array.length; s++) {
 			if (array[s] == giatrimin) {
 				vitrimin = "vị trí phần tử nhỏ nhất trong N là: " + s;
-			}if(array[s] == giatrimax) {
+			}
+			if (array[s] == giatrimax) {
 				vitrimax = "vị trí phần tử lớn nhất trong N là " + s;
-			
+
 			}
 		}
-	System.out.println(vitrimax);
-	System.out.println(vitrimin);
-	
-	}
+		System.out.println(vitrimax);
+		System.out.println(vitrimin);
+		int temp = array[0];
+		for (int f = 0; f < n - 1; f++) {
+			for (int d = n - 1; d >= 1; d--) {
+				if (array[f] > array[d]) {
+					temp = array[d];
+					array[d] = array[f];
+					array[f] = temp;
 
+				}
+			}
+
+		}
+		System.out.print("Sắp xếp từ nhỏ đến lớn :");
+		for (int f = 0; f < array.length; f++) {
+			System.out.print(array[f]+" ");
+		}
+	}
 }

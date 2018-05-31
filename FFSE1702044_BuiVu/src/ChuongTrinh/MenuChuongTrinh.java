@@ -9,7 +9,7 @@ public class MenuChuongTrinh {
 		static Scanner myInput=new Scanner(System.in);
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		while(true) {
 		System.out.println(">> Menu Chương Trình <<");
 		System.out.println("+-------------------------+");
 		System.out.println("|1.Giải Phương Trình Bậc 1|");
@@ -23,22 +23,23 @@ public class MenuChuongTrinh {
 		int answer = myInput.nextInt();
 		if(answer==1) {
 			GiaiPTB1();
-			main(args);
+			
 		}
 		else if(answer==2) {
 			GiaiPTB2();
-			main(args);
+			
 		}
 		else if(answer==3) {
 			NhapMang();
-			main(args);
+			
 		}
 		else if(answer==4) {
 			SapXepMangTangDan();
-			main(args);
+			
 		}
 		else if(answer==5) {
 			System.exit(0);
+		}
 		}
 	}
 	public static void GiaiPTB1() {

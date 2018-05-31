@@ -6,3 +6,6 @@ https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhoaNN/src/ffse/kho
 
 3 Bài tập về mảng :
 https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhoaNN/src/ffse/khoa/bai5/BaiTapMang.java
+
+4 Bài tập Thiết Kế Menu : 
+https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhoaNN/src/ffse/khoa/bai6/ThietKeMenu.java

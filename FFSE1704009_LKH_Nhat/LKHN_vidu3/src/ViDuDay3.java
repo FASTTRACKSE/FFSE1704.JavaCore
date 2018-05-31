@@ -21,34 +21,30 @@ public class ViDuDay3 {
 		System.out.println("| 5. KẾT THÚC CHƯƠNG TRÌNH          |");
 		System.out.println("|                                   |");
 		System.out.println("*************************************");
-		System.out.print("    HÃY NHẬP CHƯƠNG TRÌNH BẠN MUỐN  ");
-		Scanner nhap = new Scanner(System.in);
-		app = nhap.nextInt();
-		if (app == 1) {
-			GPTB1();
-			main(args);
-		} else {
-			if (app == 2) {
+		while (true) {
+			System.out.print("Nhập chương trình tính toán bạn cần: ");
+			Scanner nhap = new Scanner(System.in);
+			int app = nhap.nextInt();
+			switch (app) {
+			case 1:
+				GPTB1();
+				break;
+			case 2:
 				GPTB2();
-				main(args);
-			} else {
-				if (app == 3) {
-					mang();
-					main(args);
-				} else {
-					if (app == 4) {
-						mangtang();
-						main(args);
-					} else {
-						if (app == 5) {
-							ketthuc();
-							main(args);
-						}
-					}
-				}
+				break;
+			case 3:
+				mang();
+				break;
+			case 4:
+				mangtang();
+				break;
+			case 5:
+				return;
 			}
 		}
 	}
+
+	
 
 	/**
 	 * 
@@ -221,6 +217,7 @@ public class ViDuDay3 {
 	// kết thúc chương trình
 	public static void ketthuc() {
 		System.exit(0);
+
 	}
 
 }
