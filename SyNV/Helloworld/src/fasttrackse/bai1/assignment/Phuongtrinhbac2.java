@@ -6,49 +6,41 @@ public class Phuongtrinhbac2 {
 	private static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		System.out.print("Nhập hệ số  a = ");
-		float a = Phuongtrinhbac2.scanner.nextFloat();
-		System.out.print("Nhập hệ số  b = ");
-		float b = Phuongtrinhbac2.scanner.nextFloat();
-		System.out.print("Nhập hằng số  c = ");
-		float c = scanner.nextFloat();
-		Phuongtrinhbac2.giaiPTBac2(a, b, c);
-	}
+		Scanner sc = new Scanner(System.in);
+		System.out.println("----------------------------");
+		System.out.println("|Giải phương trình bậc hai|");
+		System.out.println("----------------------------");
+		int a;
+		System.out.println("Mời nhập sô a: ");
+		a = sc.nextInt();
+		int b;
+		System.out.println("Mời nhập sô b: ");
+		b = sc.nextInt();
+		int c;
+		System.out.println("Mời nhập sô c: ");
+		c = sc.nextInt();
 
-	/**
-	 * Giải phương trình bậc 2: ax2 + bx + c = 0
-	 * 
-	 * @param a:
-	 *            hệ số bậc 2
-	 * @param b:
-	 *            hệ số bậc 1
-	 * @param c:
-	 *            số hạng tự do
-	 */
-	public static void giaiPTBac2(float a, float b, float c) {
-		// kiểm tra các hệ số
+		double delta = Math.pow(b, 2) - 4 * a * c;
 		if (a == 0) {
 			if (b == 0) {
-				System.out.println("Phương trình vô nghiệm!");
+				if (c == 0) {
+					System.out.println("Phương trình vô số nghiệm");
+				} else {
+					System.out.println("Phương trình vô nghiệm!");
+				}
 			} else {
-				System.out.println("Phương trình có một nghiệm: " + "x = " + (-c / b));
+				System.out.println("Phương trình có nghiệm X = " + (-b / a));
 			}
-			return;
-		}
-		// tính delta
-		float delta = b * b - 4 * a * c;
-		float x1;
-		float x2;
-		// tính nghiệm
-		if (delta > 0) {
-			x1 = (float) ((-b + Math.sqrt(delta)) / (2 * a));
-			x2 = (float) ((-b - Math.sqrt(delta)) / (2 * a));
-			System.out.println("Phương trình có 2 nghiệm là: " + "x1 = " + x1 + " và x2 = " + x2);
-		} else if (delta == 0) {
-			x1 = (-b / (2 * a));
-			System.out.println("Phương trình có nghiệm kép: " + "x1 = x2 = " + x1);
 		} else {
-			System.out.println("Phương trình vô nghiệm!");
+
+			if (delta > 0) {
+				System.out.println("Phương trình có hai nghiệm phân biệt X1= " + (-b + Math.sqrt(delta)) / (2 * a)
+						+ " và X2= " + (-b - Math.sqrt(delta)) / (2 * a));
+			} else if (delta < 0) {
+				System.out.println("Phương trình vô nghiệm!");
+			} else if (delta == 0) {
+				System.out.println("Phương trình có nghiệm kép X1 = X2 = " + (-b / 2 * a));
+			}
 		}
 
 	}
