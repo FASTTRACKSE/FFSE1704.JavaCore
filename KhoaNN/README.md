@@ -9,3 +9,7 @@ https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhoaNN/src/ffse/kho
 
 4 Bài tập Thiết Kế Menu : 
 https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhoaNN/src/ffse/khoa/bai6/ThietKeMenu.java
+
+5 Bài tập quản lý sinh viên : 
+   + Entity : https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhoaNN/src/ffse/khoa/bai7/Sinhvien.java
+   + Main : https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhoaNN/src/ffse/khoa/bai8/Quanlysinhvien.java
