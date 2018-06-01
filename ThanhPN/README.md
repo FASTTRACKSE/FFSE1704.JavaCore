@@ -10,5 +10,5 @@
 
 4. [Assignment 4: Bài Tập MeNu](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/ThanhPN/HelloWorld/src/GiaiPTBac2/Menu.java)
 
-5. [Assignment 5: Bài Tập Quản Lý Sinh Viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/ThanhPN/QuanLySinhVien/src/javacore/entity/SinhVien.java)
+5. [Assignment 5: Bài Tập Quản Lý Sinh Viên]
 
