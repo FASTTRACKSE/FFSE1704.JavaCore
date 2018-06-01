@@ -96,25 +96,26 @@ public class SinhVien {
 		
 	}
 	public double tinhTuoi() {
-		return (2018-namSinh)*1.0;
+		return (2018-namSinh);
 	}
 	public double tinhDiemTrungBinhMon() {
-		return Math.round((diemLP1 + diemLP2 + diemLP3)/ 3);
+		return (diemLP1 + diemLP2 + diemLP3)/ 3;
 	}
 	public String xepLoai() {
+		String Kqua;
 		if(tinhDiemTrungBinhMon()<5) {
-			return "Yếu";
+			Kqua= "Yếu";
 		}else if(tinhDiemTrungBinhMon()<6.5) {
-			return "Trung Bình";
+			Kqua= "Trung Bình";
 		}else if(tinhDiemTrungBinhMon()<7.5) {
-			return "Khá";
+			Kqua= "Khá";
 		}else {
-			return "Giỏi";
+			Kqua= "Giỏi";
 		}
-		
+		return Kqua;
 	}
 	public String toString() {
-		return "Sinh Viên: " + this.tenSinhVien+" -- Giới Tính: "+inGt() + "----|\n|-----------  Tuổi--- " + tinhTuoi();
+		return "Sinh Viên: " + this.tenSinhVien+" -- Giới Tính: "+inGt() + "----|\n|-----------  Tuổi--- " + Math.round(tinhTuoi());
 	}
 	
 }
