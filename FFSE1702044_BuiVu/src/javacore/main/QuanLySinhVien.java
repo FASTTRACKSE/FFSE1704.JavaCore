@@ -65,15 +65,14 @@ public class QuanLySinhVien {
 		// Kết Thúc Nhập.
 		//
 		//in Danh Sách Sinh Viên
-		System.out.println("+*********************************************************+");
-		System.out.println("|---------------------DANH SÁCH SINH VIÊN-----------------|");
-		System.out.println("|---------------------------------------------------------|");
+		System.out.println("|--------------------------------DANH SÁCH SINH VIÊN--------------------------------------|");
+		System.out.printf("\n" + "%-10s %-15s %-10s %-12s %-8s %-8s %-8s %-8s %-8s", "STT", "Họ và tên", "Tuổi",
+				"Giới tính", "LP1", "LP2", "LP3", "TB", "XLoại");
 		for(int i=0;i<N;i++) {
-			System.out.println("|--Sinh Viên Thứ :"+(i+1)+" " +sv[i].toString()+ " Điểm Trung Bình "+Math.round(sv[i].tinhDiemTrungBinhMon())+" ---------------|");
+			System.out.printf("\n"+(i+1)+sv[i].toString()+"\n");
 			
 	}
-		System.out.println("|---------------------------------------------------------|");
-		System.out.println("+*********************************************************+");
+		System.out.println("\n");
 		//Vòng Lặp for sắp xếp điểm trung bình
 		for(int i=0; i< N-1;i++) {
         	for(int j=i+1;j<N-1;j++) {
@@ -90,9 +89,9 @@ public class QuanLySinhVien {
 		
 		 System.out.println("+----------------------------------------------+");
 		 System.out.println("+------Danh Sách Sinh Viên Đã Sắp Xếp----------+");
-		 System.out.println("+----------------------------------------------+");
+		 System.out.printf("\n" + "%-10s %-15s %-8s %-8s", "STT", "Họ và tên", "TB", "XLoại");
         for(int i=0;i<N;i++) {
-        	System.out.print( "+------Sinh Viên"+(i+1) +" : "+sv[i].getSinhVien() +" --" +sv[i].tinhDiemTrungBinhMon()+ " Điểm-- "+sv[i].xepLoai()+"---+\n");
+        	System.out.print( "\n"+(i+1) +"\t   "+sv[i].getSinhVien() +" \t   " +sv[i].tinhDiemTrungBinhMon()+ "\t   "+sv[i].xepLoai()+"\n");
         	
         }
         System.out.println("+----------------------------------------------+");
