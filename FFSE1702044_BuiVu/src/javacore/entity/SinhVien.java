@@ -114,7 +114,7 @@ public class SinhVien {
 		
 	}
 	public String toString() {
-		return "Sinh Viên: " + this.tenSinhVien+" -- Giới Tính: "+inGt() + "---|\n|-----------  Tuổi--- " + tinhTuoi();
+		return "Sinh Viên: " + this.tenSinhVien+" -- Giới Tính: "+inGt() + "----|\n|-----------  Tuổi--- " + tinhTuoi();
 	}
 	
 }
