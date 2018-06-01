@@ -1,3 +1,4 @@
+
 /*****************************
  * Prog: ỨNG DỤNG TÍNH TOÁN
  * @author LÊ KHẢ HỒNG NHẬT
@@ -6,7 +7,7 @@
 import java.util.Scanner;
 
 public class BaiTapChuongTrinhTinhToan {
-	//khai báo
+	// khai báo
 	static int n, i, j, Tang, Giam, app;
 	static int array[] = new int[n];
 
@@ -21,32 +22,37 @@ public class BaiTapChuongTrinhTinhToan {
 		System.out.println("| 5. KẾT THÚC CHƯƠNG TRÌNH          |");
 		System.out.println("|                                   |");
 		System.out.println("*************************************");
-		
-		//menu chương trình
+
+		// menu chương trình
 		while (true) {
 			System.out.print("Nhập chương trình tính toán bạn cần: ");
 			Scanner nhap = new Scanner(System.in);
 			int app = nhap.nextInt();
-			switch (app) {
-			case 1:
-				GPTB1();
-				break;
-			case 2:
-				GPTB2();
-				break;
-			case 3:
-				mang();
-				break;
-			case 4:
-				mangtang();
-				break;
-			case 5:
-				return;
+			if (app == 1 || app == 2 || app == 3 || app == 4 || app == 5) {
+				switch (app) {
+				case 1:
+					GPTB1();
+					break;
+				case 2:
+					GPTB2();
+					break;
+				case 3:
+					mang();
+					break;
+				case 4:
+					mangtang();
+					break;
+				case 5:
+					return;
+				}
+			} else {
+				System.out.println("Bạn phải nhập một trong các số từ 1 đến 5. Hãy nhập lại!!!");
+				nhap.nextInt();
 			}
+			;
 		}
-	}
 
-	
+	}
 
 	/**
 	 * 
@@ -221,6 +227,5 @@ public class BaiTapChuongTrinhTinhToan {
 		System.exit(0);
 
 	}
-
 
 }

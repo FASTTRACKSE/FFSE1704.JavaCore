@@ -120,6 +120,13 @@ public class Assignmentt4 {
 		}
 	}
 
+	public static void back() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println(">>>");
+		System.out.println("Ấn Enter để quay lại Menu chính");
+		sc.nextLine();
+	}
+
 	public static void main(String[] args) {
 		while (true) {
 			Scanner input = new Scanner(System.in);
@@ -138,15 +145,20 @@ public class Assignmentt4 {
 			switch (a) {
 			case 1:
 				giaipt1();
+				back();
 				break;
+
 			case 2:
 				giaipt2();
+				back();
 				break;
 			case 3:
 				nhapmang();
+				back();
 				break;
 			case 4:
 				sapxep();
+				back();
 				break;
 			case 5:
 				System.out.println("Chương trình kết thúc. Thank you \nCode by Quanlt");
