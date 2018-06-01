@@ -1,13 +1,13 @@
 /************************
- *CtNhapDuLieuChoMang
- *Bùi Lê Anh Vũ
+ *CTquảnlýsinhviên
+ *Bùi Thế Dương
  *31/05/2018
  **********************/
-package javacore.main;
+package fasttrackse.javacore.main;
 
 import java.util.Scanner;
 
-import javacore.entity.*;
+import fasttrackse.javacore.entity.*;
 
 public class QuanLySinhVien {
 
@@ -39,19 +39,18 @@ public class QuanLySinhVien {
 		//sv1 = new SinhVien();
 		//sv1.Input();
 		//sv1.Output();*/
-		//Khai Báo
 		int N;	
 		
 		System.out.print("Nhập Số Sinh Viên : \n");
 		N = myInput.nextInt();
 		SinhVien[] sv = new SinhVien[N];
-		//Nhập Thông Tin
 		for(int i=0;i<N;i++) {
 		System.out.print("Nhập Tên sinh viên: ");
 		myInput.nextLine();
 		String tenSinhVien = myInput.nextLine();
-		System.out.print("Nhập Giới Tính Sinh vien (chọn 1 Nam;chọn 2 Nữ) ");
-		int gioiTinh = myInput.nextInt();
+		
+		System.out.print("Nhập Giới Tính Sinh viên: ");
+		String gioiTinh = myInput.nextLine();
 		System.out.print("Nhập năm sinh sinh viên: ");
 		int namSinh = myInput.nextInt();
 		System.out.print("Nhập Điểm LP1 sinh viên: ");
@@ -61,21 +60,40 @@ public class QuanLySinhVien {
 		System.out.print("Nhập Điểm LP3 sinh viên: ");
 		int diemLP3 = myInput.nextInt();
 		sv[i]= new SinhVien(tenSinhVien,gioiTinh, namSinh, diemLP1, diemLP2, diemLP3);
+		sv[i].tinhDiemTrungBinhMon();
+		sv[i].getGioiTinh();
+		/*if(sv[i].tinhDiemTrungBinhMon()<=5) {
+			
+			System.out.println("Yếu");
+			
+		}else if(sv[i].tinhDiemTrungBinhMon()<=7) {
+			
+			System.out.println("Trung Bình");
+			
+		}else if(sv[i].tinhDiemTrungBinhMon()<=8.5) {
+			
+			System.out.println("Khá");
+			
+		}else  {
+			
+			System.out.println("Giỏi");
+			
 		}
-		// Kết Thúc Nhập.
-		//
-		//in Danh Sách Sinh Viên
-		System.out.println("|--------------------------------DANH SÁCH SINH VIÊN--------------------------------------|");
-		System.out.printf("\n" + "%-10s %-15s %-10s %-12s %-8s %-8s %-8s %-8s %-8s", "STT", "Họ và tên", "Tuổi",
-				"Giới tính", "LP1", "LP2", "LP3", "TB", "XLoại");
+		*/
+		
+		
+		}
+		System.out.println("+*********************************************************+");
+		System.out.println("|---------------------DANH SÁCH SINH VIÊN-----------------|");
+		System.out.println("|---------------------------------------------------------|");
 		for(int i=0;i<N;i++) {
-			System.out.printf("\n"+(i+1)+sv[i].toString()+"\n");
+			System.out.println("|--Sinh Viên Thứ :"+(i+1)+" " +sv[i].toString()+ " Điểm Trung Bình "+sv[i].tinhDiemTrungBinhMon()+"------------|");
 			
 	}
-		System.out.println("\n");
-		//Vòng Lặp for sắp xếp điểm trung bình
+		System.out.println("|---------------------------------------------------------|");
+		System.out.println("+*********************************************************+");
 		for(int i=0; i< N-1;i++) {
-        	for(int j=i+1;j<N-1;j++) {
+        	for(int j=i+1;j<=N-1;j++) {
         		if(sv[j].tinhDiemTrungBinhMon()<sv[i].tinhDiemTrungBinhMon()) {
         			SinhVien temp = sv[i];
         			sv[i]=sv[j];
@@ -83,21 +101,19 @@ public class QuanLySinhVien {
         		}
         	}
         }
-        //Kết thúc vòng lặp
-		//
-		// In thông tin sinh viên đã sắp xếp 
+        
+		// In thông tin sinh viên 1
 		
 		 System.out.println("+----------------------------------------------+");
 		 System.out.println("+------Danh Sách Sinh Viên Đã Sắp Xếp----------+");
-		 System.out.printf("\n" + "%-10s %-15s %-8s %-8s", "STT", "Họ và tên", "TB", "XLoại");
+		 System.out.println("+----------------------------------------------+");
         for(int i=0;i<N;i++) {
-        	System.out.print( "\n"+(i+1) +"\t   "+sv[i].getSinhVien() +" \t   " +sv[i].tinhDiemTrungBinhMon()+ "\t   "+sv[i].xepLoai()+"\n");
+        	System.out.print( "+------Sinh Viên"+(i+1) +" : "+sv[i].getSinhVien() +" --" +sv[i].tinhDiemTrungBinhMon()+ " Điểm-- "+sv[i].xepLoai()+"---+\n");
         	
         }
         System.out.println("+----------------------------------------------+");
         System.out.println("+----------------------------------------------+");
         System.out.println("+----------------------------------------------+");
-        //Kết thúc chương Trình
         System.exit(0);
 	}
 	
