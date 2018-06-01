@@ -48,8 +48,9 @@ public class QuanLySinhVien {
 		System.out.print("Nhập Tên sinh viên: ");
 		myInput.nextLine();
 		String tenSinhVien = myInput.nextLine();
-		System.out.print("Nhập Giới Tính Sinh vien: ");
-		String gioiTinh = myInput.nextLine();
+		
+		System.out.print("Nhập Giới Tính Sinh vien (chọn 1 Nam;chọn 2 Nữ) ");
+		int gioiTinh = myInput.nextInt();
 		System.out.print("Nhập năm sinh sinh viên: ");
 		int namSinh = myInput.nextInt();
 		System.out.print("Nhập Điểm LP1 sinh viên: ");
@@ -60,6 +61,7 @@ public class QuanLySinhVien {
 		int diemLP3 = myInput.nextInt();
 		sv[i]= new SinhVien(tenSinhVien,gioiTinh, namSinh, diemLP1, diemLP2, diemLP3);
 		sv[i].tinhDiemTrungBinhMon();
+		sv[i].getGioiTinh();
 		/*if(sv[i].tinhDiemTrungBinhMon()<=5) {
 			
 			System.out.println("Yếu");
@@ -92,7 +94,7 @@ public class QuanLySinhVien {
 		System.out.println("+*********************************************************+");
 		for(int i=0; i< N-1;i++) {
         	for(int j=i+1;j<=N-1;j++) {
-        		if(sv[j].tinhDiemTrungBinhMon() < sv[i].tinhDiemTrungBinhMon()) {
+        		if(sv[j].tinhDiemTrungBinhMon()<sv[i].tinhDiemTrungBinhMon()) {
         			SinhVien temp = sv[i];
         			sv[i]=sv[j];
         			sv[j]=temp;
@@ -106,7 +108,7 @@ public class QuanLySinhVien {
 		 System.out.println("+------Danh Sách Sinh Viên Đã Sắp Xếp----------+");
 		 System.out.println("+----------------------------------------------+");
         for(int i=0;i<N;i++) {
-        	System.out.print( "+------Sinh Viên"+(i+1) +" : "+sv[i].getSinhVien() +" --" +sv[i].tinhDiemTrungBinhMon()+ " Điểm   -------+\n");
+        	System.out.print( "+------Sinh Viên"+(i+1) +" : "+sv[i].getSinhVien() +" --" +sv[i].tinhDiemTrungBinhMon()+ " Điểm-- "+sv[i].xepLoai()+"---+\n");
         	
         }
         System.out.println("+----------------------------------------------+");

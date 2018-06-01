@@ -9,7 +9,9 @@ import java.util.Scanner;
 
 public class SinhVien {
 	private String tenSinhVien;
-	private String gioiTinh;
+	private int gioiTinh;
+	private String xepLoai;
+	private String inGt;
 	private int namSinh;
 	private int diemLP1;
 	private int diemLP2;
@@ -39,7 +41,7 @@ public class SinhVien {
 		System.out.println("|Điểm Trung Bình "+diemTrungBinh+"             |");
 		System.out.println("+--------------------------------+");
 	}*/
-	public SinhVien(String tenSinhVien,String gioiTinh,int namSinh,int diemLP1,int diemLP2,int diemLP3) {
+	public SinhVien(String tenSinhVien,int gioiTinh,int namSinh,int diemLP1,int diemLP2,int diemLP3) {
 		this.tenSinhVien=tenSinhVien;
 		this.gioiTinh=gioiTinh;
 		this.namSinh=namSinh;
@@ -53,7 +55,7 @@ public class SinhVien {
 	public void setTenSinhVien(String tenSinhVien) {
 		this.tenSinhVien = tenSinhVien;
 	}
-	public String getGioiTinh() {
+	public int getGioiTinh() {
 		return gioiTinh;
 	}
 	public void setGioiTinh() {
@@ -62,7 +64,6 @@ public class SinhVien {
 	public void setNamSinh(int namSinh) {
 		this.namSinh = namSinh;
 	}
-	
 	public int getDiemLP1() {
 		return diemLP1;
 	}
@@ -86,16 +87,34 @@ public class SinhVien {
 	public void setDiemLP3(int diemLP3) {
 		this.diemLP3 = diemLP3;
 	}
-	
+	public String inGt() {
+		if(gioiTinh ==1) {
+			return "Nam";
+		}else {
+			return "Nữ";
+		}
+		
+	}
+	public double tinhTuoi() {
+		return (2018-namSinh)*1.0;
+	}
 	public double tinhDiemTrungBinhMon() {
 		return Math.round((diemLP1 + diemLP2 + diemLP3)/ 3);
 	}
-	/*public String xepLoai() {
-		return xepLoai();
+	public String xepLoai() {
+		if(tinhDiemTrungBinhMon()<5) {
+			return "Yếu";
+		}else if(tinhDiemTrungBinhMon()<6.5) {
+			return "Trung Bình";
+		}else if(tinhDiemTrungBinhMon()<7.5) {
+			return "Khá";
+		}else {
+			return "Giỏi";
+		}
 		
-	}*/
+	}
 	public String toString() {
-		return "Sinh Viên: " + this.tenSinhVien+" -- Giới Tính: "+this.gioiTinh + "---|\n|-----------  Năm Sinh " + this.namSinh;
+		return "Sinh Viên: " + this.tenSinhVien+" -- Giới Tính: "+inGt() + "---|\n|-----------  Tuổi--- " + tinhTuoi();
 	}
 	
 }
