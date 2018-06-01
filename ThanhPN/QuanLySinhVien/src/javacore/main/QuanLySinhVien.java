@@ -50,9 +50,7 @@ public class QuanLySinhVien {
 	 
 	  
 		sv[i] = new SinhVien(tenSinhVien, namSinh, gioiTinh, diemLP1, diemLP2, diemLP3);
-	    sv[i].tinhDiemTrungBinhMon();
 	    
-	    sv[i].tinhTuoi();
 		}
 		System.out.println("\nDanh Sách Sinh Viên: ");
 		for (int i=0; i<n; i++) {
