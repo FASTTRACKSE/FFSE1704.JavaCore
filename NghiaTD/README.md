@@ -9,3 +9,6 @@
 (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Mang/assgnment3.java)
 4. [Thiết kê thực đơn]
 (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/ThietKeThucDon/ThucDon.java)
+5.[Assgnment4]
+(https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Entity/SinhVien.java)
+(https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/QuanLySv/main.java)
