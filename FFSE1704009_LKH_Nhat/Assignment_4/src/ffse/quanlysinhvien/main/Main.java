@@ -70,15 +70,15 @@ public class Main {
 		System.out.println(" ");
 		System.out.println("******************** DANH SÁCH SINH VIÊN ************************");
 
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < sinhvien.length; i++) {
 			System.out.println("Sinh viên thứ" + (i + 1) + ": " + sinhvien[i].toString() + " Điểm trung bình: "
 					+ sinhvien[i].tinhDiemTrungBinhMon() + " ***** Xếp loại: " + sinhvien[i].xepLoai());
 
 		}
 
-		// sắp xếp tăng dần
-		for (int i = 0; i < N - 1; i++) {
-			for (int j = i + 1; j <= N - 1; j++) {
+		// sắp xếp giảm dần
+		for (int i = 0; i < sinhvien.length - 1; i++) {
+			for (int j = i + 1; j <= sinhvien.length - 1; j++) {
 				if (sinhvien[j].tinhDiemTrungBinhMon() > sinhvien[i].tinhDiemTrungBinhMon()) {
 					SinhVien tang = sinhvien[i];
 					sinhvien[i] = sinhvien[j];
@@ -92,7 +92,7 @@ public class Main {
 		System.out.println(" ");
 		System.out.println("***************Danh Sách Sinh Viên Đã Sắp Xếp******************");
 
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < sinhvien.length; i++) {
 			System.out.println("Xếp hạng thứ " + (i + 1) + ": " + sinhvien[i].getSinhVien() + " ***** "
 					+ sinhvien[i].tinhDiemTrungBinhMon() + " điểm ***** "+"Xếp loại: "+sinhvien[i].xepLoai());
 
