@@ -62,32 +62,12 @@ public class QuanLySinhVien {
 		sv[i]= new SinhVien(tenSinhVien,gioiTinh, namSinh, diemLP1, diemLP2, diemLP3);
 		sv[i].tinhDiemTrungBinhMon();
 		sv[i].getGioiTinh();
-		/*if(sv[i].tinhDiemTrungBinhMon()<=5) {
-			
-			System.out.println("Yếu");
-			
-		}else if(sv[i].tinhDiemTrungBinhMon()<=7) {
-			
-			System.out.println("Trung Bình");
-			
-		}else if(sv[i].tinhDiemTrungBinhMon()<=8.5) {
-			
-			System.out.println("Khá");
-			
-		}else  {
-			
-			System.out.println("Giỏi");
-			
-		}
-		*/
-		
-		
 		}
 		System.out.println("+*********************************************************+");
 		System.out.println("|---------------------DANH SÁCH SINH VIÊN-----------------|");
 		System.out.println("|---------------------------------------------------------|");
 		for(int i=0;i<N;i++) {
-			System.out.println("|--Sinh Viên Thứ :"+(i+1)+" " +sv[i].toString()+ " Điểm Trung Bình "+sv[i].tinhDiemTrungBinhMon()+"------------|");
+			System.out.println("|--Sinh Viên Thứ :"+(i+1)+" " +sv[i].toString()+ " Điểm Trung Bình "+Math.round(sv[i].tinhDiemTrungBinhMon())+"------------|");
 			
 	}
 		System.out.println("|---------------------------------------------------------|");
@@ -102,7 +82,7 @@ public class QuanLySinhVien {
         	}
         }
         
-		// In thông tin sinh viên 1
+		// In thông tin sinh viên 
 		
 		 System.out.println("+----------------------------------------------+");
 		 System.out.println("+------Danh Sách Sinh Viên Đã Sắp Xếp----------+");
