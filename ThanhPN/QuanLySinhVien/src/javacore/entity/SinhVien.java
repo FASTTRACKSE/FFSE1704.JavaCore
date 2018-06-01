@@ -84,20 +84,6 @@ public double tinhDiemTrungBinhMon() {
 	}
 
 
-public String ketQuaXepLoai() {
-    if (tinhDiemTrungBinhMon() >= 8.5) {
-        ketQuaXepLoai = "Lo?i A";
-    } else if ((tinhDiemTrungBinhMon() >= 7) && (tinhDiemTrungBinhMon() < 8.5)) {
-        ketQuaXepLoai = "Lo?i B";
-    } else if ((tinhDiemTrungBinhMon() >= 5.5) && (tinhDiemTrungBinhMon() < 7)) {
-        ketQuaXepLoai = "Lo?i C";
-    } else if ((tinhDiemTrungBinhMon() > 4) && (tinhDiemTrungBinhMon() < 5.5)) {
-        ketQuaXepLoai = "Lo?i D";
-    } else {
-        ketQuaXepLoai = "Lo?i F";
-    }
-	return ketQuaXepLoai;
-}
 
 
 
@@ -106,7 +92,7 @@ public double tinhTuoi() {
 	}
 
 public String toString() {
-	return " Sinh Viên : " + this.tenSinhVien + " - " + this.namSinh + " - " + this.gioiTinh + " - ";
+	return " Sinh ViÃªn : " + this.tenSinhVien + " - " + this.namSinh + " - " + this.gioiTinh + " - ";
 	
 }
 
