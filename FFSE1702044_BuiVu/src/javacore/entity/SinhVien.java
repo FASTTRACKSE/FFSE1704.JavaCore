@@ -88,11 +88,15 @@ public class SinhVien {
 		this.diemLP3 = diemLP3;
 	}
 	public String inGt() {
+		String GIOITINH = "";
 		if(gioiTinh ==1) {
-			return "Nam";
+			GIOITINH="Nam";
+		}else if(gioiTinh==2) {
+			GIOITINH="Nữ";
 		}else {
-			return "Nữ";
+			GIOITINH="Khác";
 		}
+		return GIOITINH;
 		
 	}
 	public double tinhTuoi() {
@@ -107,7 +111,7 @@ public class SinhVien {
 			Kqua= "Yếu";
 		}else if(tinhDiemTrungBinhMon()<6.5) {
 			Kqua= "Trung Bình";
-		}else if(tinhDiemTrungBinhMon()<7.5) {
+		}else if(tinhDiemTrungBinhMon()<8.5) {
 			Kqua= "Khá";
 		}else {
 			Kqua= "Giỏi";
