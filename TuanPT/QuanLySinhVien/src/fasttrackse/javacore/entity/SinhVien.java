@@ -1,4 +1,4 @@
-package fasttrackse.qlsv.entity;
+package fasttrackse.javacore.entity;
 
 public class SinhVien {
 	private String tenSinhVien;
@@ -7,9 +7,8 @@ public class SinhVien {
 	private int diemLP1;
 	private int diemLP2;
 	private int diemLP3;
-	private double diemTrungBinh;
-	
-	public SinhVien(String tenSinhVien, int namSinh, String gioiTinh, int diemLP1, int diemLP2, int diemLP3) {
+
+	public SinhVien(String tenSinhVien, int namSinh,String gioiTinh,int diemLP1, int diemLP2, int diemLP3) {
 		this.tenSinhVien = tenSinhVien;
 		this.namSinh = namSinh;
 		this.gioiTinh = gioiTinh;
@@ -26,20 +25,19 @@ public class SinhVien {
 		this.tenSinhVien = tenSinhVien;
 	}
 
-	public int getGioiTinh() {
-		return namSinh;
-	}
-
-	public void getGioiTinh(String gioiTinh) {
-		this.gioiTinh = gioiTinh;
-	}
-
 	public int getNamSinh() {
 		return namSinh;
 	}
 
 	public void setNamSinh(int namSinh) {
 		this.namSinh = namSinh;
+	}
+	
+	public String getGioiTinh() {
+		return gioiTinh;
+	}
+	public void setGioiTinh(String gioiTinh) {
+		this.gioiTinh = gioiTinh;
 	}
 
 	public int getDiemLP1() {
@@ -66,35 +64,26 @@ public class SinhVien {
 		this.diemLP3 = diemLP3;
 	}
 
-	public double tinhDiemTrungBinh() {
-	
-		return diemTrungBinh =Math.round((diemLP1 + diemLP2 + diemLP3) * 1.0 / 3);
-		
+	public double tinhDiemTrungBinhMon() {
+		return (diemLP1 + diemLP2 + diemLP3) * 1.0 / 3;
 	}
 	
-	//xếp loại
-	public String xepLoaiSinhVien() {
-		
-		String ketQua = " " ; 
-		
-		if (diemTrungBinh > 8.5) {
-			ketQua =  "GIỎI";
-		} else if (diemTrungBinh >= 7 && diemTrungBinh <= 8.5) {
-			ketQua =  "KHÁ";
-		} else if (diemTrungBinh >= 5 && diemTrungBinh < 7) {
-			ketQua = "TBÌNH";
-		} else if (diemTrungBinh < 5) {
-			ketQua =  "YẾU";
-			
+	public String xepLoai() {
+		String ketQua;
+		if (tinhDiemTrungBinhMon() >= 8 ) {
+			ketQua= "Giỏi";
+		}else if (tinhDiemTrungBinhMon() >= 7 ) {
+			ketQua= "Khá";
+		}else if (tinhDiemTrungBinhMon() >= 5 ) {
+			ketQua= "Trung bình";
+		}else {
+			ketQua= "Yếu";
 		}
 		return ketQua;
-		
 	}
 
 	public String toString() {
-
-		return "\t\t" + this.tenSinhVien + "\t\t" + this.namSinh + "\t  " + this.gioiTinh + "\t   " + this.diemLP1
-				+ "\t    " + this.diemLP2 + "\t     " + this.diemLP3 + "\t     ";
+		return "Sinh Viên: " + this.tenSinhVien + "-" + this.namSinh + "-" + this.gioiTinh ;
 	}
 
 }

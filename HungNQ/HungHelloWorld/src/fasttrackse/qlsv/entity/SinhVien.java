@@ -1,4 +1,4 @@
-package fasttrackse.javacore.qlsv;
+package fasttrackse.qlsv.entity;
 
 public class SinhVien {
 	private String tenSinhVien;
@@ -6,26 +6,26 @@ public class SinhVien {
 	private int diemLP1;
 	private int diemLP2;
 	private int diemLP3;
-	private String xepLoai;
-	private String gioiTinh;
 
-	public SinhVien(String tenSinhVien, String gioiTinh, int namSinh, int diemLP1, int diemLP2, int diemLP3) {
+	public SinhVien() {
+		//
+	}
+
+	public SinhVien(String tenSinhVien, int namSinh) {
+		this.tenSinhVien = tenSinhVien;
+		this.namSinh = namSinh;
+
+	}
+
+	public SinhVien(String tenSinhVien, int namSinh, int diemLP1, int diemLP2, int diemLP3) {
 		this.tenSinhVien = tenSinhVien;
 		this.namSinh = namSinh;
 		this.diemLP1 = diemLP1;
 		this.diemLP2 = diemLP2;
 		this.diemLP3 = diemLP3;
-		this.gioiTinh = gioiTinh;
 
 	}
 
-	public String getgioiTinh() {
-		return gioiTinh;
-	}
-
-	public void setgioiTinh(String tenSinhVien) {
-		this.gioiTinh = gioiTinh;
-	}
 	public String getTenSinhVien() {
 		return tenSinhVien;
 	}
@@ -71,30 +71,6 @@ public class SinhVien {
 	}
 
 	public String toString() {
-		return   this.tenSinhVien+"             " +this.namSinh ;
+		return "Sinh Viên: " + this.tenSinhVien + " - " + this.namSinh;
 	}
-
-	public String xepLoai(){
-	 String ketQua;
-
-		if (tinhDiemTrungBinhMon() < 5) {
-			ketQua = "Yếu";
-
-		} else if (tinhDiemTrungBinhMon() <= 7) {
-			ketQua= "Trung bình";
-
-		} else if (tinhDiemTrungBinhMon() <8.5) {
-			ketQua= "khá";
-
-		} else {
-			ketQua = "Giỏi";
-
-		}
-		return ketQua;
-	}
-
-	public void setXepLoai(String xepLoai) {
-		this.xepLoai = xepLoai;
-	}
-
 }

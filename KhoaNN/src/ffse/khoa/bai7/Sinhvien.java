@@ -1,31 +1,36 @@
-package fasttrackse.javacore.qlsv;
+package ffse.khoa.bai7;
 
-public class SinhVien {
+
+
+public class Sinhvien {
+	
 	private String tenSinhVien;
 	private int namSinh;
+	private String gioiTinh;
 	private int diemLP1;
 	private int diemLP2;
-	private int diemLP3;
-	private String xepLoai;
-	private String gioiTinh;
-
-	public SinhVien(String tenSinhVien, String gioiTinh, int namSinh, int diemLP1, int diemLP2, int diemLP3) {
+	private int diemLP3;	
+	
+	public Sinhvien() {
+		//
+	}
+	
+	public Sinhvien(String tenSinhVien, int namSinh) {
 		this.tenSinhVien = tenSinhVien;
 		this.namSinh = namSinh;
+		
+	}
+	public Sinhvien(String tenSinhVien, int namSinh, String gioiTinh, int diemLP1, int diemLP2, int diemLP3) {
+		this.tenSinhVien = tenSinhVien;
+		this.namSinh = namSinh;
+		this.gioiTinh = gioiTinh;
 		this.diemLP1 = diemLP1;
 		this.diemLP2 = diemLP2;
 		this.diemLP3 = diemLP3;
-		this.gioiTinh = gioiTinh;
-
+		
 	}
 
-	public String getgioiTinh() {
-		return gioiTinh;
-	}
-
-	public void setgioiTinh(String tenSinhVien) {
-		this.gioiTinh = gioiTinh;
-	}
+	
 	public String getTenSinhVien() {
 		return tenSinhVien;
 	}
@@ -40,6 +45,13 @@ public class SinhVien {
 
 	public void setNamSinh(int namSinh) {
 		this.namSinh = namSinh;
+	}
+	
+	public String getGioiTinh() {
+		return gioiTinh;
+	}
+	public void setGioiTinh(String gioiTinh) {
+		this.gioiTinh=gioiTinh;
 	}
 
 	public int getDiemLP1() {
@@ -65,36 +77,27 @@ public class SinhVien {
 	public void setDiemLP3(int diemLP3) {
 		this.diemLP3 = diemLP3;
 	}
-
+	
 	public double tinhDiemTrungBinhMon() {
-		return (diemLP1 + diemLP2 + diemLP3) * 1.0 / 3;
+		return Math.round((diemLP1 + diemLP2 + diemLP3)/ 3);
 	}
 
 	public String toString() {
-		return   this.tenSinhVien+"             " +this.namSinh ;
+		return  this.tenSinhVien + " - " + " Năm Sinh : " + this.namSinh;
 	}
 
-	public String xepLoai(){
-	 String ketQua;
-
-		if (tinhDiemTrungBinhMon() < 5) {
-			ketQua = "Yếu";
-
-		} else if (tinhDiemTrungBinhMon() <= 7) {
-			ketQua= "Trung bình";
-
-		} else if (tinhDiemTrungBinhMon() <8.5) {
-			ketQua= "khá";
-
-		} else {
-			ketQua = "Giỏi";
-
+	
+	public String xepLoai() {
+		if(tinhDiemTrungBinhMon()<5) {
+			return "Yếu";
+		}else if(tinhDiemTrungBinhMon()<6.5) {
+			return "Trung Bình";
+		}else if(tinhDiemTrungBinhMon()<7.5) {
+			return "Khá";
+		}else {
+			return "Giỏi";
 		}
-		return ketQua;
-	}
-
-	public void setXepLoai(String xepLoai) {
-		this.xepLoai = xepLoai;
+		
 	}
 
 }

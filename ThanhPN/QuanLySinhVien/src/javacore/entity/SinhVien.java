@@ -7,7 +7,7 @@ private String gioiTinh;
 public int diemLP1;
 public int diemLP2;
 public int diemLP3;
-public String ketQuaXepLoai;
+
 public SinhVien(){
 	// 
 }

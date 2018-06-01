@@ -15,11 +15,14 @@ public class QLSV {
 		N = myInput.nextInt();
 		SinhVien[] sinhvien = new SinhVien[N];
 		for (int i = 0; i < N; i++) {
+			myInput.nextLine();
+
 			System.out.print("Nhap ten sinh vien: ");
 			String ten = myInput.nextLine();
-			myInput.nextLine();
+			
 			System.out.print("Giới Tính ");
 			String gioitinh = myInput.nextLine();
+			
 			System.out.print("Nhap nam sinh sinh vien: ");
 			int namsinh = myInput.nextInt();
 			System.out.print("nhập điểm lp1: ");
@@ -47,12 +50,12 @@ public class QLSV {
 		// in ra thứ tự tăng
 
 		System.out.println(" ");
-		System.out.println("--------------------Danh Sách Sinh Viên Đã Sắp Xếp----------------------");
+		System.out.println("---------------------------Danh Sách Sinh Viên Đã Sắp Xếp---------------------------- ");
 
 		for (int i = 0; i < sinhvien.length; i++) {
-			System.out.println("Xếp hạng thứ " + (i + 1) + ": " + sinhvien[i].toString() + " -------"
-					+ sinhvien[i].tinhDiemTrungBinhMon() + " điểm ------- " + "Xếp loại: " + sinhvien[i].xepLoai());
-
+			System.out.println("STT       "+"Tên sinh viên    "+"Năm Sinh      "+"Giới Tính     "+ "Điểm Trung Bình     "+"Xếp Loại");
+			System.out.println((i + 1) + ". " + "        "+sinhvien[i].toString()+"          "+sinhvien[i].getgioiTinh()+"            "+ sinhvien[i].tinhDiemTrungBinhMon()+"               "   + sinhvien[i].xepLoai());
+		System.out.println("------------------------------------------------------------------------------------- ");
 		}
 
 		System.exit(0);
