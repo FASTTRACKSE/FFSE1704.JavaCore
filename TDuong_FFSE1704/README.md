@@ -5,4 +5,6 @@
 4. [Assignment 4: In GiáTrị Trong Mảng](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/MangSo/src/MangSo/BtMangSo.java)
 5. [Assignment 5: Tìm Min Max](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/MangSo/src/MangSo/MinMax.java)
 6. [Assignment 6: Vị Trí Phần Tử](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/MangSo/src/MangSo/Menu.java) 
-7. [Assignment 7: MenuChứcNăng](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/MangSo/src/MangSo/ViTriPhanTu.java)
+7. [Assignment 7: Menu Chức Năng](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/MangSo/src/MangSo/ViTriPhanTu.java)
+8. [Assignment 8: Quản lý sinh viên] (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/QLSV/src/fasttrackse/javacore/entity/SinhVien.java)
+9. [Assignment 9: Quản lý sinh viên] https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/QLSV/src/fasttrackse/javacore/main/QuanLySinhVien.java
