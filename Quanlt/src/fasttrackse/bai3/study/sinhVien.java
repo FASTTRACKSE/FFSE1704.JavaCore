@@ -1,26 +1,17 @@
-/************************
- *Prog: QUẢN LÝ SINH VIÊN
- *@AUTHOR: LÊ KHẢ HỒNG NHẬT
- *Date: 31/05/2018
- **********************/
-package ffse.quanlysinhvien.entity;
+package fasttrackse.bai3.study;
 
-/**
- * @author Support
- *
- */
-public class SinhVien {
+public class sinhVien {
 	private String tenSinhVien;
 	private String gioiTinh;
-	private int namSinh;
+	private int tuoi;
 	private int diemLP1;
 	private int diemLP2;
 	private int diemLP3;
 
-	public SinhVien(String tenSinhVien, String gioiTinh, int namSinh, int diemLP1, int diemLP2, int diemLP3) {
+	public sinhVien(String tenSinhVien, String gioiTinh, int tuoi, int diemLP1, int diemLP2, int diemLP3) {
 		this.tenSinhVien = tenSinhVien;
 		this.gioiTinh = gioiTinh;
-		this.namSinh = namSinh;
+		this.tuoi = tuoi;
 		this.diemLP1 = diemLP1;
 		this.diemLP2 = diemLP2;
 		this.diemLP3 = diemLP3;
@@ -42,8 +33,8 @@ public class SinhVien {
 		this.gioiTinh = gioiTinh;
 	}
 
-	public void setNamSinh(int namSinh) {
-		this.namSinh = namSinh;
+	public void settuoi(int tuoi) {
+		this.tuoi = tuoi;
 	}
 
 	public int getDiemLP1() {
@@ -76,31 +67,27 @@ public class SinhVien {
 	}
 
 	public String xepLoai() {
-		String ketQua;
+		
 		if (tinhDiemTrungBinhMon() <= 5) {
-			ketQua="Yếu";
-			//System.out.println("Yếu");
+			return "Yếu";
 			
-		} else if (tinhDiemTrungBinhMon() <= 7) {
-			ketQua="Trung bình";
-			//System.out.println("Trung Bình");
+		} else if (tinhDiemTrungBinhMon() <= 7 && tinhDiemTrungBinhMon()>5) {
+			return "Trung bình";
 			
-		} else if (tinhDiemTrungBinhMon() <= 8.5) {
-			ketQua="khá";
-			//System.out.println("Khá");
+		} else if (tinhDiemTrungBinhMon() <= 8.5 && tinhDiemTrungBinhMon()>7) {
+			return "Khá";
 			
 		} else {
-			ketQua="Giỏi";
-			//System.out.println("Giỏi");
+			return "Giỏi";
 			
 		}
-		return ketQua;
+		
 
 	}
 
 	public String toString() {
-		return "Sinh Viên: " + this.tenSinhVien + " *****  Giới Tính: " + this.gioiTinh + " ****** Năm Sinh "
-				+ this.namSinh + " ***** ";
+		return "Sinh Viên: " + this.tenSinhVien + " \nGiới Tính: " + this.gioiTinh + "\nNăm Sinh "
+				+ this.tuoi;
 	}
 
 }
