@@ -1,32 +1,25 @@
-/************************
- *Prog: QUẢN LÝ SINH VIÊN
- *@AUTHOR: LÊ KHẢ HỒNG NHẬT
- *Date: 31/05/2018
- **********************/
-package ffse.quanlysinhvien.entity;
+package fasttrackse.javacore.qlsv;
 
-/**
- * @author Support
- *
- */
 public class SinhVien {
 	private String tenSinhVien;
-	private String gioiTinh;
 	private int namSinh;
 	private int diemLP1;
 	private int diemLP2;
 	private int diemLP3;
+	private String xepLoai;
+	private String gioiTinh;
 
 	public SinhVien(String tenSinhVien, String gioiTinh, int namSinh, int diemLP1, int diemLP2, int diemLP3) {
 		this.tenSinhVien = tenSinhVien;
-		this.gioiTinh = gioiTinh;
 		this.namSinh = namSinh;
 		this.diemLP1 = diemLP1;
 		this.diemLP2 = diemLP2;
 		this.diemLP3 = diemLP3;
+		this.gioiTinh = gioiTinh;
+
 	}
 
-	public String getSinhVien() {
+	public String getTenSinhVien() {
 		return tenSinhVien;
 	}
 
@@ -34,12 +27,8 @@ public class SinhVien {
 		this.tenSinhVien = tenSinhVien;
 	}
 
-	public String getGioiTinh() {
-		return gioiTinh;
-	}
-
-	public void setGioiTinh() {
-		this.gioiTinh = gioiTinh;
+	public int getNamSinh() {
+		return namSinh;
 	}
 
 	public void setNamSinh(int namSinh) {
@@ -71,36 +60,34 @@ public class SinhVien {
 	}
 
 	public double tinhDiemTrungBinhMon() {
-		return  Math.round((diemLP1 + diemLP2 + diemLP3) / 3);
-		
-	}
-
-	public String xepLoai() {
-		String ketQua;
-		if (tinhDiemTrungBinhMon() <= 5) {
-			ketQua="Yếu";
-			//System.out.println("Yếu");
-			
-		} else if (tinhDiemTrungBinhMon() <= 7) {
-			ketQua="Trung bình";
-			//System.out.println("Trung Bình");
-			
-		} else if (tinhDiemTrungBinhMon() <= 8.5) {
-			ketQua="khá";
-			//System.out.println("Khá");
-			
-		} else {
-			ketQua="Giỏi";
-			//System.out.println("Giỏi");
-			
-		}
-		return ketQua;
-
+		return (diemLP1 + diemLP2 + diemLP3) * 1.0 / 3;
 	}
 
 	public String toString() {
-		return "Sinh Viên: " + this.tenSinhVien + " *****  Giới Tính: " + this.gioiTinh + " ****** Năm Sinh "
-				+ this.namSinh + " ***** ";
+		return "Sinh Viên: " + this.tenSinhVien + "  " + this.namSinh;
+	}
+
+	public String xepLoai(){
+	 String ketQua;
+
+		if (tinhDiemTrungBinhMon() <= 5) {
+			ketQua = "Yếu";
+
+		} else if (tinhDiemTrungBinhMon() <= 7) {
+			ketQua= "Trung bình";
+
+		} else if (tinhDiemTrungBinhMon() <= 8.5) {
+			ketQua= "khá";
+
+		} else {
+			ketQua = "Giỏi";
+
+		}
+		return ketQua;
+	}
+
+	public void setXepLoai(String xepLoai) {
+		this.xepLoai = xepLoai;
 	}
 
 }
