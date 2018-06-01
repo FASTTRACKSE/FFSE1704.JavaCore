@@ -39,16 +39,17 @@ public class QuanLySinhVien {
 		//sv1 = new SinhVien();
 		//sv1.Input();
 		//sv1.Output();*/
+		//Khai Báo
 		int N;	
 		
 		System.out.print("Nhập Số Sinh Viên : \n");
 		N = myInput.nextInt();
 		SinhVien[] sv = new SinhVien[N];
+		//Nhập Thông Tin
 		for(int i=0;i<N;i++) {
 		System.out.print("Nhập Tên sinh viên: ");
 		myInput.nextLine();
 		String tenSinhVien = myInput.nextLine();
-		
 		System.out.print("Nhập Giới Tính Sinh vien (chọn 1 Nam;chọn 2 Nữ) ");
 		int gioiTinh = myInput.nextInt();
 		System.out.print("Nhập năm sinh sinh viên: ");
@@ -60,20 +61,22 @@ public class QuanLySinhVien {
 		System.out.print("Nhập Điểm LP3 sinh viên: ");
 		int diemLP3 = myInput.nextInt();
 		sv[i]= new SinhVien(tenSinhVien,gioiTinh, namSinh, diemLP1, diemLP2, diemLP3);
-		sv[i].tinhDiemTrungBinhMon();
-		sv[i].getGioiTinh();
 		}
+		// Kết Thúc Nhập.
+		//
+		//in Danh Sách Sinh Viên
 		System.out.println("+*********************************************************+");
 		System.out.println("|---------------------DANH SÁCH SINH VIÊN-----------------|");
 		System.out.println("|---------------------------------------------------------|");
 		for(int i=0;i<N;i++) {
-			System.out.println("|--Sinh Viên Thứ :"+(i+1)+" " +sv[i].toString()+ " Điểm Trung Bình "+Math.round(sv[i].tinhDiemTrungBinhMon())+"------------|");
+			System.out.println("|--Sinh Viên Thứ :"+(i+1)+" " +sv[i].toString()+ " Điểm Trung Bình "+Math.round(sv[i].tinhDiemTrungBinhMon())+" ---------------|");
 			
 	}
 		System.out.println("|---------------------------------------------------------|");
 		System.out.println("+*********************************************************+");
+		//Vòng Lặp for sắp xếp điểm trung bình
 		for(int i=0; i< N-1;i++) {
-        	for(int j=i+1;j<=N-1;j++) {
+        	for(int j=i+1;j<N-1;j++) {
         		if(sv[j].tinhDiemTrungBinhMon()<sv[i].tinhDiemTrungBinhMon()) {
         			SinhVien temp = sv[i];
         			sv[i]=sv[j];
@@ -81,8 +84,9 @@ public class QuanLySinhVien {
         		}
         	}
         }
-        
-		// In thông tin sinh viên 
+        //Kết thúc vòng lặp
+		//
+		// In thông tin sinh viên đã sắp xếp 
 		
 		 System.out.println("+----------------------------------------------+");
 		 System.out.println("+------Danh Sách Sinh Viên Đã Sắp Xếp----------+");
@@ -94,6 +98,7 @@ public class QuanLySinhVien {
         System.out.println("+----------------------------------------------+");
         System.out.println("+----------------------------------------------+");
         System.out.println("+----------------------------------------------+");
+        //Kết thúc chương Trình
         System.exit(0);
 	}
 	

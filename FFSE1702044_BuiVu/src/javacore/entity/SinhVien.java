@@ -5,13 +5,9 @@
  **********************/
 package javacore.entity;
 
-import java.util.Scanner;
-
 public class SinhVien {
 	private String tenSinhVien;
 	private int gioiTinh;
-	private String xepLoai;
-	private String inGt;
 	private int namSinh;
 	private int diemLP1;
 	private int diemLP2;
@@ -88,15 +84,15 @@ public class SinhVien {
 		this.diemLP3 = diemLP3;
 	}
 	public String inGt() {
-		String GIOITINH = "";
+		String kqGioiTinh = "";
 		if(gioiTinh ==1) {
-			GIOITINH="Nam";
+			kqGioiTinh="Nam";
 		}else if(gioiTinh==2) {
-			GIOITINH="Nữ";
+			kqGioiTinh="Nữ";
 		}else {
-			GIOITINH="Khác";
+			kqGioiTinh="Khác";
 		}
-		return GIOITINH;
+		return kqGioiTinh;
 		
 	}
 	public double tinhTuoi() {
