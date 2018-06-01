@@ -19,15 +19,15 @@ public class Menujava {
 			System.out.println("***----------------------*----------------------------***");
 
 			System.out.print("Mời bạn chọn:");
-			
+
 			Scanner nhap = new Scanner(System.in);
 			n = nhap.nextInt();
 			if (n == 1) {
 				PTbacmot1();
-				main(args);
+				
 			} else if (n == 2) {
 				PTbachai();
-				main(args);
+				
 			} else if (n == 3) {
 				Nhapmang();
 
@@ -36,12 +36,11 @@ public class Menujava {
 			} else if (n == 5) {
 				System.out.println("Đã thoát!");
 				System.exit(0);
-		
+
 			}
-			
+
 		}
 	}
-	
 
 	public static void PTbacmot1() {
 		Scanner nhap = new Scanner(System.in);
@@ -97,7 +96,7 @@ public class Menujava {
 		Scanner nhap = new Scanner(System.in);
 		System.out.print("Nhập vào số phần tử mảng :");
 		n = nhap.nextInt();
-	 array = new int[n];
+		array = new int[n];
 
 		for (i = 0; i < n; i++) {
 
@@ -114,9 +113,9 @@ public class Menujava {
 	public static void Sapxepphantutangdan() {
 
 		temp = array[0];
-		for ( i = 0; i < array.length-1; i++) {
-			for ( d = i + 1; d < array.length; d++) {
-				
+		for (i = 0; i < array.length - 1; i++) {
+			for (d = i + 1; d < array.length; d++) {
+
 				if (array[i] < array[d]) {
 					temp = array[d];
 					array[d] = array[i];

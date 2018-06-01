@@ -148,7 +148,7 @@ public class Assignment4 {
 			System.out.printf("a[%d] = ", i);// %d: số thập phân, số nguyên
 			array[i] = print.nextInt();
 		}
-		System.out.println("Các phần từ của mảng ban đầu: ");
+		System.out.println("Các phần từ của mảng: ");
 		show(array);
 
 	}
