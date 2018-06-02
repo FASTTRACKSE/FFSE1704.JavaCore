@@ -22,12 +22,13 @@ public class Menujava {
 
 			Scanner nhap = new Scanner(System.in);
 			n = nhap.nextInt();
+			
 			if (n == 1) {
 				PTbacmot1();
-				
+
 			} else if (n == 2) {
 				PTbachai();
-				
+
 			} else if (n == 3) {
 				Nhapmang();
 
@@ -40,6 +41,8 @@ public class Menujava {
 			}
 
 		}
+
+
 	}
 
 	public static void PTbacmot1() {
@@ -62,8 +65,12 @@ public class Menujava {
 		} else {
 			// a!=0 phương trình có một nghiệm là x=- b/a
 			int nghiemX = -b / a;
-			System.out.print("phương trình" + a + "x + " + b + " = 0 có nghiệm x = " + nghiemX);
+			System.out.println("phương trình" + a + "x + " + b + " = 0 có nghiệm x = " + nghiemX);
 		}
+		System.out.println("************@**********@*********");
+		nhap.nextLine();
+		System.out.println("Mời ấn Enter để về menu chính!");
+		nhap.nextLine();
 	}
 
 	public static void PTbachai() {
@@ -79,16 +86,20 @@ public class Menujava {
 		int delta = b * b - 4 * a * c;
 		System.out.print("delta = b*b-4*a*c" + " = " + (b * b - 4 * a * c));
 		if (delta > 0) {
-			System.out.print("phương trình có hai nghiệm phân biệt");
-			System.out.print("X1= " + (-b + Math.sqrt(delta)) / (2 * a));
-			System.out.print("X2=" + (-b - Math.sqrt(delta)) / (2 * a));
+			System.out.println("phương trình có hai nghiệm phân biệt");
+			System.out.println("X1= " + (-b + Math.sqrt(delta)) / (2 * a));
+			System.out.println("X2=" + (-b - Math.sqrt(delta)) / (2 * a));
 		}
 		if (delta == 0) {
-			System.out.print("phương trình có nghiệm kép X1 = X2 = " + (-b / (2 * a)));
+			System.out.println("phương trình có nghiệm kép X1 = X2 = " + (-b / (2 * a)));
 		}
 		if (delta < 0) {
-			System.out.print("phương trình vô nghiệm");
+			System.out.println("phương trình vô nghiệm");
 		}
+		System.out.println("************@**********@*********");
+		nhap.nextLine();
+		System.out.println("Mời ấn Enter để về menu chính!");
+		nhap.nextLine();
 	}
 
 	public static void Nhapmang() {
@@ -106,13 +117,18 @@ public class Menujava {
 		System.out.print("danh sách các mảng của n là : ");
 		for (q = 0; q < n; q++) {
 
-			System.out.print(array[q] + "");
+			System.out.println(array[q] + "");
 		}
+		System.out.println("************@**********@*********");
+		nhap.nextLine();
+		System.out.println("Mời ấn Enter để về menu chính!");
+		nhap.nextLine();
 	}
 
 	public static void Sapxepphantutangdan() {
-
+Scanner nhap =new Scanner(System.in);
 		temp = array[0];
+		System.out.println(array);
 		for (i = 0; i < array.length - 1; i++) {
 			for (d = i + 1; d < array.length; d++) {
 
@@ -127,8 +143,12 @@ public class Menujava {
 		}
 		System.out.print("Sắp xếp từ nhỏ đến lớn :");
 		for (i = 0; i < array.length; i++) {
-			System.out.print(array[i] + " ");
+			System.out.println(array[i] + " ");
 		}
+		System.out.println("************@**********@*********");
+		nhap.nextLine();
+		System.out.println("Mời ấn Enter để về menu chính!");
+		nhap.nextLine();
 	}
 
 }
