@@ -5,8 +5,6 @@ import java.util.Scanner;
 import java.util.Scanner;
 
 public class QuanLySinhVien {
-	static int i1, n;
-	static int dsSinhVien[];
 
 	public static void main(String[] args) {
 
@@ -36,17 +34,13 @@ public class QuanLySinhVien {
 
 		System.out.println("danh sách sinh viên: ");
 		System.out.println();
+		System.out.printf("\n" + "%3s %10s %14s %14s %14s %14s %14s  %14s %12s", "Stt", "TênSinhViên", "NămSinh",
+				"Giới Tính", "ĐiểmLp1", "ĐiểmLp2", "ĐiểmLp3", "ĐiểmTB", "XếpLoai");
 		for (int i = 0; i < dsSinhVien.length; i++) {
-			System.out.printf("\n" + "%3s %10s %14s %14s %14s %14s %14s  %14s %12s", "Stt", "TênSinhViên", "NămSinh",
-					"Giới Tính", "ĐiểmLp1", "ĐiểmLp2", "ĐiểmLp3", "ĐiểmTB", "XếpLoai");
 
-			for (int i1 = 0; i1 < n; i1++) {
-
-				int stt = 0;
-				System.out.println("\n" + stt + dsSinhVien[i1].toString() + dsSinhVien[i1].tinhDiemTrungBinh() + "\t"
-						+ dsSinhVien[i1].xepLoai());
-
-			}
+			
+			System.out.println("\n" + (i + 1) + dsSinhVien[i].toString() + dsSinhVien[i].tinhDiemTrungBinh() + "\t"
+					+ dsSinhVien[i].xepLoai() + Math.abs(i));
 
 		}
 		System.out.println("");
@@ -58,8 +52,8 @@ public class QuanLySinhVien {
 
 			System.out.printf("\n" + "%1s %5s %7s %7s %7s", " Stt ", "Nămsinh", " TênSV", "ĐiểmTB", " Xếp Loại");
 			System.out.println("");
-			System.out.printf(" " + (i1 + 1) + "\t" + dsSinhVien[i1].thongTinhSinhVien()
-					+ dsSinhVien[i1].tinhDiemTrungBinh() + "\t" + dsSinhVien[i1].xepLoai());
+			System.out.printf(" " + (i + 1) + "\t" + dsSinhVien[i].thongTinhSinhVien()
+					+ dsSinhVien[i].tinhDiemTrungBinh() + "\t" + dsSinhVien[i].xepLoai() + Math.abs(i));
 		}
 
 	}

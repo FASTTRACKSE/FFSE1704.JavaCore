@@ -7,8 +7,6 @@ public class SinhVien {
 	private int diemLp1;
 	private int diemLp2;
 	private int diemLp3;
-	private String ketQua;
-
 	public SinhVien(String hoVaTen, int namSinh, String gioiTinh, int diemLp1, int diemLp2, int diemLp3) {
 		this.hoVaTen = hoVaTen;
 		this.namSinh = namSinh;
@@ -18,7 +16,7 @@ public class SinhVien {
 		this.diemLp3 = diemLp3;
 	}
 
-	public SinhVien(String tenSinhVien, int namSinh) {
+	public SinhVien(String tenHoVaen, int namSinh) {
 		this.hoVaTen = hoVaTen;
 		this.namSinh = namSinh;
 
