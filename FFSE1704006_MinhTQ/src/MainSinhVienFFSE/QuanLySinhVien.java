@@ -5,6 +5,8 @@ import java.util.Scanner;
 import java.util.Scanner;
 
 public class QuanLySinhVien {
+	static int i1, n;
+	static int dsSinhVien[];
 
 	public static void main(String[] args) {
 
@@ -29,7 +31,9 @@ public class QuanLySinhVien {
 			int diemLp3 = nhap.nextInt();
 			dsSinhVien[i] = new SinhVien(hoVaTen, namSinh, gioiTinh, diemLp1, diemLp2, diemLp3);
 		}
+
 		// in ra thông tin sinh viên (điểmLP1,2,3 và xếp loại sinh viên.
+
 		System.out.println("danh sách sinh viên: ");
 		System.out.println();
 		for (int i = 0; i < dsSinhVien.length; i++) {
@@ -43,18 +47,21 @@ public class QuanLySinhVien {
 						+ dsSinhVien[i1].xepLoai());
 
 			}
+
 		}
 		System.out.println("");
 		System.out.println("");
 		// in ra danh sách xếp loại sinh viên theo thứ tự tăng dần.
-		
 
+		System.out.println("Sinh viên xếp thứ hạng theo thứ tự tăng dần: ");
 		for (int i = 0; i < dsSinhVien.length; i++) {
-			System.out.println("Sinh viên xếp thứ hạng theo thứ tự tăng dần: ");
-			System.out.printf("\n"+"%1s %5s %7s"," Stt "," TênSV"," Xếp Loại");
+
+			System.out.printf("\n" + "%1s %5s %7s %7s %7s", " Stt ", "Nămsinh", " TênSV", "ĐiểmTB", " Xếp Loại");
 			System.out.println("");
-			System.out.printf( " "+(i + 1) +"\t" + dsSinhVien[i].getHoVaTen() + "\t" + dsSinhVien[i].xepLoai());
+			System.out.printf(" " + (i1 + 1) + "\t" + dsSinhVien[i1].thongTinhSinhVien()
+					+ dsSinhVien[i1].tinhDiemTrungBinh() + "\t" + dsSinhVien[i1].xepLoai());
 		}
 
 	}
+
 }

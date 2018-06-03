@@ -22,7 +22,7 @@ public class Menujava {
 
 			Scanner nhap = new Scanner(System.in);
 			n = nhap.nextInt();
-			
+
 			if (n == 1) {
 				PTbacmot1();
 
@@ -41,7 +41,6 @@ public class Menujava {
 			}
 
 		}
-
 
 	}
 
@@ -126,7 +125,7 @@ public class Menujava {
 	}
 
 	public static void Sapxepphantutangdan() {
-Scanner nhap =new Scanner(System.in);
+		Scanner nhap = new Scanner(System.in);
 		temp = array[0];
 		System.out.println(array);
 		for (i = 0; i < array.length - 1; i++) {
