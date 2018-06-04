@@ -5,14 +5,12 @@ public class KhachHang {
 	private String maKhachHang;
 	private String soNha;
 	private int maSoCongTo;
-	
 
 	public KhachHang(String hoTenChuNha, String soNha, String maKhachHang, int maSoCongTo) {
-		super();
 		this.hoTenChuNha = hoTenChuNha;
-		this.soNha = soNha;
 		this.maSoCongTo = maSoCongTo;
 		this.maKhachHang = maKhachHang;
+		this.soNha = soNha;
 
 	}
 

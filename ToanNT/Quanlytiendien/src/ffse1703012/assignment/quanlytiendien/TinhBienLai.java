@@ -1,11 +1,13 @@
 package ffse1703012.assignment.quanlytiendien;
+
 import java.util.Scanner;
 import ffse1703012.assignment.quanlytiendien.KhachHang;
 import ffse1703012.assignment.quanlytiendien.BienLai;
+
 public class TinhBienLai {
 	public static Scanner sc = new Scanner(System.in);
+
 	public static void main(String[] args) {
-		
 
 		System.out.print("Số lượng khách hàng muốn nhập: ");
 		int n = sc.nextInt();
@@ -37,19 +39,18 @@ public class TinhBienLai {
 			int chiSoMoi = sc.nextInt();
 
 			System.out.println("********************************");
-			khachhang[i] = new KhachHang(hoTenChuNha,maKhachHang,soNha,maSoCongTo);
+			khachhang[i] = new KhachHang(hoTenChuNha, maKhachHang, soNha, maSoCongTo);
 			bienlai[i] = new BienLai(kyTieuThu, chiSoCu, chiSoMoi);
 
 		}
-		
-		//IN DANH SÁCH KHÁCH HÀNG
+
+		// IN DANH SÁCH KHÁCH HÀNG
 		System.out.println("	HÓA ĐƠN TIỀN ĐIỆN CỦA KHÁCH HÀNG");
 		System.out.println("	*********************************");
-		
 
 		for (int i = 0; i < khachhang.length; i++) {
 			System.out.println("+*************************************+");
-			System.out.println("|Khách hàng thứ " + (i + 1) + ": " );
+			System.out.println("|Khách hàng thứ " + (i + 1) + ": ");
 			System.out.println("|Họ tên Khách hàng: " + khachhang[i].getHoTenChuNha());
 			System.out.println("|Mã khách hàng: " + khachhang[i].getMaKhachHang());
 			System.out.println("|Địa Chỉ: " + khachhang[i].getSoNha());
@@ -60,12 +61,10 @@ public class TinhBienLai {
 			System.out.println("|Thành tiền: " + bienlai[i].soTienPhaiTra() + " VNĐ");
 			System.out.println("+*************************************+");
 			System.out.println("								");
-					
-					  
-//					 + );
+
+			// + );
 
 		}
 	}
 
-
-	}
+}
