@@ -3,33 +3,33 @@ package ffse1703012.bai1.practice;
 import ffse1703012.bai1.practice.sinhvien;
 import java.util.Scanner;
 public class RunProgram {
-
+	public static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
 
-	static int N, sinhvien[], i;
+	static int n, sinhvien[], i;
 		System.out.print("Nhập số sinh viên : ");
-		N = nhap.nextInt();
-		SinhVien[] sinhvien = new SinhVien[N];
-		for (int i = 0; i < N; i++) {
+		n = sc.nextInt();
+		SinhVien[] sinhvien = new SinhVien[n];
+		for (int i = 0; i < n; i++) {
 
 			System.out.print("Nhập tên sinh viên: ");
-			nhap.nextLine();
-			String tenSinhVien = nhap.nextLine();
+			sc.nextLine();
+			String tenSinhVien = sc.nextLine();
 
 			System.out.print("Nhập giới tính sinh viên: ");
-			String gioiTinh = nhap.nextLine();
+			String gioiTinh = sc.nextLine();
 
 			System.out.print("Nhập năm sinh sinh viên: ");
-			int namSinh = nhap.nextInt();
+			int namSinh = sc.nextInt();
 
 			System.out.print("Nhập điểm LP1 của sinh viên: ");
-			int diemLP1 = nhap.nextInt();
+			int diemLP1 = sc.nextInt();
 
 			System.out.print("Nhập điểm LP2 của sinh viên: ");
-			int diemLP2 = nhap.nextInt();
+			int diemLP2 = sc.nextInt();
 
 			System.out.print("Nhập điểm LP3 của sinh viên: \n");
-			int diemLP3 = nhap.nextInt();
+			int diemLP3 = sc.nextInt();
 
 			System.out.println("********************************");
 			sinhvien[i] = new SinhVien(tenSinhVien, gioiTinh, namSinh, diemLP1, diemLP2, diemLP3);
@@ -57,7 +57,7 @@ public class RunProgram {
 		}
 
 		System.out.println(" ");
-		System.out.println("***************Danh Sách Sinh Viên Đã Sắp Xếp******************");
+		System.out.println("Danh Sách Sinh Viên Đã Sắp Xếp");
 
 		for (int i = 0; i < sinhvien.length; i++) {
 			System.out.println("Xếp hạng thứ " + (i + 1) + ": " + sinhvien[i].getSinhVien() + " ***** "
