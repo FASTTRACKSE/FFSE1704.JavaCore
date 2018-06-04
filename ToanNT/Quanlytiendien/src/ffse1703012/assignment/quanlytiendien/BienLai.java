@@ -37,8 +37,8 @@ public class BienLai {
 		this.chiSoMoi = chiSoMoi;
 	}
 	
-	public void soTienPhaiTra() {
-		double soTien=0;
+	public double soTienPhaiTra() {
+		double soTien = 0;
 		if(chiSoCu<chiSoMoi) {
 			soTien = (chiSoMoi - chiSoCu)*300;
 		}
