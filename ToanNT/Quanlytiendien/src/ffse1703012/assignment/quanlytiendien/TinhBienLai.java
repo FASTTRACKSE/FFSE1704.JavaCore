@@ -62,8 +62,6 @@ public class TinhBienLai {
 			System.out.println("+*************************************+");
 			System.out.println("								");
 
-			// + );
-
 		}
 	}
 

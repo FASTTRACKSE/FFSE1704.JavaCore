@@ -1,9 +1,9 @@
-/*
- * Quảy Lý Tiền Điện
+/**
  * Nguyễn Quốc Hưng
- * 03-06-2018
+ * Quản Lý Tiền Điện 
+ * 04-06-2018
  */
-package fasttrackse.asm5.quanlytiendien;
+package fassttrackse.qltd.bienlai;
 
 /**
  * @author Admin
@@ -12,10 +12,10 @@ package fasttrackse.asm5.quanlytiendien;
 public class QuanLyTienDien {
 
 	/**
-	 * Quản Lý Tiền Điện
+	 * @param args
 	 */
 	public static void main(String[] args) {
-		//Khai Báo
+		System.out.print("hiii");
 
 	}
 
