@@ -13,7 +13,8 @@
   5.[Assgnment4]
 (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Entity/SinhVien.java)
 (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/QuanLySv/main.java)
-  6.[Assgnment5]
+
+ 6.[Assgnment5]
 [Biên lai](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Assgnment5/src/entity/BienLai.java)
 [Khách hàng](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Assgnment5/src/entity/KhachHang.java)
 [Main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Assgnment5/src/main/Main.java)
