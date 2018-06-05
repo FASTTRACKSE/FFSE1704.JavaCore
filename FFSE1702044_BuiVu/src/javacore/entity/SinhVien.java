@@ -5,11 +5,9 @@
  **********************/
 package javacore.entity;
 
-import java.util.Scanner;
-
 public class SinhVien {
 	private String tenSinhVien;
-	private String gioiTinh;
+	private int gioiTinh;
 	private int namSinh;
 	private int diemLP1;
 	private int diemLP2;
@@ -39,7 +37,7 @@ public class SinhVien {
 		System.out.println("|Điểm Trung Bình "+diemTrungBinh+"             |");
 		System.out.println("+--------------------------------+");
 	}*/
-	public SinhVien(String tenSinhVien,String gioiTinh,int namSinh,int diemLP1,int diemLP2,int diemLP3) {
+	public SinhVien(String tenSinhVien,int gioiTinh,int namSinh,int diemLP1,int diemLP2,int diemLP3) {
 		this.tenSinhVien=tenSinhVien;
 		this.gioiTinh=gioiTinh;
 		this.namSinh=namSinh;
@@ -53,7 +51,7 @@ public class SinhVien {
 	public void setTenSinhVien(String tenSinhVien) {
 		this.tenSinhVien = tenSinhVien;
 	}
-	public String getGioiTinh() {
+	public int getGioiTinh() {
 		return gioiTinh;
 	}
 	public void setGioiTinh() {
@@ -62,7 +60,6 @@ public class SinhVien {
 	public void setNamSinh(int namSinh) {
 		this.namSinh = namSinh;
 	}
-	
 	public int getDiemLP1() {
 		return diemLP1;
 	}
@@ -86,16 +83,39 @@ public class SinhVien {
 	public void setDiemLP3(int diemLP3) {
 		this.diemLP3 = diemLP3;
 	}
-	
-	public double tinhDiemTrungBinhMon() {
-		return Math.round((diemLP1 + diemLP2 + diemLP3)/ 3);
-	}
-	/*public String xepLoai() {
-		return xepLoai();
+	public String inGt() {
+		String kqGioiTinh = "";
+		if(gioiTinh ==1) {
+			kqGioiTinh="Nam";
+		}else if(gioiTinh==2) {
+			kqGioiTinh="Nữ";
+		}else {
+			kqGioiTinh="Khác";
+		}
+		return kqGioiTinh;
 		
-	}*/
+	}
+	public double tinhTuoi() {
+		return (2018-namSinh);
+	}
+	public double tinhDiemTrungBinhMon() {
+		return (diemLP1 + diemLP2 + diemLP3)/ 3;
+	}
+	public String xepLoai() {
+		String Kqua;
+		if(tinhDiemTrungBinhMon()<5) {
+			Kqua= "Yếu";
+		}else if(tinhDiemTrungBinhMon()<6.5) {
+			Kqua= "Trung Bình";
+		}else if(tinhDiemTrungBinhMon()<8.5) {
+			Kqua= "Khá";
+		}else {
+			Kqua= "Giỏi";
+		}
+		return Kqua;
+	}
 	public String toString() {
-		return "Sinh Viên: " + this.tenSinhVien+" -- Giới Tính: "+this.gioiTinh + "---|\n|-----------  Năm Sinh " + this.namSinh;
+		return "\t    "+this.tenSinhVien+"\t    "+ Math.round(tinhTuoi())+"\t\t"+inGt()+"\t    "+this.diemLP1+"\t     "+this.diemLP2+"\t      "+this.diemLP3+"\t      "+ tinhDiemTrungBinhMon()+"\t"+xepLoai();
 	}
 	
 }

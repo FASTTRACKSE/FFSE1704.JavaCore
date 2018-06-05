@@ -6,3 +6,5 @@
 2. [Assignment 1b: giải phương trình bậc hai](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704009_LKH_Nhat/Assignment1/src/java01/asm01b/Assignment_01b.java)
 3. [Assignment 2: in mảng](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704009_LKH_Nhat/Assignment_2/src/Asm_02.java)
 4. [Assignment 3: Chương trình tính toán](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704009_LKH_Nhat/Assignment_3/src/BaiTapChuongTrinhTinhToan.java)
+5. [Assignment 4: Chương trình quản lý sinh viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_4/src/ffse/quanlysinhvien)
+6. [Assignment 5: Chương trình quản lý tiền điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_5/src/quanlytiendien)

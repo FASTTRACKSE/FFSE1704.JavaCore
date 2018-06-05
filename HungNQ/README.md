@@ -8,4 +8,8 @@
 
 3. [Assignment3: Xác Định Số Nguyên Tố](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/HungHelloWorld/src/tapcode/java/test/SoNguyenTo.java)
 
-3. [Assignment4: Menu](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/HungHelloWorld/src/fasttrackse/baitap/quanlithucduc/QuanLiThucDon.java)
+4. [Assignment4: Menu](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/HungHelloWorld/src/fasttrackse/baitap/quanlithucduc/QuanLiThucDon.java)
+
+5. [Assignment5: Quản Lý Sinh Viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/HungHelloWorld/src/fasttrackse/qlsv)
+
+6. [Assignment6: Quản Lý Tiền Điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/HungHelloWorld/src/fasttrackse/asm5/quanlytiendien)
