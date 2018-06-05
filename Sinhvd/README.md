@@ -12,5 +12,7 @@ https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/Sinhvd/BaiTapVeMang
 
 4.thiết kế menu
 https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/Sinhvd/BaiTapVeMang/src/BaiTapVeMang/BaiTap.java
-5.quản lý sinh viên
+5. quản lý sinh viên
 https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/Sinhvd/assignment4/src/assignment4/QuanLySinhVien.java
+5.sinh viên
+https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/Sinhvd/assignment4/src/assignment4/SinhVien.java
