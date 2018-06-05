@@ -42,7 +42,7 @@ public class BienLai extends KhachHang {
 	public double soTienPhaiTra() {
 		double soTien = 0;
 		if (soCu < soMoi) {
-			soTien = (soMoi - soCu) * 3000;
+			Math.round(soTien = (soMoi - soCu) * 3000);
 		}
 		return soTien;
 	}

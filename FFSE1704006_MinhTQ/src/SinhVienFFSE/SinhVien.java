@@ -72,7 +72,7 @@ public class SinhVien {
 	}
 
 	public double tinhDiemTrungBinh() {
-		return (diemLp1 + diemLp2 + diemLp3) * 1.0 / 3;
+		return Math.round((diemLp1 + diemLp2 + diemLp3) * 1.0 / 3);
 	}
 	public String thongTinhSinhVien() {
 		return  this.hoVaTen+"\t"+this.namSinh+"\t";
