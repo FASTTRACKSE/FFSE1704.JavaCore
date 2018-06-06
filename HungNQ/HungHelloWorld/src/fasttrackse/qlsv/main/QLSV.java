@@ -6,32 +6,84 @@ import fasttrackse.qlsv.entity.SinhVien;
 
 public class QLSV {
 
+	private static Scanner myInput;
+
 	public static void main(String[] args) {
-		Scanner myInput = new Scanner(System.in);
+		int n;
+		myInput = new Scanner(System.in);
+		System.out.println("Nhập số lương sinh viên : ");
+		n = myInput.nextInt();
+		SinhVien[] danhsach = new SinhVien[n];
 
-		// System.out.print("Nhap ten sinh vien: ");
-		// String ten = myInput.nextLine();
-		// System.out.print("Nhap nam sinh sinh vien: ");
-		// int namsinh = myInput.nextInt();
-		// SinhVien sv1 = new SinhVien(ten, namsinh);
+		for (int i = 0; i < n; i++) {
 
-		// Nhập thông tin sinh viên 1 qua hàm dựng
-		SinhVien sv1 = new SinhVien("Nguyễn Văn Anh", 1997, 9, 8, 8);
+			System.out.println("Nhập thông tinh sinh viên thứ " + i + " :");
 
-		// Nhập thông tin sinh viên 2 qua phương thức setters
-		SinhVien sv2 = new SinhVien();
-		sv2.setTenSinhVien("Bùi Thị Bình");
-		sv2.setNamSinh(1999);
-		sv2.setDiemLP1(9);
-		sv2.setDiemLP2(9);
-		sv2.setDiemLP3(10);
+			System.out.println("Nhập họ tên sinh viên : ");
+			myInput.nextLine();
+			String tenSinhVien = myInput.nextLine();
 
-		// In thông tin sinh viên 1
-		System.out.println(sv1.toString());
-		System.out.println(sv1.tinhDiemTrungBinhMon());
+			System.out.println("Nhập năm sinh của bạn : ");
+			int namSinh = myInput.nextInt();
 
-		// In thông tin sinh viên 2
-		System.out.println(sv2.toString() + " DTB:" + Math.round(sv2.tinhDiemTrungBinhMon()));
+			System.out.println("Nhập giới tính của bạn : ");
+			myInput.nextLine();
+			String gioiTinh = myInput.nextLine();
+
+			System.out.println("Nhập điểm LP1 của bạn : ");
+			int diemLP1 = myInput.nextInt();
+
+			System.out.println("Nhập điểm LP2 của bạn : ");
+			int diemLP2 = myInput.nextInt();
+
+			System.out.println("Nhập điểm LP3 của bạn : ");
+			int diemLP3 = myInput.nextInt();
+
+			danhsach[i] = new SinhVien(tenSinhVien, namSinh, gioiTinh, diemLP1, diemLP2, diemLP3);
+			
+		}
+
+		int stt = 0;
+		System.out.println("\t \t \t\tDANH SÁCH SINH VIÊN");
+		System.out.println("\t \t \t *********************************");
+		System.out.printf("\n" + "%-10s %-15s %-10s %-12s %-8s %-8s %-8s %-8s %-8s", "STT", "Họ và tên", "Năm Sinh",
+				"Giới tính", "LP1", "LP2", "LP3", "TB", "XLoại");
+		System.out.println("\n---------------------------------------------------------------------------------------------");
+
+		for (int i = 0; i < n; i++) {
+
+			stt++;
+			System.out.printf("\n" + stt + danhsach[i].toString() + danhsach[i].tinhDiemTrungBinh() + "\t"
+					+ danhsach[i].xepLoaiSinhVien());
+		}
+		System.out.println("/n");
+		System.out.println("\n---------------------------------------------------------------------------------------------");
+
+		// sắp xếp điểm trung bình từ cao đến thấp
+
+		
+		for (int i = 0; i < danhsach.length - 1; i++) {
+			for (int j = i + 1; j <= danhsach.length - 1; j++) {
+				if (danhsach[j].tinhDiemTrungBinh() > danhsach[i].tinhDiemTrungBinh()) {
+					SinhVien tang = danhsach[i];
+					danhsach[i] = danhsach[j];
+					danhsach[j] = tang;
+				}
+			}
+		}
+
+		System.out.println("\n\t \t \t\tDANH SÁCH SINH VIÊN ĐÃ SẮP XẾP");
+		System.out.println("\t \t \t *******************************************");
+		System.out.printf("\n" + "%-10s %-15s %-10s %-12s %-8s %-8s %-8s %-8s %-8s", "STT", "Họ và tên", "Năm Sinh",
+				"Giới tính", "LP1", "LP2", "LP3", "TB", "XLoại");
+
+		for (int i = 0; i < danhsach.length; i++) {
+
+			stt++;
+			System.out.printf("\n" + stt + danhsach[i].toString() + danhsach[i].tinhDiemTrungBinh() + "\t"
+					+ danhsach[i].xepLoaiSinhVien());
+		}
+		
 
 	}
 
