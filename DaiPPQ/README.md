@@ -9,7 +9,8 @@
 
 4. [Số Nguyên Tố](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/DaiPPQ/HelloWorld/src/fasttrackse/bai1/pratice/SoNguyenTo.java)
 
-5. [Assignment 3](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/DaiPPQ/HelloWorld/src/fasttrackse/bai1/assignment/MangSoNguyen.java)</br>
+5. [Assignment 3]
+  [Mảng số nguyên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/DaiPPQ/HelloWorld/src/fasttrackse/bai1/assignment/MangSoNguyen.java)</br>
   [Menu lựa chọn chương trình](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/DaiPPQ/HelloWorld/src/fasttrackse/bai1/assignment/Assignment3.java)
 
 6. [Assignment 4 - Quản lý sinh viên]</br>
