@@ -13,17 +13,13 @@ public class QuanLiHoaDonKhachHang {
 				while(true) {
 			System.out.println(">> Menu Chương Trình <<");
 			System.out.println("+---------------------------+");
-			System.out.println("|1.Nhập Thong Tin Khách Hàng|");
-			System.out.println("|3.In Hóa Đơn Tiền điện KH  |");
+			System.out.println("|1.Nhập Thong Tin Khách Hàng|")
 			System.out.println("|4.Kết Thúc                 |");
 			System.out.println("+-------------------------+");
 			System.out.println("Mời Bạn Chọn Chức Năng");
 			N=myInput.nextInt();
 			if(N==1) {
 				 NhapThongTinKH();
-			}
-			else if(N==3) {
-				InHoaDon();
 			}
 			else {
 				System.exit(0);
