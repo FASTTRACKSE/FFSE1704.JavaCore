@@ -11,7 +11,7 @@ package Assignment_4.scr.ffse.qlsv.main;
  */
 import java.util.Scanner;
 
-import ffse.qlsv.entity.SinhVien;
+import Assignment_4.scr.ffse.qlsv.entity.SinhVien;
 
 public class Main {
 	static int N, sinhvien[], i;
