@@ -115,7 +115,7 @@ public class SinhVien {
 		return Kqua;
 	}
 	public String toString() {
-		return "Sinh Viên: " + this.tenSinhVien+" -- Giới Tính: "+inGt() + "----|\n|-----------  Tuổi--- " + Math.round(tinhTuoi());
+		return "\t    "+this.tenSinhVien+"\t    "+ Math.round(tinhTuoi())+"\t\t"+inGt()+"\t    "+this.diemLP1+"\t     "+this.diemLP2+"\t      "+this.diemLP3+"\t      "+ tinhDiemTrungBinhMon()+"\t"+xepLoai();
 	}
 	
 }

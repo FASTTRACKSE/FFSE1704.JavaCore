@@ -19,6 +19,13 @@ public class SinhVien {
 
 	}
 
+	public String getgioiTinh() {
+		return gioiTinh;
+	}
+
+	public void setgioiTinh(String tenSinhVien) {
+		this.gioiTinh = gioiTinh;
+	}
 	public String getTenSinhVien() {
 		return tenSinhVien;
 	}
@@ -64,19 +71,19 @@ public class SinhVien {
 	}
 
 	public String toString() {
-		return "Sinh Viên: " + this.tenSinhVien + "  " + this.namSinh;
+		return   this.tenSinhVien+"             " +this.namSinh ;
 	}
 
 	public String xepLoai(){
 	 String ketQua;
 
-		if (tinhDiemTrungBinhMon() <= 5) {
+		if (tinhDiemTrungBinhMon() < 5) {
 			ketQua = "Yếu";
 
 		} else if (tinhDiemTrungBinhMon() <= 7) {
 			ketQua= "Trung bình";
 
-		} else if (tinhDiemTrungBinhMon() <= 8.5) {
+		} else if (tinhDiemTrungBinhMon() <8.5) {
 			ketQua= "khá";
 
 		} else {

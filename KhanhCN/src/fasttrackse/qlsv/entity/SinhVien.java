@@ -7,10 +7,8 @@ public class SinhVien {
 	private int diemLP1;
 	private int diemLP2;
 	private int diemLP3;
-	private int stt;
 	private double diemTrungBinh;
-	private String xepLoaiSV;
-
+	
 	public SinhVien(String tenSinhVien, int namSinh, String gioiTinh, int diemLP1, int diemLP2, int diemLP3) {
 		this.tenSinhVien = tenSinhVien;
 		this.namSinh = namSinh;
@@ -75,20 +73,21 @@ public class SinhVien {
 	}
 	
 	//xếp loại
-	public String sapXepSinhVien() {
+	public String xepLoaiSinhVien() {
 		
+		String ketQua = " " ; 
 		
 		if (diemTrungBinh > 8.5) {
-			return "GIỎI";
+			ketQua =  "GIỎI";
 		} else if (diemTrungBinh >= 7 && diemTrungBinh <= 8.5) {
-			return "KHÁ";
+			ketQua =  "KHÁ";
 		} else if (diemTrungBinh >= 5 && diemTrungBinh < 7) {
-			return "TBÌNH";
+			ketQua = "TBÌNH";
 		} else if (diemTrungBinh < 5) {
-			return "YẾU";
+			ketQua =  "YẾU";
 			
 		}
-		return sapXepSinhVien();
+		return ketQua;
 		
 	}
 
