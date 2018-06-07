@@ -1,31 +1,39 @@
 package fasttrackse.qlsv.entity;
 
+import java.util.ArrayList;
+
 public class SinhVien {
+	private String hoSinhVien;
 	private String tenSinhVien;
 	private int namSinh;
-	private int diemLP1;
-	private int diemLP2;
-	private int diemLP3;	
+	ArrayList<DiemMonHoc> diemThi = new ArrayList<DiemMonHoc>();
 	
 	public SinhVien() {
 		//
 	}
 	
-	public SinhVien(String tenSinhVien, int namSinh) {
+	public SinhVien(String hoSinhVien, String tenSinhVien, int namSinh) {
+		this.hoSinhVien = hoSinhVien;
+		this.tenSinhVien = hoSinhVien;
 		this.tenSinhVien = tenSinhVien;
 		this.namSinh = namSinh;
-		
 	}
-	public SinhVien(String tenSinhVien, int namSinh, int diemLP1, int diemLP2, int diemLP3) {
+	
+	public SinhVien(String hoSinhVien, String tenSinhVien, int namSinh, ArrayList<DiemMonHoc> diemThi) {
+		this.hoSinhVien = hoSinhVien;
 		this.tenSinhVien = tenSinhVien;
 		this.namSinh = namSinh;
-		this.diemLP1 = diemLP1;
-		this.diemLP2 = diemLP2;
-		this.diemLP3 = diemLP3;
-		
+		this.diemThi = diemThi;
+	}
+	
+	public String getHoSinhVien() {
+		return hoSinhVien;
 	}
 
-	
+	public void setHoSinhVien(String hoSinhVien) {
+		this.hoSinhVien = hoSinhVien;
+	}
+
 	public String getTenSinhVien() {
 		return tenSinhVien;
 	}
@@ -42,32 +50,22 @@ public class SinhVien {
 		this.namSinh = namSinh;
 	}
 
-	public int getDiemLP1() {
-		return diemLP1;
+	public ArrayList<DiemMonHoc> getDiemThi() {
+		return this.diemThi;
 	}
-
-	public void setDiemLP1(int diemLP1) {
-		this.diemLP1 = diemLP1;
-	}
-
-	public int getDiemLP2() {
-		return diemLP2;
-	}
-
-	public void setDiemLP2(int diemLP2) {
-		this.diemLP2 = diemLP2;
-	}
-
-	public int getDiemLP3() {
-		return diemLP3;
-	}
-
-	public void setDiemLP3(int diemLP3) {
-		this.diemLP3 = diemLP3;
+	
+	public void setDiemThi(ArrayList<DiemMonHoc> diemThi) {
+		this.diemThi = diemThi;
 	}
 	
 	public double tinhDiemTrungBinhMon() {
-		return (diemLP1 + diemLP2 + diemLP3) * 1.0 / 3;
+		double tongDiem = 0;
+		
+		for (DiemMonHoc x : this.diemThi) {
+			tongDiem += x.getDiemThi();
+		}
+		
+		return tongDiem / this.diemThi.size();
 	}
 
 	public String toString() {
