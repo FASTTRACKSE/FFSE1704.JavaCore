@@ -1,22 +1,22 @@
 package fasttrackse.javacore.entity;
 
-public class KhachHang {
+import java.util.ArrayList;
+
+public class KhachHang extends BienLai {
 
 	// khai báo các biến (phuong thức)
 	private int maKhachHang;
 	private String tenKhachHang;
 	private String diaChi;
 	private String maCongTo;
-	private int kyTieuThu;
+	private ArrayList<BienLai> bienlai;
 
 	// hàm tạo Khách hàng chứa các phương thức nhập thông tin khách hàng
-	public KhachHang(int maKhachHang, String tenKhachHang, String diaChi, String maCongTo,int kyTieuThu) {
+	public KhachHang(int maKhachHang, String tenKhachHang, String diaChi, String maCongTo ) {
 		this.maKhachHang = maKhachHang;
 		this.tenKhachHang = tenKhachHang;
 		this.diaChi = diaChi;
 		this.maCongTo = maCongTo;
-		this.kyTieuThu = kyTieuThu;
-
 	}
 
 	// mã khách hàng
@@ -55,12 +55,13 @@ public class KhachHang {
 		this.maCongTo = maCongTo;
 	}
 	// kỳ tiêu thụ
-			public int getkyTieuThu() {
-				return kyTieuThu;
-			}
+	
+	public ArrayList<BienLai> getBienlai() {
+		return bienlai;
+	}
 
-			public void setkyTieuThu(int kyTieuThu) {
-				this.kyTieuThu = kyTieuThu;
-			}
+	public void setBienlai(ArrayList<BienLai> bienlai) {
+		this.bienlai = bienlai;
+	}
 	
 }

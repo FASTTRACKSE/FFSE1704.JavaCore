@@ -1,13 +1,18 @@
 package fasttrackse.javacore.entity;
 
-public class BienLai   {
+public class BienLai {
 	private int chiSoMoi ;
 	private int chiSoCu;
+	private int kyTieuThu;
 
+	public BienLai() {
+		
+	}
 	
-	public BienLai(int chiSoMoi,int chiSoCu){
+	public BienLai(int chiSoMoi,int chiSoCu, int kyTieuThu){
 		this.chiSoMoi=chiSoMoi;
 		this.chiSoCu = chiSoCu;
+		this.kyTieuThu = kyTieuThu;
 		
 	}
 	// chỉ số cũ
@@ -29,6 +34,14 @@ public class BienLai   {
 		}
 
 		
+		public int getKyTieuThu() {
+			return kyTieuThu;
+		}
+
+		public void setKyTieuThu(int kyTieuThu) {
+			this.kyTieuThu = kyTieuThu;
+		}
+
 		public double tienCanThanhToan() {
 			return (chiSoMoi-chiSoCu)*1.0* 3000;
 		}
