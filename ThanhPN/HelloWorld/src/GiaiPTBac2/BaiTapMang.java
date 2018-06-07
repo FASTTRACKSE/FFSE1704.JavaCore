@@ -16,7 +16,7 @@ public class BaiTapMang {
 		// phần khai báo
 		
 		Scanner scanner = new Scanner(System.in);
-			System.out.print("Nhập số phần tử của mảng: \n");
+			System.out.print("Nhập số phần tử của mảng: ");
 			 int n = scanner.nextInt();
 			 int []arr = new int[n];
 			 

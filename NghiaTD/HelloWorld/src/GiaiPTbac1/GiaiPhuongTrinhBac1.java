@@ -17,8 +17,7 @@ public class GiaiPhuongTrinhBac1 {
 			System.out.println("Phương trình" + soa+"x+"+sob+"=0 vô số nghiệm");
 		}
 		else
-		{	
-			System.out.println("\t \t \t\tDANH SÁCH KHÁCH HÀNG");
+		{
 			System.out.println("Phương trình" + soa+"x+"+sob+"=0 vô nghiệm");
 
 	}

@@ -22,7 +22,7 @@ public class Menu {
 		   System.out.println("| 5. Kết Thúc                   |");
 		   System.out.println("+---------------------------------------+");
 		   System.out.println(" >> Chọn Chức Năng? ");
-	       Scanner scanner = new Scanner(System.in);	
+	       Scanner scanner = new Scanner(System.in);
 		   int answer = scanner.nextInt();
 		   if (answer == 1) {
 			   GiaiPTBac1();
@@ -122,7 +122,7 @@ public class Menu {
 		Scanner scanner = new Scanner(System.in);
 			System.out.print("Nhập số phần tử của mảng: ");
 			
-			  n = scanner.nextInt();
+			    n = scanner.nextInt();
 			  array = new int[n];
 			 
 			// phần thân
