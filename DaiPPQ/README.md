@@ -16,3 +16,7 @@
 6. [Assignment 4 - Quản lý sinh viên]</br>
 [main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/DaiPPQ/Assignment_4/src/Assignment_4/scr/ffse/qlsv/main/Main.java)</br>
 [entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/DaiPPQ/Assignment_4/src/Assignment_4/scr/ffse/qlsv/entity/SinhVien.java)
+
+7. [Assignment 5 - Quản lý tiền điện]</br>
+[main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_5/src/Assignment_5/src/ffse/quanlytiendien/main)</br>
+[entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_5/src/Assignment_5/src/ffse/quanlytiendien/entity)
