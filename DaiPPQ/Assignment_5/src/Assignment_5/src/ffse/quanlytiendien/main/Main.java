@@ -5,19 +5,12 @@
  **********************/
 package Assignment_5.src.ffse.quanlytiendien.main;
 
-/**
- * @author Support
- *
- */
 import java.util.Scanner;
 
 import Assignment_5.src.ffse.quanlytiendien.entity.*;
 
 public class Main {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
 		Scanner nhap = new Scanner(System.in);

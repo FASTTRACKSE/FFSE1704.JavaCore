@@ -11,12 +11,7 @@ public class KhachHang {
 	private String diaChi;
 	private int maSoCongTo;
 
-//	public KhachHang() {
-//		super();
-//	}
-
 	public KhachHang(String maKhachHang, String hoTenKhachHang, String diaChi, int maSoCongTo) {
-		//super();
 		this.maKhachHang = maKhachHang;
 		this.hoTenKhachHang = hoTenKhachHang;
 		this.diaChi = diaChi;
