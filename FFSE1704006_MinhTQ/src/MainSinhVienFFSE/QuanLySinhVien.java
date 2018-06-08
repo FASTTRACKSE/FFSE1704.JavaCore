@@ -2,7 +2,7 @@ package MainSinhVienFFSE;
 
 import SinhVienFFSE.SinhVien;
 import java.util.Scanner;
-import java.util.Scanner;
+
 
 public class QuanLySinhVien {
 
@@ -14,6 +14,7 @@ public class QuanLySinhVien {
 		SinhVien[] dsSinhVien = new SinhVien[n];
 		for (int i = 0; i < n; i++) {
 
+			
 			System.out.print("Nhập tên sinh viên: ");
 			nhap.nextLine();
 			String hoVaTen = nhap.nextLine();
@@ -40,7 +41,7 @@ public class QuanLySinhVien {
 
 			
 			System.out.println("\n" + (i + 1) + dsSinhVien[i].toString() + dsSinhVien[i].tinhDiemTrungBinh() + "\t"
-					+ dsSinhVien[i].xepLoai() + Math.abs(i));
+					+ dsSinhVien[i].xepLoai());
 
 		}
 		System.out.println("");
@@ -53,7 +54,7 @@ public class QuanLySinhVien {
 			System.out.printf("\n" + "%1s %5s %7s %7s %7s", " Stt ", "Nămsinh", " TênSV", "ĐiểmTB", " Xếp Loại");
 			System.out.println("");
 			System.out.printf(" " + (i + 1) + "\t" + dsSinhVien[i].thongTinhSinhVien()
-					+ dsSinhVien[i].tinhDiemTrungBinh() + "\t" + dsSinhVien[i].xepLoai() + Math.abs(i));
+					+ dsSinhVien[i].tinhDiemTrungBinh() + "\t" + dsSinhVien[i].xepLoai());
 		}
 
 	}

@@ -72,7 +72,7 @@ public class SinhVien {
 	}
 
 	public double tinhDiemTrungBinh() {
-		return (diemLp1 + diemLp2 + diemLp3) * 1.0 / 3;
+		return Math.round((diemLp1 + diemLp2 + diemLp3) * 1.0 / 3);
 	}
 	public String thongTinhSinhVien() {
 		return  this.hoVaTen+"\t"+this.namSinh+"\t";
@@ -80,7 +80,7 @@ public class SinhVien {
 
 	public String toString() {
 		return "\t" + this.hoVaTen + "\t\t" + this.namSinh + "\t\t" + this.gioiTinh + "\t\t" + this.diemLp1
-				+ "\t\t" + this.diemLp2 + "\t\t" + this.diemLp3 + "\t    1";
+				+ "\t\t" + this.diemLp2 + "\t\t" + this.diemLp3 +  "\t    ";
 	}
    
 	public String xepLoai() {
