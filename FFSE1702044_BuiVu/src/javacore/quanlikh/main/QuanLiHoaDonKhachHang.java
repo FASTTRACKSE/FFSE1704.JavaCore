@@ -38,9 +38,9 @@ public class QuanLiHoaDonKhachHang {
 				InDsTieuThuTheoChuKy();
 			} else if (N == 5) {
 				XoaMotKhachHang();
-			}/*else if (N == 6) {
-				XoaBienLaiKH();
-			}*/ else {
+			} /*
+				 * else if (N == 6) { XoaBienLaiKH(); }
+				 */ else {
 				System.exit(0);
 			}
 		}
@@ -63,20 +63,16 @@ public class QuanLiHoaDonKhachHang {
 			System.out.print("Nhập Mã Công Tơ Khách Hàng");
 			int maCongTo = myInput.nextInt();
 			dsKhachHang.add(new ThongTinKhachHang(tenKhachHang, maKhachHang, diaChiKhachHang, maCongTo));
-			// ThongTinKhachHang dsKhachHang=new tenKhachHang(tenKhachHang);
-			// System.out.printf("\n %-12s %-15s %-12s %-12s %-12s %-12s %-12s","MKH", "Họ
-			// tên", "Địa chỉ", "Mã CT", "C.số cũ", "C.số mới", "Tổng tiền");
-			// for(int i1=0;i1<N;i1++) {
-			// System.out.println(bl[i1].inBienLai());
 		}
 	}
 
 	public static void NhapBienLai() {
-		int M = 0;
+		String M = "";
 		System.out.print("Nhập Biên Lai Khách Hàng thứ bao nhiêu? : ");
-		M = myInput.nextInt();
+		myInput.nextLine();
+		M = myInput.nextLine();
 		for (int i = 0; i < dsKhachHang.size(); i++) {
-			while(M == i) {
+			if (M.equals(dsKhachHang.get(i).getThongTinKhachHang())) {
 				System.out.print("Nhập Thông Tin Biên Lai Khách Hàng Thứ " + (i + 1) + "\n");
 				System.out.print("Nhập Chỉ Số Cũ");
 				int chiSoCu = myInput.nextInt();
@@ -87,8 +83,7 @@ public class QuanLiHoaDonKhachHang {
 				System.out.print("Nhập Chu Kỳ Năm:");
 				int ckNam = myInput.nextInt();
 				dsKhachHang.get(i).addToDsBienLai(new BienLai(chiSoCu, chiSoMoi, ckThang, ckNam));
-				break;
-			};
+			}
 		}
 	}
 
@@ -132,23 +127,23 @@ public class QuanLiHoaDonKhachHang {
 	}
 
 	public static void XoaMotKhachHang() {
-		int X;
-		System.out.print("Nhập Khách Hàng Cần Xóa!!!");
-		X = myInput.nextInt();
-			if (!dsKhachHang.isEmpty()) {
-				dsKhachHang.remove(X);
-			}
-	}
-	/*public static void XoaBienLaiKH() {
-		int M = 0;
-		System.out.print("Xóa Biên Lai Khách Hàng thứ bao nhiêu? : ");
-		M = myInput.nextInt();
-		for (int i = 0; i < dsKhachHang.size(); i++) {
-			if(M==i) {
-				BienLai.remove(i);
+		String X;
+		System.out.print("Nhập Tên Khách Hàng Cần Xóa!!!");
+		myInput.nextLine();
+		X = myInput.nextLine();
+		for(ThongTinKhachHang x : dsKhachHang) {
+			if(X.equals(x.getThongTinKhachHang())) {
+				dsKhachHang.remove(x);
 			}
 		}
-		
-
-}*/
+	}
+	/*
+	 * public static void XoaBienLaiKH() { int M = 0;
+	 * System.out.print("Xóa Biên Lai Khách Hàng thứ bao nhiêu? : "); M =
+	 * myInput.nextInt(); for (int i = 0; i < dsKhachHang.size(); i++) { if(M==i) {
+	 * BienLai.remove(i); } }
+	 * 
+	 * 
+	 * }
+	 */
 }
