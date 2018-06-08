@@ -1,20 +1,22 @@
 package ffse1703012.assignment.quanlytiendien;
 
 public class KhachHang {
-	private String hoTenChuNha;
-	private String maKhachHang;
-	private String soNha;
-	private int maSoCongTo;
+	protected String hoTenChuNha;
+	protected String soNha;
+	protected String maKhachHang;
+	protected int maSoCongTo;
+	
+	public KhachHang() {}
 
 	public KhachHang(String hoTenChuNha, String soNha, String maKhachHang, int maSoCongTo) {
 		this.hoTenChuNha = hoTenChuNha;
 		this.maSoCongTo = maSoCongTo;
 		this.maKhachHang = maKhachHang;
 		this.soNha = soNha;
-
+		
 	}
 
-	public String getHoTenChuNha() {
+	public  String getHoTenChuNha() {
 		return hoTenChuNha;
 	}
 
@@ -39,7 +41,7 @@ public class KhachHang {
 		this.maSoCongTo = maSoCongTo;
 	}
 
-	public String getMaKhachHang() {
+	public  String getMaKhachHang() {
 		return maKhachHang;
 	}
 
