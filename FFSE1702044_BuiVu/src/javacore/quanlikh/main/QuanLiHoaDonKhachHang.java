@@ -34,14 +34,13 @@ public class QuanLiHoaDonKhachHang {
 				NhapBienLai();
 			} else if (N == 3) {
 				InKhachHang();
-			}
-			else if(N==4) {
+			} else if (N == 4) {
 				InDsTieuThuTheoChuKy();
-			}
-			else if(N==5) {
+			} else if (N == 5) {
 				XoaMotKhachHang();
-			}
-			else {
+			}/*else if (N == 6) {
+				XoaBienLaiKH();
+			}*/ else {
 				System.exit(0);
 			}
 		}
@@ -52,7 +51,7 @@ public class QuanLiHoaDonKhachHang {
 		N = myInput.nextInt();
 
 		for (int i = 0; i < N; i++) {
-			System.out.print("Nhập Thông Tin Khách Hàng Thứ "+ (i+1)+"\n");
+			System.out.print("Nhập Thông Tin Khách Hàng Thứ " + (i + 1) + "\n");
 			myInput.nextLine();
 			System.out.print("Nhập Tên Khách Hàng");
 			String tenKhachHang = myInput.nextLine();
@@ -73,9 +72,12 @@ public class QuanLiHoaDonKhachHang {
 	}
 
 	public static void NhapBienLai() {
-				
-			for(int i=0;  i< dsKhachHang.size();i++) {
-				System.out.print("Nhập Thông Tin Biên Lai Khách Hàng Thứ "+ (i+1)+"\n");
+		int M = 0;
+		System.out.print("Nhập Biên Lai Khách Hàng thứ bao nhiêu? : ");
+		M = myInput.nextInt();
+		for (int i = 0; i < dsKhachHang.size(); i++) {
+			while(M == i) {
+				System.out.print("Nhập Thông Tin Biên Lai Khách Hàng Thứ " + (i + 1) + "\n");
 				System.out.print("Nhập Chỉ Số Cũ");
 				int chiSoCu = myInput.nextInt();
 				System.out.print("Nhập Chỉ Số mới");
@@ -85,49 +87,68 @@ public class QuanLiHoaDonKhachHang {
 				System.out.print("Nhập Chu Kỳ Năm:");
 				int ckNam = myInput.nextInt();
 				dsKhachHang.get(i).addToDsBienLai(new BienLai(chiSoCu, chiSoMoi, ckThang, ckNam));
-	
-			}
-	}
-	public static void InKhachHang() {
-		Collections.sort(dsKhachHang, new Comparator<ThongTinKhachHang>() {
-            @Override
-            public int compare(ThongTinKhachHang kh1, ThongTinKhachHang kh2) {
-                return (kh1.getThongTinKhachHang().compareTo(kh2.getThongTinKhachHang()));
-                // Muốn đảo danh sách các bạn đối thành
-                //return (sv2.hoTen.compareTo(sv1.hoTen));
-            }
-		});
-		for(ThongTinKhachHang x:dsKhachHang) {
-			
-			System.out.println(" Mã KH : "+x.getMaKhachHang() + " Tên KH :" + x.getThongTinKhachHang() + "\t" + "CS Cũ" + "\t"
-					+ "CS Mới" + "\t" + "Tháng/Năm" + "\t" + "Tổng tiền");
-			for(BienLai o : x.getDsBienLai()) {
-				System.out.println("\t\t\t\t" + o.getChiSoCu() + " \t" + o.getChiSoMoi()+ "\t " + o.getCkThang()+"/"+o.getCkNam()
-						+ "\t\t" + o.tinhTienDien()+" VNĐ");
-			}
-			System.out.println("\n----------------------------------------------------------------------------------------");
+				break;
+			};
 		}
 	}
+
+	public static void InKhachHang() {
+		Collections.sort(dsKhachHang, new Comparator<ThongTinKhachHang>() {
+			@Override
+			public int compare(ThongTinKhachHang kh1, ThongTinKhachHang kh2) {
+				return (kh1.getThongTinKhachHang().compareTo(kh2.getThongTinKhachHang()));
+				// Muốn đảo danh sách các bạn đối thành
+				// return (sv2.hoTen.compareTo(sv1.hoTen));
+			}
+		});
+		for (ThongTinKhachHang x : dsKhachHang) {
+
+			System.out.println(" Mã KH : " + x.getMaKhachHang() + " Tên KH :" + x.getThongTinKhachHang() + "\t"
+					+ "CS Cũ" + "\t" + "CS Mới" + "\t" + "Tháng/Năm" + "\t" + "Tổng tiền");
+			for (BienLai o : x.getDsBienLai()) {
+				System.out.println("\t\t\t\t" + o.getChiSoCu() + " \t" + o.getChiSoMoi() + "\t " + o.getCkThang() + "/"
+						+ o.getCkNam() + "\t\t" + o.tinhTienDien() + " VNĐ");
+			}
+			System.out.println(
+					"\n----------------------------------------------------------------------------------------");
+		}
+	}
+
 	public static void InDsTieuThuTheoChuKy() {
-		int C=0;
+		int C = 0;
 		System.out.print("Nhập Chu Kì Muốn In");
 		C = myInput.nextInt();
-		for(ThongTinKhachHang x:dsKhachHang) {
-			for(BienLai o:x.getDsBienLai()) {
-				if(o.getCkThang()== C) {
-					System.out.println("\t\t\t\t" + o.getChiSoCu() + " \t" + o.getChiSoMoi()+ "\t " + o.getCkThang()+"/"+o.getCkNam()
-					+ "\t\t" + o.tinhTienDien()+" VNĐ");
+		for (ThongTinKhachHang x : dsKhachHang) {
+			System.out.println(" Mã KH : " + x.getMaKhachHang() + " Tên KH :" + x.getThongTinKhachHang() + "\t"
+					+ "CS Cũ" + "\t" + "CS Mới" + "\t" + "Tháng/Năm" + "\t" + "Tổng tiền");
+			for (BienLai o : x.getDsBienLai()) {
+				if (o.getCkThang() == C) {
+					System.out.println("\t\t\t\t" + o.getChiSoCu() + " \t" + o.getChiSoMoi() + "\t " + o.getCkThang()
+							+ "/" + o.getCkNam() + "\t\t" + o.tinhTienDien() + " VNĐ");
 					break;
 				}
 			}
 		}
 	}
+
 	public static void XoaMotKhachHang() {
 		int X;
 		System.out.print("Nhập Khách Hàng Cần Xóa!!!");
-		X=myInput.nextInt();
-		if (!dsKhachHang.isEmpty()) {
-			dsKhachHang.remove(X);
-		}
+		X = myInput.nextInt();
+			if (!dsKhachHang.isEmpty()) {
+				dsKhachHang.remove(X);
+			}
 	}
+	/*public static void XoaBienLaiKH() {
+		int M = 0;
+		System.out.print("Xóa Biên Lai Khách Hàng thứ bao nhiêu? : ");
+		M = myInput.nextInt();
+		for (int i = 0; i < dsKhachHang.size(); i++) {
+			if(M==i) {
+				BienLai.remove(i);
+			}
+		}
+		
+
+}*/
 }
