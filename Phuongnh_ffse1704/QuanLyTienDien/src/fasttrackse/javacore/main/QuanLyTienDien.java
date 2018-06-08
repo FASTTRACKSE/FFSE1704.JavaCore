@@ -1,5 +1,7 @@
 package fasttrackse.javacore.main;
 import fasttrackse.javacore.entity.*;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 public class QuanLyTienDien {
 	public static void main(String[] args) {
@@ -7,42 +9,58 @@ public class QuanLyTienDien {
 	Scanner myInput = new Scanner(System.in);
 	System.out.print("Nhập thông tin khách hàng ");
 	 N=myInput.nextInt();
-	 KhachHang[] khachhang = new KhachHang[N];
-	 BienLai[] bienlai = new BienLai[N];
+	 ArrayList<KhachHang> arrKhachhang =new ArrayList<KhachHang>();
+	 
 	 for (int i=0;i<N;i++) {
 		  myInput.nextLine();
 		  
 		 System.out.print("Nhập mã khách hàng ");
-			int makhachhang = myInput.nextInt();
+			int maKhachHang = myInput.nextInt();
 			
 			System.out.print("Nhập tên khách hàng ");
 			 myInput.nextLine();
-			String tenkhachhang = myInput.nextLine();
+			String tenKhachHang = myInput.nextLine();
 			
 			System.out.print("Nhập địa chỉ khách Hàng ");
-			String diachi = myInput.nextLine();
+			String diaChi = myInput.nextLine();
 			
 			System.out.print("Nhập mã công tơ");
-			String macongto = myInput.nextLine();
+			String maCongTo = myInput.nextLine();
 			
-			System.out.print("nhập chỉ số mới ");
-			int chisomoi  = myInput.nextInt();
+			KhachHang khachhang = new KhachHang(maKhachHang, tenKhachHang, diaChi, maCongTo);
 			
-			System.out.print("nhập chỉ số cũ ");
-			int chisocu = myInput.nextInt();
+			ArrayList<BienLai> arrBienlai  = new ArrayList<BienLai>();
 			
-			System.out.print("nhập kỳ tiêu thụ ");
-			int kytieuthu = myInput.nextInt();
+			//Bắt đầu lưu biên lai
+			System.out.print("nhập số biên lai");
+			int soBienLai  = myInput.nextInt();
+			for (int j = 0; j < soBienLai; j++) {
+				
+				System.out.print("nhập chỉ số mới ");
+				int chiSoMoi  = myInput.nextInt();
+				
+				System.out.print("nhập chỉ số cũ ");
+				int chiSoCu = myInput.nextInt();
+				
+				System.out.print("nhập kỳ tiêu thụ ");
+				int kyTieuThu = myInput.nextInt();
+				
+				BienLai bienLai = new BienLai(chiSoMoi, chiSoCu, kyTieuThu);
+				arrBienlai.add(bienLai);
+				
+			}
+			//Kết thúc hàm for
 			
-			khachhang[i]=new KhachHang(makhachhang,tenkhachhang,diachi,macongto,kytieuthu);
-			bienlai[i] = new BienLai(chisomoi,chisocu); 
-		 
+			khachhang.setBienlai(arrBienlai);
+			arrKhachhang.add(khachhang);
 	 }
 	 System.out.println("----------------------------------DANH SÁCH KHÁCH HÀNG---------------------------------------"); 
 	 System.out.println("MKH "+"\t \t"+ "Tên Khách Hàng"+"\t \t"+"Địa Chỉ"+" \t \t"+"Tiền điện");
-	 for (int i = 0; i < khachhang.length; i++) {
-		
-	 System.out.println(khachhang[i].getmaKhachHang() +"\t \t"+khachhang[i].gettenKhachHang()+"\t \t"+khachhang[i].getdiaChi()+"\t \t"+ +bienlai[i].tienCanThanhToan()+"đồng" );
+	 for (int i = 0; i < arrKhachhang.size(); i++) {
+		KhachHang khachhang = arrKhachhang.get(i);
+		 System.out.println(khachhang.getmaKhachHang() +"\t \t"
+			 + khachhang.gettenKhachHang()+"\t \t    "
+			 + khachhang.getdiaChi()+"\t \t");
 	 }
 	
 	

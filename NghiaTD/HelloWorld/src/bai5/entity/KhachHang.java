@@ -2,10 +2,10 @@ package bai5.entity;
 
 public class KhachHang {
 
-	private String maKhachHang;
-	private String tenKhachHang;
-	private String diaChi;
-	private int maCongTo;
+	protected String maKhachHang;
+	protected String tenKhachHang;
+	protected String diaChi;
+	protected int maCongTo;
 	
 	public KhachHang(String maKhachHang,String tenKhachHang,String diaChi,int maCongTo)
 	{
@@ -40,7 +40,5 @@ public class KhachHang {
 	public void setmaCongTo() {
 		this.maCongTo=maCongTo;
 	}
-	public String toString() {
-		return "Khách hàng:" +this.tenKhachHang+ "\n **** Mã Khách Hàng:"+this.maKhachHang+"\n **** Địa chỉ:"+this.diaChi+"\n *** Mã số công tơ"+this.maCongTo+"\n ***";
-	}
+	
 }

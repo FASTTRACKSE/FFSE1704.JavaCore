@@ -19,6 +19,7 @@ public class QuanLiHoaDonKhachHang {
 		while (true) {
 			System.out.println(">> Menu Chương Trình <<");
 			System.out.println("+---------------------------+");
+<<<<<<< HEAD
 			System.out.println("|1.Nhập Biên Lai Khách Hàng |");
 			System.out.println("|2.Nhập Thong Tin Khách Hàng|");
 			System.out.println("|3.In Hóa Đơn Tiền điện KH  |");
@@ -33,6 +34,17 @@ public class QuanLiHoaDonKhachHang {
 			} else if (N == 3) {
 				InKhachHang();
 			} else {
+=======
+			System.out.println("|1.Nhập Thong Tin Khách Hàng|")
+			System.out.println("|4.Kết Thúc                 |");
+			System.out.println("+-------------------------+");
+			System.out.println("Mời Bạn Chọn Chức Năng");
+			N=myInput.nextInt();
+			if(N==1) {
+				 NhapThongTinKH();
+			}
+			else {
+>>>>>>> 06effc00429e0a6cd54f0e8f4be369b84c120779
 				System.exit(0);
 			}
 		}
