@@ -43,7 +43,7 @@ public class BienLai {
 		}
 
 		public double tienCanThanhToan() {
-			return (chiSoMoi-chiSoCu)*1.0* 3000;
+			return (this.chiSoMoi-this.chiSoCu)*1.0* 3000;
 		}
 
 
