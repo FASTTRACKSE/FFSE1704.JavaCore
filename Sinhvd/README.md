@@ -21,3 +21,6 @@ https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/Sinhvd/assignment4/
 
 6.assignemt6 (quản lý tiền điện)
 https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/Sinhvd/Assignment_5/src/quanlytiendien
+
+7. quản lý tiền điện
+https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/Sinhvd/Assignment%206/src/QuanLyTienDien
