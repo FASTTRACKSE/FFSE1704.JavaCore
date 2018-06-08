@@ -23,7 +23,8 @@ public class QuanLiHoaDonKhachHang {
 			System.out.println("|2.Nhập Biên Lai  Khách Hàng|");
 			System.out.println("|3.In Hóa Đơn Tiền điện KH  |");
 			System.out.println("|4.DS Tiêu Thụ Theo Chu Kỳ  |");
-			System.out.println("|5.Kết Thúc                 |");
+			System.out.println("|5.Xóa 1 Khách Hàng         |");
+			System.out.println("|6.Kết Thúc                 |");
 			System.out.println("+---------------------------+");
 			System.out.println("Mời Bạn Chọn Chức Năng");
 			N = myInput.nextInt();
@@ -37,6 +38,9 @@ public class QuanLiHoaDonKhachHang {
 			else if(N==4) {
 				InDsTieuThuTheoChuKy();
 			}
+			else if(N==5) {
+				XoaMotKhachHang();
+			}
 			else {
 				System.exit(0);
 			}
@@ -48,7 +52,7 @@ public class QuanLiHoaDonKhachHang {
 		N = myInput.nextInt();
 
 		for (int i = 0; i < N; i++) {
-			System.out.print("Nhập Thông Tin Biên Lai Khách Hàng Thứ "+ (i+1)+"\n");
+			System.out.print("Nhập Thông Tin Khách Hàng Thứ "+ (i+1)+"\n");
 			myInput.nextLine();
 			System.out.print("Nhập Tên Khách Hàng");
 			String tenKhachHang = myInput.nextLine();
@@ -105,7 +109,7 @@ public class QuanLiHoaDonKhachHang {
 		}
 	}
 	public static void InDsTieuThuTheoChuKy() {
-		int C;
+		int C=0;
 		System.out.print("Nhập Chu Kì Muốn In");
 		C = myInput.nextInt();
 		for(ThongTinKhachHang x:dsKhachHang) {
@@ -118,5 +122,12 @@ public class QuanLiHoaDonKhachHang {
 			}
 		}
 	}
-
+	public static void XoaMotKhachHang() {
+		int X;
+		System.out.print("Nhập Khách Hàng Cần Xóa!!!");
+		X=myInput.nextInt();
+		if (!dsKhachHang.isEmpty()) {
+			dsKhachHang.remove(X);
+		}
+	}
 }
