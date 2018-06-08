@@ -19,11 +19,12 @@ public class QuanLiHoaDonKhachHang {
 		while (true) {
 			System.out.println(">> Menu Chương Trình <<");
 			System.out.println("+---------------------------+");
-			System.out.println("|1.Nhập Biên Lai Khách Hàng |");
-			System.out.println("|2.Nhập Thong Tin Khách Hàng|");
+			System.out.println("|1.Nhập Thông Tin Khách Hàng|");
+			System.out.println("|2.Nhập Biên Lai  Khách Hàng|");
 			System.out.println("|3.In Hóa Đơn Tiền điện KH  |");
-			System.out.println("|4.Kết Thúc                 |");
-			System.out.println("+-------------------------+");
+			System.out.println("|4.DS Tiêu Thụ Theo Chu Kỳ  |");
+			System.out.println("|5.Kết Thúc                 |");
+			System.out.println("+---------------------------+");
 			System.out.println("Mời Bạn Chọn Chức Năng");
 			N = myInput.nextInt();
 			if (N == 1) {
@@ -32,7 +33,11 @@ public class QuanLiHoaDonKhachHang {
 				NhapBienLai();
 			} else if (N == 3) {
 				InKhachHang();
-			} else {
+			}
+			else if(N==4) {
+				InDsTieuThuTheoChuKy();
+			}
+			else {
 				System.exit(0);
 			}
 		}
@@ -43,6 +48,7 @@ public class QuanLiHoaDonKhachHang {
 		N = myInput.nextInt();
 
 		for (int i = 0; i < N; i++) {
+			System.out.print("Nhập Thông Tin Biên Lai Khách Hàng Thứ "+ (i+1)+"\n");
 			myInput.nextLine();
 			System.out.print("Nhập Tên Khách Hàng");
 			String tenKhachHang = myInput.nextLine();
@@ -65,6 +71,7 @@ public class QuanLiHoaDonKhachHang {
 	public static void NhapBienLai() {
 				
 			for(int i=0;  i< dsKhachHang.size();i++) {
+				System.out.print("Nhập Thông Tin Biên Lai Khách Hàng Thứ "+ (i+1)+"\n");
 				System.out.print("Nhập Chỉ Số Cũ");
 				int chiSoCu = myInput.nextInt();
 				System.out.print("Nhập Chỉ Số mới");
@@ -91,10 +98,24 @@ public class QuanLiHoaDonKhachHang {
 			System.out.println(" Mã KH : "+x.getMaKhachHang() + " Tên KH :" + x.getThongTinKhachHang() + "\t" + "CS Cũ" + "\t"
 					+ "CS Mới" + "\t" + "Tháng/Năm" + "\t" + "Tổng tiền");
 			for(BienLai o : x.getDsBienLai()) {
-				System.out.println("\t\t\t\t\t" + o.getChiSoCu() + " \t" + o.getChiSoMoi()+ "\t " + o.getCkThang()+"/"+o.getCkNam()
-						+ "\t" + o.tinhTienDien()+" VNĐ");
+				System.out.println("\t\t\t\t" + o.getChiSoCu() + " \t" + o.getChiSoMoi()+ "\t " + o.getCkThang()+"/"+o.getCkNam()
+						+ "\t\t" + o.tinhTienDien()+" VNĐ");
 			}
 			System.out.println("\n----------------------------------------------------------------------------------------");
+		}
+	}
+	public static void InDsTieuThuTheoChuKy() {
+		int C;
+		System.out.print("Nhập Chu Kì Muốn In");
+		C = myInput.nextInt();
+		for(ThongTinKhachHang x:dsKhachHang) {
+			for(BienLai o:x.getDsBienLai()) {
+				if(o.getCkThang()== C) {
+					System.out.println("\t\t\t\t" + o.getChiSoCu() + " \t" + o.getChiSoMoi()+ "\t " + o.getCkThang()+"/"+o.getCkNam()
+					+ "\t\t" + o.tinhTienDien()+" VNĐ");
+					break;
+				}
+			}
 		}
 	}
 
