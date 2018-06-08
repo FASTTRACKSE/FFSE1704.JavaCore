@@ -1,16 +1,18 @@
-package Assgnment5.src.main;
+package fasttrackse.quanlytiendien.main;
+
 import java.util.ArrayList;
 import java.util.Scanner;
-import Assgnment5.src.entity.*;
-public class Main {
 
+import fasttrackse.quanlytiendien.entity.*;
+
+public class CTQLTD {
 	static ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
 	static Scanner myInput = new Scanner(System.in);
-	
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		menu();
-}
+	}
+
 	public static void menu() {
 		int myOption = 0;
 		while (myOption != 5) {
@@ -28,10 +30,10 @@ public class Main {
 				myOption = myInput.nextInt();
 				if (myOption == 1) {
 					// Generate data
-					creatDaTaKH();
+					generateDataKH();
 				} else if (myOption == 2) {
 					// Sort student list by Name
-					creaDaTaBienLai();
+					generateDataBienLai();
 				} else if (myOption == 3) {
 					// Sort student list by Name
 					printReport("Thống kê tình hình tiêu thụ điện");
@@ -54,70 +56,77 @@ public class Main {
 			}
 		}
 	}
-	public static void creatDaTaKH(){
+
+	public static void generateDataKH() {
 		dsKH = new ArrayList<KhachHang>();
-		dsKH.add(new KhachHang("SV001", "Nguyễn Văn Sỹ", "Sơn Trà,Đà Nẵng"));
-		dsKH.add(new KhachHang("SV002", "Ngô Thế Toàn", "Hải CHâu,Đà Nẵng"));
-		dsKH.add(new KhachHang("SV003", "Cao Ngọc Khánh", "Liên CHiểu,Đà Nẵng"));
-		dsKH.add(new KhachHang("SV004", "Trần Xuân kì", "Thanh Khê,Đà Nẵng"));
-		dsKH.add(new KhachHang("SV005", "Hứa Văn Lều", "Sơn Trà,Đà Nẵng"));
-		
+		dsKH.add(new KhachHang("KH001", "Nguyễn Văn Anh", "Hải Châu, Đà Nẵng"));
+		dsKH.add(new KhachHang("KH002", "Trần Thị Bình", "Cẩm Lệ, Đà Nẵng"));
+		dsKH.add(new KhachHang("KH003", "Chu Cẩm Hà", "Hải Châu, Đà Nẵng"));
+		dsKH.add(new KhachHang("KH004", "Nguyễn Anh Tuấn", "Sơn Trà, Đà Nẵng"));
+		dsKH.add(new KhachHang("KH005", "Bùi Đức Việt", "Ngũ Hành Sơn, Đà Nẵng"));
 	}
-	
-	public static void creaDaTaBienLai(){
-		//biên lai kh 1
-		ArrayList<BienLai> blKH1 = new  ArrayList<BienLai>();
-		blKH1.add(new BienLai("CK1",1,2018,0,100));
-		blKH1.add(new BienLai("CK1",2,2018,110,140));
-		blKH1.add(new BienLai("CK1",3,2018,140,190));
-		blKH1.add(new BienLai("CK1",4,2018,190,210));
+
+	public static void generateDataBienLai() {
+		// Biên lai khách hàng số 1
+		ArrayList<BienLai> blKH1 = new ArrayList<BienLai>();
+		blKH1.add(new BienLai("CT001", 1, 2018, 0, 100));
+		blKH1.add(new BienLai("CT001", 2, 2018, 100, 120));
+		blKH1.add(new BienLai("CT001", 3, 2018, 120, 150));
+		blKH1.add(new BienLai("CT001", 4, 2018, 150, 200));
 		dsKH.get(0).setDsBienLai(blKH1);
-		dsKH.get(0).addtodsBienLai(new BienLai("Ck1", 5, 2018, 200, 250));
-		
-		// Biên lai khách hàng 2
-		ArrayList<BienLai> blKH2 = new  ArrayList<BienLai>();
-		blKH2.add(new BienLai("CK2",3,2018,0,170));
-		blKH2.add(new BienLai("CK2",4,2018,170,270));
+
+		dsKH.get(0).addToDsBienLai(new BienLai("CT001", 5, 2018, 200, 250));
+
+		// Biên lai khách hàng số 2
+		ArrayList<BienLai> blKH2 = new ArrayList<BienLai>();
+		blKH2.add(new BienLai("CT002", 3, 2018, 0, 150));
+		blKH2.add(new BienLai("CT002", 4, 2018, 150, 300));
 		dsKH.get(1).setDsBienLai(blKH2);
-		
-		// Biên lai khách hàng 3
-				ArrayList<BienLai> blKH3 = new  ArrayList<BienLai>();
-				blKH3.add(new BienLai("CK3",4,2018,0,120));
-				blKH3.add(new BienLai("CK3",5,2018,120,170));
-				dsKH.get(2).setDsBienLai(blKH3);
-				
-				// Biên lai khách hàng 4
-				dsKH.get(3).addtodsBienLai(new BienLai("Ck4", 6, 2018, 138, 160));
-				// Biên lai khách hàng 4
-				dsKH.get(4).addtodsBienLai(new BienLai("Ck5", 7, 2018, 150, 160));
-	
+
+		// Biên lai khách hàng số 3
+		ArrayList<BienLai> blKH3 = new ArrayList<BienLai>();
+		blKH3.add(new BienLai("CT003", 4, 2018, 0, 180));
+		blKH3.add(new BienLai("CT003", 5, 2018, 180, 310));
+		dsKH.get(2).setDsBienLai(blKH3);
+
+		// Biên lai khách hàng số 4
+		dsKH.get(3).addToDsBienLai(new BienLai("CT004", 5, 2018, 0, 150));
+
+		// Biên lai khách hàng số 5
+		dsKH.get(4).addToDsBienLai(new BienLai("CT005", 5, 2018, 0, 90));
 	}
+
 	public static void ketThuc() {
 		System.out.println("Kết thúc chương trình, cám ơn bạn đã sử dụng!!!");
 	}
+
 	public static void xoaKH(int i) {
-		if(!dsKH.isEmpty()) {
+		if (!dsKH.isEmpty()) {
 			dsKH.remove(i);
 		}
 	}
+
 	public static void backToMainMenu() {
 		myInput.nextLine();
 		System.out.println("Ấn Enter để về menu chính");
 		myInput.nextLine();
 	}
+
 	public static void printReport(String title) {
-		System.out.println("\n"+title);
+		System.out.println("\n" + title);
 		System.out.println(
 				"--------------------------------------------------------------------------------------------");
-		for(KhachHang x :dsKH) {
-			System.out.println(x.getMaKH()+":"+x.getTenKH()+"\t");
-			for(BienLai o: x.getDsBienLai()) {
-				System.out.println("\t\t\t" + o.getMaCongTo() + " - " + o.getChuKyNam() + "/" + o.getChuKyThang() + " - "
-						+ o.getCsDauKy() + "\t:\t" + o.getCsCuoiKy() + "\t->\t" + o.tinhTongTien());
+
+		for (KhachHang x : dsKH) {
+			System.out.println(x.getMaKH() + ":" + x.getTenKH() + "\t");
+			for (BienLai o : x.getDsBienLai()) {
+				System.out.println("\t\t\t" + o.getMaCongTo() + " - " + o.getCkThang() + "/" + o.getCkNam() + " - "
+						+ o.getCsDauKy() + "\t:\t" + o.getCsCuoiKy() + "\t->\t" + o.tinhTienTrongKy());
 			}
 		}
+
 		System.out.println(
 				"--------------------------------------------------------------------------------------------");
 	}
-	}
 
+}
