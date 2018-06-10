@@ -1,44 +1,51 @@
 package bai5.entity;
-
+import java.util.ArrayList;
 public class KhachHang {
 
-	protected String maKhachHang;
-	protected String tenKhachHang;
-	protected String diaChi;
-	protected int maCongTo;
+	protected String maKH;
+	protected String tenKH;
+	protected String diaChiKH;
+	ArrayList<BienLai> dsBienLai;
 	
-	public KhachHang(String maKhachHang,String tenKhachHang,String diaChi,int maCongTo)
-	{
-		this.maKhachHang=maKhachHang;
-		this.tenKhachHang=tenKhachHang;
-		this.diaChi=diaChi;
-		this.maCongTo=maCongTo;
-		
-	}
-	public	String getmaKhachHang() {
-		return maKhachHang;
-	}
-	public void setmaKhachHang() {
-		this.maKhachHang=maKhachHang;
-	}
-	public String gettenKhachHang() {
-		return tenKhachHang;
-	}
-	public void settenKhachHang() {
-		this.tenKhachHang=tenKhachHang;
-	}
-	public String getDiaChi() {
-		return diaChi;
+	public KhachHang(String maKH,String tenKH,String diaChiKH) {
+		this.maKH=maKH;
+		this.tenKH=tenKH;
+		this.diaChiKH=diaChiKH;
+		dsBienLai=new ArrayList<BienLai>();
 	}
 
-	public void setDiaChi(String diaChi) {
-		this.diaChi = diaChi;
+	public String getMaKH() {
+		return maKH;
 	}
-	public int getmaCongTo() {
-		return maCongTo;
-		}
-	public void setmaCongTo() {
-		this.maCongTo=maCongTo;
+
+	public void setMaKH(String maKH) {
+		this.maKH = maKH;
 	}
-	
+
+	public String getTenKH() {
+		return tenKH;
+	}
+
+	public void setTenKH(String tenKH) {
+		this.tenKH = tenKH;
+	}
+
+	public String getDiaChiKH() {
+		return diaChiKH;
+	}
+
+	public void setDiaChiKH(String diaChiKH) {
+		this.diaChiKH = diaChiKH;
+	}
+
+	public ArrayList<BienLai> getDsBienLai() {
+		return dsBienLai;
+	}
+
+	public void setDsBienLai(ArrayList<BienLai> dsBienLai) {
+		this.dsBienLai = dsBienLai;
+	}
+	public void addtodsBienLai(BienLai bienLai) {
+		this.dsBienLai.add(bienLai);
+	}
 }
