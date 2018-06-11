@@ -39,8 +39,8 @@ public class BienLai extends KhachHang {
 		this.soMoi = soMoi;
 	}
 
-	public double soTienPhaiTra() {
-		double soTien = 0;
+	public int soTienPhaiTra() {
+		int soTien = 0;
 		if (soCu < soMoi) {
 			Math.round(soTien = (soMoi - soCu) * 3000);
 		}

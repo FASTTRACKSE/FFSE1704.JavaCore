@@ -23,7 +23,7 @@ public class SinhVien {
 		return gioiTinh;
 	}
 
-	public void setgioiTinh(String tenSinhVien) {
+	public void setgioiTinh(String gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 	public String getTenSinhVien() {

@@ -1,7 +1,13 @@
 package Assgnment5.src.main;
 import java.util.ArrayList;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 import Assgnment5.src.entity.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 public class Main {
 
 	static ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
@@ -109,6 +115,14 @@ public class Main {
 		System.out.println("\n"+title);
 		System.out.println(
 				"--------------------------------------------------------------------------------------------");
+		 
+        Collections.sort(dsKH, new Comparator<KhachHang>() {
+        
+            public int compare(KhachHang sv1, KhachHang sv2) {
+                return (sv1.tenKH.compareTo(sv2.tenKH));
+               
+            }
+        });
 		for(KhachHang x :dsKH) {
 			System.out.println(x.getMaKH()+":"+x.getTenKH()+"\t");
 			for(BienLai o: x.getDsBienLai()) {
@@ -117,7 +131,10 @@ public class Main {
 			}
 		}
 		System.out.println(
+		
 				"--------------------------------------------------------------------------------------------");
+		
 	}
+	
 	}
 

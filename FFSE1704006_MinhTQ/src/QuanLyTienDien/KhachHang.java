@@ -1,16 +1,20 @@
 package QuanLyTienDien;
 
+import java.util.ArrayList;
+
 public class KhachHang {
 	protected int maKhachHang;
 	protected String tenKhachHang;
 	protected String diaChi;
 	protected int maCongTo;
+	ArrayList<BienLai> dsBienLai;
 
 	public KhachHang(int maKhachHang, String tenKhachHang, String diaChi, int maCongTo) {
 		this.maKhachHang = maKhachHang;
 		this.tenKhachHang = tenKhachHang;
 		this.diaChi = diaChi;
 		this.maCongTo = maCongTo;
+		dsBienLai = new ArrayList<BienLai>();
 	}
 
 	public int getMaKhachHang() {
