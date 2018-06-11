@@ -8,6 +8,9 @@
 
 4.[Assignment 4 : Bài tập tạo Menu](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhanhCN/src/LP4/JavaCore/BaiTapTongHop.java)
 
-5.[Assignment 4 : Chương trình quản lý sinh_entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhanhCN/src/fasttrackse/qlsv/entity/SinhVien.java)
+5.[Assignment 4 : Chương trình quản lý sinh viên_entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhanhCN/src/fasttrackse/qlsv/entity/SinhVien.java)
 
-6.[Assignment 4 : Chương trình quản lý sinh_main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhanhCN/src/fasttrackse/qlsv/main/QuanLySinhVien.java)
+6.[Assignment 4 : Chương trình quản lý sinh viên_main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhanhCN/src/fasttrackse/qlsv/main/QuanLySinhVien.java)
+
+7.[Assignment 5 : Chương trình quản lý tiền điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhanhCN/src/fasttrack/qltd)
+
