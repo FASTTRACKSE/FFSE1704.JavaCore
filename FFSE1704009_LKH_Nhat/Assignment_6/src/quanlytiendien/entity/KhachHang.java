@@ -7,10 +7,10 @@ package quanlytiendien.entity;
 
 import java.util.ArrayList;
 
-public class KhachHang implements Comparable<KhachHang>{
+public class KhachHang implements Comparable<KhachHang> {
 	protected String maKH;
 	protected String tenKH;
-	protected String diaChiKH;
+	public String diaChiKH;
 	ArrayList<BienLai> dsBienLai;
 
 	public KhachHang(String maKH, String tenKH, String diaChiKH) {
@@ -18,6 +18,18 @@ public class KhachHang implements Comparable<KhachHang>{
 		this.tenKH = tenKH;
 		this.diaChiKH = diaChiKH;
 		dsBienLai = new ArrayList<BienLai>();
+	}
+
+	public String getKhachHang() {
+		return tenKH;
+	}
+
+	public void setKhachHang(String tenKhachHang) {
+		this.tenKH = tenKH;
+	}
+
+	public KhachHang() {
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -85,13 +97,12 @@ public class KhachHang implements Comparable<KhachHang>{
 	}
 
 	@Override
-	 public int compareTo(KhachHang x) {
-	  if(this.tenKH.compareTo(x.tenKH)== 0){
-	   return this.tenKH.compareTo(x.tenKH);
-	  }else{
-	   return this.tenKH.compareTo(x.tenKH);
-	  }
-	 }
+	public int compareTo(KhachHang x) {
+		if (this.diaChiKH.compareTo(x.diaChiKH) == 0) {
+			return this.tenKH.compareTo(x.tenKH);
+		} else {
+			return this.diaChiKH.compareTo(x.diaChiKH);
+		}
+	}
 
-	
 }
