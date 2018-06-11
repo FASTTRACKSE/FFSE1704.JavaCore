@@ -8,10 +8,10 @@ public class ThietKeMenu {
 	
 	
 	 static int mang[] ;
-	 int max = mang[0];
-	 int min = mang[0];
-	 int vitriMax = 0;
-	 int vitriMin = 0;
+	 static int max = mang[0];
+	 static int min = mang[0];
+	 static int vitriMax = 0;
+	 static int vitriMin = 0;
 	
 	public static void main(String[] args) {
 				// TODO Auto-generated method stub
@@ -36,6 +36,8 @@ public class ThietKeMenu {
 			NhapMang();
 		}else if (answer == 4) {
 			Sapsepmang();
+		}else if (answer == 5) {
+			System.exit(0);
 		}
 		}
 	}

@@ -1,4 +1,10 @@
 # FFSE1704.JavaCore
 1. [Assignment 1:Giải phương trình bậc một](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704006_MinhTQ/src/Giaiphuongtrinh/GiaiPhuongTrinhBacMot.java)
 2. [Assignment 2: Giải phương trình bậc hai](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704006_MinhTQ/src/PhuongTrinhBacHai/GiaiPhuongTrinhBacHaiMotAn.java)             
-3. [Assignment 3: viết chương trình tạo mảng](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704006_MinhTQ/src/Assignment3/TimPhantuCuaN.java)             
+3. [Asignment 3: viết chương trình tạo mảng](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704006_MinhTQ/src/Assignment3/TimPhantuCuaN.java)             
+4. [Assignment 3a: menu lựa chọn](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704006_MinhTQ/src/Assignment4/Menujava.java)
+5. [Assignment 4: CT Quản Lý Sinh Viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704006_MinhTQ/src/MainSinhVienFFSE/QuanLySinhVien.java)
+6. [Assignment 4a: CT Quản Lý Sinh Viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704006_MinhTQ/src/SinhVienFFSE/SinhVien.java)
+7. [Assignment 5: CT Quản Lý Tiền Điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704006_MinhTQ/src/MainQuanLyTienDien/QuanLyTienDien.java)
+8. [Assignment 5a: CT Quản Lý Tiền Điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704006_MinhTQ/src/QuanLyTienDien/BienLai.java)
+9. [Assignment 5b: CT Quản Lý Tiền Điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704006_MinhTQ/src/QuanLyTienDien/KhachHang.java)
