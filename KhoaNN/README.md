@@ -13,3 +13,6 @@ https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhoaNN/src/ffse/kho
 5 Bài tập quản lý sinh viên : 
    + Entity : https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhoaNN/src/ffse/khoa/bai7/Sinhvien.java
    + Main : https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhoaNN/src/ffse/khoa/bai8/Quanlysinhvien.java
+
+6 Bài tập quản lý tiền điện : 
+   + [Entity : https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhoaNN/src/ffse/java/enity]
