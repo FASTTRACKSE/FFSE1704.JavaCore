@@ -27,7 +27,7 @@ public class HinhChuNhat extends HinhHoc2Chieu {
 		this.chieuRong = chieuRong;
 	}
 
-	public HinhChuNhat(double chieuDai,double chieuRong) {
+	public HinhChuNhat(double chieuDai, double chieuRong) {
 		this.chieuDai = chieuDai;
 		this.chieuRong = chieuRong;
 	}
