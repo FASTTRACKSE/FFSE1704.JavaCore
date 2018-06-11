@@ -52,7 +52,7 @@ public class QuanLyTienDien {
 		System.out.println("\t\t\t   *-----------------------------*");
 		System.out.println("");
 		System.out.printf("\n" + "%3s %10s %14s %14s %14s %15s %15s  %15s %14s ", "Stt", "Makhachhang", "Tenkhachhang",
-				"DiaChi", "SoCongTo", "KyTieuThu", "ChiSoCu", "ChiSoMoi","TongTien");
+				"DiaChi", "SoCongTo", "KyTieuThu", "ChiSoCu", "ChiSoMoi","TongTien(VND)");
 		System.out.println("");
 		for (int i = 0; i < dsbienlai.length; i++) {
 			System.out.printf((i + 1) + dsbienlai[i].toString() + dsbienlai[i].soTienPhaiTra());

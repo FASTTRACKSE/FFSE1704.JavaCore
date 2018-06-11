@@ -9,165 +9,166 @@ package fasttrackse.baitap.asm;
 import java.util.Scanner;
 
 public class ChuongTrinh {
-	
-	//khai báo
-		static int n, i, j, app;
-		static int myArray[] = new int[n];
-		
+	public static Scanner print = new Scanner(System.in);
+	public static int n;
+	public static int[] array = new int[n];// khai báo mảng
+	public static int bubbleSort;
+
+
 	public static void main(String[] args) {
-		
-		System.out.println(">>           MENU           <<");
-		System.out.println("+----------------------------+");
-		System.out.println("| 1. Giải PT Bậc Nhất 1 Ẩn   |");
-		System.out.println("| 2. Giải PT Bậc Hai 1 Ẩn    |");
-		System.out.println("| 3. Nhập Mảng               |");
-		System.out.println("| 4. Sắp Xếp Mảng Tăng Dần   |");
-		System.out.println("| 5. Kết Thúc Chương Trình   |");
-		System.out.println("|----------------------------|");
-		
+
+		menu();
+
+	}
+
+	public static void menu() {
 		while (true) {
-			System.out.print("\n Nhập chương trình tính toán bạn cần: ");
-			Scanner nhap = new Scanner(System.in);
-			int app = nhap.nextInt();
-			switch (app) {
-			case 1:
-				PhuongTrinhBac1();
-				break;
-			case 2:
-				PhuongTrinhBac2();
-				break;
-			case 3:
-				Mang();
-				break;
-			case 4:
-				SapXepTangDan();
-				break;
-			case 5:
-				KetThuc();
-				break;
-				
+			Scanner sc = new Scanner(System.in);
+			System.out.println(">>           MENU           <<");
+			System.out.println("+----------------------------+");
+			System.out.println("| 1. Giải PT Bậc Nhất 1 Ẩn   |");
+			System.out.println("| 2. Giải PT Bậc Hai 1 Ẩn    |");
+			System.out.println("| 3. Nhập Mảng               |");
+			System.out.println("| 4. Sắp Xếp Mảng Tăng Dần   |");
+			System.out.println("| 5. Kết Thúc Chương Trình   |");
+			System.out.println("+----------------------------+");
+			System.out.println("Chọn chức năng: ");
+			int answer = sc.nextInt();
+			if (answer == 1) {
+				phuongtrinhbac1();
+			} else if (answer == 2) {
+				phuongtrinhbac2();
+			} else if (answer == 3) {
+				nhapmang();
+			} else if (answer == 4) {
+				sapxepmang();
+			} else if (answer == 5) {
+				ketthuc();
 			}
 		}
-		
+
 	}
-	
-	public static void PhuongTrinhBac1(){
-		Scanner myInput = new Scanner(System.in);
 
-		System.out.println("+----------------------------+");
-		System.out.println("| Giải phương trình bậc nhất |");
-		System.out.println("+----------------------------+");
-		double X;
-		System.out.print("Nhập tham số a = ");
-		int A = myInput.nextInt();
 
-		System.out.print("Nhập tham số b = ");
-		int B = myInput.nextInt();
+	public static void phuongtrinhbac1() {
+		int soA, soB;
 
-		if (A == 0) {
-			if (B == 10) {
-				System.out.println("Phương trình" + A + "X" + "+" + B + "=0" + "vô số nghiệm");
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("----------------------------");
+		System.out.println("|Giải phương trình bậc nhất|");
+		System.out.println("----------------------------");
+		System.out.println("Nhập số a: ");
+		soA = sc.nextInt();
+		System.out.println("Nhập số b: ");
+		soB = sc.nextInt();
+		if (soA == 0) {
+			if (soB == 0) {
+				System.out.println("Phương trình vô số nghiệm");
 			} else {
-				System.out.println("Phương trình" + A + "X" + "+" + B + "=0" + "vô nghiệm");
-			};
-
-		} else {
-			X = B * 1.0 / A;
-			System.out.println("Phương trình " + A + "X" + "+" + B + "=0 " + "có nghiệm X bằng " + X);
-		}
-	}
-	public static void PhuongTrinhBac2(){
-		Scanner myInput = new Scanner(System.in);
-
-		System.out.println("+----------------------------+");
-		System.out.println("| Giải phương trình bậc hai  |");
-		System.out.println("+----------------------------+");
-
-		System.out.print("Nhập tham số a = ");
-		int A = myInput.nextInt();
-
-		System.out.print("Nhập tham số b = ");
-		int B = myInput.nextInt();
-
-		System.out.print("Nhập tham số c = ");
-		int C = myInput.nextInt();
-
-		if (A == 0) {
-			if (B == 0) {
-				if (C == 0) {
-					System.out.println("Phương trình " + A + "X^2" + "+" + B + "X" + "+" + C + "=0" + " vô số nghiệm");
-				} else {
-					System.out.println("Phương trình " + A + "X^2" + "+" + B + "X" + "+" + C + "=0" + " vô  nghiệm");
-				};
-			} else {
-				double X = -C * 1.0 / B;
-				System.out.println("Phương trình " + A + "X^2" + "+" + B + "X" + C + "=0 " + " có nghiệm X bằng " + X);
+				System.out.println("Phương trình vô nghiệm!");
 			}
-			;
 		} else {
-			int delta = (B * B) - (4 * A * C);
-			if (delta == 0) {
-				double X = -B / 2 * A;
-				System.out.println(
-						"Phương trình " + A + "X^2" + "+" + B + "X" + C + "=0 " + " có nghiệm kép X bằng " + X);
-			} else {
-				if (delta > 0) {
-					double X1 = (-B + Math.sqrt(delta)) * 1.0 / 2 * A;
-					double X2 = (-B - Math.sqrt(delta)) * 1.0 / 2 * A;
-					System.out.println("Phương trình " + A + "X^2" + "+" + B + "X" + C + "=0 " + " có nghiệm  X1 bằng  "
-							+ X1 + "  và X2 bằng " + X2);
+			System.out.println("Phương trình có nghiệm X = " + (-soB / soA));
+		}
+		System.out.println("Nhấn Enter để chọn chức năng khác");
+		sc.nextLine();
+		sc.nextLine();
+	}
+
+	public static void phuongtrinhbac2() {
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("----------------------------");
+		System.out.println("|Giải phương trình bậc hai|");
+		System.out.println("----------------------------");
+		int a;
+		System.out.println("Mời nhập sô a: ");
+		a = sc.nextInt();
+		int b;
+		System.out.println("Mời nhập sô b: ");
+		b = sc.nextInt();
+		int c;
+		System.out.println("Mời nhập sô c: ");
+		c = sc.nextInt();
+
+		double delta = Math.pow(b, 2) - 4 * a * c;
+		if (a == 0) {
+			if (b == 0) {
+				if (c == 0) {
+					System.out.println("Phương trình vô số nghiệm");
 				} else {
-					System.out.println("Phương trình " + A + "X^2" + "+" + B + "X" + "+" + C + "=0" + " vô  nghiệm");
+					System.out.println("Phương trình vô nghiệm!");
 				}
+			} else {
+				System.out.println("Phương trình có nghiệm X = " + (-b / a));
+			}
+		} else {
+
+			if (delta > 0) {
+				System.out.println("Phương trình có hai nghiệm phân biệt X1= " + (-b + Math.sqrt(delta)) / (2 * a)
+						+ " và X2= " + (-b - Math.sqrt(delta)) / (2 * a));
+			} else if (delta < 0) {
+				System.out.println("Phương trình vô nghiệm!");
+			} else if (delta == 0) {
+				System.out.println("Phương trình có nghiệm kép X1 = X2 = " + (-b / 2 * a));
 			}
 		}
+		System.out.println("Nhấn Enter để chọn chức năng khác");
+		sc.nextLine();
+		sc.nextLine();
+
 	}
-	public static void Mang(){
-		Scanner myInput = new Scanner(System.in);
-		
-		//Phan mem
-		
-		//1 nhap mang
-		System.out.print("Mời bạn nhập số phần tử mảng N = ");
-		n = myInput.nextInt();
-		
-		// khoi tao mang N
-		myArray = new int[n];
-		
-		//vong lap nhap phan tu myarray
-		for (int i=0;i<n;i++) {
-			System.out.print("Mời bạn nhập phần tử" + (i+1) +":");
-			myArray[i]= myInput.nextInt();
-		};
-		
-		//in mang
-		System.out.print("danh sach phan tu mang");
-		for (int i=0;i<n;i++) {
-			System.out.print(" " + myArray[i]);
-			
-		};
+
+	public static void nhapmang() {
+
+		do {
+			System.out.print("Nhập số phần tử của mảng: ");
+			n = print.nextInt();
+		} while (n <= 0);
+
+		array = new int[n];// khai báo mảng
+		System.out.println("Nhập phần tử của mảng: \n");// dùng \n để con trỏ xuống dòng tiếp theo
+		for (int i = 0; i < n; i++) {
+			System.out.printf("a[%d] = ", i);// %d: số thập phân, số nguyên
+			array[i] = print.nextInt();
+		}
+		System.out.println("Các phần từ của mảng: ");
+		show(array);
+
 	}
-	public static void SapXepTangDan(){
+
+	public static void sapxepmang() {
 		int bien = 0;
 	    for(int i=0;i<n-1;i++)
 	        for(int j=i+1;j<n;j++){
-	        if(myArray[i]>myArray[j]) {
-	        	bien= myArray[i];
-	        	myArray[i]=myArray[j];
-	        	myArray[j]=bien;
+	        if(array[i]>array[j]) {
+	        	bien= array[i];
+	        	array[i]=array[j];
+	        	array[j]=bien;
 	            }
 	    }
 	    System.out.print("\n mang tang dan");
 		for (int i=0;i<n;i++) {
-			System.out.print(" " + myArray[i]);
+			System.out.print(" " + array[i]);
+		}
 			
-		};
+		System.out.println("\n Nhấn Enter để chọn chức năng khác");
+		print.nextLine();
+		print.nextLine();
 		
 	}
-	public static void KetThuc(){
+
+	public static void show(int[] array) {
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i] + " \n");
+		}
+
+	}
+
+	public static void ketthuc() {
+		System.out.println("Cảm ơn bạn đã sử dụng chương trình.");
 		System.exit(0);
 	}
-	
-	
-	
+
 }
