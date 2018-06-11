@@ -14,4 +14,4 @@
 
 6. [Assignment 6: Quản Lý Tiền Điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/HungHelloWorld/src/fasttrack/asm5)
 
-7. [Assignment 7: Quản Lý Hình Học](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/HungHelloWorld/src/fasttrack/hinh2d)
+7. [Assignment 7: Quản Lý Hình Học](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/HungHelloWorld/src/fasttrackse/hinh2d)
