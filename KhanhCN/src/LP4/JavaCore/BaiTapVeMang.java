@@ -18,14 +18,14 @@ public class BaiTapVeMang {
 		Scanner nhap = new Scanner(System.in);
 
 		// Thân chương trình
-		System.out.println("              *******BÀI LÀM*********");
-		System.out.println("          1/       -----------------");
-		System.out.print("        + Xin nhập số lượng phần tử của mảng : ");
+		System.out.println("*******BÀI LÀM*********");
+		System.out.println("-----------------");
+		System.out.print("Xin nhập số lượng phần tử của mảng : ");
 
 		n = nhap.nextInt();
 
 		for (int i = 0; i < n; i++) {
-			System.out.print("             - Nhập phần tử thứ " + i + " của mảng :");
+			System.out.print("Nhập phần tử thứ " + i + " của mảng :");
 			mang[i] = nhap.nextFloat();
 
 		}
@@ -49,15 +49,38 @@ public class BaiTapVeMang {
 			}
 
 		}
+		
+		int sapxep;
 
-		System.out.println("           2/     ******************");
-		System.out.println("        + Mang N có  giá trị lớn nhất là :" + max);
-		System.out.println("                ******************");
-		System.out.println("        + Mảng N có giá trị nhỏ nhất là : " + min);
-		System.out.println("           3/      ******************");
-		System.out.println("        + Phần tử " + max + " ở vị trí thứ " + vitriMax);
-		System.out.println("                ******************");
-		System.out.println("        + Phần tử " + min + " ở vị trí thứ " + vitriMin);
+		
+		for(int i = 0 ; i<n-1 ;i++) {
+			for(int j=n-1; j>=1 ; j--) {
+				
+				if(mang[j]<mang[j-1]){
+					
+					sapxep = (int) mang[j];
+					mang[j] = mang[j-1];
+					mang[j-1] = sapxep;
+					
+				}
+			}
+			
+		}
+		
+
+		System.out.println("******************");
+		System.out.println("Mang N có  giá trị lớn nhất là :" + max+ " ở vị trí thứ " + vitriMax);
+		System.out.println("******************");
+		System.out.println("Mảng N có giá trị nhỏ nhất là : " + min+ " ở vị trí thứ " + vitriMin);
+		System.out.println("******************");
+		System.out.println("Sắp xếp từ bé đến lớn là : ");
+		
+		for(int i= 0 ; i<n ; i++) {
+			System.out.print(mang[i]+ " ->  ");
+			
+		}
+		
+		
 	}
 
 }
