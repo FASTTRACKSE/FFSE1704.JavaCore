@@ -5,10 +5,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
-import fassttrack.sinhvien.entity.SinhVien;
-import fassttrack.sinhvien.entity.SinhVienDaiHan;
-import fassttrack.sinhvien.entity.SinhVienWebCapToc;
-import fassttrack.sinhvien.entity.SinhVienJavaCapToc;;
+import fasttrack.sinhvien.entity.SinhVien;
+import fasttrack.sinhvien.entity.SinhVienDaiHan;
+import fasttrack.sinhvien.entity.SinhVienJavaCapToc;
+import fasttrack.sinhvien.entity.SinhVienWebCapToc;;
 
 public class UngDungQuanLySinhVien {
 	static ArrayList<SinhVien> dsSinhVien = new ArrayList<SinhVien>();

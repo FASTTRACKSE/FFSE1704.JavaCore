@@ -1,4 +1,4 @@
-package fassttrack.sinhvien.entity;
+package fasttrack.sinhvien.entity;
 
 public abstract class SinhVien {
 	private String hoSV;

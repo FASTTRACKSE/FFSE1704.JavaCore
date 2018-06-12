@@ -1,4 +1,4 @@
-package fassttrack.sinhvien.entity;
+package fasttrack.sinhvien.entity;
 
 public class SinhVienDaiHan extends SinhVien {
 	private double LP0;
