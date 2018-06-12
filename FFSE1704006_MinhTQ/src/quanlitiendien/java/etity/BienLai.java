@@ -1,18 +1,21 @@
-package QuanLyTienDien;
+package quanlitiendien.java.etity;
 
-public class BienLai extends KhachHang {
+public class BienLai {
 
 	private String kyTieuThu;
 	private int soCu;
 	private int soMoi;
 
-	public BienLai(int maKhachHang, String tenKhachHang, String diaChi, int maCongTo, String kyTieuThu, int soCu,
-			int soMoi) {
-		super(maKhachHang, tenKhachHang, diaChi, maCongTo);
+	public BienLai(String kyTieuThu, int soCu, int soMoi) {
+
 		this.kyTieuThu = kyTieuThu;
 		this.soCu = soCu;
 		this.soMoi = soMoi;
 
+	}
+
+	public BienLai() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getKyTieuThu() {
@@ -23,7 +26,7 @@ public class BienLai extends KhachHang {
 		this.kyTieuThu = kyTieuThu;
 	}
 
-	public double getSoCu() {
+	public int getSoCu() {
 		return soCu;
 	}
 
@@ -31,7 +34,7 @@ public class BienLai extends KhachHang {
 		this.soCu = soCu;
 	}
 
-	public double getSoMoi() {
+	public int getSoMoi() {
 		return soMoi;
 	}
 
@@ -47,9 +50,4 @@ public class BienLai extends KhachHang {
 		return soTien;
 	}
 
-	public String toString() {
-		return "\t" + this.maKhachHang + "\t\t" + this.tenKhachHang + "\t\t" + this.diaChi + "\t\t" + this.maCongTo + "\t\t"
-				+ this.kyTieuThu + "\t\t" + this.soCu + "\t\t" + this.soMoi + "\t    ";
-
-	}
 }
