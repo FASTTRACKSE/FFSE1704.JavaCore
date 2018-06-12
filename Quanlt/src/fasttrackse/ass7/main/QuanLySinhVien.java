@@ -2,7 +2,6 @@ package fasttrackse.ass7.main;
 
 import java.util.*;
 import fasttrackse.ass7.entity.*;
-import fasttrackse.bai4.quanlytiendien.entity.KhachHang;
 
 public class QuanLySinhVien {
 	static int n;
