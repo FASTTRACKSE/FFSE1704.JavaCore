@@ -308,7 +308,7 @@ public class UngDungQuanLySinhVien {
 			});
 			
 			System.out.println("\t \t \t KHÓA SINH VIÊN DÀI HẠN");
-			System.out.printf("\n" + "%-10s %-14s %-14s %-14s %-8s %-8s %-8s %-8s %-8s %-8s %-8s  %-8s ", "HọSV",
+			System.out.printf("\n" + "%-9s %-14s %-14s %-14s %-8s %-8s %-8s %-8s %-8s %-8s %-8s  %-8s ", "HọSV",
 					"TênSV", "Năm Sinh", "Địa chỉ", "LP0", "LP1", "LP2", "LP3", "LP4", "LP5", "LP6", "Điểm TB");
 			System.out.println(
 					"\n--------------------------------------------------------------------------------------------------------------------------------");
@@ -332,7 +332,7 @@ public class UngDungQuanLySinhVien {
 			});
 			
 			System.out.println("\t \t \t KHÓA SINH VIÊN WEB CẤP TÓC");
-			System.out.printf("\n" + "%-10s %-14s %-14s %-14s %-8s %-8s %-8s", "HọSV", "TênSV", "Năm Sinh", "Địa chỉ",
+			System.out.printf("\n" + "%-9s %-14s %-14s %-14s %-8s %-8s %-8s", "HọSV", "TênSV", "Năm Sinh", "Địa chỉ",
 					"LP2", "LP3", "Điểm TB");
 			System.out.println(
 					"\n--------------------------------------------------------------------------------------------------------------------------------");

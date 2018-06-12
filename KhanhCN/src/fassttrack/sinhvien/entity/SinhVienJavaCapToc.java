@@ -52,7 +52,7 @@ public class SinhVienJavaCapToc extends SinhVien {
 	}
 	
 	public String toString(){
-		return this.getHoSV()+ "\t    "  + this.getTenSV() +"\t    " + this.getNamSinh() +"\t    " + this.getDiaChi()+"\t    "  +  this.LP4 + "\t   " + this.LP5 + "\t  " + tinhDTB() ;
+		return this.getHoSV()+ "\t   "  + this.getTenSV() +"\t    " + this.getNamSinh() +"\t    " + this.getDiaChi()+"\t    "  +  this.LP4 + "\t   " + this.LP5 + "\t  " + tinhDTB() ;
 	}
 
 	

@@ -107,7 +107,7 @@ public class SinhVienDaiHan extends SinhVien {
 	}
 	
 	public String toString(){
-		return this.getHoSV()+ "\t    "  + this.getTenSV() +"\t    " + this.getNamSinh() +"\t" + this.getDiaChi() + "\t "  + this.LP0 + "\t " + this.LP1 + "\t   " + this.LP2 + "\t   " + this.LP3
+		return this.getHoSV()+ "\t   "  + this.getTenSV() +"\t    " + this.getNamSinh() +"\t" + this.getDiaChi() + "\t "  + this.LP0 + "\t " + this.LP1 + "\t   " + this.LP2 + "\t   " + this.LP3
 				+ "\t    " + this.LP4 + "\t     " + this.LP5 + "\t" + this.LP6 + "\t  "+ tinhDTB();
 	}
 

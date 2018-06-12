@@ -8,7 +8,7 @@ public class SinhVien {
 	private int diemLP2;
 	private int diemLP3;
 	private double diemTrungBinh;
-	
+
 	public SinhVien(String tenSinhVien, int namSinh, String gioiTinh, int diemLP1, int diemLP2, int diemLP3) {
 		this.tenSinhVien = tenSinhVien;
 		this.namSinh = namSinh;
@@ -67,28 +67,28 @@ public class SinhVien {
 	}
 
 	public double tinhDiemTrungBinh() {
-	
-		return diemTrungBinh =Math.round((diemLP1 + diemLP2 + diemLP3) * 1.0 / 3);
-		
+
+		return diemTrungBinh = Math.round((diemLP1 + diemLP2 + diemLP3) * 1.0 / 3);
+
 	}
-	
-	//xếp loại
+
+	// xếp loại
 	public String xepLoaiSinhVien() {
-		
-		String ketQua = " " ; 
-		
+
+		String ketQua = " ";
+
 		if (diemTrungBinh > 8.5) {
-			ketQua =  "GIỎI";
+			ketQua = "GIỎI";
 		} else if (diemTrungBinh >= 7 && diemTrungBinh <= 8.5) {
-			ketQua =  "KHÁ";
+			ketQua = "KHÁ";
 		} else if (diemTrungBinh >= 5 && diemTrungBinh < 7) {
 			ketQua = "TBÌNH";
 		} else if (diemTrungBinh < 5) {
-			ketQua =  "YẾU";
-			
+			ketQua = "YẾU";
+
 		}
 		return ketQua;
-		
+
 	}
 
 	public String toString() {
@@ -97,4 +97,4 @@ public class SinhVien {
 				+ "\t    " + this.diemLP2 + "\t     " + this.diemLP3 + "\t     ";
 	}
 
-}
+} 
