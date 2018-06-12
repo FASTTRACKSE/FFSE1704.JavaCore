@@ -276,7 +276,7 @@ public class QuanLySinhVien {
 	}
 
 	public static void SapXep() {
-		Collections.sort(dsSinhVien);
+
 		int i = 0;
 		String msg = "";
 		for (SinhVien o : dsSinhVien) {
@@ -287,7 +287,7 @@ public class QuanLySinhVien {
 						+ ((SinhVienDaiHan) o).getNamSinh() + "\n - Địa Chỉ: " + ((SinhVienDaiHan) o).getDiaChi()
 						+ "\n - Điểm LP0: " + ((SinhVienDaiHan) o).getDiemLP0() + "\n - Điểm LP1: "
 						+ ((SinhVienDaiHan) o).getDiemLP1() + "\n - Điểm LP2: " + ((SinhVienDaiHan) o).getDiemLP2()
-						+ "\n - Điểm LP3: " + ((SinhVienDaiHan) o).getDiemLP3() + "\n+ - Điểm LP4: "
+						+ "\n - Điểm LP3: " + ((SinhVienDaiHan) o).getDiemLP3() + "\n - Điểm LP4: "
 						+ ((SinhVienDaiHan) o).getDiemLP4() + "\n - Điểm LP5: " + ((SinhVienDaiHan) o).getDiemLP5()
 						+ "\n - Điểm LP6: " + ((SinhVienDaiHan) o).getDiemLP6() + "\n - Điểm Trung Bình: "
 						+ ((SinhVienDaiHan) o).tinhDTB() + "\n - Xếp Loại: " + ((SinhVienDaiHan) o).xepLoaiSV());
