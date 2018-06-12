@@ -11,4 +11,7 @@
 4. [Assignment 4: Bài Tập MeNu](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/ThanhPN/HelloWorld/src/GiaiPTBac2/Menu.java)
 
 5. [Assignment 5: Bài Tập Quản Lý Sinh Viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ThanhPN/QuanLySinhVien/src/javacore)
+6. [Assignment 6: Bài Tập Quản Lý Tiền Điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ThanhPN/QuanLyTienDien/src/javacore)
+7. [Assignment 7: Bài Tập Quản lý Sinh Viên FasttrackSE]
+( Chưa Hoàn Thành )
 
