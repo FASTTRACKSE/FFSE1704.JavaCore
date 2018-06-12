@@ -1,10 +1,7 @@
-package ffse1704.entity;
+package QLSVFACTTRACKSE.src.ffse1704.entity;
 
 public class SinhVienDaiHan extends SinhVien {
-	protected String hoSV;
-	protected String tenSV;
-	protected String namSinh;
-	protected String diaChi;
+
 	private double diemLP0;
 	private double diemLP1;
 	private double diemLP2;
@@ -13,13 +10,10 @@ public class SinhVienDaiHan extends SinhVien {
 	private double diemLP5;
 	private double diemLP6;
 	
-	public SinhVienDaiHan(String hoSV, String tenSV, String namSinh, String diaChi,double diemLP0,double diemLP1,double diemLP2,double diemLP3,double diemLP4,
+	public SinhVienDaiHan(String hoSV, String tenSV, int namSinh, String diaChi,double diemLP0,double diemLP1,double diemLP2,double diemLP3,double diemLP4,
 			double diemLP5,double diemLP6) {
 		
-		this.hoSV=hoSV;
-		this.tenSV=tenSV;
-		this.namSinh=namSinh;
-		this.diaChi=diaChi;
+		super(hoSV, tenSV, namSinh, diaChi);
 		this.diemLP0=diemLP0;
 		this.diemLP1=diemLP1;
 		this.diemLP2=diemLP2;
@@ -102,45 +96,7 @@ public class SinhVienDaiHan extends SinhVien {
 	}
 
 
-	public String gethoSV() {
-		return hoSV;
-	}
-
-
-	public void setHoSV(String hoSV) {
-		this.hoSV = hoSV;
-	}
-
-
-	public String gettenSV() {
-		return tenSV;
-	}
-
-
-	public void setTenSV(String tenSV) {
-		this.tenSV = tenSV;
-	}
-
-
-	public String getNamSinh() {
-		return namSinh;
-	}
-
-
-	public void setNamSinh(String namSinh) {
-		this.namSinh = namSinh;
-	}
-
-
-	public String getDiaChi() {
-		return diaChi;
-	}
-
-
-	public void setDiaChi(String diaChi) {
-		this.diaChi = diaChi;
-	}
-
+	
 
 	@Override
 	public double tinhDiemTrungBinhMon() {

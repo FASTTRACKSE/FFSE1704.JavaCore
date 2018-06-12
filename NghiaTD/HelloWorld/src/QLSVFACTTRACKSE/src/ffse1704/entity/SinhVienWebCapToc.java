@@ -1,53 +1,17 @@
-package ffse1704.entity;
+package QLSVFACTTRACKSE.src.ffse1704.entity;
 
 public class SinhVienWebCapToc extends SinhVien {
-	protected String hoSV;
-	protected String tenSV;
-	protected int namSinh;
-	protected String diaChi;
+
 	private double diemLP2;
 	private double diemLP3;
 	public SinhVienWebCapToc(String hoSV, String tenSV, int namSinh, String diaChi,double diemLP2,double diemLP3) {
-		this.hoSV=hoSV;
-		this.tenSV=tenSV;
-		this.namSinh=namSinh;
-		this.diaChi=diaChi;
+		super(hoSV, tenSV, namSinh, diaChi);
 		// TODO Auto-generated constructor stub
 		this.diemLP2=diemLP2;
 		this.diemLP3=diemLP3;
 	}
 
-	public String getHoSV() {
-		return hoSV;
-	}
-
-	public void setHoSV(String hoSV) {
-		this.hoSV = hoSV;
-	}
-
-	public String getTenSV() {
-		return tenSV;
-	}
-
-	public void setTenSV(String tenSV) {
-		this.tenSV = tenSV;
-	}
-
-	public int getNamSinh() {
-		return namSinh;
-	}
-
-	public void setNamSinh(int namSinh) {
-		this.namSinh = namSinh;
-	}
-
-	public String getDiaChi() {
-		return diaChi;
-	}
-
-	public void setDiaChi(String diaChi) {
-		this.diaChi = diaChi;
-	}
+	
 
 	public double getDiemLP2() {
 		return diemLP2;
