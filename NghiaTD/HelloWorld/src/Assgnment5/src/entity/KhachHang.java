@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class KhachHang {
 
 	protected String maKH;
-	protected String tenKH;
+	public String tenKH;
 	protected String diaChiKH;
 	ArrayList<BienLai> dsBienLai;
 	
@@ -48,4 +48,12 @@ public class KhachHang {
 	public void addtodsBienLai(BienLai bienLai) {
 		this.dsBienLai.add(bienLai);
 	}
+//	
+//	 public int compareTo(KhachHang x) {
+//	  if(this.tenKH.compareTo(x.tenKH)== 0){
+//	   return this.tenKH.compareTo(x.tenKH);
+//	  }else{
+//	   return this.tenKH.compareTo(x.tenKH);
+//	  }
+//	 }
 }

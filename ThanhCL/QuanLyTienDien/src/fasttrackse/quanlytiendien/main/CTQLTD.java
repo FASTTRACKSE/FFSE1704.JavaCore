@@ -1,9 +1,11 @@
 package fasttrackse.quanlytiendien.main;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 import fasttrackse.quanlytiendien.entity.*;
+import fasttrackse.quanlytiendien.util.*;
 
 public class CTQLTD {
 	static ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
@@ -24,6 +26,10 @@ public class CTQLTD {
 				System.out.println("3. In báo cáo tiêu thụ điện");
 				System.out.println("4. Xoá 1 khách hàng");
 				System.out.println("5. Kết thúc chương trình");
+				System.out.println("6. Sắp xếp danh sách KH theo Mã ABC");
+				System.out.println("7. Sắp xếp danh sách KH theo Mã DESC");
+				System.out.println("8. Sắp xếp danh sách KH theo Tên ABC");
+				System.out.println("9. Sắp xếp danh sách KH theo Tên DESC");
 				System.out.println("---------------------------------------");
 				System.out.print("Mời bạn chọn chức năng: ");
 
@@ -36,9 +42,26 @@ public class CTQLTD {
 					generateDataBienLai();
 				} else if (myOption == 3) {
 					// Sort student list by Name
+					sortKHDESCByCode();
 					printReport("Thống kê tình hình tiêu thụ điện");
 				} else if (myOption == 4) {
 					xoaKH(1);
+					// Sort student list by Name
+					printReport("Thống kê tình hình tiêu thụ điện");
+				} else if (myOption == 6) {
+					sortKHASCByCode();
+					// Sort student list by Name
+					printReport("Thống kê tình hình tiêu thụ điện");
+				} else if (myOption == 7) {
+					sortKHDESCByCode();
+					// Sort student list by Name
+					printReport("Thống kê tình hình tiêu thụ điện");
+				} else if (myOption == 8) {
+					sortKHASCByName();
+					// Sort student list by Name
+					printReport("Thống kê tình hình tiêu thụ điện");
+				} else if (myOption == 9) {
+					sortKHDESCByName();
 					// Sort student list by Name
 					printReport("Thống kê tình hình tiêu thụ điện");
 				} else if (myOption == 5) {
@@ -64,6 +87,22 @@ public class CTQLTD {
 		dsKH.add(new KhachHang("KH003", "Chu Cẩm Hà", "Hải Châu, Đà Nẵng"));
 		dsKH.add(new KhachHang("KH004", "Nguyễn Anh Tuấn", "Sơn Trà, Đà Nẵng"));
 		dsKH.add(new KhachHang("KH005", "Bùi Đức Việt", "Ngũ Hành Sơn, Đà Nẵng"));
+	}
+	
+	public static void sortKHASCByCode() {
+		Collections.sort(dsKH, KHComparator.KHCodeASCComparator); 
+	}
+
+	public static void sortKHASCByName() {
+		Collections.sort(dsKH, KHComparator.KHNameASCComparator); 
+	}
+
+	public static void sortKHDESCByName() {
+		Collections.sort(dsKH, KHComparator.KHNameDESCComparator); 
+	}
+
+	public static void sortKHDESCByCode() {
+		Collections.sort(dsKH, KHComparator.KHCodeDESCComparator); 
 	}
 
 	public static void generateDataBienLai() {

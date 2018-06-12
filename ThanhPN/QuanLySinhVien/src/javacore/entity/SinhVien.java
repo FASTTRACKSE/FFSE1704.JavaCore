@@ -4,9 +4,16 @@ public class SinhVien {
 private String tenSinhVien;
 private int namSinh;
 private String gioiTinh;
+<<<<<<< HEAD
+private int diemLP1;
+private int diemLP2;
+private int diemLP3;
+
+=======
 public int diemLP1;
 public int diemLP2;
 public int diemLP3;
+>>>>>>> 7c2a04f7cd266cc0d97b2810bd2c0cf77881d484
 
 public SinhVien(){
 	// 
@@ -84,10 +91,28 @@ public double tinhDiemTrungBinhMon() {
 	}
 
 
+<<<<<<< HEAD
+public String ketQuaXepLoai() {
+	String ketQuaXepLoai;
+    if (tinhDiemTrungBinhMon() >= 8.5) {
+        ketQuaXepLoai = "Giỏi";
+    } else if ((tinhDiemTrungBinhMon() >= 7) && (tinhDiemTrungBinhMon() < 8.5)) {
+        ketQuaXepLoai = "Khá";
+    } else if ((tinhDiemTrungBinhMon() >= 5.5) && (tinhDiemTrungBinhMon() < 7.5)) {
+        ketQuaXepLoai = "Trung Bình";
+    } else if ((tinhDiemTrungBinhMon() > 4) && (tinhDiemTrungBinhMon() < 5.5)) {
+        ketQuaXepLoai = "Yếu";
+    } else {
+    	ketQuaXepLoai = "Học Lại";
+    }
+	return ketQuaXepLoai;
+}
+=======
+>>>>>>> 7c2a04f7cd266cc0d97b2810bd2c0cf77881d484
 
 
 
-public double tinhTuoi() {
+public int tinhTuoi() {
 		return (2018 - namSinh);
 	}
 

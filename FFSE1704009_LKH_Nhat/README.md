@@ -8,4 +8,5 @@
 4. [Assignment 3: Chương trình tính toán](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704009_LKH_Nhat/Assignment_3/src/BaiTapChuongTrinhTinhToan.java)
 5. [Assignment 4: Chương trình quản lý sinh viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_4/src/ffse/quanlysinhvien)
 6. [Assignment 5: Chương trình quản lý tiền điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_5/src/quanlytiendien)
-7. [Assignment 7: Chương trình quản lý tiền điện nâng cao](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_6/src/quanlytiendien)
+7. [Assignment 6: Chương trình quản lý tiền điện nâng cao](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_6/src/quanlytiendien)
+8. [Assignment 7: Chương trình quản lý sinh viên nâng cao](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_7/src/ffse/quanlysinhvien)

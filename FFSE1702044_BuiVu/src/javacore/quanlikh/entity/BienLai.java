@@ -37,7 +37,11 @@ public class BienLai{
 		this.chiSoMoi=chiSoMoi;
 	}
 	public long tinhTienDien() {
-		return (chiSoMoi-chiSoCu)*3000;
+		long tiendien=0;
+		if(chiSoMoi > chiSoCu) {
+		tiendien=(chiSoMoi-chiSoCu)*3000;
+		}
+		return tiendien;
 	}
 }
 
