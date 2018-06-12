@@ -2,7 +2,7 @@ package fasttrackse.ass7.main;
 
 import java.util.*;
 import fasttrackse.ass7.entity.*;
-
+import fasttrackse.ass7.util.*;
 public class QuanLySinhVien {
 	static int n;
 	static ArrayList<SinhVienDaiHan> svDH = new ArrayList<>();
@@ -197,18 +197,7 @@ public class QuanLySinhVien {
 		int i = 1;
 		System.out.println("SẮP XẾP \n");
 		if (k == 1) {
-			Collections.sort(svDH, new Comparator<SinhVienDaiHan>() {
-				@Override
-				public int compare(SinhVienDaiHan kh1, SinhVienDaiHan kh2) {
-					if (kh1.tinhTB() < kh2.tinhTB()) {
-						return 1;
-					} else if (kh1.tinhTB() > kh2.tinhTB()) {
-						return -1;
-					} else {
-						return 0;
-					}
-				}
-			});
+			Collections.sort(svDH, Util.SXSVDaiHan);
 			for (SinhVienDaiHan x : svDH) {
 				System.out.println(i++ + ". Họ: " + x.getHoSV() + "\n Tên: " + x.getTenSV() + "\n Năm sinh: "
 						+ x.getNamSinh() + " \nĐịa chỉ: " + x.getDiaChi() + "\nLP0: " + x.getLp0() + "\nLP1: "
@@ -216,36 +205,14 @@ public class QuanLySinhVien {
 						+ "\nLP5: " + x.getLp5() + "\nLP6: " + x.getLp6() + "\nĐiểm TB: *" + x.tinhTB());
 			}
 		}else if(k==2) {
-			Collections.sort(svWCT, new Comparator<SinhVienWebCapToc>() {
-				@Override
-				public int compare(SinhVienWebCapToc kh1, SinhVienWebCapToc kh2) {
-					if (kh1.tinhTB() < kh2.tinhTB()) {
-						return 1;
-					} else if (kh1.tinhTB() > kh2.tinhTB()) {
-						return -1;
-					} else {
-						return 0;
-					}
-				}
-			});
+			Collections.sort(svWCT, Util.SXSVWCapToc);
 			for (SinhVienWebCapToc x : svWCT) {
 				System.out.println(i++ + ". Họ: " + x.getHoSV() + "\n Tên: " + x.getTenSV() + "\n Năm sinh: "
 						+ x.getNamSinh() + " \nĐịa chỉ: " + x.getDiaChi() + "\nLP2: " + x.getLp2() + "\nLP3: "
 						+ x.getLp3() + "\n Điểm TB: *" + x.tinhTB());
 			}
 		}else if(k==3) {
-			Collections.sort(svJVCT, new Comparator<SinhVienJavaCapToc>() {
-				@Override
-				public int compare(SinhVienJavaCapToc kh1, SinhVienJavaCapToc kh2) {
-					if (kh1.tinhTB() < kh2.tinhTB()) {
-						return 1;
-					} else if (kh1.tinhTB() > kh2.tinhTB()) {
-						return -1;
-					} else {
-						return 0;
-					}
-				}
-			});
+			Collections.sort(svJVCT, Util.SXSVJVCapToc);
 			for (SinhVienJavaCapToc x : svJVCT) {
 				System.out.println(i++ + ". Họ: " + x.getHoSV() + "\n Tên: " + x.getTenSV() + "\n Năm sinh: "
 						+ x.getNamSinh() + " \nĐịa chỉ: " + x.getDiaChi() + "\nLP4: " + x.getLp4() + "\nLP5: "
