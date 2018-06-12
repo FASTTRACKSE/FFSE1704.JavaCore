@@ -4,10 +4,11 @@ public class SinhVien {
 private String tenSinhVien;
 private int namSinh;
 private String gioiTinh;
-public int diemLP1;
-public int diemLP2;
-public int diemLP3;
-public String ketQuaXepLoai;
+private int diemLP1;
+private int diemLP2;
+private int diemLP3;
+
+
 public SinhVien(){
 	// 
 }
@@ -85,28 +86,29 @@ public double tinhDiemTrungBinhMon() {
 
 
 public String ketQuaXepLoai() {
+	String ketQuaXepLoai;
     if (tinhDiemTrungBinhMon() >= 8.5) {
-        ketQuaXepLoai = "Lo?i A";
+        ketQuaXepLoai = "Giỏi";
     } else if ((tinhDiemTrungBinhMon() >= 7) && (tinhDiemTrungBinhMon() < 8.5)) {
-        ketQuaXepLoai = "Lo?i B";
-    } else if ((tinhDiemTrungBinhMon() >= 5.5) && (tinhDiemTrungBinhMon() < 7)) {
-        ketQuaXepLoai = "Lo?i C";
+        ketQuaXepLoai = "Khá";
+    } else if ((tinhDiemTrungBinhMon() >= 5.5) && (tinhDiemTrungBinhMon() < 7.5)) {
+        ketQuaXepLoai = "Trung Bình";
     } else if ((tinhDiemTrungBinhMon() > 4) && (tinhDiemTrungBinhMon() < 5.5)) {
-        ketQuaXepLoai = "Lo?i D";
+        ketQuaXepLoai = "Yếu";
     } else {
-        ketQuaXepLoai = "Lo?i F";
+    	ketQuaXepLoai = "Học Lại";
     }
 	return ketQuaXepLoai;
 }
 
 
 
-public double tinhTuoi() {
+public int tinhTuoi() {
 		return (2018 - namSinh);
 	}
 
 public String toString() {
-	return " Sinh Vi�n : " + this.tenSinhVien + " - " + this.namSinh + " - " + this.gioiTinh + " - ";
+	return " Sinh Viên : " + this.tenSinhVien + " - " + this.namSinh + " - " + this.gioiTinh + " - ";
 	
 }
 
