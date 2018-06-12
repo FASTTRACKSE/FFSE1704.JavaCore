@@ -1,12 +1,15 @@
 package javacore.qlsvffse.main;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Comparator;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
 import javacore.qlsvffse.entity.*;
+import javacore.qlsvffse.util.SVComparator;
 
-public class QuanLiSinhVienFFSE {
+public class QuanLiSinhVienFFSE
+
+{
 	static int N;
 	static ArrayList<SinhVien> dsSinhVien = new ArrayList<SinhVien>();
 	static Scanner myInput = new Scanner(System.in);
@@ -108,37 +111,49 @@ public class QuanLiSinhVienFFSE {
 	}
 
 	public static void InDSsinhVien() {
+		System.out
+				.println("|--------------------------------DANH SÁCH SINH VIÊN--------------------------------------|");
+		System.out.printf("\n" + "%-10s %-15s %-10s %-12s  %-20s  %-8s %-8s %-8s %-8s %-8s %-8s %-8s %-8s", "STT",
+				"Họ và tên", "Tuổi", "Địa Chỉ", "Loại Sinh Viên", "LP1", "LP2", "LP3", "LP4", "LP5", "LP6", "TB",
+				"XLoại\n");
+		int i = 1;
 		for (SinhVien x : dsSinhVien) {
 			/*
 			 * System.out.print(x.getHoTen()+"\t"+x.XepLoai() +"\t"+ x.tinhDiemTb()+"\n");
 			 */
 			String sv = "";
 			if (x instanceof SinhVienDaiHan) {
-				sv = "Sinh Viên Dài Hạn - Điểm LP0: " + ((SinhVienDaiHan) x).getLP0() + " - Điểm LP1: "
-						+ ((SinhVienDaiHan) x).getLP1() + " - Điểm LP2: " + ((SinhVienDaiHan) x).getLP2() + " - Điểm LP3: "
-						+ ((SinhVienDaiHan) x).getLP3() + " - Điểm LP4: " + ((SinhVienDaiHan) x).getLP4() + " - Điểm LP5: "
-						+ ((SinhVienDaiHan) x).getLP5() + " - Điểm LP6: " + ((SinhVienDaiHan) x).getLP6()+"\n";
+				sv = "Sinh Viên Dài Hạn\t   " + ((SinhVienDaiHan) x).getLP0() + "\t    " + ((SinhVienDaiHan) x).getLP1()
+						+ "\t   " + ((SinhVienDaiHan) x).getLP2() + "\t\t  " + ((SinhVienDaiHan) x).getLP3() + "\t   "
+						+ ((SinhVienDaiHan) x).getLP4() + "\t   " + ((SinhVienDaiHan) x).getLP5() + "\t   "
+						+ ((SinhVienDaiHan) x).getLP6();
 			} else if (x instanceof SinhVienWebCapToc) {
-				sv = "Sinh Viên Web Cấp Tốc- Điểm LP2: " + ((SinhVienWebCapToc) x).getLP2() + " - Điểm LP3: "
-						+ ((SinhVienWebCapToc) x).getLP3()+"\n";
+				sv = "Sinh Viên Web Cấp Tốc " + "NULL\t" + "NULL\t" + ((SinhVienWebCapToc) x).getLP2() + " \t "
+						+ ((SinhVienWebCapToc) x).getLP3() + "\tNULL\t" + "NULL\t" + "NULL\t";
 			} else if (x instanceof SinhVienCapToc) {
-				sv = "Sinh Viên Cấp Tốc- Điểm LP4: " + ((SinhVienCapToc) x).getLP4() + " - Điểm LP5: "
-						+ ((SinhVienCapToc) x).getLP5()+"\n";
+				sv = "Sinh Viên Cấp Tốc \t" + "NULL\t" + "NULL\t" + "NULL\t" + "NULL\t" + ((SinhVienCapToc) x).getLP4()
+						+ " \t " + ((SinhVienCapToc) x).getLP5() + "\tNULL";
 			}
-			System.out.println(x.getHoTen() +"\t"+ x.getDiaChi()+"\t"+ x.getNamSinh()+"\n"+sv+"\tĐiểm Trung Bình: "+ x.tinhDiemTb()+"\tXếp Loại: "+x.XepLoai());
+			System.out.println((i++) + "\t     " + x.getHoTen() + "\t    " + x.soTuoi() + "\t\t " + x.getDiaChi()
+					+ "\t   " + sv + "\t" + x.tinhDiemTb() + "\t   " + x.XepLoai());
 		}
 	}
 
 	public static void XuatDsSinhVienGioi() {
-		for(SinhVien o:dsSinhVien) {
-			if(o.XepLoai().equals("Giỏi")) {
-				System.out.println(o.getHoTen() +"\t"+ o.getDiaChi()+"\t"+ o.getNamSinh()+"\t"+ o.tinhDiemTb()+"\tXếp Loại: "+o.XepLoai());
+		for (SinhVien o : dsSinhVien) {
+			if (o.XepLoai().equals("Giỏi")) {
+				System.out.println(o.getHoTen() + "\t" + o.getDiaChi() + "\t" + o.getNamSinh() + "\t" + o.tinhDiemTb()
+						+ "\tXếp Loại: " + o.XepLoai());
 			}
 		}
 	}
 
 	public static void SapXepDsSinhVienTheoDiem() {
-		
+		Collections.sort(dsSinhVien,SVComparator.SinhVienDTBDESComparator);
+				for(SinhVien x:dsSinhVien) {
+					System.out.println(x.getHoTen() +"\t"+ x.getDiaChi()+"\t"+ x.getNamSinh()+"\t"+ x.tinhDiemTb()+"\tXếp Loại: "+x.XepLoai());
+				}
 	}
+		
 
 }

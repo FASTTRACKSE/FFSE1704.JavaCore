@@ -45,4 +45,7 @@ public abstract class SinhVien {
 			}
 			return xepLoai;
 		}
+		public int soTuoi() {
+			return 2018-namSinh;
+		}
 }
