@@ -39,7 +39,7 @@ public class QuanLySinhVien {
 				 */ else {
 				System.out.println("Bạn đã chọn sai !!!!");
 			}
-	}
+		}
 	}
 
 	public static void nhapsvDH() {
@@ -57,7 +57,7 @@ public class QuanLySinhVien {
 				x.setHoSV(sc.nextLine());
 				System.out.println("Nhập tên sinh viên thứ: " + (i + 1));
 				x.setTenSV(sc.nextLine());
-				
+
 				System.out.println("Nhập năm sinh sinh viên thứ: " + (i + 1));
 				x.setNamSinh(sc.nextInt());
 				sc.nextLine();
@@ -196,16 +196,65 @@ public class QuanLySinhVien {
 				"MỜI CHỌN KIỂU SV\n1. SINH VIÊN DÀI HẠN \n2. SINH VIÊN WED CẤP TỐC\n3. SINH VIÊN JAVA CẤP TỐC");
 		int k = sc.nextInt();
 		int i = 1;
-		System.out.println("SẮP XẾP \n");	
+		System.out.println("SẮP XẾP \n");
 		if (k == 1) {
 			Collections.sort(svDH, new Comparator<SinhVienDaiHan>() {
 				@Override
 				public int compare(SinhVienDaiHan kh1, SinhVienDaiHan kh2) {
-					return (kh1.tinhTB().compareTo(kh2.tinhTB()));
+					if (kh1.tinhTB() < kh2.tinhTB()) {
+						return 1;
+					} else if (kh1.tinhTB() > kh2.tinhTB()) {
+						return -1;
+					} else {
+						return 0;
+					}
 				}
-			
-	}
+			});
+			for (SinhVienDaiHan x : svDH) {
+				System.out.println(i++ + ". Họ: " + x.getHoSV() + "\n Tên: " + x.getTenSV() + "\n Năm sinh: "
+						+ x.getNamSinh() + " \nĐịa chỉ: " + x.getDiaChi() + "\nLP0: " + x.getLp0() + "\nLP1: "
+						+ x.getLp1() + "\nLP2: " + x.getLp2() + "\nLP3: " + x.getLp3() + "\nLP4: " + x.getLp4()
+						+ "\nLP5: " + x.getLp5() + "\nLP6: " + x.getLp6() + "\nĐiểm TB: *" + x.tinhTB());
+			}
+		}else if(k==2) {
+			Collections.sort(svWCT, new Comparator<SinhVienWebCapToc>() {
+				@Override
+				public int compare(SinhVienWebCapToc kh1, SinhVienWebCapToc kh2) {
+					if (kh1.tinhTB() < kh2.tinhTB()) {
+						return 1;
+					} else if (kh1.tinhTB() > kh2.tinhTB()) {
+						return -1;
+					} else {
+						return 0;
+					}
+				}
+			});
+			for (SinhVienWebCapToc x : svWCT) {
+				System.out.println(i++ + ". Họ: " + x.getHoSV() + "\n Tên: " + x.getTenSV() + "\n Năm sinh: "
+						+ x.getNamSinh() + " \nĐịa chỉ: " + x.getDiaChi() + "\nLP2: " + x.getLp2() + "\nLP3: "
+						+ x.getLp3() + "\n Điểm TB: *" + x.tinhTB());
+			}
+		}else if(k==3) {
+			Collections.sort(svJVCT, new Comparator<SinhVienJavaCapToc>() {
+				@Override
+				public int compare(SinhVienJavaCapToc kh1, SinhVienJavaCapToc kh2) {
+					if (kh1.tinhTB() < kh2.tinhTB()) {
+						return 1;
+					} else if (kh1.tinhTB() > kh2.tinhTB()) {
+						return -1;
+					} else {
+						return 0;
+					}
+				}
+			});
+			for (SinhVienJavaCapToc x : svJVCT) {
+				System.out.println(i++ + ". Họ: " + x.getHoSV() + "\n Tên: " + x.getTenSV() + "\n Năm sinh: "
+						+ x.getNamSinh() + " \nĐịa chỉ: " + x.getDiaChi() + "\nLP4: " + x.getLp4() + "\nLP5: "
+						+ x.getLp5() + "\n Điểm TB: *" + x.tinhTB());
+			}
+		}else {
+			System.out.println("Bạn đã nhập sai!!!!");
+		}
 
-}
 	}
 }
