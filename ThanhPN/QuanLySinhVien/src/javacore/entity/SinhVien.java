@@ -4,10 +4,16 @@ public class SinhVien {
 private String tenSinhVien;
 private int namSinh;
 private String gioiTinh;
+<<<<<<< HEAD
 private int diemLP1;
 private int diemLP2;
 private int diemLP3;
 
+=======
+public int diemLP1;
+public int diemLP2;
+public int diemLP3;
+>>>>>>> 7c2a04f7cd266cc0d97b2810bd2c0cf77881d484
 
 public SinhVien(){
 	// 
@@ -85,6 +91,7 @@ public double tinhDiemTrungBinhMon() {
 	}
 
 
+<<<<<<< HEAD
 public String ketQuaXepLoai() {
 	String ketQuaXepLoai;
     if (tinhDiemTrungBinhMon() >= 8.5) {
@@ -100,6 +107,8 @@ public String ketQuaXepLoai() {
     }
 	return ketQuaXepLoai;
 }
+=======
+>>>>>>> 7c2a04f7cd266cc0d97b2810bd2c0cf77881d484
 
 
 

@@ -5,13 +5,9 @@
  **********************/
 package javacore.entity;
 
-import java.util.Scanner;
-
 public class SinhVien {
 	private String tenSinhVien;
 	private int gioiTinh;
-	private String xepLoai;
-	private String inGt;
 	private int namSinh;
 	private int diemLP1;
 	private int diemLP2;
@@ -88,33 +84,38 @@ public class SinhVien {
 		this.diemLP3 = diemLP3;
 	}
 	public String inGt() {
+		String kqGioiTinh = "";
 		if(gioiTinh ==1) {
-			return "Nam";
+			kqGioiTinh="Nam";
+		}else if(gioiTinh==2) {
+			kqGioiTinh="Nữ";
 		}else {
-			return "Nữ";
+			kqGioiTinh="Khác";
 		}
+		return kqGioiTinh;
 		
 	}
 	public double tinhTuoi() {
-		return (2018-namSinh)*1.0;
+		return (2018-namSinh);
 	}
 	public double tinhDiemTrungBinhMon() {
-		return Math.round((diemLP1 + diemLP2 + diemLP3)/ 3);
+		return (diemLP1 + diemLP2 + diemLP3)/ 3;
 	}
 	public String xepLoai() {
+		String Kqua;
 		if(tinhDiemTrungBinhMon()<5) {
-			return "Yếu";
+			Kqua= "Yếu";
 		}else if(tinhDiemTrungBinhMon()<6.5) {
-			return "Trung Bình";
-		}else if(tinhDiemTrungBinhMon()<7.5) {
-			return "Khá";
+			Kqua= "Trung Bình";
+		}else if(tinhDiemTrungBinhMon()<8.5) {
+			Kqua= "Khá";
 		}else {
-			return "Giỏi";
+			Kqua= "Giỏi";
 		}
-		
+		return Kqua;
 	}
 	public String toString() {
-		return "Sinh Viên: " + this.tenSinhVien+" -- Giới Tính: "+inGt() + "---|\n|-----------  Tuổi--- " + tinhTuoi();
+		return "\t    "+this.tenSinhVien+"\t    "+ Math.round(tinhTuoi())+"\t\t"+inGt()+"\t    "+this.diemLP1+"\t     "+this.diemLP2+"\t      "+this.diemLP3+"\t      "+ tinhDiemTrungBinhMon()+"\t"+xepLoai();
 	}
 	
 }

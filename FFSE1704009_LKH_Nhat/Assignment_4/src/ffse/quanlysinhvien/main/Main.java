@@ -40,11 +40,12 @@ public class Main {
 			System.out.print("Nhập điểm LP2 của sinh viên: ");
 			int diemLP2 = nhap.nextInt();
 
-			System.out.print("Nhập điểm LP3 của sinh viên: ");
+			System.out.print("Nhập điểm LP3 của sinh viên: \n");		
 			int diemLP3 = nhap.nextInt();
-
+			
+			System.out.println("********************************");
 			sinhvien[i] = new SinhVien(tenSinhVien, gioiTinh, namSinh, diemLP1, diemLP2, diemLP3);
-			sinhvien[i].tinhDiemTrungBinhMon();
+			//sinhvien[i].tinhDiemTrungBinhMon();
 
 		}
 
@@ -84,7 +85,7 @@ public class Main {
 					sinhvien[i] = sinhvien[j];
 					sinhvien[j] = tang;
 				}
-			}
+			} 
 		}
 
 		// in ra thứ tự tăng

@@ -76,25 +76,25 @@ public class SinhVien {
 	}
 
 	public String xepLoai() {
-		
+		String ketQua;
 		if (tinhDiemTrungBinhMon() <= 5) {
-			return "Yếu";
+			ketQua="Yếu";
 			//System.out.println("Yếu");
 			
 		} else if (tinhDiemTrungBinhMon() <= 7) {
-			return "Trung bình";
+			ketQua="Trung bình";
 			//System.out.println("Trung Bình");
 			
 		} else if (tinhDiemTrungBinhMon() <= 8.5) {
-			return "khá";
+			ketQua="khá";
 			//System.out.println("Khá");
 			
 		} else {
-			return "Giỏi";
+			ketQua="Giỏi";
 			//System.out.println("Giỏi");
 			
 		}
-		
+		return ketQua;
 
 	}
 
