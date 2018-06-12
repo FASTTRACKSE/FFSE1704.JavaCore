@@ -34,7 +34,6 @@ public class QuanLySinhVien {
 			int diemLP3 = myInput.nextInt();
 
 			sinhvien[i] = new SinhVien(tenSinhVien, namSinh, gioiTinh, diemLP1, diemLP2, diemLP3);
-			sinhvien[i].tinhDiemTrungBinhMon();
 		}
 		// SinhVien[] sv=new SinhVien[n];
 		// SinhVien sv1 = new SinhVien("Nguyễn Văn Anh", 1997, 9, 8, 8);
@@ -54,36 +53,39 @@ public class QuanLySinhVien {
 		// System.out.println(sv2.toString() + " DTB:" +
 		// Math.round(sv2.tinhDiemTrungBinhMon()));
 		// In thông tin sinh viên
-		System.out.println("*******////////**********");
+		
 		System.out.println("Danh Sách Sinh Viên:");
-
-		for (int i = 0; i < sinhvien.length; i++) {
-			System.out.println("Sinh viên thứ" + (i + 1) + ": " + sinhvien[i].toString() + " Điểm trung bình: "
-					+ Math.round(sinhvien[i].tinhDiemTrungBinhMon()) + " Xếp loại: " + sinhvien[i].xepLoai());
-
-		}
-
-		// sắp xếp giảm dần
-		for (int i = 0; i < sinhvien.length - 1; i++) {
-			for (int j = i + 1; j <= sinhvien.length - 1; j++) {
-				if (sinhvien[j].tinhDiemTrungBinhMon() > sinhvien[i].tinhDiemTrungBinhMon()) {
-					SinhVien tang = sinhvien[i];
-					sinhvien[i] = sinhvien[j];
-					sinhvien[j] = tang;
-				}
-			}
-		}
-
-		// in ra thứ tự tăng
-
-		System.out.println("*******////////********** ");
-		System.out.println("Danh Sách Sinh Viên Đã Sắp Xếp:");
-
-		for (int i = 0; i < sinhvien.length; i++) {
-			System.out.println("Xếp hạng thứ " + (i + 1) + ": " + sinhvien[i].getTenSinhVien() +" điểm: "
-					+ Math.round(sinhvien[i].tinhDiemTrungBinhMon())  + "- Xếp loại: " + sinhvien[i].xepLoai());
-
-		}
+		
+//		System.out.println("*******////////**********");
+//		System.out.println("Danh Sách Sinh Viên:");
+//
+//		for (int i = 0; i < sinhvien.length; i++) {
+//			System.out.println("Sinh viên thứ" + (i + 1) + ": " + sinhvien[i].toString() + " Điểm trung bình: "
+//					+ Math.round(sinhvien[i].tinhDiemTrungBinhMon()) + " Xếp loại: " + sinhvien[i].xepLoai());
+//
+//		}
+//
+//		// sắp xếp giảm dần
+//		for (int i = 0; i < sinhvien.length - 1; i++) {
+//			for (int j = i + 1; j <= sinhvien.length - 1; j++) {
+//				if (sinhvien[j].tinhDiemTrungBinhMon() > sinhvien[i].tinhDiemTrungBinhMon()) {
+//					SinhVien tang = sinhvien[i];
+//					sinhvien[i] = sinhvien[j];
+//					sinhvien[j] = tang;
+//				}
+//			}
+//		}
+//
+//		// in ra thứ tự tăng
+//
+//		System.out.println("*******////////********** ");
+//		System.out.println("Danh Sách Sinh Viên Đã Sắp Xếp:");
+//
+//		for (int i = 0; i < sinhvien.length; i++) {
+//			System.out.println("Xếp hạng thứ " + (i + 1) + ": " + sinhvien[i].getTenSinhVien() + " điểm: "
+//					+ Math.round(sinhvien[i].tinhDiemTrungBinhMon()) + "- Xếp loại: " + sinhvien[i].xepLoai());
+//
+//		}
 
 		System.exit(0);
 	}

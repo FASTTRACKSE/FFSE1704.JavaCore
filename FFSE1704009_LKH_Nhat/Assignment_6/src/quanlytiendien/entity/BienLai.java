@@ -5,14 +5,15 @@
  **********************/
 package quanlytiendien.entity;
 
-import java.util.Scanner;
-
 public class BienLai {
 	protected String maCongTo;
 	protected int ckThang;
 	protected int ckNam;
 	protected int csDauKy;
 	protected int csCuoiKy;
+	public int setCkNam;
+	public int setCsDauKy;
+	public int setCsCuoiKy;
 	
 	public BienLai(String maCongTo, int ckThang, int ckNam, int csDauKy, int csCuoiKy) {
 		this.maCongTo = maCongTo;
@@ -20,6 +21,10 @@ public class BienLai {
 		this.ckNam = ckNam;
 		this.csDauKy = csDauKy;
 		this.csCuoiKy = csCuoiKy;	
+	}
+
+	public BienLai() {
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
