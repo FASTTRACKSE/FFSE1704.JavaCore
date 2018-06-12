@@ -9,4 +9,5 @@
 
 5. [Assignment 4:Xây dựng chương trình quản lý sinh viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1702044_BuiVu/src/javacore)
 6. [Assignment 5: Quản Lí Tiền Điện:](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1702044_BuiVu/src/javacore/quanlikh)
+7. [Assignment 6: Quản Lí Sinh Viên:](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1702044_BuiVu/src/javacore/qlsvffse)
 
