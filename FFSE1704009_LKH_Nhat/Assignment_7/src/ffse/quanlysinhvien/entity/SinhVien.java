@@ -1,8 +1,10 @@
 package ffse.quanlysinhvien.entity;
 
-public abstract class SinhVien<Employee> implements Comparable<SinhVien> {
+import java.util.Comparator;
+
+public abstract class SinhVien{
 	private String hoSV;
-	protected String tenSV;
+	private String tenSV;
 	private int namSinh;
 	private String diaChi;
 
@@ -48,13 +50,8 @@ public abstract class SinhVien<Employee> implements Comparable<SinhVien> {
 
 	public abstract double tinhDTB();
 
-//	public int compare(Employee s1, Employee s2) {
-//		if (s1.tinhDTB == s2.tinhDTB)
-//			return 0;
-//		else if (s1.tinhDTB > s2.tinhDTB)
-//			return 1;
-//		else
-//			return -1;
-//	}
+
+	
+	
 
 }

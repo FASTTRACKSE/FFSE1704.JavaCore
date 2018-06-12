@@ -1,5 +1,7 @@
 package ffse.quanlysinhvien.entity;
 
+
+
 public class SinhVienDaiHan extends SinhVien {
 
 	private double diemLP0;
@@ -108,11 +110,9 @@ public class SinhVienDaiHan extends SinhVien {
 
 	}
 
-	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
+
+	
 
 	
 

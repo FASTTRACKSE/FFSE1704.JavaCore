@@ -61,10 +61,6 @@ public class SinhVienWebCapToc extends SinhVien {
 
 
 
-	@Override
-	public int compareTo(SinhVien arg0) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 }

@@ -61,10 +61,14 @@ public class SinhVienJavaCapToc extends SinhVien {
 
 
 
-	@Override
-	public int compareTo(SinhVien o) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
+
+
+
+	
+
+
+
+	
 
 }
