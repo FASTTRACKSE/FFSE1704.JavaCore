@@ -18,9 +18,7 @@ public class QuanLySinhVien {
 
 	static int N;
 	static ArrayList<SinhVien> dsSinhVien = new ArrayList<SinhVien>();
-	static ArrayList<SinhVienDaiHan> svDaiHan = new ArrayList<SinhVienDaiHan>();
-	static ArrayList<SinhVienWebCapToc> svWeb = new ArrayList<SinhVienWebCapToc>();
-	static ArrayList<SinhVienJavaCapToc> svJava = new ArrayList<SinhVienJavaCapToc>();
+
 	static Scanner myInput = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -100,8 +98,7 @@ public class QuanLySinhVien {
 				double diemLP6 = myInput.nextInt();
 
 				System.out.println("------------------------------------------------------------------");
-				svDaiHan.add(new SinhVienDaiHan(hoSV, tenSV, namSinh, diaChi, diemLP0, diemLP1, diemLP2, diemLP3,
-						diemLP4, diemLP5, diemLP6));
+
 				dsSinhVien.add(new SinhVienDaiHan(hoSV, tenSV, namSinh, diaChi, diemLP0, diemLP1, diemLP2, diemLP3,
 						diemLP4, diemLP5, diemLP6));
 			}
@@ -135,7 +132,7 @@ public class QuanLySinhVien {
 					double diemLP3 = myInput.nextInt();
 
 					System.out.println("------------------------------------------------------------------");
-					svWeb.add(new SinhVienWebCapToc(hoSV, tenSV, namSinh, diaChi, diemLP2, diemLP3));
+
 					dsSinhVien.add(new SinhVienWebCapToc(hoSV, tenSV, namSinh, diaChi, diemLP2, diemLP3));
 				}
 			} else {
@@ -168,7 +165,7 @@ public class QuanLySinhVien {
 						double diemLP5 = myInput.nextInt();
 
 						System.out.println("------------------------------------------------------------------");
-						svJava.add(new SinhVienJavaCapToc(hoSV, tenSV, namSinh, diaChi, diemLP4, diemLP5));
+
 						dsSinhVien.add(new SinhVienJavaCapToc(hoSV, tenSV, namSinh, diaChi, diemLP4, diemLP5));
 					}
 				} else {
@@ -290,9 +287,9 @@ public class QuanLySinhVien {
 		int i=0;
 		System.out.println("SẮP XẾP \n");
 		if (k == 1) {
-			Collections.sort(svDaiHan, new Comparator<SinhVienDaiHan>() {
+			Collections.sort(dsSinhVien, new Comparator<SinhVien>() {
 				@Override
-				public int compare(SinhVienDaiHan o1, SinhVienDaiHan o2) {
+				public int compare(SinhVien o1, SinhVien o2) {
 					if (o1.tinhDTB() < o2.tinhDTB()) {
 						return 1;
 					} else if (o1.tinhDTB() > o2.tinhDTB()) {
@@ -317,9 +314,9 @@ public class QuanLySinhVien {
 			}
 		} else {
 			if (k == 2) {
-				Collections.sort(svWeb, new Comparator<SinhVienWebCapToc>() {
+				Collections.sort(dsSinhVien, new Comparator<SinhVien>() {
 					@Override
-					public int compare(SinhVienWebCapToc o1, SinhVienWebCapToc o2) {
+					public int compare(SinhVien o1, SinhVien o2) {
 						if (o1.tinhDTB() < o2.tinhDTB()) {
 							return 1;
 						} else if (o1.tinhDTB() > o2.tinhDTB()) {
@@ -344,9 +341,9 @@ public class QuanLySinhVien {
 
 			} else {
 				if (k == 3) {
-					Collections.sort(svJava, new Comparator<SinhVienJavaCapToc>() {
+					Collections.sort(dsSinhVien, new Comparator<SinhVien>() {
 						@Override
-						public int compare(SinhVienJavaCapToc o1, SinhVienJavaCapToc o2) {
+						public int compare(SinhVien o1, SinhVien o2) {
 							if (o1.tinhDTB() < o2.tinhDTB()) {
 								return 1;
 							} else if (o1.tinhDTB() > o2.tinhDTB()) {

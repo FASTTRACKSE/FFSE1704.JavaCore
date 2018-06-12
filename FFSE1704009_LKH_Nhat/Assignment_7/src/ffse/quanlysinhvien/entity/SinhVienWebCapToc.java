@@ -36,7 +36,7 @@ public class SinhVienWebCapToc extends SinhVien {
 		return (this.diemLP2 + this.diemLP3)/2;
 	}
 
-
+	@Override
 	public String xepLoaiSV() {
 		String ketQua;
 		if (tinhDTB() <= 5) {

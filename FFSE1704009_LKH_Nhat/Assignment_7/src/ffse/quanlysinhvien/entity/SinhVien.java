@@ -1,6 +1,6 @@
 package ffse.quanlysinhvien.entity;
 
-import java.util.Comparator;
+
 
 public abstract class SinhVien{
 	private String hoSV;
@@ -49,6 +49,7 @@ public abstract class SinhVien{
 	}
 
 	public abstract double tinhDTB();
+	public abstract String xepLoaiSV();
 
 
 	

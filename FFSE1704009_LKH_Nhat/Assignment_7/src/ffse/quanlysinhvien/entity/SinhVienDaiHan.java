@@ -86,7 +86,7 @@ public class SinhVienDaiHan extends SinhVien {
 		return (this.diemLP0 + this.diemLP1 + this.diemLP2 + this.diemLP3 + this.diemLP4 + this.diemLP5 + this.diemLP6)
 				/ 7;
 	}
-
+	@Override
 	public String xepLoaiSV() {
 		String ketQua;
 		if (tinhDTB() <= 5) {
