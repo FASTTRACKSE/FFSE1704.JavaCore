@@ -248,7 +248,7 @@ public class QuanLySinhVien {
 				}
 			} else {
 				if (o instanceof SinhVienWebCapToc) {
-					if (((SinhVienDaiHan) o).tinhDTB() >= 8.5) {
+					if (((SinhVienWebCapToc) o).tinhDTB() >= 8.5) {
 						msg = "**** Sinh Viên lớp Web Cấp Tốc đạt loại Giỏi ***** \n";
 						System.out.println(
 								"Sinh Viên  Thứ " + (++i) + ":\n Họ Sinh Viên: " + ((SinhVienWebCapToc) o).getHoSV()
@@ -263,7 +263,7 @@ public class QuanLySinhVien {
 				} else {
 
 					if (o instanceof SinhVienJavaCapToc) {
-						if (((SinhVienDaiHan) o).tinhDTB() >= 8.5) {
+						if (((SinhVienJavaCapToc) o).tinhDTB() >= 8.5) {
 							msg = "**** Sinh Viên lớp Java Cấp Tốc đạt Loại Giỏi ***** \n";
 							System.out.println("Sinh Viên  Thứ " + (++i) + ":\n Họ Sinh Viên: "
 									+ ((SinhVienJavaCapToc) o).getHoSV() + "\n - Tên Sinh Viên: "

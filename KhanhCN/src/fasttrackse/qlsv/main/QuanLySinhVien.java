@@ -54,7 +54,7 @@ public class QuanLySinhVien {
 			System.out.printf("\n" + stt + danhsach[i].toString() + danhsach[i].tinhDiemTrungBinh() + "\t"
 					+ danhsach[i].xepLoaiSinhVien());
 		}
-		System.out.println("/n");
+		System.out.println();
 		System.out.println("\n---------------------------------------------------------------------------------------------");
 
 		// sắp xếp điểm trung bình từ cao đến thấp

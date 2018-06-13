@@ -15,9 +15,7 @@ public class KhachHang {
 		dsBienLai = new ArrayList<BienLai>();
 	}
 
-	/**
-	 * @return the maKH
-	 */
+	
 	public String getMaKH() {
 		return maKH;
 	}

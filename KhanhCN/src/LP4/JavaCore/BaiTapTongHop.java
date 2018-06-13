@@ -3,7 +3,6 @@ package LP4.JavaCore;
 import java.util.Scanner;
 
 public class BaiTapTongHop {
-	
 
 	public static void main(String[] args) {
 		menu();
@@ -35,7 +34,7 @@ public class BaiTapTongHop {
 				SapXepMangTangDan();
 			} else if (answer == 5) {
 				SapXepMangGiamDan();
-			}else if (answer == 6) {
+			} else if (answer == 6) {
 				System.exit(0);
 			}
 
@@ -71,7 +70,7 @@ public class BaiTapTongHop {
 		}
 		System.out.println("Nhấn Enter để chọn chức năng khác !!!!");
 		nhap.nextLine();
-		nhap.nextLine();
+			
 
 	}
 
@@ -130,15 +129,14 @@ public class BaiTapTongHop {
 
 	static float mang[];
 	static int n;
-	static int i ; 
-	static int j ; 
+	static int i;
+	static int j;
 
 	// NHẬP MẢNG
 	public static void NhapMang() {
 
 		// Phần khai báo
 
-		
 		Scanner nhap = new Scanner(System.in);
 
 		// Thân chương trình
@@ -148,7 +146,7 @@ public class BaiTapTongHop {
 		System.out.print("Xin nhập số lượng phần tử của mảng : ");
 
 		n = nhap.nextInt();
-		mang=new float[n];
+		mang = new float[n];
 
 		for (int i = 0; i < n; i++) {
 			System.out.print("Nhập phần tử thứ " + i + " của mảng :");
@@ -190,7 +188,7 @@ public class BaiTapTongHop {
 	// SẮP XẾP MẢNG THEO THỨ TỰ TĂNG DẦN
 	public static void SapXepMangTangDan() {
 		// Phần khai báo
-		
+
 		Scanner nhap = new Scanner(System.in);
 
 		// Thân chương trình
@@ -198,11 +196,11 @@ public class BaiTapTongHop {
 		System.out.println("+---------------------------------+");
 		System.out.println("|SẮP XẾP MẢNG THEO THỨ TỰ TĂNG DẦN|");
 		System.out.println("+---------------------------------+");
-	
+
 		int sapxep;
 
-		for ( i = 0; i < n - 1; i++) {
-			for ( j = n - 1; j >= 1; j--) {
+		for (i = 0; i < n - 1; i++) {
+			for (j = n - 1; j >= 1; j--) {
 
 				if (mang[j] < mang[j - 1]) {
 
@@ -218,7 +216,7 @@ public class BaiTapTongHop {
 		System.out.println("Sắp xếp từ bé đến lớn : ");
 
 		for (int i = 0; i < n; i++) {
-			System.out.print(mang[i] + "  \n"); 
+			System.out.print(mang[i] + "  \n");
 
 		}
 
@@ -227,45 +225,43 @@ public class BaiTapTongHop {
 		nhap.nextLine();
 
 	}
+
 	// SẮP XẾP MẢNG THEO THỨ TỰ GIẢM DẦN
-		public static void SapXepMangGiamDan() {
-		
-			Scanner nhap = new Scanner(System.in);
+	public static void SapXepMangGiamDan() {
 
-			
+		Scanner nhap = new Scanner(System.in);
 
-			System.out.println("+---------------------------------+");
-			System.out.println("|SẮP XẾP MẢNG THEO THỨ TỰ GIẢM DẦN|");
-			System.out.println("+---------------------------------+");
-		
-			int sapxep;
+		System.out.println("+---------------------------------+");
+		System.out.println("|SẮP XẾP MẢNG THEO THỨ TỰ GIẢM DẦN|");
+		System.out.println("+---------------------------------+");
 
-			for ( i = 0; i < n - 1; i++) {
-				for ( j = i + 1; j < n; j++) {
+		int sapxep;
 
-					if (mang[i] < mang[j]) {
+		for (i = 0; i < n - 1; i++) {
+			for (j = i + 1; j < n; j++) {
 
-						sapxep = (int) mang[j];
-						mang[j] = mang[i];
-						mang[i] = sapxep;
+				if (mang[i] < mang[j]) {
 
-					}
+					sapxep = (int) mang[j];
+					mang[j] = mang[i];
+					mang[i] = sapxep;
+
 				}
-
 			}
-
-			System.out.println("Sắp xếp từ giảm dần : ");
-
-			for (int i = 0; i < n; i++) {
-				System.out.print(mang[i] + "  \n"); 
-
-			}
-
-			System.out.println("Nhấn Enter để chọn chức năng khác !!!!");
-			nhap.nextLine();
-			nhap.nextLine();
 
 		}
 
+		System.out.println("Sắp xếp từ giảm dần : ");
+
+		for (int i = 0; i < n; i++) {
+			System.out.print(mang[i] + "  \n");
+
+		}
+
+		System.out.println("Nhấn Enter để chọn chức năng khác !!!!");
+		nhap.nextLine();
+		nhap.nextLine();
+
+	}
 
 }
