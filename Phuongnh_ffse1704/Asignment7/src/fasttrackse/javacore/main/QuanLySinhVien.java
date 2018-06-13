@@ -5,6 +5,7 @@
 /*:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
 package fasttrackse.javacore.main;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 import fasttrackse.javacore.entity.*;
@@ -195,52 +196,59 @@ public class QuanLySinhVien {
 		int i = 0;
 		for (SinhVien o : dsSinhVien) {
 			if (o instanceof SinhVienDaiHan) {
+				DecimalFormat formatter = new DecimalFormat("#,#.0");
+				
 				System.out.println("*********************************  Danh Sách Sinh Viên Lớp Dài Hạn ************************************* \n");
-				System.out.println("STT \t"+"Họ và Tên \t\t"+"Năm Sinh \t"+"Địa Chỉ \t"
-				+"Điểm LP0   "+"Điểm LP1    "+"Điểm LP2    "+"Điểm LP3    "+"Điểm LP4    "+"Điểm LP5    "+"Điểm LP6 \t "+"ĐTB \t"+"Xếp Loại");
-				System.out.println( (i++) +"\t"
-						+  ((SinhVienDaiHan) o).getHoDemSV() +" "+  ((SinhVienDaiHan) o).getTenSV() +"\t        "
-						+  ((SinhVienDaiHan) o).getNamSinhSV()+"\t        "
-						+  ((SinhVienDaiHan) o).getDiaChiSV() +"\t          "		   
-						+  ((SinhVienDaiHan) o).getDiemLP0()  +"\t      "
-						+  ((SinhVienDaiHan) o).getDiemLP1()  +"\t   "
-						+  ((SinhVienDaiHan) o).getDiemLP2()  +"\t    "
-						+  ((SinhVienDaiHan) o).getDiemLP3()  +"\t   "
-						+  ((SinhVienDaiHan) o).getDiemLP4()  +"\t   "
-						+  ((SinhVienDaiHan) o).getDiemLP5()  +"\t   "
-						+  ((SinhVienDaiHan) o).getDiemLP6()  +"\t   "
-						+  ((SinhVienDaiHan) o).tinhDTB()     +"\t "
-						+  ((SinhVienDaiHan) o).xepLoaiSV());
+				System.out.printf( "\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-7s %-20s","STT","Họ và Tên","Năm Sinh","Địa Chỉ"
+				,"Điểm LP0","Điểm LP1","Điểm LP2","Điểm LP3","Điểm LP4","Điểm LP5","Điểm LP6","ĐTB",
+				"Xếp Loại");
+				System.out.printf("\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-20s %-2.1f", (i++) 
+						,((SinhVienDaiHan) o).getTenSV() 
+						,  ((SinhVienDaiHan) o).getNamSinhSV()
+						,  ((SinhVienDaiHan) o).getDiaChiSV() 		   
+						,  ((SinhVienDaiHan) o).getDiemLP0() 
+						,  ((SinhVienDaiHan) o).getDiemLP1() 
+						,  ((SinhVienDaiHan) o).getDiemLP2()  
+						,  ((SinhVienDaiHan) o).getDiemLP3()  
+						,  ((SinhVienDaiHan) o).getDiemLP4() 
+						,  ((SinhVienDaiHan) o).getDiemLP5()  
+						,  ((SinhVienDaiHan) o).getDiemLP6() 
+						,  ((SinhVienDaiHan) o).tinhDTB()    
+						,  ((SinhVienDaiHan) o).xepLoaiSV()+"\n");
 				
 			}
 		}
 		for (SinhVien o : dsSinhVien) {
 			if (o instanceof SinhVienWebCapToc) {
+				DecimalFormat formatter = new DecimalFormat("#,###.0");
 				System.out.println("*********************************  Danh Sách Sinh Viên Lớp Web Cấp Tốc ************************************* \n");
-				System.out.println("STT \t"+"Họ và Tên \t\t"+"Năm Sinh \t"+"Địa Chỉ \t"
-						+"Điểm LP2 "+"Điểm LP3 \t"+"ĐTB \t"+"Xếp Loại");
-						System.out.println( (i++) +"\t"
-								+  ((SinhVienWebCapToc) o).getHoDemSV() +" "+  ((SinhVienDaiHan) o).getTenSV() +"\t"
-								+  ((SinhVienWebCapToc) o).getNamSinhSV()+"\t"
-								+  ((SinhVienWebCapToc) o).getDiaChiSV() +"\t" 
-								+  ((SinhVienWebCapToc) o).getDiemLP2()  +"\t"
-								+  ((SinhVienWebCapToc) o).getDiemLP3()  +"\t   "  
-								+  ((SinhVienWebCapToc) o).tinhDTB()     +"\t"
-								+  ((SinhVienWebCapToc) o).xepLoaiSV());
+				System.out.printf( "\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-7s %-20s","STT","Họ và Tên","Năm Sinh","Địa Chỉ"
+						,"Điểm LP2","Điểm LP3","ĐTB",
+						"Xếp Loại");
+				System.out.printf("\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-20s %-2.1f", (i++) 
+						,((SinhVienWebCapToc) o).getTenSV() 
+						,  ((SinhVienWebCapToc) o).getNamSinhSV()
+						,  ((SinhVienWebCapToc) o).getDiaChiSV() 		   
+						,  ((SinhVienWebCapToc) o).getDiemLP2()  
+						,  ((SinhVienWebCapToc) o).getDiemLP3()  
+						,  ((SinhVienWebCapToc) o).tinhDTB()    
+						,  ((SinhVienWebCapToc) o).xepLoaiSV()+"\n");
 			}
 		}
 		for (SinhVien o : dsSinhVien) {
 			if (o instanceof SinhVienJavaCapToc) {
-				System.out.println("STT \t"+"Họ và Tên \t\t"+"Năm Sinh \t"+"Địa Chỉ \t"
-						+"Điểm LP4 "+"Điểm LP5 \t"+"ĐTB \t"+"Xếp Loại");
-						System.out.println( (i++) +"\t"
-								+  ((SinhVienJavaCapToc) o).getHoDemSV() +" "+  ((SinhVienDaiHan) o).getTenSV() +"\t"
-								+  ((SinhVienJavaCapToc) o).getNamSinhSV()+"\t"
-								+  ((SinhVienJavaCapToc) o).getDiaChiSV() +"\t" 
-								+  ((SinhVienJavaCapToc) o).getDiemLP4()  +"\t"
-								+  ((SinhVienJavaCapToc) o).getDiemLP5()  +"\t   "  
-								+  ((SinhVienJavaCapToc) o).tinhDTB()     +"\t"
-								+  ((SinhVienJavaCapToc) o).xepLoaiSV());
+				DecimalFormat formatter = new DecimalFormat("#,###.0");
+				System.out.printf( "\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-7s %-20s","STT","Họ và Tên","Năm Sinh","Địa Chỉ"
+						,"Điểm LP4","Điểm LP5","ĐTB",
+						"Xếp Loại");
+				System.out.printf("\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-20s %-2.1f", (i++) 
+						,((SinhVienJavaCapToc) o).getTenSV() 
+						,  ((SinhVienJavaCapToc) o).getNamSinhSV()
+						,  ((SinhVienJavaCapToc) o).getDiaChiSV() 		   
+						,  ((SinhVienJavaCapToc) o).getDiemLP4()  
+						,  ((SinhVienJavaCapToc) o).getDiemLP5()  
+						,  ((SinhVienJavaCapToc) o).tinhDTB()    
+						,  ((SinhVienJavaCapToc) o).xepLoaiSV()+"\n");
 			}
 		}
 	}
@@ -253,51 +261,57 @@ public class QuanLySinhVien {
 		for (SinhVien o : dsSinhVien) {
 			if (o instanceof SinhVienDaiHan) {
 				if (((SinhVienDaiHan) o).tinhDTB() >= 8.5) {
+					DecimalFormat formatter = new DecimalFormat("#,###.0");
 					System.out.println("**** Sinh Viên Lớp Dài Hạn đạt loại Giỏi ***** \n");
-					System.out.println("STT \t"+"Họ và Tên \t\t"+"Năm Sinh \t"+"Địa Chỉ \t"
-					+"Điểm LP0 "+"Điểm LP1 "+"Điểm LP2 "+"Điểm LP3 "+"Điểm LP4 "+"Điểm LP5 "+"Điểm LP6 \t"+"ĐTB \t"+"Xếp Loại");
-					System.out.println( (i++) +"\t"
-							+  ((SinhVienDaiHan) o).getHoDemSV() +" "+  ((SinhVienDaiHan) o).getTenSV() +"\t     "
-							+  ((SinhVienDaiHan) o).getNamSinhSV()+"\t"
-							+  ((SinhVienDaiHan) o).getDiaChiSV() +"\t" 
-							+  ((SinhVienDaiHan) o).getDiemLP0()  +"\t"
-							+  ((SinhVienDaiHan) o).getDiemLP1()  +"\t"
-							+  ((SinhVienDaiHan) o).getDiemLP2()  +"\t"
-							+  ((SinhVienDaiHan) o).getDiemLP3()  +"\t"
-							+  ((SinhVienDaiHan) o).getDiemLP4()  +"\t"
-							+  ((SinhVienDaiHan) o).getDiemLP5()  +"\t"
-							+  ((SinhVienDaiHan) o).getDiemLP6()  +"\t   "
-							+  ((SinhVienDaiHan) o).tinhDTB()     +"\t"
-							+  ((SinhVienDaiHan) o).xepLoaiSV());
+					System.out.printf( "\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-7s %-20s","STT","Họ và Tên","Năm Sinh","Địa Chỉ"
+							,"Điểm LP0","Điểm LP1","Điểm LP2","Điểm LP3","Điểm LP4","Điểm LP5","Điểm LP6","ĐTB",
+							"Xếp Loại");
+							System.out.printf("\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-20s %-2.1f", (i++) 
+									,((SinhVienDaiHan) o).getTenSV() 
+									,  ((SinhVienDaiHan) o).getNamSinhSV()
+									,  ((SinhVienDaiHan) o).getDiaChiSV() 		   
+									,  ((SinhVienDaiHan) o).getDiemLP0() 
+									,  ((SinhVienDaiHan) o).getDiemLP1() 
+									,  ((SinhVienDaiHan) o).getDiemLP2()  
+									,  ((SinhVienDaiHan) o).getDiemLP3()  
+									,  ((SinhVienDaiHan) o).getDiemLP4() 
+									,  ((SinhVienDaiHan) o).getDiemLP5()  
+									,  ((SinhVienDaiHan) o).getDiemLP6() 
+									,  ((SinhVienDaiHan) o).tinhDTB()    
+									,  ((SinhVienDaiHan) o).xepLoaiSV()+"\n");
 				}
 			} else if (o instanceof SinhVienWebCapToc) {
 				if (((SinhVienWebCapToc) o).tinhDTB() >= 8.5) {
+					DecimalFormat formatter = new DecimalFormat("#,###.0");
 					System.out.println("**** Sinh Viên Lớp Web Cấp Tốc đạt loại Giỏi ***** \n");
-					System.out.println("STT \t"+"Họ và Tên \t\t"+"Năm Sinh \t"+"Địa Chỉ \t"
-					+"Điểm LP2 "+"Điểm LP3 \t"+"ĐTB \t"+"Xếp Loại");
-					System.out.println( (i++) +"\t"
-							+  ((SinhVienWebCapToc) o).getHoDemSV() +" "+  ((SinhVienDaiHan) o).getTenSV() +"\t"
-							+  ((SinhVienWebCapToc) o).getNamSinhSV()+"\t"
-							+  ((SinhVienWebCapToc) o).getDiaChiSV() +"\t" 
-							+  ((SinhVienWebCapToc) o).getDiemLP2()  +"\t"
-							+  ((SinhVienWebCapToc) o).getDiemLP3()  +"\t   "  
-							+  ((SinhVienWebCapToc) o).tinhDTB()     +"\t"
-							+  ((SinhVienWebCapToc) o).xepLoaiSV());
+					System.out.printf( "\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-7s %-20s","STT","Họ và Tên","Năm Sinh","Địa Chỉ"
+							,"Điểm LP2","Điểm LP3","ĐTB",
+							"Xếp Loại");
+					System.out.printf("\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-20s %-2.1f", (i++) 
+							,((SinhVienWebCapToc) o).getTenSV() 
+							,  ((SinhVienWebCapToc) o).getNamSinhSV()
+							,  ((SinhVienWebCapToc) o).getDiaChiSV() 		   
+							,  ((SinhVienWebCapToc) o).getDiemLP2()  
+							,  ((SinhVienWebCapToc) o).getDiemLP3()  
+							,  ((SinhVienWebCapToc) o).tinhDTB()    
+							,  ((SinhVienWebCapToc) o).xepLoaiSV()+"\n");
 				}
 
 			} else if (o instanceof SinhVienJavaCapToc) {
 				if (((SinhVienJavaCapToc) o).tinhDTB() >= 8.5) {
-					System.out.println("**** Sinh Viên Lớp Java Cấp Tốc đạt loại Giỏi ***** \n");
-					System.out.println("STT \t"+"Họ và Tên \t\t"+"Năm Sinh \t"+"Địa Chỉ \t"
-					+"Điểm LP2 "+"Điểm LP3 \t"+"ĐTB \t"+"Xếp Loại");
-					System.out.println( (i++) +"\t"
-							+  ((SinhVienJavaCapToc) o).getHoDemSV() +" "+  ((SinhVienDaiHan) o).getTenSV() +"\t"
-							+  ((SinhVienJavaCapToc) o).getNamSinhSV()+"\t"
-							+  ((SinhVienJavaCapToc) o).getDiaChiSV() +"\t" 
-							+  ((SinhVienJavaCapToc) o).getDiemLP4()  +"\t"
-							+  ((SinhVienJavaCapToc) o).getDiemLP5()  +"\t   "  
-							+  ((SinhVienJavaCapToc) o).tinhDTB()     +"\t"
-							+  ((SinhVienJavaCapToc) o).xepLoaiSV());
+					DecimalFormat formatter = new DecimalFormat("#,###.0");
+					System.out.println("*********************** Sinh Viên Lớp Java Cấp Tốc đạt loại Giỏi ************************* \n");
+					System.out.printf( "\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-7s %-20s","STT","Họ và Tên","Năm Sinh","Địa Chỉ"
+							,"Điểm LP4","Điểm LP5","ĐTB",
+							"Xếp Loại");
+					System.out.printf("\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-20s %-2.1f", (i++) 
+							,((SinhVienJavaCapToc) o).getTenSV() 
+							,  ((SinhVienJavaCapToc) o).getNamSinhSV()
+							,  ((SinhVienJavaCapToc) o).getDiaChiSV() 		   
+							,  ((SinhVienJavaCapToc) o).getDiemLP4()  
+							,  ((SinhVienJavaCapToc) o).getDiemLP5()  
+							,  ((SinhVienJavaCapToc) o).tinhDTB()    
+							,  ((SinhVienJavaCapToc) o).xepLoaiSV()+"\n");
 				}
 			}
 		}
@@ -310,53 +324,58 @@ public class QuanLySinhVien {
 		int i = 0;
 		for (SinhVien o : dsSinhVien) {
 			if (o instanceof SinhVienDaiHan) {
+				DecimalFormat formatter = new DecimalFormat("#,###.0");
 				System.out.println("*********************************  Danh Sách Sinh Viên Lớp Dài Hạn ************************************* \n");
-				System.out.println("STT \t"+"Họ và Tên \t\t"+"Năm Sinh \t"+"Địa Chỉ \t"
-				+"Điểm LP0 "+"Điểm LP1 "+"Điểm LP2 "+"Điểm LP3 "+"Điểm LP4 "+"Điểm LP5 "+"Điểm LP6 \t"+"ĐTB \t"+"Xếp Loại");
-				System.out.println( (i++) +"\t"
-						+  ((SinhVienDaiHan) o).getHoDemSV() +" "+  ((SinhVienDaiHan) o).getTenSV() +"\t     "
-						+  ((SinhVienDaiHan) o).getNamSinhSV()+"\t"
-						+  ((SinhVienDaiHan) o).getDiaChiSV() +"\t" 
-						+  ((SinhVienDaiHan) o).getDiemLP0()  +"\t"
-						+  ((SinhVienDaiHan) o).getDiemLP1()  +"\t"
-						+  ((SinhVienDaiHan) o).getDiemLP2()  +"\t"
-						+  ((SinhVienDaiHan) o).getDiemLP3()  +"\t"
-						+  ((SinhVienDaiHan) o).getDiemLP4()  +"\t"
-						+  ((SinhVienDaiHan) o).getDiemLP5()  +"\t"
-						+  ((SinhVienDaiHan) o).getDiemLP6()  +"\t   "
-						+  ((SinhVienDaiHan) o).tinhDTB()     +"\t"
-						+  ((SinhVienDaiHan) o).xepLoaiSV());
+				System.out.printf( "\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-7s %-20s","STT","Họ và Tên","Năm Sinh","Địa Chỉ"
+				,"Điểm LP0","Điểm LP1","Điểm LP2","Điểm LP3","Điểm LP4","Điểm LP5","Điểm LP6","ĐTB",
+				"Xếp Loại");
+				System.out.printf("\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-20s %-2.1f", (i++) 
+						,((SinhVienDaiHan) o).getTenSV() 
+						,  ((SinhVienDaiHan) o).getNamSinhSV()
+						,  ((SinhVienDaiHan) o).getDiaChiSV() 		   
+						,  ((SinhVienDaiHan) o).getDiemLP0() 
+						,  ((SinhVienDaiHan) o).getDiemLP1() 
+						,  ((SinhVienDaiHan) o).getDiemLP2()  
+						,  ((SinhVienDaiHan) o).getDiemLP3()  
+						,  ((SinhVienDaiHan) o).getDiemLP4() 
+						,  ((SinhVienDaiHan) o).getDiemLP5()  
+						,  ((SinhVienDaiHan) o).getDiemLP6() 
+						,  ((SinhVienDaiHan) o).tinhDTB()    
+						,  ((SinhVienDaiHan) o).xepLoaiSV()+"\n");
 				
 			}
 		}
 		for (SinhVien o : dsSinhVien) {
 			if (o instanceof SinhVienWebCapToc) {
+				DecimalFormat formatter = new DecimalFormat("#,###.0");
 				System.out.println("*********************************  Danh Sách Sinh Viên Lớp Web Cấp Tốc ************************************* \n");
-				System.out.println("STT \t"+"Họ và Tên \t\t"+"Năm Sinh \t"+"Địa Chỉ \t"
-						+"Điểm LP2 "+"Điểm LP3 \t"+"ĐTB \t"+"Xếp Loại");
-						System.out.println( (i++) +"\t"
-								+  ((SinhVienWebCapToc) o).getHoDemSV() +" "+  ((SinhVienDaiHan) o).getTenSV() +"\t"
-								+  ((SinhVienWebCapToc) o).getNamSinhSV()+"\t"
-								+  ((SinhVienWebCapToc) o).getDiaChiSV() +"\t" 
-								+  ((SinhVienWebCapToc) o).getDiemLP2()  +"\t"
-								+  ((SinhVienWebCapToc) o).getDiemLP3()  +"\t   "  
-								+  ((SinhVienWebCapToc) o).tinhDTB()     +"\t"
-								+  ((SinhVienWebCapToc) o).xepLoaiSV());
+				System.out.printf( "\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-7s %-20s","STT","Họ và Tên","Năm Sinh","Địa Chỉ"
+						,"Điểm LP2","Điểm LP3","ĐTB",
+						"Xếp Loại");
+				System.out.printf("\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-20s %-2.1f", (i++) 
+						,((SinhVienWebCapToc) o).getTenSV() 
+						,  ((SinhVienWebCapToc) o).getNamSinhSV()
+						,  ((SinhVienWebCapToc) o).getDiaChiSV() 		   
+						,  ((SinhVienWebCapToc) o).getDiemLP2()  
+						,  ((SinhVienWebCapToc) o).getDiemLP3()  
+						,  ((SinhVienWebCapToc) o).tinhDTB()    
+						,  ((SinhVienWebCapToc) o).xepLoaiSV()+"\n");
 			}
 		}
 		for (SinhVien o : dsSinhVien) {
 			if (o instanceof SinhVienJavaCapToc) {
-				System.out.println("*********************************  Danh Sách Sinh Viên Lớp Java Cấp Tốc ************************************* \n");
-				System.out.println("STT \t"+"Họ và Tên \t\t"+"Năm Sinh \t"+"Địa Chỉ \t"
-						+"Điểm LP4 "+"Điểm LP5 \t"+"ĐTB \t"+"Xếp Loại");
-						System.out.println( (i++) +"\t"
-								+  ((SinhVienJavaCapToc) o).getHoDemSV() +" "+  ((SinhVienDaiHan) o).getTenSV() +"\t"
-								+  ((SinhVienJavaCapToc) o).getNamSinhSV()+"\t"
-								+  ((SinhVienJavaCapToc) o).getDiaChiSV() +"\t" 
-								+  ((SinhVienJavaCapToc) o).getDiemLP4()  +"\t"
-								+  ((SinhVienJavaCapToc) o).getDiemLP5()  +"\t   "  
-								+  ((SinhVienJavaCapToc) o).tinhDTB()     +"\t"
-								+  ((SinhVienJavaCapToc) o).xepLoaiSV());
+				DecimalFormat formatter = new DecimalFormat("#,###.0");
+				System.out.printf( "\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-7s %-20s","STT","Họ và Tên","Năm Sinh","Địa Chỉ"
+						,"Điểm LP4","Điểm LP5","ĐTB",
+						"Xếp Loại");
+				System.out.printf("\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-20s %-2.1f", (i++) 
+						,((SinhVienJavaCapToc) o).getTenSV() 
+						,  ((SinhVienJavaCapToc) o).getNamSinhSV()
+						,  ((SinhVienJavaCapToc) o).getDiaChiSV() 		   
+						,  ((SinhVienJavaCapToc) o).getDiemLP4()  
+						,  ((SinhVienJavaCapToc) o).getDiemLP5()  
+						,  ((SinhVienJavaCapToc) o).tinhDTB()    
+						,  ((SinhVienJavaCapToc) o).xepLoaiSV()+"\n");
 			}
 		}
 	}
@@ -368,53 +387,58 @@ public class QuanLySinhVien {
 		int i = 0;
 		for (SinhVien o : dsSinhVien) {
 			if (o instanceof SinhVienDaiHan) {
+				DecimalFormat formatter = new DecimalFormat("#,###.0");
 				System.out.println("*********************************  Danh Sách Sinh Viên Lớp Dài Hạn ************************************* \n");
-				System.out.println("STT \t"+"Họ và Tên \t\t"+"Năm Sinh \t"+"Địa Chỉ \t"
-				+"Điểm LP0 "+"Điểm LP1 "+"Điểm LP2 "+"Điểm LP3 "+"Điểm LP4 "+"Điểm LP5 "+"Điểm LP6 \t"+"ĐTB \t"+"Xếp Loại");
-				System.out.println( (i++) +"\t"
-						+  ((SinhVienDaiHan) o).getHoDemSV() +" "+  ((SinhVienDaiHan) o).getTenSV() +"\t     "
-						+  ((SinhVienDaiHan) o).getNamSinhSV()+"\t"
-						+  ((SinhVienDaiHan) o).getDiaChiSV() +"\t" 
-						+  ((SinhVienDaiHan) o).getDiemLP0()  +"\t"
-						+  ((SinhVienDaiHan) o).getDiemLP1()  +"\t"
-						+  ((SinhVienDaiHan) o).getDiemLP2()  +"\t"
-						+  ((SinhVienDaiHan) o).getDiemLP3()  +"\t"
-						+  ((SinhVienDaiHan) o).getDiemLP4()  +"\t"
-						+  ((SinhVienDaiHan) o).getDiemLP5()  +"\t"
-						+  ((SinhVienDaiHan) o).getDiemLP6()  +"\t   "
-						+  ((SinhVienDaiHan) o).tinhDTB()     +"\t"
-						+  ((SinhVienDaiHan) o).xepLoaiSV());
+				System.out.printf( "\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-7s %-20s","STT","Họ và Tên","Năm Sinh","Địa Chỉ"
+				,"Điểm LP0","Điểm LP1","Điểm LP2","Điểm LP3","Điểm LP4","Điểm LP5","Điểm LP6","ĐTB",
+				"Xếp Loại");
+				System.out.printf("\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-20s %-2.1f", (i++) 
+						,((SinhVienDaiHan) o).getTenSV() 
+						,  ((SinhVienDaiHan) o).getNamSinhSV()
+						,  ((SinhVienDaiHan) o).getDiaChiSV() 		   
+						,  ((SinhVienDaiHan) o).getDiemLP0() 
+						,  ((SinhVienDaiHan) o).getDiemLP1() 
+						,  ((SinhVienDaiHan) o).getDiemLP2()  
+						,  ((SinhVienDaiHan) o).getDiemLP3()  
+						,  ((SinhVienDaiHan) o).getDiemLP4() 
+						,  ((SinhVienDaiHan) o).getDiemLP5()  
+						,  ((SinhVienDaiHan) o).getDiemLP6() 
+						,  ((SinhVienDaiHan) o).tinhDTB()    
+						,  ((SinhVienDaiHan) o).xepLoaiSV()+"\n");
 				
 			}
 		}
 		for (SinhVien o : dsSinhVien) {
 			if (o instanceof SinhVienWebCapToc) {
+				DecimalFormat formatter = new DecimalFormat("#,###.0");
 				System.out.println("*********************************  Danh Sách Sinh Viên Lớp Web Cấp Tốc ************************************* \n");
-				System.out.println("STT \t"+"Họ và Tên \t\t"+"Năm Sinh \t"+"Địa Chỉ \t"
-						+"Điểm LP2 "+"Điểm LP3 \t"+"ĐTB \t"+"Xếp Loại");
-						System.out.println( (i++) +"\t"
-								+  ((SinhVienWebCapToc) o).getHoDemSV() +" "+  ((SinhVienDaiHan) o).getTenSV() +"\t"
-								+  ((SinhVienWebCapToc) o).getNamSinhSV()+"\t"
-								+  ((SinhVienWebCapToc) o).getDiaChiSV() +"\t" 
-								+  ((SinhVienWebCapToc) o).getDiemLP2()  +"\t"
-								+  ((SinhVienWebCapToc) o).getDiemLP3()  +"\t   "  
-								+  ((SinhVienWebCapToc) o).tinhDTB()     +"\t"
-								+  ((SinhVienWebCapToc) o).xepLoaiSV());
+				System.out.printf( "\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-7s %-20s","STT","Họ và Tên","Năm Sinh","Địa Chỉ"
+						,"Điểm LP2","Điểm LP3","ĐTB",
+						"Xếp Loại");
+				System.out.printf("\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-20s %-2.1f", (i++) 
+						,((SinhVienWebCapToc) o).getTenSV() 
+						,  ((SinhVienWebCapToc) o).getNamSinhSV()
+						,  ((SinhVienWebCapToc) o).getDiaChiSV() 		   
+						,  ((SinhVienWebCapToc) o).getDiemLP2()  
+						,  ((SinhVienWebCapToc) o).getDiemLP3()  
+						,  ((SinhVienWebCapToc) o).tinhDTB()    
+						,  ((SinhVienWebCapToc) o).xepLoaiSV()+"\n");
 			}
 		}
 		for (SinhVien o : dsSinhVien) {
 			if (o instanceof SinhVienJavaCapToc) {
-				System.out.println("*********************************  Danh Sách Sinh Viên Lớp Java Cấp Tốc ************************************* \n");
-				System.out.println("STT \t"+"Họ và Tên \t\t"+"Năm Sinh \t"+"Địa Chỉ \t"
-						+"Điểm LP4 "+"Điểm LP5 \t"+"ĐTB \t"+"Xếp Loại");
-						System.out.println( (i++) +"\t"
-								+  ((SinhVienJavaCapToc) o).getHoDemSV() +" "+  ((SinhVienDaiHan) o).getTenSV() +"\t"
-								+  ((SinhVienJavaCapToc) o).getNamSinhSV()+"\t"
-								+  ((SinhVienJavaCapToc) o).getDiaChiSV() +"\t" 
-								+  ((SinhVienJavaCapToc) o).getDiemLP4()  +"\t"
-								+  ((SinhVienJavaCapToc) o).getDiemLP5()  +"\t   "  
-								+  ((SinhVienJavaCapToc) o).tinhDTB()     +"\t"
-								+  ((SinhVienJavaCapToc) o).xepLoaiSV());
+				DecimalFormat formatter = new DecimalFormat("#,###.0");
+				System.out.printf( "\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-7s %-20s","STT","Họ và Tên","Năm Sinh","Địa Chỉ"
+						,"Điểm LP4","Điểm LP5","ĐTB",
+						"Xếp Loại");
+				System.out.printf("\n"+"%-10s %-25s %-12s %-15s %-12s %-12s %-12s %-12s %-12s %-12s %-12s %-20s %-2.1f", (i++) 
+						,((SinhVienJavaCapToc) o).getTenSV() 
+						,  ((SinhVienJavaCapToc) o).getNamSinhSV()
+						,  ((SinhVienJavaCapToc) o).getDiaChiSV() 		   
+						,  ((SinhVienJavaCapToc) o).getDiemLP4()  
+						,  ((SinhVienJavaCapToc) o).getDiemLP5()  
+						,  ((SinhVienJavaCapToc) o).tinhDTB()    
+						,  ((SinhVienJavaCapToc) o).xepLoaiSV()+"\n");
 			}
 		}
 	}
@@ -425,7 +449,7 @@ public class QuanLySinhVien {
 
 	public static void backToMainMenu() {
 		myInput.nextLine();
-		System.out.println("Ấn Enter để về menu chính");
+		System.out.println("\n"+"Ấn Enter để về menu chính");
 		myInput.nextLine();
 	}
 }
