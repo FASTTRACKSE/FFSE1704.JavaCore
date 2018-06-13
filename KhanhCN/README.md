@@ -12,5 +12,7 @@
 
 6.[Assignment 4 : Chương trình quản lý sinh viên_main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhanhCN/src/fasttrackse/qlsv/main/QuanLySinhVien.java)
 
-7.[Assignment 5 : Chương trình quản lý tiền điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhanhCN/src/fasttrack/qltd)
+7.[Assignment 5 ,6: Chương trình quản lý tiền điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhanhCN/src/fasttrack/qltd)
+
+8.[Assignment 7 : Chương trình quản lý sinh viên Fasttrack SE](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhanhCN/src/fasttrack/sinhvien)
 

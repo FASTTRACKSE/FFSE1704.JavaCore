@@ -2,6 +2,9 @@ package ffse1703012.assignment.quanlytiendien;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Collections;
+import java.util.List;
+
 import ffse1703012.assignment.quanlytiendien.KhachHang;
 import ffse1703012.assignment.quanlytiendien.BienLai;
 
@@ -47,31 +50,9 @@ public class TinhBienLai {
 				arrayBienLai.add(new BienLai(arrayKhachHang.get(i).getHoTenChuNha(),
 						arrayKhachHang.get(i).getMaKhachHang(), arrayKhachHang.get(i).getSoNha(),
 						arrayKhachHang.get(i).getMaSoCongTo(), kyTieuThu, chiSoCu, chiSoMoi));
-				// arrayBienLai.add(new BienLai(arrayKhachHang.get(i).getMaKhachHang(),
-				// arrayKhachHang.get(i).getTenKhachHang(), arrayKhachHang.get(i).getSoNha(),
-				// arrayKhachHang.get(i).getMaCongTo(), chiSoCu, chiSoMoi, thang, nam));
 			}
 		}
-		// IN DANH SÁCH KHÁCH HÀNG
-		// System.out.println(" HÓA ĐƠN TIỀN ĐIỆN CỦA KHÁCH HÀNG");
-		// System.out.println(" *********************************");
-		// for (int i = 0;i < arrayKhachHang.size();i++) {
-		// System.out.println("|Tên chủ hộ :" + KhachHang.getHoTenChuNha());
-		// System.out.println("|Mã khách hàng: " + KhachHang.getMaKhachHang());
-		// System.out.println("|Địa chỉ: " + KhachHang.getSoNha());
-		// System.out.println("|Mã số công tơ: " + KhachHang.getMaSoCongTo());
-		// for (BienLai x : arrayBienLai) {
-		// System.out.println("+*************************************+");
-		//
-		// System.out.println("|Kỳ tiêu thụ: " + x.getKyTieuThu());
-		// System.out.println("|Số điện cũ: " + x.getChiSoCu());
-		// System.out.println("|Số điện mới: " + x.getChiSoMoi());
-		// System.out.println("|Thành tiền: " + x.soTienPhaiTra() + " VNĐ");
-		// System.out.println("+*************************************+");
-		// System.out.println(" ");
-		//
-		// }
-		// }
+
 		System.out.println(
 				"+---------------------------------DANH SÁCH BIÊN LAI CỦA KHÁCH HÀNG------------------------------ --------+");
 		System.out.println(
@@ -81,6 +62,6 @@ public class TinhBienLai {
 					x.getHoTenChuNha(), x.getSoNha(), x.getMaSoCongTo(), x.getChiSoMoi(), x.getChiSoCu(),
 					x.soTienPhaiTra(), x.getKyTieuThu());
 		}
-
+		
 	}
 }

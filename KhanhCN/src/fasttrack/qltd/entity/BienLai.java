@@ -15,9 +15,6 @@ public class BienLai {
 		this.csCuoiKy = csCuoiKy;	
 	}
 
-	/**
-	 * @return the maCongTo
-	 */
 	public String getMaCongTo() {
 		return maCongTo;
 	}
