@@ -29,7 +29,7 @@ public class SinhVienJavaCapToc extends SinhVien {
 	@Override
 	public double tinhDTB() {
 		
-		return (this.diemLP4+this.diemLP5)*1.0/2;
+		return ((this.diemLP4+this.diemLP5)/2)*1.0;
 	}
 	// xếp loại sv
 		public String xepLoaiSV() {

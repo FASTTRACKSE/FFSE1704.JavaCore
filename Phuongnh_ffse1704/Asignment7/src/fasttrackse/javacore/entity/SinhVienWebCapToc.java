@@ -14,7 +14,7 @@ public class SinhVienWebCapToc extends SinhVien {
 	@Override
 	public double tinhDTB() {
 
-		return (this.diemLP2 + this.diemLP3) * 1.0 / 2;
+		return ((this.diemLP2 + this.diemLP3) / 2) * 1.0;
 	}
 
 	public double getDiemLP2() {

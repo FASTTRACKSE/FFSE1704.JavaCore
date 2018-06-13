@@ -26,7 +26,7 @@ public abstract class SinhVien {
 	}
 
 	public String getTenSV() {
-		return tenSV;
+		return this.tenSV;
 	}
 
 	public void setTenSV(String tenSV) {
