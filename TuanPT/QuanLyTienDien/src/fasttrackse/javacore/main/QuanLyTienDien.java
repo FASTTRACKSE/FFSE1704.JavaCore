@@ -12,8 +12,7 @@ public class QuanLyTienDien {
 	static int tongtien = 0;
 	static ArrayList<KhachHang> arrKhachHang = new ArrayList<KhachHang>();
 	static ArrayList<BienLai> arrBienLai = new ArrayList<BienLai>();
-	private static int chiSoCuoi;
-
+	
 	public static void main(String[] args) {
 		chayChuongTrinh();
 	}
