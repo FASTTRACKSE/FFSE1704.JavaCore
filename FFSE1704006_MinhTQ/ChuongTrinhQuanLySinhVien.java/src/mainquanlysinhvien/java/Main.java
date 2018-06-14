@@ -198,13 +198,13 @@ public class Main {
 		n = nhap.nextInt();
 		if (n == 1) {
 			msg = "\n Sinh Viên Dài hạn";
-			System.out.printf("\n" + "%-8s %-8s %-8s %-8s %-10s %-8s %-8s %-8s %-8s %-8s %-8s  %-9s ", "STT", "Họ", "tên",
-					"NămSinh", "địa chỉ", "LP0", "LP1", "LP2", "LP3", "LP4", "LP5", "LP6");
+			System.out.printf("\n" + "%-8s %-8s %-8s %-8s %-10s %-8s %-8s %-8s %-8s %-8s %-8s  %-9s ", "STT", "Họ",
+					"tên", "NămSinh", "địa chỉ", "LP0", "LP1", "LP2", "LP3", "LP4", "LP5", "LP6");
 			System.out.println("");
 			for (SinhVien o : dsSinhVien) {
-				System.out.print((i++) + "\t" + ((SinhVienDaiHan) o).getHoSinhVien() + "\t  "
+				System.out.print((i++) + "\t" + ((SinhVienDaiHan) o).getHoSinhVien() + "\t    "
 						+ ((SinhVienDaiHan) o).getTenSinhSinh() + "\t   " + ((SinhVienDaiHan) o).getNamSinh() + "\t   "
-						+ ((SinhVienDaiHan) o).getDiaChi() + "\t " + ((SinhVienDaiHan) o).getDiemLP0() + "\t  "
+						+ ((SinhVienDaiHan) o).getDiaChi() + "\t   " + ((SinhVienDaiHan) o).getDiemLP0() + "\t  "
 						+ ((SinhVienDaiHan) o).getDiemLP1() + "\t  " + ((SinhVienDaiHan) o).getDiemLP2() + "\t   "
 						+ ((SinhVienDaiHan) o).getDiemLP3() + "\t   " + ((SinhVienDaiHan) o).getDiemLP4() + "\t   "
 						+ ((SinhVienDaiHan) o).getDiemLP5() + "\t     " + ((SinhVienDaiHan) o).getDiemLP6() + "\t \n");
@@ -215,73 +215,79 @@ public class Main {
 					"LP3");
 			System.out.println();
 			for (SinhVien o : dsSinhVien) {
-				System.out.print((i++) + "\t" + ((SinhVienCapToc) o).getHoSinhVien() + "\t "
-						+ ((SinhVienCapToc) o).getTenSinhSinh() + "\t  " + ((SinhVienCapToc) o).getNamSinh() + "\t   "
-						+ ((SinhVienCapToc) o).getDiaChi() + "\t " + ((SinhVienCapToc) o).getDiemLP2() + "\t    "
+				System.out.print((i++) + "\t" + ((SinhVienCapToc) o).getHoSinhVien() + "\t    "
+						+ ((SinhVienCapToc) o).getTenSinhSinh() + "\t    " + ((SinhVienCapToc) o).getNamSinh() + "\t   "
+						+ ((SinhVienCapToc) o).getDiaChi() + "\t   " + ((SinhVienCapToc) o).getDiemLP2() + "\t    "
 						+ ((SinhVienCapToc) o).getDiemLP3() + "\t \n");
 				System.out.println();
 			}
 		} else if (n == 3) {
 			msg = "\n Sinh Viên Java Cấp Tốc";
-			System.out.printf("%1s %5s %10s %11s %10s %8s %9s  ", "STT", "Họ", "tên", "Năm Sinh", "địa chỉ", "LP4",
+			System.out.printf("%1s %8s %10s %11s %10s %8s %9s  ", "STT", "Họ", "tên", "Năm Sinh", "địa chỉ", "LP4",
 					"LP5");
 			System.out.println();
 			for (SinhVien o : dsSinhVien) {
 
-				System.out.print((i++) + "\t" + ((SinhVienJavaCapToc) o).getHoSinhVien() + "\t "
-						+ ((SinhVienJavaCapToc) o).getTenSinhSinh() + "\t" + ((SinhVienJavaCapToc) o).getNamSinh()
-						+ "\t   " + ((SinhVienJavaCapToc) o).getDiaChi() + "\t " + ((SinhVienJavaCapToc) o).getDiemLP4()
-						+ "\t    " + ((SinhVienJavaCapToc) o).getDiemLP5() + "\n");
+				System.out.print((i++) + "\t" + ((SinhVienJavaCapToc) o).getHoSinhVien() + "\t    "
+						+ ((SinhVienJavaCapToc) o).getTenSinhSinh() + "\t   " + ((SinhVienJavaCapToc) o).getNamSinh()
+						+ "\t    " + ((SinhVienJavaCapToc) o).getDiaChi() + "\t    "
+						+ ((SinhVienJavaCapToc) o).getDiemLP4() + "\t    " + ((SinhVienJavaCapToc) o).getDiemLP5()
+						+ "\n");
 
 			}
 		}
 	}
 
 	public static void danhsachsinhviencohoclucgioi() {
-		for (SinhVien o : dsSinhVien) {
-			if (o instanceof SinhVienDaiHan) {
-				if (((SinhVienDaiHan) o).tinhDiemTrungBinh() >= 8.5) {
-					msg = "\n danh sách học sinh giỏi của khóa dài hạn";
-					System.out.println(
-							"STT     Họ        tên        Năm Sinh        địachỉ       LP0      LP1       LP2       LP3       LP4       LP5        LP6      DTB     xếploại");
-					System.out.printf("%1s %10s %10s %10s %10s %10s %10s %10s %10s %10s %10s %10s %10s %10s", (i++)
-							+ "\t" + ((SinhVienDaiHan) o).getHoSinhVien() + "\t\t" + ((SinhVienDaiHan) o).getTenSinhSinh()
-							+ "\t" + ((SinhVienDaiHan) o).getNamSinh() + "\t\t" + ((SinhVienDaiHan) o).getDiaChi() + "\t"
-							+ ((SinhVienDaiHan) o).getDiemLP0() + "\t" + ((SinhVienDaiHan) o).getDiemLP1() + "\t"
-							+ ((SinhVienDaiHan) o).getDiemLP2() + "\t" + ((SinhVienDaiHan) o).getDiemLP3() + "\t"
-							+ ((SinhVienDaiHan) o).getDiemLP4() + "\t" + ((SinhVienDaiHan) o).getDiemLP5() + "\t"
-							+ ((SinhVienDaiHan) o).getDiemLP6() + "\t" + ((SinhVienDaiHan) o).tinhDiemTrungBinh() + "\t"
-							+ ((SinhVienDaiHan) o).xepLoai() + "\t\n");
-					System.out.println();
-				} else if (o instanceof SinhVienCapToc) {
-					if (((SinhVienCapToc) o).tinhDiemTrungBinh() >= 8.5) {
-						msg = "\n Sinh Viên Cấp Tốc";
-						System.out.println(
-								"  stt    HoSV     TênSV     NamSinhSV    DiaChi     ĐiểmLP2      ĐiểmLP3      DTB     xếploại");
+		System.out.println("\n SINH VIÊN THUỘC CHƯƠNG TRÌNH NÀO");
+		System.out.println("--------------------------------------");
+		System.out.println("1: In danh sách sinh viên dài hạn có học lực giỏi ");
+		System.out.println("2: In danh sách sinh viên khóa cấp tốc có học lục giỏi");
+		System.out.println("3: In danh sách sinh viên khóa java cấp tốc có học lực giỏi");
+		System.out.println("--------------------------------------");
+		n = nhap.nextInt();
+		if (n == 1) {
+			msg = "\n Sinh Viên Dài hạn";
+			System.out.printf("\n" + "%-8s %-8s %-8s %-8s %-10s %-8s %-8s %-8s %-8s %-8s %-8s  %-9s %-8s %-8s ", "STT",
+					"Họ", "tên", "NămSinh", "địa chỉ", "LP0", "LP1", "LP2", "LP3", "LP4", "LP5", "LP6", "DTB",
+					"xeploai");
+			System.out.println("");
+			for (SinhVien o : dsSinhVien) {
+				System.out.print((i++) + "\t" + ((SinhVienDaiHan) o).getHoSinhVien() + "\t     "
+						+ ((SinhVienDaiHan) o).getTenSinhSinh() + "\t   " + ((SinhVienDaiHan) o).getNamSinh() + "\t   "
+						+ ((SinhVienDaiHan) o).getDiaChi() + "\t   " + ((SinhVienDaiHan) o).getDiemLP0() + "\t  "
+						+ ((SinhVienDaiHan) o).getDiemLP1() + "\t  " + ((SinhVienDaiHan) o).getDiemLP2() + "\t   "
+						+ ((SinhVienDaiHan) o).getDiemLP3() + "\t   " + ((SinhVienDaiHan) o).getDiemLP4() + "\t   "
+						+ ((SinhVienDaiHan) o).getDiemLP5() + "\t     " + ((SinhVienDaiHan) o).getDiemLP6()
+						+ ((SinhVienDaiHan) o).tinhDiemTrungBinh() + "\t     " + ((SinhVienDaiHan) o).xepLoai()
+						+ "\t \n");
+			}
+		} else if (n == 2) {
+			msg = "\n Sinh Viên Cấp Tốc";
+			System.out.printf(" %1s %5s %10s %11s %10s %8s %9s %-8s %-8s", "STT", "Họ", "tên", "Năm Sinh", "địa chỉ",
+					"LP2", "LP3", "DTB", "xeploai");
+			System.out.println();
+			for (SinhVien o : dsSinhVien) {
+				System.out.print((i++) + "\t" + ((SinhVienCapToc) o).getHoSinhVien() + "\t    "
+						+ ((SinhVienCapToc) o).getTenSinhSinh() + "\t  " + ((SinhVienCapToc) o).getNamSinh() + "\t   "
+						+ ((SinhVienCapToc) o).getDiaChi() + "\t   " + ((SinhVienCapToc) o).getDiemLP2() + "\t    "
+						+ ((SinhVienCapToc) o).getDiemLP3() + ((SinhVienCapToc) o).tinhDiemTrungBinh() + "\t    "
+						+ ((SinhVienCapToc) o).xepLoai() + "\t \n");
+				System.out.println();
+			}
+		} else if (n == 3) {
+			msg = "\n Sinh Viên Java Cấp Tốc";
+			System.out.printf("%1s %8s %10s %11s %10s %8s %9s %-8s %-8s ", "STT", "Họ", "tên", "Năm Sinh", "địa chỉ",
+					"LP4", "LP5", "DTB", "xeploai");
+			System.out.println();
+			for (SinhVien o : dsSinhVien) {
 
-						System.out.printf(" %1s  %10s  %10s  %10s  %10s  %10s  %10s %10s %10s", (i++) + "\t"
-								+ ((SinhVienCapToc) o).getHoSinhVien() + ((SinhVienCapToc) o).getTenSinhSinh() + "\t"
-								+ ((SinhVienCapToc) o).getNamSinh() + "\t" + ((SinhVienCapToc) o).getDiaChi() + "\t"
-								+ ((SinhVienCapToc) o).getDiemLP2() + "\t" + ((SinhVienCapToc) o).getDiemLP3() + "\t"
-								+ ((SinhVienCapToc) o).tinhDiemTrungBinh() + "\t" + ((SinhVienCapToc) o).xepLoai()
-								+ "\t\n");
-						System.out.println();
-					}
-				} else if (o instanceof SinhVienCapToc) {
-					if (((SinhVienJavaCapToc) o).tinhDiemTrungBinh() >= 8.5)
-						msg = "\n Sinh Viên Java Cấp Tốc";
-					System.out.println(
-							" stt     HoSV     TênSV     NamSinhSV      DiaChi       ĐiểmLP4       ĐiểmLP5      DTB      xếploại ");
-
-					System.out.printf("%1s %10s %10s %10s %10s %10s %10s %10s %10s ", (i++) + "\t"
-							+ ((SinhVienJavaCapToc) o).getHoSinhVien() + "\t"
-							+ ((SinhVienJavaCapToc) o).getTenSinhSinh() + "\t" + ((SinhVienJavaCapToc) o).getNamSinh()
-							+ "\t" + ((SinhVienJavaCapToc) o).getDiaChi() + "\t" + ((SinhVienJavaCapToc) o).getDiemLP4()
-							+ "\t" + ((SinhVienJavaCapToc) o).getDiemLP5() + "\t"
-							+ ((SinhVienCapToc) o).tinhDiemTrungBinh() + "\t" + ((SinhVienCapToc) o).xepLoai()
-							+ "\t\n");
-					System.out.println();
-				}
+				System.out.print((i++) + "\t" + ((SinhVienJavaCapToc) o).getHoSinhVien() + "\t    "
+						+ ((SinhVienJavaCapToc) o).getTenSinhSinh() + "\t   " + ((SinhVienJavaCapToc) o).getNamSinh()
+						+ "\t    " + ((SinhVienJavaCapToc) o).getDiaChi() + "\t   "
+						+ ((SinhVienJavaCapToc) o).getDiemLP4() + "\t    " + ((SinhVienJavaCapToc) o).getDiemLP5()
+						+ ((SinhVienJavaCapToc) o).tinhDiemTrungBinh() + "\t   " + ((SinhVienJavaCapToc) o).xepLoai()
+						+ "\n");
 
 			}
 		}
@@ -289,11 +295,12 @@ public class Main {
 
 	public static void sapxeptheodiem() {
 
-		System.out.println("1 : Sinh viên khóa dài hạn");
-		System.out.println("2 : Sinh viên khóa cấp tốc");
-		System.out.println("3 : Sinh viên khóa Java cấp tốc ");
-		System.out.println(
-				"---------------------------------------------------------------------------------------------------------------------------");
+		System.out.println("\n SINH VIÊN THUỘC CHƯƠNG TRÌNH NÀO");
+		System.out.println("--------------------------------------");
+		System.out.println("1: Sắp xếp sinh viên dài hạn theo điểm trung bình");
+		System.out.println("2: Sắp xếp sinh viên khóa cấp tốc theo điểm trung bình");
+		System.out.println("3: Sắp xếp sinh viên khóa java cấp tốc theo điểm trung bình");
+		System.out.println("--------------------------------------");
 		n = nhap.nextInt();
 		Collections.sort(dsSinhVien, new Comparator<SinhVien>() {
 			@Override
@@ -307,50 +314,47 @@ public class Main {
 				}
 			}
 		});
-
 		if (n == 1) {
-			System.out.println("Sắp xếp theo điểm trung bình của sinh viên khóa dài hạn");
-
+			msg = "\n Sinh Viên Dài hạn";
+			System.out.printf("\n" + "%-8s %-8s %-8s %-8s %-10s %-8s %-8s %-8s %-8s %-8s %-8s  %-9s %-8s ", "STT", "Họ",
+					"tên", "NămSinh", "địa chỉ", "LP0", "LP1", "LP2", "LP3", "LP4", "LP5", "LP6", "DTB");
+			System.out.println("");
 			for (SinhVien o : dsSinhVien) {
-				System.out.println(
-						"stt     HoSV     TênSV     NamSinhSV      DiaChi       ĐiểmLP0       ĐiểmLP1       ĐiểmLP2      ĐiểmLP3      ĐiểmLP4       ĐiểmLP5      ĐiểmLP6      DTB ");
-				System.out.printf("%1s %10s %10s %10s %10s %10s %10s %10s %10s %10s %10s %10s  ",
-						(i++) + "\t" + ((SinhVienDaiHan) o).getHoSinhVien() + "\t"
-								+ ((SinhVienDaiHan) o).getTenSinhSinh() + "\t" + ((SinhVienDaiHan) o).getNamSinh()
-								+ "\t" + ((SinhVienDaiHan) o).getDiaChi() + "\t" + ((SinhVienDaiHan) o).getDiemLP0()
-								+ "\t" + ((SinhVienDaiHan) o).getDiemLP1() + "\t" + ((SinhVienDaiHan) o).getDiemLP2()
-								+ "\t" + ((SinhVienDaiHan) o).getDiemLP3() + "\t" + ((SinhVienDaiHan) o).getDiemLP4()
-								+ "\t" + ((SinhVienDaiHan) o).getDiemLP5() + "\t" + ((SinhVienDaiHan) o).getDiemLP6()
-								+ "\t" + ((SinhVienDaiHan) o).tinhDiemTrungBinh() + "\n");
+				System.out.print((i++) + "\t" + ((SinhVienDaiHan) o).getHoSinhVien() + "\t    "
+						+ ((SinhVienDaiHan) o).getTenSinhSinh() + "\t   " + ((SinhVienDaiHan) o).getNamSinh() + "\t   "
+						+ ((SinhVienDaiHan) o).getDiaChi() + "\t " + ((SinhVienDaiHan) o).getDiemLP0() + "\t  "
+						+ ((SinhVienDaiHan) o).getDiemLP1() + "\t  " + ((SinhVienDaiHan) o).getDiemLP2() + "\t   "
+						+ ((SinhVienDaiHan) o).getDiemLP3() + "\t   " + ((SinhVienDaiHan) o).getDiemLP4() + "\t   "
+						+ ((SinhVienDaiHan) o).getDiemLP5() + "\t     " + ((SinhVienDaiHan) o).getDiemLP6()+"\t    " 
+						+ ((SinhVienDaiHan) o).tinhDiemTrungBinh() + "\t \n");
 			}
 		} else if (n == 2) {
-			System.out.println("Sắp xếp theo điểm trung bình của sinh viên khóa cấp tốc");
-
+			msg = "\n Sinh Viên Cấp Tốc";
+			System.out.printf(" %1s %5s %10s %11s %10s %8s %9s %-8s", "STT", "Họ", "tên", "Năm Sinh", "địa chỉ", "LP2",
+					"LP3", "DTB");
+			System.out.println();
 			for (SinhVien o : dsSinhVien) {
-
-				System.out.println(
-						"stt     HoSV     TênSV     NamSinhSV      DiaChi       ĐiểmLP4       ĐiểmLP5      DTB ");
-				System.out.printf(" %1s  %10s  %10s  %10s  %10s  %10s  %10s  ",
-						(i++) + "\t" + ((SinhVienCapToc) o).getHoSinhVien() + "\t"
-								+ ((SinhVienCapToc) o).getTenSinhSinh() + "\t" + ((SinhVienCapToc) o).getNamSinh()
-								+ "\t" + ((SinhVienCapToc) o).getDiaChi() + "\t" + ((SinhVienCapToc) o).getDiemLP2()
-								+ "\t" + ((SinhVienCapToc) o).getDiemLP3() + "\t"
-								+ ((SinhVienCapToc) o).tinhDiemTrungBinh() + "\n");
+				System.out.print((i++) + "\t" + ((SinhVienCapToc) o).getHoSinhVien() + "\t    "
+						+ ((SinhVienCapToc) o).getTenSinhSinh() + "\t  " + ((SinhVienCapToc) o).getNamSinh() + "\t   "
+						+ ((SinhVienCapToc) o).getDiaChi() + "\t " + ((SinhVienCapToc) o).getDiemLP2() + "\t    "
+						+ ((SinhVienCapToc) o).getDiemLP3() +"\t    " + ((SinhVienCapToc) o).tinhDiemTrungBinh() + "\t \n");
+				System.out.println();
 			}
 		} else if (n == 3) {
-			System.out.println("Sắp xếp theo điểm trung bình của sinh viên khóa java cấp tốc");
-
+			msg = "\n Sinh Viên Java Cấp Tốc";
+			System.out.printf("%1s %8s %10s %11s %10s %8s %9s %8s ", "STT", "Họ", "tên", "Năm Sinh", "địa chỉ", "LP4",
+					"LP5", "DTB");
+			System.out.println();
 			for (SinhVien o : dsSinhVien) {
-				System.out.println(
-						"stt     HoSV     TênSV     NamSinhSV      DiaChi       ĐiểmLP4       ĐiểmLP5      DTB ");
-				System.out.printf("%1s %10s %10s %10s %10s %10s %10s %10s %10s ", (i) + "\t"
-						+ ((SinhVienJavaCapToc) o).getHoSinhVien() + "\t" + ((SinhVienJavaCapToc) o).getTenSinhSinh()
-						+ "\t" + ((SinhVienJavaCapToc) o).getNamSinh() + "\t" + ((SinhVienJavaCapToc) o).getDiaChi()
-						+ "\t" + ((SinhVienJavaCapToc) o).getDiemLP4() + "\t" + ((SinhVienJavaCapToc) o).getDiemLP5()
-						+ "\t" + ((SinhVienJavaCapToc) o).tinhDiemTrungBinh() + "\t\n");
+
+				System.out.print((i++) + "\t" + ((SinhVienJavaCapToc) o).getHoSinhVien() + "\t    "
+						+ ((SinhVienJavaCapToc) o).getTenSinhSinh() + "\t   " + ((SinhVienJavaCapToc) o).getNamSinh()
+						+ "\t    " + ((SinhVienJavaCapToc) o).getDiaChi() + "\t "
+						+ ((SinhVienJavaCapToc) o).getDiemLP4() + "\t    " + ((SinhVienJavaCapToc) o).getDiemLP5()
+						+ "\t    " + ((SinhVienJavaCapToc) o).tinhDiemTrungBinh() + "\n");
+
 			}
 		}
-
 	}
 
 }
