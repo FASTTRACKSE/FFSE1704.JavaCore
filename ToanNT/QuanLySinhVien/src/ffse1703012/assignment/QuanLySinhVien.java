@@ -1,6 +1,5 @@
 package ffse1703012.assignment;
 
-import java.util.Comparator;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,7 +45,7 @@ public class QuanLySinhVien {
 		System.out.println("+----------------------------------------+");
 		System.out.println("|1.Sinh viên dài hạn                     |");
 		System.out.println("|2.Sinh viên Web Cấp tốc                 |");
-		System.out.println("|2.Sinh Viên Java Cấp tốc                |");
+		System.out.println("|3.Sinh Viên Java Cấp tốc                |");
 		System.out.println("+----------------------------------------+");
 		int n = sc.nextInt();
 		if (n == 1) {
@@ -162,7 +161,7 @@ public class QuanLySinhVien {
 		System.out.println("+---------------------------------------------+");
 		System.out.println("|1.Xuất Sinh viên dài hạn                     |");
 		System.out.println("|2.Xuất Sinh viên Web Cấp tốc                 |");
-		System.out.println("|2.Xuất Sinh Viên Java Cấp tốc                |");
+		System.out.println("|3.Xuất Sinh Viên Java Cấp tốc                |");
 		System.out.println("+---------------------------------------------+");
 		int n = sc.nextInt();
 		if (n == 1) {
@@ -212,7 +211,7 @@ public class QuanLySinhVien {
 		System.out.println("+---------------------------------------------+");
 		System.out.println("|1.Xuất Sinh viên dài hạn                     |");
 		System.out.println("|2.Xuất Sinh viên Web Cấp tốc                 |");
-		System.out.println("|2.Xuất Sinh Viên Java Cấp tốc                |");
+		System.out.println("|3.Xuất Sinh Viên Java Cấp tốc                |");
 		System.out.println("+---------------------------------------------+");
 		int n = sc.nextInt();
 		if (n == 1) {
@@ -267,7 +266,7 @@ public class QuanLySinhVien {
 		System.out.println("+---------------------------------------------+");
 		System.out.println("|1.Sắp xếp Sinh viên dài hạn                     |");
 		System.out.println("|2.Sắp xếp Sinh viên Web Cấp tốc                 |");
-		System.out.println("|2.Sắp xếp Sinh Viên Java Cấp tốc                |");
+		System.out.println("|3.Sắp xếp Sinh Viên Java Cấp tốc                |");
 		System.out.println("+---------------------------------------------+");
 		int n = sc.nextInt();
 		if (n == 1) {
@@ -321,7 +320,7 @@ public class QuanLySinhVien {
 	}
 
 	public static void SapXepCaTruong() {
-
+		
 	}
 
 	public static void KetThuc() {
