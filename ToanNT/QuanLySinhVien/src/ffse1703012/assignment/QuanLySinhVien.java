@@ -303,6 +303,20 @@ public class QuanLySinhVien {
 
 				}
 			}
+		}else if (n == 3) {
+			Collections.sort(dsSinhVien, SVComparator.SinhVienDTBASComparator);
+			System.out.println(
+					"+---------------------------------DANH SÁCH SINH VIÊN GIỎI LỚP JAVA CẤP TỐC--------------------------------------+");
+			System.out.println("|   Tên SV     |     Ngày sinh      |    Địa Chỉ  | Điểm LP4   | Điểm LP5 | Điểm TB |");
+			for (SinhVien x : dsSinhVien) {
+				if (x instanceof SinhVienJavaCapToc) {
+					if (((SinhVienJavaCapToc) x).tinhDTB() >= 8.5) {
+						System.out.printf("%-10s %-15s %-15s %-7s %-7s %-7s\n", x.getHoSV() + x.getTenSV(),
+								x.getNgaySinh(), x.getDiaChi(), ((SinhVienJavaCapToc) x).getDiemLP4(),
+								((SinhVienJavaCapToc) x).getDiemLP5(), ((SinhVienJavaCapToc) x).tinhDTB());
+					}
+				}
+			}
 		}
 	}
 
