@@ -1,7 +1,10 @@
 package bai1.main;
 import bai1.entity.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
+import java.util.Random;
+import java.util.Vector;
 
 public class CTQLSinhVien {
 	static int N;
@@ -52,15 +55,30 @@ public class CTQLSinhVien {
 				
 				System.out.println("Nhập tên sinh viên");
 				String tenSV = myInput.nextLine();
-				dsSinhVien.addnew(SinhVien(hoSV,tenSV));
+				dsSinhVien.add(new SinhVien(hoSV,tenSV));
 				
 			}
 		}
 		public static void XuatTTSinhVien() {
-		
+			System.out.println("Danh sách sinh viên vừa nhập:");
+			int i =0;
+			for(SinhVien o : dsSinhVien) {
+				System.out.println("Sinh viên thứ "+(i+1)+":"+"Họ Sinh Viên:"+o.getHoSV()+"  "+"tên Sinh viên:"
+						+o.getTenSV());
+				i++;
+			}
 		}
 		public static void XuatDsNgauNhien() {
-		
+			 if(dsSinhVien.size()==0){
+		         System.out.println("Chưa có họ tên: ");
+		     }
+		     else{
+		         for(int i=0;i<dsSinhVien.size();i++){
+		        	 dsSinhVien.get(i).xem();
+		             Collections.shuffle(dsSinhVien);
+		         }
+		     }
+		 
 		}
 		public static void SapXepGiamDan() {
 			

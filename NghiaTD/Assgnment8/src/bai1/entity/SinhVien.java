@@ -19,5 +19,8 @@ public class SinhVien {
 	public void setTenSV(String tenSV) {
 		this.tenSV = tenSV;
 	}
+	public void xem() {
+		
+	}
 	
 }
