@@ -8,4 +8,4 @@
 7. [Assignment 7: Menu Chức Năng](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/MangSo/src/MangSo/ViTriPhanTu.java)
 8. [Assignment 8: Quản lý sinh viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/QLSV/src/fasttrackse/javacore/entity/SinhVien.java)
 9. [Assignment 9: Quản lý sinh viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/TDuong_FFSE1704/HelloWorld/src/QLSV/src/fasttrackse/javacore/main/QuanLySinhVien.java)
-10. [Assignment 10: Quản lý tiền điện]
+10. [Assignment 10: Quản lý tiền điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/TDuong_FFSE1704/HelloWorld/src/Qu%E1%BA%A3n%20l%C3%BD%20sinh%20vi%C3%AAn/src/Quanlytiendien)
