@@ -36,28 +36,28 @@ public class SinhVienJavaCapToc extends SinhVien {
 		return (this.diemLP4 + this.diemLP5)/2;
 	}
 
-	
-	public String xepLoaiSV() {
-		String ketQua;
-		if (tinhDTB() <= 5) {
-			ketQua="Yếu";
-			//System.out.println("Yếu");
-			
-		} else if (tinhDTB() <= 7) {
-			ketQua="Trung bình";
-			//System.out.println("Trung Bình");
-			
-		} else if (tinhDTB() <= 8.5) {
-			ketQua="khá";
-			//System.out.println("Khá");
-			
-		} else {
-			ketQua="Giỏi";
-			//System.out.println("Giỏi");
-			
-		}
-		return ketQua;
-	}
+//	@Override
+//	public String xepLoaiSV() {
+//		String ketQua;
+//		if (tinhDTB() <= 5) {
+//			ketQua="Yếu";
+//			//System.out.println("Yếu");
+//			
+//		} else if (tinhDTB() <= 7) {
+//			ketQua="Trung bình";
+//			//System.out.println("Trung Bình");
+//			
+//		} else if (tinhDTB() <= 8.5) {
+//			ketQua="khá";
+//			//System.out.println("Khá");
+//			
+//		} else {
+//			ketQua="Giỏi";
+//			//System.out.println("Giỏi");
+//			
+//		}
+//		return ketQua;
+//	}
 
 
 
