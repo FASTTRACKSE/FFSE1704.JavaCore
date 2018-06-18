@@ -1,10 +1,18 @@
 package Quanlytiendien.main;
 
+/**
+ * @author Support
+ *
+ */
 import java.util.Scanner;
+
 import Quanlytiendien.entity.*;
 
-public class Main {
+public class CTQLTD {
 
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		@SuppressWarnings("resource")
 		Scanner nhap = new Scanner(System.in);
@@ -43,12 +51,24 @@ public class Main {
 			bienlai[i] = new BienLai(kyTieuThu, chiSoCu, chiSoMoi);
 
 		}
-
-		// IN DANH SÁCH KHÁCH HÀNG
-		System.out.println("DANH SÁCH KHÁCH HÀNG");
+		
+		//IN DANH SÁCH KHÁCH HÀNG
+		System.out.println("\t \t \t\tDANH SÁCH KHÁCH HÀNG");
+		System.out.println("\t \t \t *********************************");
+		// System.out.printf("\n" + "%-10s %-15s %-15s %-15s %-15s %-15s %-15s %-15s
+		// %-15s", "STT", "Mã Khách Hàng", "Tên Khách Hàng",
+		// "Địa chỉ", "mã Số Công Tơ", "Kỳ Tiêu Thụ", "Chỉ Số Cũ", "Chỉ Số Mới", "Thành
+		// Tiền (VNĐ)");
+		// System.out.println("\n---------------------------------------------------------------------------------------------");
 
 		for (int i = 0; i < khachhang.length; i++) {
 
+			// System.out.printf("\t\t"+(i + 1)+"\t\t" + khachhang[i].getMaKhachHang() +
+			// "\t\t" + khachhang[i].getHoTenKhachHang() + "\t\t" + khachhang[i].getDiaChi()
+			// + "\t\t" + khachhang[i].getMaSoCongTo()
+			// + "\t\t " + bienlai[i].getKyTieuThu() + "\t\t" + bienlai[i].getChiSoCu() +
+			// "\t\t"+ bienlai[i].getChiSoMoi() + "\t\t"+ bienlai[i].soTienPhaiTra() +
+			// "\t\t");
 			System.out.println("********************************");
 			System.out.println("Khách hàng thứ " + (i + 1) + ": " + khachhang[i].toString() + "Kỳ tiêu thụ: "
 					+ bienlai[i].getKyTieuThu() + "\n ***** Chỉ số cũ: " + bienlai[i].getChiSoCu()
