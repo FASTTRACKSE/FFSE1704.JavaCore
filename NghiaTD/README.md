@@ -20,6 +20,6 @@
 [Main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Assgnment5/src/main/Main.java)
 
 7.[Assgnment6]
-  [Chương trình quản lý sinh viên nâng cao]
-  (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/HelloWorld/src/QLSVFACTTRACKSE/src/ffse1704)
+[Chương trình quản lý sinh viên nâng cao]
+(https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/HelloWorld/src/QLSVFACTTRACKSE/src/ffse1704)
 
