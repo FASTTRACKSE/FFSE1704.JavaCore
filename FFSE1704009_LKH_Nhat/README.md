@@ -10,3 +10,4 @@
 6. [Assignment 5: Chương trình quản lý tiền điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_5/src/quanlytiendien)
 7. [Assignment 6: Chương trình quản lý tiền điện nâng cao](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_6/src/quanlytiendien)
 8. [Assignment 7: Chương trình quản lý sinh viên nâng cao](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_7/src/ffse/quanlysinhvien)
+9. [Assignment 8: Chương trình quản lý nhân viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_8/src/ffse/quanlynhanvien)
