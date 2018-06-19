@@ -66,7 +66,7 @@ public class QuanLyNhanVien {
 				nhap.nextLine();
 
 				System.out.print("Nhập Họ Tên Giảng Viên: ");
-				String tenGV = nhap.nextLine();
+				String tenCanBo = nhap.nextLine();
 
 				System.out.print("Nhập Khoa : ");
 				String khoa = nhap.nextLine();
@@ -82,7 +82,7 @@ public class QuanLyNhanVien {
 
 				System.out.println("------------------------------------------------------------------");
 
-				dsCanBo.add(new GiangVien(tenGV, khoa, trinhDo, soTietDay, heSoLuong));
+				dsCanBo.add(new GiangVien(tenCanBo, khoa, trinhDo, soTietDay, heSoLuong));
 			}
 		}
 		// kết thúc vòng lặp nhập
@@ -97,7 +97,7 @@ public class QuanLyNhanVien {
 					nhap.nextLine();
 
 					System.out.print("Nhập Họ Tên Nhân Viên: ");
-					String tenNV = nhap.nextLine();
+					String tenCanBo = nhap.nextLine();
 
 					System.out.print("Phòng Ban : ");
 					String phongBan = nhap.nextLine();
@@ -113,7 +113,7 @@ public class QuanLyNhanVien {
 
 					System.out.println("------------------------------------------------------------------");
 
-					dsCanBo.add(new NhanVien(tenNV, phongBan, chucVu, soNgayCong, heSoLuong));
+					dsCanBo.add(new NhanVien(tenCanBo, phongBan, chucVu, soNgayCong, heSoLuong));
 				}
 				// kết thúc vòng lặp nhập
 			} else {
@@ -134,7 +134,7 @@ public class QuanLyNhanVien {
 				if (M.equals(((GiangVien) dsCanBo.get(i)).getKhoa())) {
 
 					System.out.println("Giảng Viên  Thứ " + (i + 1) + ":\n Họ Tên Giảng Viên: "
-							+ ((GiangVien) dsCanBo.get(i)).getTenGV() + "\n - Khoa: "
+							+ ((GiangVien) dsCanBo.get(i)).getTenCanBo() + "\n - Khoa: "
 							+ ((GiangVien) dsCanBo.get(i)).getKhoa() + "\n - Trình Độ: "
 							+ ((GiangVien) dsCanBo.get(i)).getTrinhDo() + "\n - Số Tiết Dạy: "
 							+ ((GiangVien) dsCanBo.get(i)).getSoTietDay() + "\n - Hệ Số Lương: "
@@ -147,7 +147,7 @@ public class QuanLyNhanVien {
 				if (M.equals(((NhanVien) dsCanBo.get(i)).getPhongBan())) {
 
 					System.out.println("Nhân Viên  Thứ " + (i + 1) + ":\n Họ Tên Nhân Viên: "
-							+ ((NhanVien) dsCanBo.get(i)).getTenNV() + "\n - phòng Ban: "
+							+ ((NhanVien) dsCanBo.get(i)).getTenCanBo() + "\n - phòng Ban: "
 							+ ((NhanVien) dsCanBo.get(i)).getPhongBan() + "\n - Chức Vụ: "
 							+ ((NhanVien) dsCanBo.get(i)).getChucVu() + "\n - Số Ngày Công: "
 							+ ((NhanVien) dsCanBo.get(i)).getSoNgayCong() + "\n - Hệ Số Lương: "
@@ -172,6 +172,7 @@ public class QuanLyNhanVien {
 	public static void SapXep() {
 		int i = 0;
 		Collections.sort(dsCanBo, NVComparator.CanBoLuongASComparator);
+		
 
 		System.out.println(
 				"|-------------------------------------------------------------------DANH SÁCH CÁN BỘ-------------------------------------------------------------------------|");
@@ -182,16 +183,16 @@ public class QuanLyNhanVien {
 		System.out.println(
 				"-------------------------------------------------------------------*******************-------------------------------------------------------------------------");
 		for (ThongTin o : dsCanBo) {
-
+			//Collections.sort(dsCanBo, NVComparator.CBCodeASCComparator);
 			if (o instanceof GiangVien) {
 				System.out.printf("\n" + "%-10s %-10s %-15s %-15s  %-15s  %-15s %-15s %-15s %-15s %-15s ", (i++),
-						((GiangVien) o).getTenGV() + " " + ((GiangVien) o).getKhoa(),"x", ((GiangVien) o).getTrinhDo(),"x",
+						((GiangVien) o).getTenCanBo()  , ((GiangVien) o).getKhoa(),"x", ((GiangVien) o).getTrinhDo(),"x",
 						((GiangVien) o).getSoTietDay(),"x",((GiangVien) o).getHeSoLuong(),
 						((GiangVien) o).tinhLuong() + "\n");
 			} else {
 				if (o instanceof NhanVien) {
 					System.out.printf("\n" + "%-10s %-10s %-15s %-15s  %-15s  %-15s %-15s %-15s %-15s %-15s ", (i++),
-							((NhanVien) o).getTenNV() , "x " ,((NhanVien) o).getPhongBan(),"x" ,((NhanVien) o).getChucVu(),"x",
+							((NhanVien) o).getTenCanBo() , "x " ,((NhanVien) o).getPhongBan(),"x" ,((NhanVien) o).getChucVu(),"x",
 							((NhanVien) o).getSoNgayCong(), ((NhanVien) o).getHeSoLuong(),
 							((NhanVien) o).tinhLuong() + "\n");
 				}
