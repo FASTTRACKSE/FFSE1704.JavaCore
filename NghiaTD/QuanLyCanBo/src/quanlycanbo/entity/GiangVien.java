@@ -4,9 +4,9 @@ public class GiangVien extends CanBo {
 		private String khoa;
 		private String trinhDo;
 		private int soTietDay;
-	public GiangVien(String hoTen, double heSoLuong, int phuCap, String khoa,String trinhDo,
+	public GiangVien(String hoTen, double heSoLuong, String khoa,String trinhDo,
 			int soTietDay) {
-		super(hoTen, heSoLuong, phuCap);
+		super(hoTen, heSoLuong);
 		this.khoa=khoa;
 		this.trinhDo=trinhDo;
 		this.soTietDay=soTietDay;
@@ -32,6 +32,17 @@ public class GiangVien extends CanBo {
 		this.soTietDay = soTietDay;
 	}
 	public double tinhLuong() {
-		return this.getHeSoLuong()*730+this.getPhuCap()+this.getSoTietDay()*45;
-	}
+		
+			double tinhLuong=0;
+			if("Cử nhân".equals(getTrinhDo())) {
+				return (this.heSoLuong * 730) + (2000) + (this.soTietDay * 45);
+			}else if("Thạc sĩ".equals(getTrinhDo())) {
+				return (this.heSoLuong * 730) +(1000) + (this.soTietDay * 45);
+			}else if("Tiến sĩ".equals(getTrinhDo())) {
+				return (this.heSoLuong * 730) + (500) + (this.soTietDay * 45);
+			}
+			
+			return tinhLuong;
+
+		}
 }

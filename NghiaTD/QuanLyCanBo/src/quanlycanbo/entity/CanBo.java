@@ -2,17 +2,17 @@ package quanlycanbo.entity;
 
 import java.util.Scanner;
 
-public class CanBo {
-	private String hoTen;
-	private double heSoLuong;
-	private int phuCap;
+public abstract class CanBo {
+	protected String hoTen;
+	protected double heSoLuong;
+//	protected int phuCap;
 //	private String loaiCanBo;
 	Scanner myInput = new Scanner(System.in);
-
-	public  CanBo(String hoTen,double heSoLuong,int phuCap) {
+	public abstract double tinhLuong();
+	public  CanBo(String hoTen,double heSoLuong) {
 		this.hoTen=hoTen;
 		this.heSoLuong=heSoLuong;
-		this.phuCap=phuCap;
+//		this.phuCap=phuCap;
 		//this.loaiCanBo=loaiCanBo;
 		
 	}
@@ -33,13 +33,13 @@ public class CanBo {
 		this.heSoLuong = heSoLuong;
 	}
 
-	public int getPhuCap() {
-		return phuCap;
-	}
-
-	public void setPhuCap(int phuCap) {
-		this.phuCap = phuCap;
-	}
+//	public int getPhuCap() {
+//		return phuCap;
+//	}
+//
+//	public void setPhuCap(int phuCap) {
+//		this.phuCap = phuCap;
+//	}
 
 //	public String getLoaiCanBo() {
 //		return loaiCanBo;
