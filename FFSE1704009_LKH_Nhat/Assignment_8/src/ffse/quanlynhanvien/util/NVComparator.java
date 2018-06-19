@@ -2,13 +2,13 @@ package ffse.quanlynhanvien.util;
 
 import java.util.Comparator;
 
-import ffse.quanlynhanvien.entity.ThongTin;
+import ffse.quanlynhanvien.entity.CanBo;
 
 public class NVComparator {
 
-	public static Comparator<ThongTin> CanBoLuongASComparator = new Comparator<ThongTin>() {
+	public static Comparator<CanBo> CanBoLuongASComparator = new Comparator<CanBo>() {
 
-		public int compare(ThongTin s1, ThongTin s2) {
+		public int compare(CanBo s1, CanBo s2) {
 
 			/* For ascending order */
 			if ((s2.tinhLuong() - s1.tinhLuong()) > 0)

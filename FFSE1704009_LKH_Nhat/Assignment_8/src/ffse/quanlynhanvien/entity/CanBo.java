@@ -1,9 +1,9 @@
 package ffse.quanlynhanvien.entity;
 
-public abstract class ThongTin {
+public abstract class CanBo {
 	private String tenCanBo;
 
-	public ThongTin(String tenCanBo) {
+	public CanBo(String tenCanBo) {
 		this.tenCanBo = tenCanBo;
 	}
 

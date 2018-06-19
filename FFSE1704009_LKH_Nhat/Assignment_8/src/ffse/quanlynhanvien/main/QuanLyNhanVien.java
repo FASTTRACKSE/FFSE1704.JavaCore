@@ -16,11 +16,10 @@ import ffse.quanlynhanvien.util.NVComparator;
  */
 public class QuanLyNhanVien {
 	private static int N;
-	private static ArrayList<ThongTin> dsCanBo = new ArrayList<ThongTin>();
+	private static ArrayList<CanBo> dsCanBo = new ArrayList<CanBo>();
 	static Scanner nhap = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		
 
 		while (true) {
 			System.out.println(">> Menu Chương Trình <<");
@@ -47,7 +46,6 @@ public class QuanLyNhanVien {
 		}
 
 	}
-	
 
 	public static void nhapThongTin() {
 		System.out.println(">>Nhập Thông tin Cán Bộ<<");
@@ -172,7 +170,6 @@ public class QuanLyNhanVien {
 	public static void SapXep() {
 		int i = 0;
 		Collections.sort(dsCanBo, NVComparator.CanBoLuongASComparator);
-		
 
 		System.out.println(
 				"|-------------------------------------------------------------------DANH SÁCH CÁN BỘ-------------------------------------------------------------------------|");
@@ -182,19 +179,19 @@ public class QuanLyNhanVien {
 		System.out.println("");
 		System.out.println(
 				"-------------------------------------------------------------------*******************-------------------------------------------------------------------------");
-		for (ThongTin o : dsCanBo) {
-			//Collections.sort(dsCanBo, NVComparator.CBCodeASCComparator);
+		for (CanBo o : dsCanBo) {
+
 			if (o instanceof GiangVien) {
 				System.out.printf("\n" + "%-10s %-10s %-15s %-15s  %-15s  %-15s %-15s %-15s %-15s %-15s ", (i++),
-						((GiangVien) o).getTenCanBo()  , ((GiangVien) o).getKhoa(),"x", ((GiangVien) o).getTrinhDo(),"x",
-						((GiangVien) o).getSoTietDay(),"x",((GiangVien) o).getHeSoLuong(),
+						((GiangVien) o).getTenCanBo(), ((GiangVien) o).getKhoa(), "x", ((GiangVien) o).getTrinhDo(),
+						"x", ((GiangVien) o).getSoTietDay(), "x", ((GiangVien) o).getHeSoLuong(),
 						((GiangVien) o).tinhLuong() + "\n");
 			} else {
 				if (o instanceof NhanVien) {
 					System.out.printf("\n" + "%-10s %-10s %-15s %-15s  %-15s  %-15s %-15s %-15s %-15s %-15s ", (i++),
-							((NhanVien) o).getTenCanBo() , "x " ,((NhanVien) o).getPhongBan(),"x" ,((NhanVien) o).getChucVu(),"x",
-							((NhanVien) o).getSoNgayCong(), ((NhanVien) o).getHeSoLuong(),
-							((NhanVien) o).tinhLuong() + "\n");
+							((NhanVien) o).getTenCanBo(), "x ", ((NhanVien) o).getPhongBan(), "x",
+							((NhanVien) o).getChucVu(), "x", ((NhanVien) o).getSoNgayCong(),
+							((NhanVien) o).getHeSoLuong(), ((NhanVien) o).tinhLuong() + "\n");
 				}
 			}
 			System.out.println("");
