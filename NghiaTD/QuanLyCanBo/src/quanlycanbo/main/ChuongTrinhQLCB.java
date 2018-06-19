@@ -163,16 +163,18 @@ public class ChuongTrinhQLCB {
 				"-------------------------------	------------------------------------*******************-------------------------------------------------------------------------");
 		for(CanBo o : dsCanBo) {
 			if(o instanceof GiangVien) {
+				GiangVien gv = (GiangVien) o;
 				System.out.printf("\n" + "%-10s %-10s %-15s %-15s  %-15s  %-15s %-15s %-15s %-15s %-15s ",
-						(i++),((GiangVien) o).getHoTen()+ " " +((GiangVien) o).getHeSoLuong()+((GiangVien) o).getKhoa()+"x"
-						+((GiangVien) o).getTrinhDo()+"x"+((GiangVien) o).getSoTietDay()+"X"
-						+((GiangVien) o).tinhLuong()+"\n");
+						(i++),gv.getHoTen() ,gv.getHeSoLuong(),gv.getKhoa(),"x"
+						,gv.getTrinhDo(),"x",gv.getSoTietDay(),"X"
+						,gv.tinhLuong(),"\n");
 			}
 			else if(o instanceof NhanVien) {
+				NhanVien nv = (NhanVien) o;
 				System.out.printf("\n" + "%-10s %-10s %-15s %-15s  %-15s  %-15s %-15s %-15s %-15s %-15s ", 
-						(i++),((NhanVien) o).getHoTen()+((NhanVien) o).getHeSoLuong()+"x"+((NhanVien) o).getPhongBan()+"X"
-						+((NhanVien) o).getChucVu()+"X"+((NhanVien) o).getSoNgayCong()
-						+((NhanVien) o).tinhLuong()+"\n");
+						(i++),nv.getHoTen()+nv.getHeSoLuong(),"x",nv.getPhongBan(),"X"
+						,nv.getChucVu(),"X",nv.getSoNgayCong()
+						,nv.tinhLuong(),"\n");
 			}
 		}
 		System.out.println("");
