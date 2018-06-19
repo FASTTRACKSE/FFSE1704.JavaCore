@@ -172,7 +172,7 @@ public class ChuongTrinhQLCB {
 			else if(o instanceof NhanVien) {
 				NhanVien nv = (NhanVien) o;
 				System.out.printf("\n" + "%-10s %-10s %-15s %-15s  %-15s  %-15s %-15s %-15s %-15s %-15s ", 
-						(i++),nv.getHoTen()+nv.getHeSoLuong(),"x",nv.getPhongBan(),"X"
+						(i++),nv.getHoTen(),nv.getHeSoLuong(),"x",nv.getPhongBan(),"X"
 						,nv.getChucVu(),"X",nv.getSoNgayCong()
 						,nv.tinhLuong(),"\n");
 			}
