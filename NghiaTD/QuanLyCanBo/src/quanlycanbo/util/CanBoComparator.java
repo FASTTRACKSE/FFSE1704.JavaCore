@@ -6,16 +6,16 @@ public class CanBoComparator {
 
 		public int compare(CanBo s1, CanBo s2) {
 
-			double fLuong1 = s1.tinhLuong();
-			double fLuong2 = s2.tinhLuong();
+		
 
 			/* For ascending order */
-			if ((fLuong2 - fLuong1) > 0)
+			if ((s2.tinhLuong() - s1.tinhLuong()) > 0)
 				return 1;
-			else if ((fLuong2 - fLuong1) < 0)
+			else if  ((s2.tinhLuong() - s1.tinhLuong()) < 0)
 				return -1;
 			else
-				return 0;
+				return s1.getHoTen().compareTo(s2.getHoTen()) ;
+				
 
 			/* For descending order */
 			// fDTB1-fDTB2;
