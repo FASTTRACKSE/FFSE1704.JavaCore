@@ -72,11 +72,12 @@ public class ChuongTrinhQuanLyHinhHoc {
 		 int chieuDai = nhap.nextInt();
 		System.out.print("nhập chiều dài");
 		 int chieuRong= nhap.nextInt();
-		 dsHinhChuNhat.add(o)
+		 dsHinhChuNhat.add(o);
 		 }
 		 int i = 0;
 		 String msg = "";
-		 for (HinhChuNhat o : dsHinhhoc) {
+		
+		for (HinhChuNhat o : dsHinhhoc) {
 		 if (o instanceof HinhChuNhat) {
 	 msg = "Hình chữ nhật(" + ((HinhChuNhat) o).getChieuDai() + ", " +
 		((HinhChuNhat) o).getChieuRong()
