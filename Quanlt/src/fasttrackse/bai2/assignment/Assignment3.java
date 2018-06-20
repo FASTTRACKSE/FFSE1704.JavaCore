@@ -49,7 +49,20 @@ public class Assignment3 {
 		System.out.println("------------------");
 		System.out.println(vtmin);
 		System.out.println(vtmax);
-
+		 Arrays.sort(arr);
+		 System.out.println("Mảng sắp theo thứ tự tăng dần");
+		 for(int q=0; q<arr.length;q++) {
+		 System.out.println(arr[q]+" ");
+		 }
+		 System.out.println("Mảng sắp theo thứ tự giảm dần");
+		 Integer[] arrnew = new Integer[arr.length];
+		 for(int h=0;h<arr.length;h++) {
+		 arrnew[h] = new Integer(arr[h]);
+		 }
+		 Arrays.sort(arrnew, Collections.reverseOrder());
+		 for(int g=0; g<arr.length;g++) {
+		 System.out.println(arrnew[g]+" ");
+		 }
 	}
 
 }
