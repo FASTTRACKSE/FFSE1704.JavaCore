@@ -10,4 +10,4 @@
 9. [Assignment 5b: CT Quản Lý Tiền Điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1704006_MinhTQ/src/QuanLyTienDien/KhachHang.java)
 10. [Assignment 6: CT Quản Lý Tiền Điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704006_MinhTQ/src)
 10. [Assignment 7: CT Quản Lý Sinh Viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704006_MinhTQ/ChuongTrinhQuanLySinhVien.java/src)
-10. [Assignment : CT Quản Lý Nhân Viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704006_MinhTQ/ChuongTrinhQuanLyNhanVien.java/src)
+10. [Assignment 8: CT Quản Lý Nhân Viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704006_MinhTQ/ChuongTrinhQuanLyNhanVien.java/src)
