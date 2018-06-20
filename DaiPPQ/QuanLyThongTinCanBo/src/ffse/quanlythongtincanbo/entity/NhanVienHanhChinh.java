@@ -44,7 +44,7 @@ public class NhanVienHanhChinh extends NhanVien {
 
 	@Override
 	public double tinhLuong() {
-		double luong = getHeSoLuong()*750 + getPhuCap() + getSoNgayCong()*30;
+		double luong = getHeSoLuong()*730 + getPhuCap() + getSoNgayCong()*30;
 		return luong;
 	}
 }

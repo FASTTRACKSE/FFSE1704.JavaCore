@@ -41,10 +41,9 @@ public class GiangVien extends NhanVien {
 		this.soTietDayTrongThang = soTietDayTrongThang;
 	}
 
-
 	@Override
 	public double tinhLuong() {
-		double luong = getHeSoLuong()*750 + getPhuCap() + getsoTietDayTrongThang()*45;
+		double luong = getHeSoLuong()*730 + getPhuCap() + getsoTietDayTrongThang()*45;
 		return luong;
 	}
 
