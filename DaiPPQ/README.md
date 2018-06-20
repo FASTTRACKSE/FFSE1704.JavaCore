@@ -33,3 +33,8 @@
 [main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_7/src/fasttrackse/quanlysinhvien/main)</br>
 [entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_7/src/fasttrackse/quanlysinhvien/entity)</br>
 [util](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_7/src/fasttrackse/quanlysinhvien/util)
+
+11. [Quản lý cán bộ]</br>
+[main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QuanLyThongTinCanBo/src/ffse/quanlythongtincanbo/main)</br>
+[entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QuanLyThongTinCanBo/src/ffse/quanlythongtincanbo/entity)</br>
+[util](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QuanLyThongTinCanBo/src/ffse/quanlythongtincanbo/util)
