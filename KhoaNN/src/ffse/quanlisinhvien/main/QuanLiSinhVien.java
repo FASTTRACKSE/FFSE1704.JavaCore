@@ -5,6 +5,8 @@ import java.util.Scanner;
 import java.util.Collections;
 
 import ffse.quanlisinhvien.enity.*;
+import ffse.quanlisinhvien.util.SVComparator;
+
 import java.util.Comparator;
 
 public class QuanLiSinhVien {
@@ -269,102 +271,11 @@ System.out.println("******************************************************");
 	}
 
 	private static void SapXepSinhVien() {
-		
-		Scanner sc = new Scanner(System.in);
-		System.out.println(
-				"MỜI CHỌN KIỂU SV\n1. SINH VIÊN DÀI HẠN \n2. SINH VIÊN WED CẤP TỐC\n3. SINH VIÊN JAVA CẤP TỐC");
-		int b = sc.nextInt();
-		int i=0;
-		System.out.println("SẮP XẾP \n");
-		if (b == 1) {
-			Collections.sort(dsSinhVien, new Comparator<SinhVien>() {
-				@Override
-				public int compare(SinhVien x1, SinhVien x2) {
-					if (x1.tinhDiemTb() < x2.tinhDiemTb()) {
-						return 1;
-					} else if (x1.tinhDiemTb() > x2.tinhDiemTb()) {
-						return -1;
-					} else {
-						return 0;
-					}
-				}
-			});
-			for (SinhVien x : dsSinhVien) {
-
-				System.out.println("Sinh Viên  Thứ " + (++i) 
-						+ "\n - Tên Sinh Viên: " + ((SinhVienDaiHan) x).getHoTen() + " - năm Sinh: "
-						+ ((SinhVienDaiHan) x).getNamSinh() + "\n - Địa Chỉ: " + ((SinhVienDaiHan) x).getDiaChi()
-						+ "\n - Điểm LP0: " + ((SinhVienDaiHan) x).getLP0() + "\n - Điểm LP1: "
-						+ ((SinhVienDaiHan) x).getLP1() + "\n - Điểm LP2: " + ((SinhVienDaiHan) x).getLP2()
-						+ "\n - Điểm LP3: " + ((SinhVienDaiHan) x).getLP3() + "\n - Điểm LP4: "
-						+ ((SinhVienDaiHan) x).getLP4() + "\n - Điểm LP5: " + ((SinhVienDaiHan) x).getLP5()
-						+ "\n - Điểm LP6: " + ((SinhVienDaiHan) x).getLP6() + "\n - Điểm Trung Bình: "
-						+ ((SinhVienDaiHan) x).tinhDiemTb() + "\n - Xếp Loại: " + ((SinhVienDaiHan) x).XepLoai());
-
-			}
-		} else {
-			if (b == 2) {
-				Collections.sort(dsSinhVien, new Comparator<SinhVien>() {
-					@Override
-					public int compare(SinhVien x1, SinhVien x2) {
-						if (x1.tinhDiemTb() < x2.tinhDiemTb()) {
-							return 1;
-						} else if (x1.tinhDiemTb() > x2.tinhDiemTb()) {
-							return -1;
-						} else {
-							return 0;
-						}
-					}
-				});
-				for (SinhVien x : dsSinhVien) {
-
-					System.out.println(
-							"Sinh Viên  Thứ " + (++i) 
-									+ " - Tên Sinh Viên: " + ((SinhVienWebCapToc) x).getHoTen() + "\n - năm Sinh: "
-									+ ((SinhVienWebCapToc) x).getNamSinh() + "\n - Địa Chỉ: "
-									+ ((SinhVienWebCapToc) x).getDiaChi() + "\n - Điểm LP2: "
-									+ ((SinhVienWebCapToc) x).getLP2() + "\n - Điểm LP3: "
-									+ ((SinhVienWebCapToc) x).getLP3() + "\n - Điểm Trung Bình: "
-									+ ((SinhVienWebCapToc) x).tinhDiemTb() + "\n - Xếp Loại: "
-									+ ((SinhVienWebCapToc) x).XepLoai());
-				}
-
-			} else {
-				if (b == 3) {
-					Collections.sort(dsSinhVien, new Comparator<SinhVien>() {
-						@Override
-						public int compare(SinhVien x1, SinhVien x2) {
-							if (x1.tinhDiemTb() < x2.tinhDiemTb()) {
-								return 1;
-							} else if (x1.tinhDiemTb() > x2.tinhDiemTb()) {
-								return -1;
-							} else {
-								return 0;
-							}
-						}
-					});
-
-					for (SinhVien x : dsSinhVien) {
-
-						System.out.println(
-								"Sinh Viên  Thứ " + (++i) 
-										+ " - Tên Sinh Viên: " + ((SinhVienJavaCapToc) x).getHoTen() + "\n - năm Sinh: "
-										+ ((SinhVienJavaCapToc) x).getNamSinh() + "\n - Địa Chỉ: "
-										+ ((SinhVienJavaCapToc) x).getDiaChi() + "\n - Điểm LP2: "
-										+ ((SinhVienJavaCapToc) x).getLP4() + "\n - Điểm LP3: "
-										+ ((SinhVienJavaCapToc) x).getLP5() + "\n - Điểm Trung Bình: "
-										+ ((SinhVienJavaCapToc) x).tinhDiemTb() + "\n - Xếp Loại: "
-										+ ((SinhVienJavaCapToc) x).XepLoai());
-					}
-
-				} else {
-					System.out.println(" Bạn phải nhập trong khoảng từ 1 đến 3. hãy nhập lại !!!");
-				}
-			}
+		Collections.sort(dsSinhVien,SVComparator.SinhVienDTBDESComparator);
+		for(SinhVien x:dsSinhVien) {
+			System.out.println(x.getHoTen() +"\t"+ x.getDiaChi()+"\t"+ x.getNamSinh()+"\t"+ x.tinhDiemTb()+"\tXếp Loại: "+x.XepLoai());
 		}
-		
-
-	}
+}
 }
 		
 	
