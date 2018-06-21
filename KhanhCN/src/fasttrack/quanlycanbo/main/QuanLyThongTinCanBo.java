@@ -1,8 +1,8 @@
 package fasttrack.quanlycanbo.main;
 
-import fasttrack.quancanbo.entity.CanBo;
-import fasttrack.quancanbo.entity.GiangVien;
-import fasttrack.quancanbo.entity.NhanVien;
+import fasttrack.quanlycanbo.entity.CanBo;
+import fasttrack.quanlycanbo.entity.GiangVien;
+import fasttrack.quanlycanbo.entity.NhanVien;
 import fasttrack.sinhvien.entity.SinhVien;
 import fasttrack.sinhvien.entity.SinhVienDaiHan;
 
