@@ -1,4 +1,6 @@
-package ffse.quanlynhanvien.entity;
+package ffse.quanlycanbo.entity;
+
+import ffse.quanlycanbo.entity.CanBo;
 
 public class GiangVien extends CanBo {
 	// private String tenGV;
