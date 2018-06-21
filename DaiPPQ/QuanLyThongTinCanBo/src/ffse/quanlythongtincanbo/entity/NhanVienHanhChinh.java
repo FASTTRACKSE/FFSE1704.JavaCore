@@ -7,28 +7,15 @@ package ffse.quanlythongtincanbo.entity;
 
 
 public class NhanVienHanhChinh extends NhanVien {
-
-	private String tenNV;
 	private String phongBan;
 	private String chucVu;
 	private int soNgayCong;
-	private double heSoLuong;
 	
-	public NhanVienHanhChinh(String tenNV, String phongBan, String chucVu, int soNgayCong, double heSoLuong2) {
-		this.tenNV = tenNV;
+	public NhanVienHanhChinh(String ten, String phongBan, String chucVu, int phuCap, int soNgayCong, double heSoLuong) {
+		super(ten, phuCap, heSoLuong);
 		this.phongBan = phongBan;
 		this.chucVu = chucVu;
 		this.soNgayCong = soNgayCong;
-		this.heSoLuong = heSoLuong2;
-		
-	}
-	
-	public String getTenNV() {
-		return tenNV;
-	}
-
-	public void setTenNV(String tenNV) {
-		this.tenNV = tenNV;
 	}
 
 	public String getPhongBan() {
@@ -55,30 +42,9 @@ public class NhanVienHanhChinh extends NhanVien {
 		this.soNgayCong = soNgayCong;
 	}
 
-	public double getHeSoLuong() {
-		return heSoLuong;
-	}
-
-	public void setHeSoLuong(double heSoLuong) {
-		this.heSoLuong = heSoLuong;
-	}
-
 	@Override
 	public double tinhLuong() {
-		double luong = 0;
-		
-		if("Trưởng phòng".equals(getChucVu())) {
-			luong = (this.heSoLuong * 730) + 2000 + (this.soNgayCong * 30);
-		}else {
-			if("Phó phòng".equals(getChucVu())) {
-				luong = (this.heSoLuong * 730) + 1000 + (this.soNgayCong * 30);
-			}else {
-				if("Nhân Viên".equals(getChucVu())) {
-					luong = (this.heSoLuong * 730) + 500 + (this.soNgayCong * 30);
-				}
-			}
-		}
-		
+		double luong = getHeSoLuong()*730 + getPhuCap() + getSoNgayCong()*30;
 		return luong;
 	}
 }
