@@ -86,33 +86,37 @@ public class SinhVienDaiHan extends SinhVien {
 		return (this.diemLP0 + this.diemLP1 + this.diemLP2 + this.diemLP3 + this.diemLP4 + this.diemLP5 + this.diemLP6)
 				/ 7;
 	}
-	@Override
-	public String xepLoaiSV() {
-		String ketQua;
-		if (tinhDTB() <= 5) {
-			ketQua = "Yếu";
-			// System.out.println("Yếu");
-
-		} else if (tinhDTB() <= 7) {
-			ketQua = "Trung bình";
-			// System.out.println("Trung Bình");
-
-		} else if (tinhDTB() <= 8.5) {
-			ketQua = "khá";
-			// System.out.println("Khá");
-
-		} else {
-			ketQua = "Giỏi";
-			// System.out.println("Giỏi");
-
-		}
-		return ketQua;
-
-	}
-
-	
+//	@Override
+//	public String xepLoaiSV() {
+//		String ketQua;
+//		if (tinhDTB() <= 5) {
+//			ketQua = "Yếu";
+//			// System.out.println("Yếu");
+//
+//		} else if (tinhDTB() <= 7) {
+//			ketQua = "Trung bình";
+//			// System.out.println("Trung Bình");
+// 
+//		} else if (tinhDTB() <= 8.5) {
+//			ketQua = "khá";
+//			// System.out.println("Khá");
+//
+//		} else {
+//			ketQua = "Giỏi";
+//			// System.out.println("Giỏi");
+//
+//		}
+//		return ketQua;
+//
+//	}
 
 	
+//	public String toString() {
+//		return "Điểm LP: " + this.diemLP0 + "\n *****  Mã khách Hàng: " + this.diemLP1
+//				+ "\n ****** Địa chỉ: " + this.diemLP2 + "\n ***** Mã số công tơ: " + this.diemLP3 + "\n ***** ";
+//
+//	}
+//	
 
 	
 

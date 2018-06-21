@@ -139,13 +139,5 @@ public class QuanLyTienDien {
 				}
 			}
 		}
-		/*
-		 * public static void XoaBienLaiKH() { int M = 0;
-		 * System.out.print("Xóa Biên Lai Khách Hàng thứ bao nhiêu? : "); M =
-		 * myInput.nextInt(); for (int i = 0; i < dsKhachHang.size(); i++) { if(M==i) {
-		 * BienLai.remove(i); } }
-		 * 
-		 * 
-		 * }
-		 */
+		
 	}

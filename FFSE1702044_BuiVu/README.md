@@ -7,7 +7,7 @@
 
 4. [Menu Chương Trình Java: ](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/FFSE1702044_BuiVu/src/ChuongTrinh/MenuChuongTrinh.java)
 
-5. [Assignment 4:Xây dựng chương trình quản lý sinh viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1702044_BuiVu/src/javacore)
-6. [Assignment 5: Quản Lí Tiền Điện:](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1702044_BuiVu/src/javacore/quanlikh)
-7. [Assignment 6: Quản Lí Sinh Viên:](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1702044_BuiVu/src/javacore/qlsvffse)
-
+5. [Assignment 5:Xây dựng chương trình quản lý sinh viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1702044_BuiVu/src/javacore)
+6. [Assignment 6: Quản Lí Tiền Điện:](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1702044_BuiVu/src/javacore/quanlikh)
+7. [Assignment 7: Quản Lí Sinh Viên:](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1702044_BuiVu/src/javacore/qlsvffse)
+8. [Assignment 8: Quản Lí Cán Bộ:]()

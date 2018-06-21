@@ -25,8 +25,9 @@ public class QuanLyTienDien {
 				System.out.println("| 1. Nhập danh sách Khách Hàng      |");
 				System.out.println("| 2. Nhập thông tin Biên Lai        |");
 				System.out.println("| 3. In báo cáo tiêu thụ điện       |");
-				System.out.println("| 4. Xoá 1 khách hàng               |");
-				System.out.println("| 5. Kết thúc chương trình          |");
+				System.out.println("| 4. In danh sách theo chu kỳ       |");
+				System.out.println("| 5. Xoá 1 khách hàng               |");
+				System.out.println("| 6. Kết thúc chương trình          |");
 				System.out.println("+-----------------------------------+");
 				System.out.print("Mời bạn chọn chức năng: ");
 
@@ -38,9 +39,10 @@ public class QuanLyTienDien {
 				} else if (myOption == 3) {
 					printReport("\t\t\tTHỐNG KÊ TÌNH HÌNH TIÊU THỤ ĐIỆN ");
 				} else if (myOption == 4) {
-					xoaKH(1);
-					printReport("Thống kê tình hình tiêu thụ điện");
+					inDsTheoChuKy();
 				} else if (myOption == 5) {
+					xoaKH();
+				} else if (myOption == 6) {
 					ketThuc();
 				} else {
 					throw new Exception();
@@ -48,7 +50,7 @@ public class QuanLyTienDien {
 			} catch (Exception e) {
 				System.out.println("Chỉ nhập từ 1 đến 5, nhập lại nhé bạn hiền!");
 			} finally {
-				if (myOption != 5) {
+				if (myOption != 6) {
 					backToMainMenu();
 				}
 			}
@@ -98,9 +100,14 @@ public class QuanLyTienDien {
 		System.out.println("Kết thúc chương trình, cám ơn bạn đã sử dụng!!!");
 	}
 
-	public static void xoaKH(int i) {
-		if (!danhsachKH.isEmpty()) {
-			danhsachKH.remove(i);
+	public static void xoaKH() {
+		String i;
+		System.out.println("Nhập mã khách hàng bạn cần xóa :");
+		i = myInput.next();
+		for (KhachHang x : danhsachKH) {
+			if (x.getMaKH().equals(i)) {
+				danhsachKH.remove(x);
+			}
 		}
 	}
 
@@ -115,29 +122,53 @@ public class QuanLyTienDien {
 		System.out.println(
 				"--------------------------------------------------------------------------------------------");
 
-		  //Sắp xếp theo tên khách hàng
-        Collections.sort(danhsachKH, new Comparator<KhachHang>() {
-        	
-            public int compare(KhachHang khachhang1, KhachHang khachhang2) {
-            	
-                return (khachhang1.getTenKH().compareTo(khachhang2.getTenKH()));
-               
-            }
-        });
+		// Sắp xếp theo tên khách hàng
+		Collections.sort(danhsachKH, new Comparator<KhachHang>() {
 
-		
+			public int compare(KhachHang khachhang1, KhachHang khachhang2) {
+
+				return (khachhang1.getTenKH().compareTo(khachhang2.getTenKH()));
+
+			}
+		});
+
 		for (KhachHang x : danhsachKH) {
-			
-			
-			
+
 			System.out.println(x.getMaKH() + ":" + x.getTenKH() + "\t" + "MãCT" + "\t" + "Tháng/Nam" + "\t"
 					+ "CS Đầu Kỳ" + "\t" + "CS Cuối Kỳ" + "\t" + "Tổng tiền");
-			
+
 			for (BienLai o : x.getDsBienLai()) {
+
 				System.out.println("\t\t\t" + o.getMaCongTo() + "\t" + o.getCkThang() + "/" + o.getCkNam() + "\t\t"
-						+ o.getCsDauKy() + "\t\t  " + o.getCsCuoiKy() + "\t\t" + o.tinhTienTrongKy()+".VND");
-				System.out.println("\n---------------------------------------------------------------------------------------------");
+						+ o.getCsDauKy() + "\t\t  " + o.getCsCuoiKy() + "\t\t" + o.tinhTienTrongKy() + ".VND");
+				System.out.println(
+						"\n---------------------------------------------------------------------------------------------");
 			}
+		}
+
+	}
+
+	public static void inDsTheoChuKy() {
+		int nhap;
+		System.out.println("Mời bạn nhập chu kỳ tháng :  ");
+		nhap = myInput.nextInt();
+
+		for (KhachHang x : danhsachKH) {
+
+			for (BienLai o : x.getDsBienLai()) {
+				if (nhap == o.getCkThang()) {
+
+					System.out.println(x.getMaKH() + ":" + x.getTenKH() + "\t" + "MãCT" + "\t" + "Tháng/Nam" + "\t"
+							+ "CS Đầu Kỳ" + "\t" + "CS Cuối Kỳ" + "\t" + "Tổng tiền");
+
+					System.out.println("\t\t\t" + o.getMaCongTo() + "\t" + o.getCkThang() + "/" + o.getCkNam() + "\t\t"
+							+ o.getCsDauKy() + "\t\t  " + o.getCsCuoiKy() + "\t\t" + o.tinhTienTrongKy() + ".VND");
+
+					System.out.println(
+							"\n---------------------------------------------------------------------------------------------");
+				}
+			}
+
 		}
 
 	}

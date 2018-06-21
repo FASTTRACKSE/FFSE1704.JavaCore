@@ -20,3 +20,21 @@
 7. [Assignment 5 - Quản lý tiền điện]</br>
 [main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_5/src/Assignment_5/src/ffse/quanlytiendien/main)</br>
 [entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_5/src/Assignment_5/src/ffse/quanlytiendien/entity)
+
+8. [Assignment 6 - Quản lý tiền điện - arraylist]</br>
+[main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_5_ArrayList/src/Assignment_5_ArrayList/src/ffse/quanlytiendien/main)</br>
+[entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_5_ArrayList/src/Assignment_5_ArrayList/src/ffse/quanlytiendien/entity)</br>
+
+9. [Hình học 2 chiều]</br>
+[main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/HinhHocHaiChieu/src/fasttackse/hinh2d/main)</br>
+[entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/HinhHocHaiChieu/src/fasttackse/hinh2d/entity)
+
+10. [Assignment 7 - Quản lý sinh viên]</br>
+[main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_7/src/fasttrackse/quanlysinhvien/main)</br>
+[entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_7/src/fasttrackse/quanlysinhvien/entity)</br>
+[util](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_7/src/fasttrackse/quanlysinhvien/util)
+
+11. [Quản lý thông tin cán bộ]</br>
+[main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QuanLyThongTinCanBo/src/ffse/quanlythongtincanbo/main)</br>
+[entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QuanLyThongTinCanBo/src/ffse/quanlythongtincanbo/entity)</br>
+[util](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QuanLyThongTinCanBo/src/ffse/quanlythongtincanbo/util)

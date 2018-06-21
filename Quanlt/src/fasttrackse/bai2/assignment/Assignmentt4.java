@@ -85,7 +85,7 @@ public class Assignmentt4 {
 				max = arr[k];
 			}
 		}
-		System.out.println("\n*******************");
+		System.out.println("\n------------------");
 		System.out.println("\n* Danh sách mảng: "); // In mảng
 		for (int j = 0; j < n; j++) {
 			System.out.print(arr[j] + " ");

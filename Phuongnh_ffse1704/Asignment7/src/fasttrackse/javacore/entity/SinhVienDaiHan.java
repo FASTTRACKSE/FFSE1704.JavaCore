@@ -66,7 +66,7 @@ public class SinhVienDaiHan extends SinhVien {
 	}
 	// ghi đè thuộc tính tính điểm tb
 	public double tinhDTB() {
-		return (this.diemLP0+this.diemLP1+this.diemLP1+this.diemLP2+this.diemLP3+this.diemLP4+this.diemLP5+this.diemLP6)*1.0/7;
+		return ((this.diemLP0+this.diemLP1+this.diemLP1+this.diemLP2+this.diemLP3+this.diemLP4+this.diemLP5+this.diemLP6)/7)*1.0;
 	}
 	// xếp loại sv
 	public String xepLoaiSV() {

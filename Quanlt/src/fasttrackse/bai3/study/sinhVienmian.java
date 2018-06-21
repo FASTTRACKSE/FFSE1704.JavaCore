@@ -3,7 +3,7 @@ package fasttrackse.bai3.study;
 import java.util.Scanner;
 
 public class sinhVienmian {
-	static int n, sinhvien[], i;
+	static int n, i;
 
 	public static void main(String[] args) {
 		Scanner nhap = new Scanner(System.in);

@@ -13,8 +13,6 @@ public class Tinhbienlai {
 		static Scanner myInput = new Scanner(System.in);
 
 		public static void main(String[] args) {
-			// TODO Auto-generated method stub
-
 			while (true) {
 				System.out.println("+---------------------------+");
 				System.out.println("|1.Nhập Thông Tin Khách Hàng|");
