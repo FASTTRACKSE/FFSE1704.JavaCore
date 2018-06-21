@@ -1,4 +1,4 @@
-package fasttrack.quanlythongtin.entity;
+package fasttrack.quancanbo.entity;
 
 public class GiangVien extends CanBo {
 	
