@@ -1,17 +1,25 @@
 package main.java;
 
 import java.util.ArrayList;
+
+
+
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import quanglyluongnhanvien.java.entity.GiangVien;
 import quanglyluongnhanvien.java.entity.Luong;
 import quanglyluongnhanvien.java.entity.NhanVienVanPhong;
-
+import quanglyluongnhanvien.java.entity.until;
+import java.util.ArrayList;
 public class ChuongTrinhQuanLyNhanVien {
-	static int n, i;
-	static double tongtien;
+	static int n, i, maNhanVien, soTietDay, soNgayCong;
+	static String hoVaTen, khoa, trinhDo, phongBan, chucVu;
+	static boolean inputOK;
+	static int choose;
+	static double tongtien, heSoLuong;
 	static Scanner nhap = new Scanner(System.in);
 	static ArrayList<Luong> dsLuong = new ArrayList<Luong>();
 
@@ -53,7 +61,7 @@ public class ChuongTrinhQuanLyNhanVien {
 					throw new Exception();
 				}
 			} catch (Exception e) {
-
+				System.out.println("Vui lòng nhập lại bạn hiền !");
 			} finally {
 				if (n != 5) {
 					backToMainMenu();
@@ -73,77 +81,216 @@ public class ChuongTrinhQuanLyNhanVien {
 	}
 
 	public static void nhapthongtincanbotrongtruong() {
-		System.out.println("\n NHÂN VIÊN THUỘC LOẠI NÀO");
-		System.out.println("--------------------------------------");
-		System.out.println("1: Giảng viên");
-		System.out.println("2: Nhân viên văn phòng ");
-		System.out.println("--------------------------------------");
-		n = nhap.nextInt();
-		if (n == 1) {
-			System.out.println("NHẬP THÔNG TIN GIẢNG VIÊN");
-			System.out.println("-------------------------------");
-			System.out.print("Nhập số lượng giảng viên :");
+
+		try {
+			System.out.println("\n NHÂN VIÊN THUỘC LOẠI NÀO");
+			System.out.println("--------------------------------------");
+			System.out.println("1: Giảng viên");
+			System.out.println("2: Nhân viên văn phòng ");
+			System.out.println("--------------------------------------");
 			n = nhap.nextInt();
-			for (i = 0; i < n; i++) {
-				System.out.println("Nhập giảng viên thứ :" + (i + 1));
 
-				System.out.print("Nhập mã giảng viên: ");
-				int maNhanVien = nhap.nextInt();
-				nhap.nextLine();
+			if (n == 1) {
+				System.out.println("NHẬP THÔNG TIN GIẢNG VIÊN");
+				System.out.println("-------------------------------");
+				System.out.print("Nhập số lượng giảng viên :");
+				n = nhap.nextInt();
+				for (i = 0; i < n; i++) {
+					System.out.println("Nhập giảng viên thứ :" + (i + 1));
 
-				System.out.print("Nhập họ tên giảng viên: ");
-				String hoVaTen = nhap.nextLine();
+					System.out.print("Nhập mã giảng viên: ");
+					maNhanVien = nhap.nextInt();
+					nhap.nextLine();
 
-				System.out.print("Nhập khoa giảng viên đang dạy: ");
-				String khoa = nhap.nextLine();
+					// nhập họ vầ tên giảng viên
 
-				System.out.print("Nhập trình độ: ");
-				String trinhDo = nhap.nextLine();
+					do {
 
-				System.out.print("Số tiết dạy: ");
-				int soTietDay = nhap.nextInt();
+						try {
+							inputOK = true;
+							System.out.print("Nhập họ tên giảng viên: ");
+							hoVaTen = nhap.nextLine();
+							if (hoVaTen.length() < 1 || hoVaTen.length() > 30) {
 
-				System.out.print("Nhập hệ số lương: ");
-				double heSoLuong = nhap.nextDouble();
+								throw new until(1);
+							}
+						} catch (Exception e) {
 
-				dsLuong.add(new GiangVien(maNhanVien, hoVaTen, khoa, trinhDo, soTietDay, heSoLuong));
+							System.err.println(e);
+
+							inputOK = false;
+						}
+					} while (!inputOK);
+
+					System.out.print("Nhập khoa đang giảng dạy: ");
+					khoa = nhap.nextLine();
+
+					// nhập trình độ
+					do {
+						System.out.print("Nhập trình độ (1 - Cử nhân, 2 - Thạc sĩ, 3 -Tiến sĩ): ");
+						choose = nhap.nextInt();
+						switch (choose) {
+						case 1:
+							trinhDo = "Cử nhân";
+
+							break;
+						case 2:
+							trinhDo = "Thạc sĩ";
+
+							break;
+						case 3:
+							trinhDo = "Tiến sĩ";
+
+						default:
+							System.err.println("Chọn không đúng!" + "\nMời chọn lại:");
+
+							break;
+						}
+					} while (choose < 1 || choose > 3);
+
+					// nhập số tiết giảng dạy
+					do {
+
+						try {
+							inputOK = true;
+							System.out.print("Số tiết dạy: ");
+							soTietDay = nhap.nextInt();
+							if (soTietDay < 0) {
+
+								throw new until(4);
+							}
+						} catch (Exception e) {
+
+							System.err.println(e);
+
+							inputOK = false;
+						}
+					} while (!inputOK);
+
+					// nhập hệ số lương
+
+					try {
+						inputOK = true;
+						System.out.print("Nhập hệ số lương: ");
+						heSoLuong = nhap.nextDouble();
+
+					} catch (InputMismatchException e) {
+						System.err.println("Hệ số lương phải là số thực");
+
+						inputOK = false;
+					}
+
+					dsLuong.add(new GiangVien(maNhanVien, hoVaTen, khoa, trinhDo, soTietDay, heSoLuong));
+
+				}
+
+			} else if (n == 2) {
+
+				System.out.println("NHẬP THÔNG TIN NHÂN VIÊN");
+				System.out.println("-------------------------------");
+				System.out.print("Nhập số lượng nhân viên :");
+				n = nhap.nextInt();
+				for (i = 0; i < n; i++) {
+					System.out.println("Nhập nhân viên thứ :" + (i + 1));
+
+					System.out.print("Nhập mã nhân viên: ");
+					maNhanVien = nhap.nextInt();
+					nhap.nextLine();
+
+					// nhập họ vầ tên giảng viên
+
+					do {
+
+						try {
+							inputOK = true;
+							System.out.print("Nhập họ tên nhân viên: ");
+							hoVaTen = nhap.nextLine();
+							if (hoVaTen.length() < 1 || hoVaTen.length() > 30) {
+
+								throw new until(1);
+							}
+						} catch (Exception e) {
+
+							System.err.println(e);
+							hoVaTen = nhap.nextLine();
+							inputOK = false;
+						}
+					} while (!inputOK);
+
+					// nhập phòng ban
+					System.out.print("Nhập khoa đang giảng dạy: ");
+					khoa = nhap.nextLine();
+
+					// nhập chức vụ
+					do {
+						System.out.print("Nhập chức vụ (1 - Trưởng phòng, 2 - Phó phòng, 3 - Cử nhân): ");
+						choose = nhap.nextInt();
+						switch (choose) {
+						case 1:
+							chucVu = "Trưởng phòng";
+
+							break;
+						case 2:
+							chucVu = "Phó phòng";
+
+							break;
+						case 3:
+							chucVu = "Cử nhân";
+
+						default:
+							System.err.println("Chọn không đúng!" + "\nMời chọn lại:");
+							break;
+						}
+					} while (choose < 1 || choose > 3);
+
+					// nhập số số ngày công
+					do {
+
+						try {
+							inputOK = true;
+							System.out.print("Số ngày công: ");
+							soNgayCong = nhap.nextInt();
+							if (soNgayCong < 0) {
+
+								throw new until(4);
+							}
+						} catch (Exception e) {
+
+							System.err.println(e);
+
+							inputOK = false;
+						}
+					} while (!inputOK);
+
+					// nhập hệ số lương.
+
+					try {
+						inputOK = true;
+						System.out.print("Nhập hệ số lương: ");
+						heSoLuong = nhap.nextDouble();
+
+					} catch (InputMismatchException e) {
+						System.err.println("Hệ số lương phải là số thực");
+
+						inputOK = false;
+					}
+
+					dsLuong.add(new NhanVienVanPhong(maNhanVien, hoVaTen, phongBan, chucVu, soNgayCong, heSoLuong));
+
+				}
+			} else {
+				throw new IndexOutOfBoundsException();
 			}
-		} else if (n == 2) {
-			System.out.println("NHẬP THÔNG TIN NHÂN VIÊN");
-			System.out.println("-------------------------------");
-			System.out.println("Nhập số lượng nhân viên :");
-			n = nhap.nextInt();
-			for (i = 0; i < n; i++) {
-				System.out.println("Nhập nhân viên thứ :" + (i + 1));
 
-				System.out.print("Nhập mã nhân viên: ");
-				int maNhanVien = nhap.nextInt();
-				nhap.nextLine();
-
-				System.out.print("Nhập họ tên nhân viên: ");
-				String hoVaTen = nhap.nextLine();
-
-				System.out.print("Nhập phòng ban: ");
-				String phongBan = nhap.nextLine();
-
-				System.out.print("Nhập chức vụ: ");
-				String chucVu = nhap.nextLine();
-
-				System.out.print("Số ngày công: ");
-				int soNgayCong = nhap.nextInt();
-
-				System.out.print("Nhập hệ số lương: ");
-				double heSoLuong = nhap.nextDouble();
-
-				dsLuong.add(new NhanVienVanPhong(maNhanVien, hoVaTen, phongBan, chucVu, soNgayCong, heSoLuong));
-
-			}
+		} catch (IndexOutOfBoundsException e) {
+			System.err.println("Vui lòng chọn  1 or 2 .");
+		} catch (Exception e) {
+			System.err.println("Vui lòng nhập các trường hợp lệ");
 		}
 
 	}
 
 	public static void inthongtindanhsach() {
-
 		String M = "";
 		nhap.nextLine();
 		System.out.print("Mời Nhập Khoa hoặc phòng ban mà bạn muốn in:");
@@ -206,7 +353,7 @@ public class ChuongTrinhQuanLyNhanVien {
 				} else if (NV1.tinhLuong() > NV2.tinhLuong()) {
 					return -1;
 				} else {
-					return (NV2.getHoVaTen().compareTo(NV1.getHoVaTen()));
+					return (NV1.getHoVaTen().compareTo(NV2.getHoVaTen()));
 				}
 			}
 
