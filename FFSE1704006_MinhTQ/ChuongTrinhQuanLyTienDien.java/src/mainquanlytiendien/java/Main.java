@@ -3,10 +3,10 @@ package mainquanlytiendien.java;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 import java.util.Scanner;
 
-import quanlytiendien.java.entity.*;
+import quanlytiendien.java.entity.BienLai;
+import quanlytiendien.java.entity.KhachHang;
 
 public class Main {
 
@@ -150,5 +150,5 @@ public class Main {
 		System.exit(0);
 
 	}
-
+	
 }
