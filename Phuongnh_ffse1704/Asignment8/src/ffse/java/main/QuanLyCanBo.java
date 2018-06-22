@@ -159,8 +159,8 @@ public class QuanLyCanBo {
 		else if (M == 2) {
 			String tenCanBo = " ";
 			String khoa = " ";
-			String trinhDo = " ";
-			int soTietDay = 0;
+			String chucVu = " ";
+			int soNgayCong = 0;
 			double heSoLuong = 0;
 			System.out.println("Nhập thông tin Giảng Viên");
 			System.out.println("+------------------------------+");
@@ -190,19 +190,19 @@ public class QuanLyCanBo {
 				do {
 					try {
 						System.out.print("Trình Độ Giảng Viên : ");
-						trinhDo = nhap.nextLine();
+						chucVu = nhap.nextLine();
 						chonOk = true;
-						if (trinhDo == "Cử nhân") {
+						if (chucVu == "Cử nhân") {
 							chonOk = true;
 
-						} else if (trinhDo == "Thạc Sĩ") {
+						} else if (chucVu == "Thạc Sĩ") {
 							chonOk = true;
 
-						} else if (trinhDo == "Tiến sĩ") {
+						} else if (chucVu == "Tiến sĩ") {
 							chonOk = true;
 
 						} else {
-							throw new MyException(2);
+							throw new MyException(5);
 						}
 					} catch (MyException e) {
 						System.err.println(e);
@@ -211,17 +211,17 @@ public class QuanLyCanBo {
 				} while (!chonOk);
 				do {
 					try {
-						System.out.print("Số Tiết Dạy Trong Tháng: ");
-						soTietDay = nhap.nextInt();
+						System.out.print("Số ngày làm Trong Tháng: ");
+						soNgayCong = nhap.nextInt();
 						chonOk = true;
-						if (soTietDay <= 0) {
-							throw new MyException(3);
+						if (soNgayCong <= 0) {
+							throw new MyException(6);
 						}
 					} catch (MyException e) {
 						System.err.println(e);
 					}
 				} while (!chonOk);
-				soTietDay = nhap.nextInt();
+				soNgayCong = nhap.nextInt();
 
 				do {
 					try {
