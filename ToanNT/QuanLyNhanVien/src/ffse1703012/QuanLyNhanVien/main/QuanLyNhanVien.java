@@ -65,7 +65,8 @@ public class QuanLyNhanVien {
 					inputOK = false;
 				}
 			} while (!inputOK);
-
+			
+			//Nhập Họ Tên
 			String hoTen = "";
 			for (int i = 0; i < N; i++) {
 				System.out.print("Nhập Thông Tin Giảng viên thứ " + (i + 1) + "\n");
@@ -102,8 +103,9 @@ public class QuanLyNhanVien {
 					}
 				} while (!inputOK);
 				sc.nextLine();
+				
+				//Nhập KHOA
 				String khoa = "";
-				// sc.nextLine();
 				do {
 				try {
 					inputOK = true;
@@ -116,6 +118,9 @@ public class QuanLyNhanVien {
 					System.err.println(e);
 					inputOK = false;
 				}}while(!inputOK);
+				
+				
+				//Nhập trình độ và phụ cấp
 				int phuCap = 0;
 				String trinhDo = null;
 				int choose;
@@ -166,6 +171,7 @@ public class QuanLyNhanVien {
 				// }
 				sc.nextLine();
 
+				//Nhập số tiết dạy
 				int soTietDay = 0;
 				do {
 					try {
@@ -185,7 +191,7 @@ public class QuanLyNhanVien {
 				dsNhanVien.add(new GiangVien(hoTen, heSoLuong, phuCap, khoa, trinhDo, soTietDay));
 			}
 
-			// Nhap can bo
+			// Nhập Cán bộ hành chính
 		} else if (n == 2) {
 			boolean inputOK;
 			int N = 0;
@@ -204,6 +210,8 @@ public class QuanLyNhanVien {
 					inputOK = false;
 				}
 			} while (!inputOK);
+			
+			//Nhập tên cán bộ
 			String hoTen = "";
 			for (int i = 0; i < N; i++) {
 				System.out.print("Nhập Thông Tin Cán bộ thứ " + (i + 1) + "\n");
@@ -224,6 +232,7 @@ public class QuanLyNhanVien {
 					}
 				} while (!inputOK);
 
+				//Nhập hệ số lương
 				double heSoLuong = 0;
 				do {
 					try {
@@ -240,9 +249,22 @@ public class QuanLyNhanVien {
 				} while (!inputOK);
 				sc.nextLine();
 
-				System.out.print("Nhập Phòng ban: ");
-				String phongBan = sc.nextLine();
-
+				//Nhập phòng ban 
+				String phongBan ="";
+				do {
+					try {
+						inputOK = true;
+						System.out.print("Nhập Phòng ban: ");
+						phongBan = sc.nextLine();
+						if (phongBan.length() == 0) {
+							throw new CbException(6);
+						}
+					} catch (Exception e) {
+						System.err.println(e);
+						inputOK = false;
+					}}while(!inputOK);
+				
+				//nhap phu cap
 				int phuCap = 0;
 				String chucVu = null;
 				int choose;
@@ -290,6 +312,9 @@ public class QuanLyNhanVien {
 				// }
 				// System.out.print("Nhập Số ngày công: ");
 				// int soNgayCong = sc.nextInt();
+				
+				
+				//Nhập số ngày công
 				int soNgayCong = 0;
 				do {
 					try {
