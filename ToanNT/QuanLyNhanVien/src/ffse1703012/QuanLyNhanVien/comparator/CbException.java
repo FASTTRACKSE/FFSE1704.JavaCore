@@ -28,6 +28,9 @@ public class CbException extends Exception {
 			case 5:
 				msg = "Chỉ được nhập Trưởng phòng , Phó phòng, Nhân viên";
 				break;
+			case 6:
+				msg ="Không được để trường trống";
+				break;
 			} 
 			return msg;
 		}

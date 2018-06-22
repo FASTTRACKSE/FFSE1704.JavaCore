@@ -1,6 +1,8 @@
 package ffse1703012.QuanLyNhanVien.main;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
 import ffse1703012.QuanLyNhanVien.entity.*;
 import java.util.Scanner;
 
@@ -38,6 +40,7 @@ public class QuanLyNhanVien {
 	}
 
 	public static void NhapThongTinNv() {
+		System.out.println("    Nhập thông tin");
 		System.out.println("    Mời chọn Loại cán bộ:");
 		System.out.println("+----------------------------------------+");
 		System.out.println("|1.Cán bộ Giảng viên                     |");
@@ -100,14 +103,34 @@ public class QuanLyNhanVien {
 				} while (!inputOK);
 				sc.nextLine();
 				String khoa = "";
-				System.out.print("Nhập Khoa: ");
-				khoa = sc.nextLine();
 				// sc.nextLine();
+				do {
+				try {
+					inputOK = true;
+					System.out.print("Nhập Khoa: ");
+					khoa = sc.nextLine();
+					if (khoa.length() == 0) {
+						throw new CbException(6);
+					}
+				} catch (Exception e) {
+					System.err.println(e);
+					inputOK = false;
+				}}while(!inputOK);
 				int phuCap = 0;
 				String trinhDo = null;
 				int choose;
 				do {
 					System.out.print("Nhập trình độ: 1.Cử nhân  2.Thạc sĩ  3.Tiến sĩ ");
+					try {
+						inputOK= true;
+						choose = sc.nextInt();
+						if(choose > 3) {
+							throw new CbException(3);
+						}
+					}catch(Exception e) {
+						System.err.println(e);
+						inputOK=false;
+					}
 					choose = sc.nextInt();
 					switch (choose) {
 					case 1:
@@ -289,6 +312,7 @@ public class QuanLyNhanVien {
 	}
 
 	public static void XuatThongTin() {
+		System.out.println("    Xuất Thông Tin");
 		System.out.println("    Mời chọn Loại cán bộ:");
 		System.out.println("+----------------------------------------+");
 		System.out.println("|1.Cán bộ Giảng viên                     |");
@@ -316,7 +340,7 @@ public class QuanLyNhanVien {
 			String phongBan = sc.nextLine();
 			for (NhanVien x : dsNhanVien) {
 				System.out.println(
-						"+---------------------------------DANH SÁCH CÁN BỘ GIẢNG VIÊN--------------------------------------+");
+						"+---------------------------------DANH SÁCH CÁN BỘ HÀNH CHÍNH--------------------------------------+");
 				System.out.println(
 						"|   Tên CB    |     Phòng ban     |    Hệ số lương  |   Phụ cấp   | Chức vụ |  Số ngày công  |");
 				if (((NvHanhChinh) x).getPhongBan().equals(phongBan)) {
@@ -339,7 +363,26 @@ public class QuanLyNhanVien {
 	}
 
 	public static void SapXepNV() {
-
+		Collections.sort(dsNhanVien, NvComparator.CanBoLuongASComparator);
+		for(NhanVien x : dsNhanVien) {
+			if(x instanceof GiangVien) {
+				System.out.println(
+						"+---------------------------------DANH SÁCH CÁN BỘ GIẢNG VIÊN--------------------------------------+");
+				System.out.println(
+						"|   Tên GV     |     Trình độ      |Hệ số lương|   Phụ cấp   | Khoa |  Số tiết  |   Tiền lương   |");
+				System.out.printf("%-15s %-19s %-11s %-13s %-7s %-7s %-16s\n", x.getHoTen(),
+						((GiangVien) x).getTrinhDo(), x.getHeSoLuong(), x.getPhuCap(), ((GiangVien) x).getKhoa(),
+						((GiangVien) x).getSoTietDay(), ((GiangVien) x).tinhLuong());
+			}else if(x instanceof NvHanhChinh) {
+				System.out.println(
+						"+---------------------------------DANH SÁCH CÁN BỘ HÀNH CHÍNH--------------------------------------+");
+				System.out.println(
+						"|   Tên CB    |     Phòng ban     |    Hệ số lương  |   Phụ cấp   | Chức vụ |  Số ngày công  |");
+				System.out.printf("%-10s %-15s %-15s %-7s %-7s %-7s\n", x.getHoTen(),
+						((NvHanhChinh) x).getPhongBan(), x.getHeSoLuong(), x.getPhuCap(),
+						((NvHanhChinh) x).getChucVu(), ((NvHanhChinh) x).getSoNgayCong());
+			}
+		}
 	}
 
 	public static void KetThuc() {
