@@ -46,4 +46,22 @@ public class NvComparator {
 	 /*For descending order*/
 	 //fDTB1-fDTB2;
 }};
+public static Comparator<NhanVien> CanBoLuongASComparator = new Comparator<NhanVien>() {
+
+	public int compare(NhanVien s1, NhanVien s2) {
+
+		/* For ascending order */
+		if ((s2.tinhLuong() - s1.tinhLuong()) > 0)
+			return 1;
+		else if ((s2.tinhLuong() - s1.tinhLuong()) < 0)
+			return -1;
+		else
+
+			return s1.getHoTen().compareTo(s2.getHoTen());
+
+		/* For descending order */
+		// fDTB1-fDTB2;
+	}
+
+};
 }
