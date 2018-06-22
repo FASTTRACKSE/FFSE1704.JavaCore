@@ -2,8 +2,6 @@ package main.java;
 
 import java.util.ArrayList;
 
-
-
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.InputMismatchException;
@@ -14,6 +12,7 @@ import quanglyluongnhanvien.java.entity.Luong;
 import quanglyluongnhanvien.java.entity.NhanVienVanPhong;
 import quanglyluongnhanvien.java.entity.until;
 import java.util.ArrayList;
+
 public class ChuongTrinhQuanLyNhanVien {
 	static int n, i, maNhanVien, soTietDay, soNgayCong;
 	static String hoVaTen, khoa, trinhDo, phongBan, chucVu;
@@ -114,10 +113,10 @@ public class ChuongTrinhQuanLyNhanVien {
 
 								throw new until(1);
 							}
-						} catch (Exception e) {
+						} catch (until e) {
 
 							System.err.println(e);
-
+							nhap.nextLine();
 							inputOK = false;
 						}
 					} while (!inputOK);
@@ -152,34 +151,37 @@ public class ChuongTrinhQuanLyNhanVien {
 					do {
 
 						try {
-							inputOK = true;
+
 							System.out.print("Số tiết dạy: ");
 							soTietDay = nhap.nextInt();
+							inputOK = true;
 							if (soTietDay < 0) {
 
 								throw new until(4);
 							}
-						} catch (Exception e) {
+						} catch (until e) {
 
 							System.err.println(e);
-
+							nhap.nextLine();
 							inputOK = false;
 						}
 					} while (!inputOK);
 
 					// nhập hệ số lương
 
-					try {
-						inputOK = true;
-						System.out.print("Nhập hệ số lương: ");
-						heSoLuong = nhap.nextDouble();
+					do {
+						try {
 
-					} catch (InputMismatchException e) {
-						System.err.println("Hệ số lương phải là số thực");
+							System.out.print("Nhập hệ số lương: ");
+							heSoLuong = nhap.nextDouble();
+							inputOK = true;
 
-						inputOK = false;
-					}
-
+						} catch (InputMismatchException e) {
+							System.err.println("Hệ số lương phải là số thực");
+							nhap.nextLine();
+							inputOK = false;
+						}
+					} while (!inputOK);
 					dsLuong.add(new GiangVien(maNhanVien, hoVaTen, khoa, trinhDo, soTietDay, heSoLuong));
 
 				}
@@ -209,10 +211,10 @@ public class ChuongTrinhQuanLyNhanVien {
 
 								throw new until(1);
 							}
-						} catch (Exception e) {
+						} catch (until e) {
 
 							System.err.println(e);
-							hoVaTen = nhap.nextLine();
+							nhap.nextLine();
 							inputOK = false;
 						}
 					} while (!inputOK);
@@ -247,34 +249,36 @@ public class ChuongTrinhQuanLyNhanVien {
 					do {
 
 						try {
-							inputOK = true;
+
 							System.out.print("Số ngày công: ");
 							soNgayCong = nhap.nextInt();
+							inputOK = true;
 							if (soNgayCong < 0) {
 
 								throw new until(4);
 							}
-						} catch (Exception e) {
-
-							System.err.println(e);
-
+						} catch (until e) {
 							inputOK = false;
+							System.err.println(e);
+							nhap.nextLine();
+
 						}
 					} while (!inputOK);
 
 					// nhập hệ số lương.
+					do {
+						try {
 
-					try {
-						inputOK = true;
-						System.out.print("Nhập hệ số lương: ");
-						heSoLuong = nhap.nextDouble();
+							System.out.print("Nhập hệ số lương: ");
+							heSoLuong = nhap.nextDouble();
+							inputOK = true;
 
-					} catch (InputMismatchException e) {
-						System.err.println("Hệ số lương phải là số thực");
-
-						inputOK = false;
-					}
-
+						} catch (InputMismatchException e) {
+							System.err.println("Hệ số lương phải là số thực");
+							nhap.nextLine();
+							inputOK = false;
+						}
+					} while (!inputOK);
 					dsLuong.add(new NhanVienVanPhong(maNhanVien, hoVaTen, phongBan, chucVu, soNgayCong, heSoLuong));
 
 				}
