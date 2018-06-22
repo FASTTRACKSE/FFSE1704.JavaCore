@@ -47,11 +47,9 @@ public class QuanLyCanBo {
 				} else if (N == 5) {
 					KetThuc();
 				} else {
-					throw new Exception();
-				}
 
-			} catch (Exception e) {
-				System.err.println("Chỉ nhập từ 1 đến 5 thôi nhé");
+					System.err.println("Chỉ nhập từ 1 đến 5 thôi nhé");
+				}
 			} finally {
 				if (N != 5) {
 					BackToMainMenu();
@@ -74,6 +72,7 @@ public class QuanLyCanBo {
 			String trinhDo = " ";
 			int soTietDay = 0;
 			double heSoLuong = 0;
+			int choose;
 			System.out.println("Nhập thông tin Giảng Viên");
 			System.out.println("+------------------------------+");
 			System.out.print("Nhập Số Lượng Giảng Viên: ");
@@ -100,40 +99,40 @@ public class QuanLyCanBo {
 				khoa = nhap.nextLine();
 				// bắt lỗi nhập sai trình độ
 				do {
-					try {
-						System.out.print("Trình Độ Giảng Viên : ");
-						trinhDo = nhap.nextLine();
-						chonOk = true;
-						if (trinhDo == "Cử nhân") {
-							chonOk = true;
+					System.out.print("Nhập trình độ (1 - cử nhân, 2 - thạc sĩ, 3 -tiến sĩ): ");
+					choose = nhap.nextInt();
+					switch (choose) {
+					case 1:
+						trinhDo = "Cử nhân";
 
-						} else if (trinhDo == "Thạc Sĩ") {
-							chonOk = true;
+						break;
+					case 2:
+						trinhDo = "Thạc sĩ";
 
-						} else if (trinhDo == "Tiến sĩ") {
-							chonOk = true;
+						break;
+					case 3:
+						trinhDo = "Tiến sĩ";
 
-						} else {
-							throw new MyException(2);
-						}
-					} catch (MyException e) {
-						System.err.println(e);
-						chonOk = false;
+					default:
+						System.out.println("Chọn không đúng!");
+						break;
 					}
-				} while (!chonOk);
+				} while (choose < 1 || choose > 3);
+				// bắt lỗi tiết dạy
 				do {
 					try {
-						System.out.print("Số Tiết Dạy Trong Tháng: ");
+						System.out.print("Số tiết dạy Trong Tháng: ");
 						soTietDay = nhap.nextInt();
 						chonOk = true;
 						if (soTietDay <= 0) {
 							throw new MyException(3);
 						}
-					} catch (MyException e) {
-						System.err.println(e);
+					} catch (Exception e) {
+						System.err.println("lỗi nhập chữ hoặc số không nguyên dương");
+						chonOk =false;
+						nhap.nextLine();
 					}
 				} while (!chonOk);
-				soTietDay = nhap.nextInt();
 
 				do {
 					try {
@@ -158,7 +157,6 @@ public class QuanLyCanBo {
 		// kết thúc vòng lặp nhập
 		else if (M == 2) {
 			String tenCanBo = " ";
-			String khoa = " ";
 			String chucVu = " ";
 			int soNgayCong = 0;
 			double heSoLuong = 0;
@@ -185,40 +183,43 @@ public class QuanLyCanBo {
 				} while (!chonOk);
 
 				System.out.print("Nhập Khoa : ");
-				khoa = nhap.nextLine();
-				// bắt lỗi nhập sai trình độ
+				String khoa = nhap.nextLine();
+
+				int choose;
+				// bắt lỗi nhập sai chức vụ
 				do {
-					try {
-						System.out.print("Trình Độ Giảng Viên : ");
-						chucVu = nhap.nextLine();
-						chonOk = true;
-						if (chucVu == "Cử nhân") {
-							chonOk = true;
+					System.out.print("Nhập trình độ (1 - cử nhân, 2 - thạc sĩ, 3 -tiến sĩ): ");
+					choose = nhap.nextInt();
+					switch (choose) {
+					case 1:
+						chucVu = "Trưởng phòng";
 
-						} else if (chucVu == "Thạc Sĩ") {
-							chonOk = true;
+						break;
+					case 2:
+						chucVu = "Phó phòng";
 
-						} else if (chucVu == "Tiến sĩ") {
-							chonOk = true;
+						break;
+					case 3:
+						chucVu = "Nhân viên";
 
-						} else {
-							throw new MyException(5);
-						}
-					} catch (MyException e) {
-						System.err.println(e);
-						chonOk = false;
+					default:
+						System.out.println("Chọn không đúng!");
+						break;
 					}
-				} while (!chonOk);
+				} while (choose < 1 || choose > 3);
+				// bắt lỗi nhập sai ngày công 
 				do {
 					try {
 						System.out.print("Số ngày làm Trong Tháng: ");
 						soNgayCong = nhap.nextInt();
 						chonOk = true;
 						if (soNgayCong <= 0) {
-							throw new MyException(6);
+							throw new MyException(3);
 						}
-					} catch (MyException e) {
-						System.err.println(e);
+					} catch (Exception e) {
+						System.err.println("lỗi nhập chữ hoặc số không nguyên dương");
+						chonOk =false;
+						nhap.nextLine();
 					}
 				} while (!chonOk);
 				soNgayCong = nhap.nextInt();
