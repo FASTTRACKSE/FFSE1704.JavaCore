@@ -1,3 +1,8 @@
+/************************
+ *Prog: QUẢN LÝ CÁN BỘ
+ *@AUTHOR: LÊ KHẢ HỒNG NHẬT
+ *Date: 22/06/2018
+ **********************/
 package ffse.quanlycanbo.util;
 
 public class CBException extends Exception {

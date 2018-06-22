@@ -1,6 +1,8 @@
-/**
- * 
- */
+/************************
+ *Prog: QUẢN LÝ CÁN BỘ
+ *@AUTHOR: LÊ KHẢ HỒNG NHẬT
+ *Date: 22/06/2018
+ **********************/
 package ffse.quanlycanbo.main;
 
 import java.util.ArrayList;
@@ -105,68 +107,88 @@ public class QuanLyCanBo {
 							// bẵn lỗi
 							throw new CBException(1);
 						}
-					} catch (Exception e) {
+					} catch (CBException e) {
 						System.err.println(e);
 						inputOK = false;
 					}
 				} while (!inputOK);
 
-				
-				
-				
+				/**
+				 * 
+				 *
+				 */
+
 				System.out.print("Nhập Khoa : ");
 				String khoa = nhap.nextLine();
+
+				/**
+				 * 
+				 *
+				 */
 
 				
 				
 				
 				do {
-					System.out.print("Nhập trình độ (1 - cử nhân, 2 - thạc sĩ, 3 -tiến sĩ): ");
-					choose = nhap.nextInt();
-					switch (choose) {
-					case 1:
-						trinhDo = "Cử nhân";
+					try {
+						
+						System.out.print("Nhập trình độ (1 - cử nhân, 2 - thạc sĩ, 3 -tiến sĩ): ");
+						choose = nhap.nextInt();
 
-						break;
-					case 2:
-						trinhDo = "Thạc sĩ";
-
-						break;
-					case 3:
-						trinhDo = "Tiến sĩ";
-
-					default:
-						System.out.println("Chọn không đúng!");
-						break;
+						if(choose==1) {
+							trinhDo = "Cử nhân";
+							inputOK = true;
+						}else {
+							if(choose ==2) {
+								trinhDo = "Thạc sĩ";
+								inputOK = true;
+							}else {
+								if(choose == 3) {
+									trinhDo = "Tiến sĩ";
+									inputOK = true;
+								}else {
+									System.err.println("Nhập sai!!!");
+									inputOK = false;
+								}
+							}
+						}
+					} catch (InputMismatchException e) {
+						System.err.println("Nhập sai!!!");
+						nhap.next();
+						inputOK = false;
 					}
-				} while (choose < 1 || choose > 3);
-				
-				
-				
-				
-				
+				} while (!inputOK);
+
+				/**
+				 *
+				 *
+				 */
+
 				do {
 					try {
 						inputOK = true;
 						System.out.print("Số Tiết Dạy Trong Tháng: ");
 						soTietDay = nhap.nextInt();
 
-						if (soTietDay < 0) {
+						if (soTietDay <= 0) {
 							// bẵn lỗi
 							throw new CBException(2);
 						}
-					} catch (Exception e) {
+					} catch (CBException e) {
 						System.err.println(e);
+						inputOK = false;
+					}
+					catch (InputMismatchException e) {
+						System.err.println("Chỉ được nhập số");
 						inputOK = false;
 					}
 				} while (!inputOK);
 
-				
-				
-				
-				
-				
-				
+				/**
+				 * 
+				 *
+				 */
+
 				do {
 					try {
 						inputOK = true;
@@ -175,6 +197,7 @@ public class QuanLyCanBo {
 
 					} catch (InputMismatchException e) {
 						System.err.println("Hệ số lương phải là số thực");
+						nhap.next();
 						inputOK = false;
 					}
 				} while (!inputOK);
@@ -201,7 +224,10 @@ public class QuanLyCanBo {
 				for (int i = 0; i < N; i++) {
 					System.out.print("Nhập Thông Tin Nhân Viên thứ " + (i + 1) + "\n");
 					nhap.nextLine();
-
+					/**
+					 * 
+					 *
+					 */
 					do {
 						try {
 							inputOK = true;
@@ -212,41 +238,59 @@ public class QuanLyCanBo {
 								// bẵn lỗi
 								throw new CBException(1);
 							}
-						} catch (Exception e) {
+						} catch (CBException e) {
 							System.err.println(e);
 							inputOK = false;
 						}
 					} while (!inputOK);
-
+					/**
+					 * 
+					 *
+					 */
 					System.out.print("Phòng Ban : ");
 					String phongBan = nhap.nextLine();
-
+					/**
+					 * 
+					 *
+					 */
+					
 					do {
-						System.out.print("Nhập chức vụ (1 - Trưởng phòng, 2 - Phó phòng, 3 -Nhân viên): ");
-						choose = nhap.nextInt();
-						switch (choose) {
-						case 1:
-							chucVu = "Trưởng phòng";
+						try {
+							
+							System.out.print("Nhập chức vụ (1 - Trưởng phòng, 2 - Phó phòng, 3 -Nhân viên): ");
+							choose = nhap.nextInt();
 
-							break;
-						case 2:
-							chucVu = "Phó phòng";
-
-							break;
-						case 3:
-							chucVu = "Nhân viên";
-
-						default:
-							System.out.println("Chọn không đúng!");
-							break;
+							if(choose==1) {
+								chucVu = "Trưởng phòng";
+								inputOK = true;
+							}else {
+								if(choose ==2) {
+									chucVu = "Phó phòng";
+									inputOK = true;
+								}else {
+									if(choose == 3) {
+										chucVu = "Nhân viên";
+										inputOK = true;
+									}else {
+										System.err.println("Nhập sai!!!");
+										inputOK = false;
+									}
+								}
+							}
+						} catch (InputMismatchException e) {
+							System.err.println("Nhập sai!!!");
+							nhap.next();
+							inputOK = false;
 						}
-					} while (choose < 1 || choose > 3);
+					} while (!inputOK);
+					
+					
 
-					
-					
-					
-					
-					
+					/**
+					 * 
+					 *
+					 */
+
 					do {
 						try {
 							inputOK = true;
@@ -257,17 +301,20 @@ public class QuanLyCanBo {
 								// bẵn lỗi
 								throw new CBException(2);
 							}
-						} catch (Exception e) {
+						} catch (CBException e) {
 							System.err.println(e);
+							inputOK = false;
+						} catch (InputMismatchException e) {
+							System.err.println("phải nhập kiểu số");
 							inputOK = false;
 						}
 					} while (!inputOK);
 
-					
-					
-					
-					
-					
+					/**
+					 *
+					 *
+					 */
+
 					do {
 						try {
 							inputOK = true;
@@ -276,10 +323,14 @@ public class QuanLyCanBo {
 
 						} catch (InputMismatchException e) {
 							System.err.println("Hệ số lương phải là số thực");
+							nhap.next();
 							inputOK = false;
 						}
 					} while (!inputOK);
-
+					/**
+					 * 
+					 *
+					 */
 					System.out.println("------------------------------------------------------------------");
 
 					dsCanBo.add(new NhanVien(tenCanBo, phongBan, chucVu, soNgayCong, heSoLuong));
