@@ -1,22 +1,22 @@
 /**
  * 
  */
-package ffse.quanlynhanvien.main;
+package ffse.quanlycanbo.main;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import ffse.quanlynhanvien.entity.*;
-import ffse.quanlynhanvien.util.CBException;
-import ffse.quanlynhanvien.util.NVComparator;
+import ffse.quanlycanbo.entity.*;
+import ffse.quanlycanbo.util.CBException;
+import ffse.quanlycanbo.util.NVComparator;
 
 /**
  * @author Support
  *
  */
-public class QuanLyNhanVien {
+public class QuanLyCanBo {
 	private static int N;
 	private static ArrayList<CanBo> dsCanBo = new ArrayList<CanBo>();
 	static Scanner nhap = new Scanner(System.in);
