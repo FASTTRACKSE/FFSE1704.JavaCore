@@ -1,7 +1,6 @@
 package main.java;
 
 import java.util.ArrayList;
-
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.InputMismatchException;
@@ -11,7 +10,6 @@ import quanglyluongnhanvien.java.entity.GiangVien;
 import quanglyluongnhanvien.java.entity.Luong;
 import quanglyluongnhanvien.java.entity.NhanVienVanPhong;
 import quanglyluongnhanvien.java.entity.until;
-import java.util.ArrayList;
 
 public class ChuongTrinhQuanLyNhanVien {
 	static int n, i, maNhanVien, soTietDay, soNgayCong;
@@ -60,7 +58,7 @@ public class ChuongTrinhQuanLyNhanVien {
 					throw new Exception();
 				}
 			} catch (Exception e) {
-				System.out.println("Vui lòng nhập lại bạn hiền !");
+				System.err.println("Vui lòng nhập lại bạn hiền !");
 			} finally {
 				if (n != 5) {
 					backToMainMenu();
@@ -120,10 +118,26 @@ public class ChuongTrinhQuanLyNhanVien {
 							inputOK = false;
 						}
 					} while (!inputOK);
+//nhạp khoa giảng dạy
+					do {
 
-					System.out.print("Nhập khoa đang giảng dạy: ");
+						try {
+							inputOK = true;
+							System.out.print("Nhập khoa giảng dạy : ");
+							khoa = nhap.nextLine();
+							if (khoa.length() < 1 ) {
+
+								throw new until(5);
+							}
+						} catch (until e) {
+
+							System.err.println(e);
+							nhap.nextLine();
+							inputOK = false;
+						}
+					} while (!inputOK);
+					System.out.print("Nhập phòng ban : ");
 					khoa = nhap.nextLine();
-
 					// nhập trình độ
 					do {
 						System.out.print("Nhập trình độ (1 - Cử nhân, 2 - Thạc sĩ, 3 -Tiến sĩ): ");
@@ -155,12 +169,11 @@ public class ChuongTrinhQuanLyNhanVien {
 							System.out.print("Số tiết dạy: ");
 							soTietDay = nhap.nextInt();
 							inputOK = true;
-							if (soTietDay < 0) {
+							if (soTietDay < 1) {
 
 								throw new until(4);
 							}
 						} catch (until e) {
-
 							System.err.println(e);
 							nhap.nextLine();
 							inputOK = false;
@@ -177,9 +190,11 @@ public class ChuongTrinhQuanLyNhanVien {
 							inputOK = true;
 
 						} catch (InputMismatchException e) {
+
 							System.err.println("Hệ số lương phải là số thực");
 							nhap.nextLine();
 							inputOK = false;
+
 						}
 					} while (!inputOK);
 					dsLuong.add(new GiangVien(maNhanVien, hoVaTen, khoa, trinhDo, soTietDay, heSoLuong));
@@ -220,7 +235,24 @@ public class ChuongTrinhQuanLyNhanVien {
 					} while (!inputOK);
 
 					// nhập phòng ban
-					System.out.print("Nhập khoa đang giảng dạy: ");
+					do {
+
+						try {
+							inputOK = true;
+							System.out.print("Nhập phòng ban : ");
+							phongBan = nhap.nextLine();
+							if (phongBan.length() < 1 ) {
+
+								throw new until(5);
+							}
+						} catch (until e) {
+
+							System.err.println(e);
+							nhap.nextLine();
+							inputOK = false;
+						}
+					} while (!inputOK);
+					System.out.print("Nhập phòng ban : ");
 					khoa = nhap.nextLine();
 
 					// nhập chức vụ
@@ -253,15 +285,14 @@ public class ChuongTrinhQuanLyNhanVien {
 							System.out.print("Số ngày công: ");
 							soNgayCong = nhap.nextInt();
 							inputOK = true;
-							if (soNgayCong < 0) {
+							if (soNgayCong < 1) {
 
 								throw new until(4);
 							}
-						} catch (until e) {
-							inputOK = false;
-							System.err.println(e);
-							nhap.nextLine();
+						} catch (Exception e) {
 
+							System.err.println(e);
+							inputOK = false;
 						}
 					} while (!inputOK);
 
@@ -299,7 +330,7 @@ public class ChuongTrinhQuanLyNhanVien {
 		nhap.nextLine();
 		System.out.print("Mời Nhập Khoa hoặc phòng ban mà bạn muốn in:");
 		M = nhap.nextLine();
-		for (int i = 0; i < dsLuong.size(); i++) {
+		for (i = 0; i < dsLuong.size(); i++) {
 			if (dsLuong.get(i) instanceof GiangVien) {
 				if (M.equals(((GiangVien) dsLuong.get(i)).getKhoa())) {
 
@@ -331,7 +362,7 @@ public class ChuongTrinhQuanLyNhanVien {
 
 	public static void tinhTongluongNhanVien() {
 		double tongtien = 0;
-		for (int i = 0; i < dsLuong.size(); i++) {
+		for (i = 0; i < dsLuong.size(); i++) {
 			tongtien += dsLuong.get(i).tinhLuong();
 
 		}

@@ -23,7 +23,12 @@ public class until extends Exception {
 			msg = "bạn chỉ được nhập số thực . ";
 			break;
 		case 4:
-			msg = "bạn  không được nhập nhỏ hơn 0 .";
+			msg = "bạn  không được nhập nhỏ hơn 0 ."
+					+ "\nnhập lại.";
+			break;
+		case 5:
+			msg = "bạn  không được để trống."
+					+ "\nnhập lại.";
 			break;
 		}
 		return msg;
