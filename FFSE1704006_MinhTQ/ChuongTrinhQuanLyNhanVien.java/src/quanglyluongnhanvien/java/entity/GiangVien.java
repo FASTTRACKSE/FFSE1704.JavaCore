@@ -12,7 +12,7 @@ public class GiangVien extends Luong {
 		this.trinhDo = trinhDo;
 		this.soTietDay = soTietDay;
 		this.heSoLuong = heSoLuong;
-	}
+	} 
 
 	public String getKhoa() {
 		return khoa;

@@ -1,22 +1,22 @@
 /**
  * 
  */
-package ffse.quanlynhanvien.main;
+package ffse.quanlycanbo.main;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import ffse.quanlynhanvien.entity.*;
-import ffse.quanlynhanvien.util.CBException;
-import ffse.quanlynhanvien.util.NVComparator;
+import ffse.quanlycanbo.entity.*;
+import ffse.quanlycanbo.util.CBException;
+import ffse.quanlycanbo.util.NVComparator;
 
 /**
  * @author Support
  *
  */
-public class QuanLyNhanVien {
+public class QuanLyCanBo {
 	private static int N;
 	private static ArrayList<CanBo> dsCanBo = new ArrayList<CanBo>();
 	static Scanner nhap = new Scanner(System.in);
@@ -105,21 +105,25 @@ public class QuanLyNhanVien {
 							// bẵn lỗi
 							throw new CBException(1);
 						}
-					} catch (Exception e) {
+					} catch (CBException e) {
 						System.err.println(e);
 						inputOK = false;
 					}
 				} while (!inputOK);
 
-				
-				
-				
+				/**
+				 * 
+				 *
+				 */
+
 				System.out.print("Nhập Khoa : ");
 				String khoa = nhap.nextLine();
 
-				
-				
-				
+				/**
+				 * 
+				 *
+				 */
+
 				do {
 					System.out.print("Nhập trình độ (1 - cử nhân, 2 - thạc sĩ, 3 -tiến sĩ): ");
 					choose = nhap.nextInt();
@@ -140,33 +144,33 @@ public class QuanLyNhanVien {
 						break;
 					}
 				} while (choose < 1 || choose > 3);
-				
-				
-				
-				
-				
+
+				/**
+				 *
+				 *
+				 */
+
 				do {
 					try {
 						inputOK = true;
 						System.out.print("Số Tiết Dạy Trong Tháng: ");
 						soTietDay = nhap.nextInt();
 
-						if (soTietDay < 0) {
+						if (soTietDay <= 0) {
 							// bẵn lỗi
 							throw new CBException(2);
 						}
-					} catch (Exception e) {
+					} catch (CBException e) {
 						System.err.println(e);
 						inputOK = false;
 					}
 				} while (!inputOK);
 
-				
-				
-				
-				
-				
-				
+				/**
+				 * 
+				 *
+				 */
+
 				do {
 					try {
 						inputOK = true;
@@ -175,6 +179,7 @@ public class QuanLyNhanVien {
 
 					} catch (InputMismatchException e) {
 						System.err.println("Hệ số lương phải là số thực");
+						nhap.next();
 						inputOK = false;
 					}
 				} while (!inputOK);
@@ -201,7 +206,10 @@ public class QuanLyNhanVien {
 				for (int i = 0; i < N; i++) {
 					System.out.print("Nhập Thông Tin Nhân Viên thứ " + (i + 1) + "\n");
 					nhap.nextLine();
-
+					/**
+					 * 
+					 *
+					 */
 					do {
 						try {
 							inputOK = true;
@@ -212,15 +220,21 @@ public class QuanLyNhanVien {
 								// bẵn lỗi
 								throw new CBException(1);
 							}
-						} catch (Exception e) {
+						} catch (CBException e) {
 							System.err.println(e);
 							inputOK = false;
 						}
 					} while (!inputOK);
-
+					/**
+					 * 
+					 *
+					 */
 					System.out.print("Phòng Ban : ");
 					String phongBan = nhap.nextLine();
-
+					/**
+					 * 
+					 *
+					 */
 					do {
 						System.out.print("Nhập chức vụ (1 - Trưởng phòng, 2 - Phó phòng, 3 -Nhân viên): ");
 						choose = nhap.nextInt();
@@ -242,11 +256,11 @@ public class QuanLyNhanVien {
 						}
 					} while (choose < 1 || choose > 3);
 
-					
-					
-					
-					
-					
+					/**
+					 * 
+					 *
+					 */
+
 					do {
 						try {
 							inputOK = true;
@@ -257,17 +271,20 @@ public class QuanLyNhanVien {
 								// bẵn lỗi
 								throw new CBException(2);
 							}
-						} catch (Exception e) {
+						} catch (CBException e) {
 							System.err.println(e);
+							inputOK = false;
+						} catch (InputMismatchException e) {
+							System.err.println("phải nhập kiểu số");
 							inputOK = false;
 						}
 					} while (!inputOK);
 
-					
-					
-					
-					
-					
+					/**
+					 *
+					 *
+					 */
+
 					do {
 						try {
 							inputOK = true;
@@ -276,10 +293,14 @@ public class QuanLyNhanVien {
 
 						} catch (InputMismatchException e) {
 							System.err.println("Hệ số lương phải là số thực");
+							nhap.next();
 							inputOK = false;
 						}
 					} while (!inputOK);
-
+					/**
+					 * 
+					 *
+					 */
 					System.out.println("------------------------------------------------------------------");
 
 					dsCanBo.add(new NhanVien(tenCanBo, phongBan, chucVu, soNgayCong, heSoLuong));

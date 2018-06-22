@@ -4,12 +4,12 @@ import java.util.*;
 
 import ffse.java.entity.*;
 import ffse.java.util.CBComparator;
+import ffse.java.util.MyException;
 import ffse.java.util.CBComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-
 
 /**
  * @author Support
@@ -18,34 +18,47 @@ import java.util.Scanner;
 public class QuanLyCanBo {
 	private static int N;
 	private static ArrayList<CanBo> dsCanBo = new ArrayList<CanBo>();
+	static boolean chonOk;
 	static Scanner nhap = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		int N = 0;
+		while (N != 5) {
+			try {
 
-		while (true) {
-			System.out.println(">> Menu Chương Trình <<");
-			System.out.println("+----------------------------------------------------+");
-			System.out.println("|1.Nhập thông tin cán bộ                             |");
-			System.out.println("|2.Xuất thông tin cán bộ                             |");
-			System.out.println("|3.Tổng Tiền mà Nhà Trường phải trả cho toàn cán bộ  |");
-			System.out.println("|4.Danh sách cán bộ toàn trường theo lương           |");
-			System.out.println("|5.Kết Thúc                                          |");
-			System.out.println("+----------------------------------------------------+");
+				System.out.println(">> Menu Chương Trình <<");
+				System.out.println("+----------------------------------------------------+");
+				System.out.println("|1.Nhập thông tin cán bộ                             |");
+				System.out.println("|2.Xuất thông tin cán bộ                             |");
+				System.out.println("|3.Tổng Tiền mà Nhà Trường phải trả cho toàn cán bộ  |");
+				System.out.println("|4.Danh sách cán bộ toàn trường theo lương           |");
+				System.out.println("|5.Kết Thúc                                          |");
+				System.out.println("+----------------------------------------------------+");
 
-			N = nhap.nextInt();
-			if (N == 1) {
-				nhapThongTin();
-			} else if (N == 2) {
-				xuatThongTin();
-			} else if (N == 3) {
-				tongLuong();
-			} else if (N == 4) {
-				SapXep();
-			} else {
-				System.exit(0);
+				N = nhap.nextInt();
+				if (N == 1) {
+					nhapThongTin();
+				} else if (N == 2) {
+					xuatThongTin();
+				} else if (N == 3) {
+					tongLuong();
+				} else if (N == 4) {
+					SapXep();
+				} else if (N == 5) {
+					KetThuc();
+				} else {
+					throw new Exception();
+				}
+
+			} catch (Exception e) {
+				System.err.println("Chỉ nhập từ 1 đến 5 thôi nhé");
+			} finally {
+				if (N != 5) {
+					BackToMainMenu();
+				}
+
 			}
 		}
-
 	}
 
 	public static void nhapThongTin() {
@@ -56,6 +69,11 @@ public class QuanLyCanBo {
 		System.out.println("+--------------------------------------+");
 		int M = nhap.nextInt();
 		if (M == 1) {
+			String tenCanBo = " ";
+			String khoa = " ";
+			String trinhDo = " ";
+			int soTietDay = 0;
+			double heSoLuong = 0;
 			System.out.println("Nhập thông tin Giảng Viên");
 			System.out.println("+------------------------------+");
 			System.out.print("Nhập Số Lượng Giảng Viên: ");
@@ -63,64 +81,169 @@ public class QuanLyCanBo {
 			for (int i = 0; i < N; i++) {
 				System.out.print("Nhập Thông Tin giảng Viên thứ " + (i + 1) + "\n");
 				nhap.nextLine();
-
-				System.out.print("Nhập Họ Tên Giảng Viên: ");
-				String tenCanBo = nhap.nextLine();
+				// bắt lỗi nhập sai tên
+				do {
+					try {
+						System.out.println("Nhập tên giảng viên ");
+						tenCanBo = nhap.nextLine();
+						chonOk = true;
+						if (tenCanBo.length() > 40 || tenCanBo.length() < 1) {
+							throw new MyException(1);
+						}
+					} catch (MyException e) {
+						System.err.println(e);
+						chonOk = false;
+					}
+				} while (!chonOk);
 
 				System.out.print("Nhập Khoa : ");
-				String khoa = nhap.nextLine();
+				khoa = nhap.nextLine();
+				// bắt lỗi nhập sai trình độ
+				do {
+					try {
+						System.out.print("Trình Độ Giảng Viên : ");
+						trinhDo = nhap.nextLine();
+						chonOk = true;
+						if (trinhDo == "Cử nhân") {
+							chonOk = true;
 
-				System.out.print("Trình Độ Giảng Viên : ");
-				String trinhDo = nhap.nextLine();
+						} else if (trinhDo == "Thạc Sĩ") {
+							chonOk = true;
 
-				System.out.print("Số Tiết Dạy Trong Tháng: ");
-				int soTietDay = nhap.nextInt();
+						} else if (trinhDo == "Tiến sĩ") {
+							chonOk = true;
 
-				System.out.print("Hệ Số Lương: ");
-				double heSoLuong = nhap.nextDouble();
+						} else {
+							throw new MyException(2);
+						}
+					} catch (MyException e) {
+						System.err.println(e);
+						chonOk = false;
+					}
+				} while (!chonOk);
+				do {
+					try {
+						System.out.print("Số Tiết Dạy Trong Tháng: ");
+						soTietDay = nhap.nextInt();
+						chonOk = true;
+						if (soTietDay <= 0) {
+							throw new MyException(3);
+						}
+					} catch (MyException e) {
+						System.err.println(e);
+					}
+				} while (!chonOk);
+				soTietDay = nhap.nextInt();
+
+				do {
+					try {
+						System.out.print("Hệ số lương ");
+						heSoLuong = nhap.nextDouble();
+						chonOk = true;
+						if (heSoLuong <= 0) {
+							throw new MyException(4);
+						}
+					} catch (MyException e) {
+						System.err.println(e);
+					}
+				} while (!chonOk);
 
 				System.out.println("------------------------------------------------------------------");
 
-				dsCanBo.add(new GiangVien(tenCanBo, khoa, trinhDo, soTietDay, heSoLuong));
 			}
+
+			dsCanBo.add(new GiangVien(tenCanBo, khoa, trinhDo, soTietDay, heSoLuong));
 		}
+
 		// kết thúc vòng lặp nhập
-		else {
-			if (M == 2) {
-				System.out.println("Nhập thông tin Nhân Viên");
-				System.out.println("+------------------------------+");
-				System.out.print("Nhập Số Lượng Nhân Viên: ");
-				N = nhap.nextInt();
-				for (int i = 0; i < N; i++) {
-					System.out.print("Nhập Thông Tin Nhân Viên thứ " + (i + 1) + "\n");
-					nhap.nextLine();
+		else if (M == 2) {
+			String tenCanBo = " ";
+			String khoa = " ";
+			String chucVu = " ";
+			int soNgayCong = 0;
+			double heSoLuong = 0;
+			System.out.println("Nhập thông tin Giảng Viên");
+			System.out.println("+------------------------------+");
+			System.out.print("Nhập Số Lượng Giảng Viên: ");
+			N = nhap.nextInt();
+			for (int i = 0; i < N; i++) {
+				System.out.print("Nhập Thông Tin giảng Viên thứ " + (i + 1) + "\n");
+				nhap.nextLine();
+				// bắt lỗi nhập sai tên
+				do {
+					try {
+						System.out.println("Nhập tên giảng viên ");
+						tenCanBo = nhap.nextLine();
+						chonOk = true;
+						if (tenCanBo.length() > 40 || tenCanBo.length() < 1) {
+							throw new MyException(1);
+						}
+					} catch (MyException e) {
+						System.err.println(e);
+						chonOk = false;
+					}
+				} while (!chonOk);
 
-					System.out.print("Nhập Họ Tên Nhân Viên: ");
-					String tenCanBo = nhap.nextLine();
+				System.out.print("Nhập Khoa : ");
+				khoa = nhap.nextLine();
+				// bắt lỗi nhập sai trình độ
+				do {
+					try {
+						System.out.print("Trình Độ Giảng Viên : ");
+						chucVu = nhap.nextLine();
+						chonOk = true;
+						if (chucVu == "Cử nhân") {
+							chonOk = true;
 
-					System.out.print("Phòng Ban : ");
-					String phongBan = nhap.nextLine();
+						} else if (chucVu == "Thạc Sĩ") {
+							chonOk = true;
 
-					System.out.print("Chức Vụ : ");
-					String chucVu = nhap.nextLine();
+						} else if (chucVu == "Tiến sĩ") {
+							chonOk = true;
 
-					System.out.print("Số ngày công: ");
-					int soNgayCong = nhap.nextInt();
+						} else {
+							throw new MyException(5);
+						}
+					} catch (MyException e) {
+						System.err.println(e);
+						chonOk = false;
+					}
+				} while (!chonOk);
+				do {
+					try {
+						System.out.print("Số ngày làm Trong Tháng: ");
+						soNgayCong = nhap.nextInt();
+						chonOk = true;
+						if (soNgayCong <= 0) {
+							throw new MyException(6);
+						}
+					} catch (MyException e) {
+						System.err.println(e);
+					}
+				} while (!chonOk);
+				soNgayCong = nhap.nextInt();
 
-					System.out.print("Hệ Số Lương: ");
-					double heSoLuong = nhap.nextDouble();
+				do {
+					try {
+						System.out.print("Hệ số lương ");
+						heSoLuong = nhap.nextDouble();
+						chonOk = true;
+						if (heSoLuong <= 0) {
+							throw new MyException(4);
+						}
+					} catch (MyException e) {
+						System.err.println(e);
+					}
+				} while (!chonOk);
 
-					System.out.println("------------------------------------------------------------------");
+				System.out.println("------------------------------------------------------------------");
 
-					dsCanBo.add(new NhanVien(tenCanBo, phongBan, chucVu, soNgayCong, heSoLuong));
-				}
-				// kết thúc vòng lặp nhập
-			} else {
-				System.err.println("Bạn chỉ được nhập 1 hoặc 2. Hãy Nhập Lại!!!");
 			}
-			// kết thúc if else
 		}
-	}// kết thúc bộ nhập
+		// kết thúc if else
+	}
+
+	// kết thúc bộ nhập
 
 	public static void xuatThongTin() {
 
@@ -200,6 +323,16 @@ public class QuanLyCanBo {
 					"-------------------------------------------------------------------*******************-------------------------------------------------------------------------");
 
 		}
+	}
+
+	public static void KetThuc() {
+		System.err.println("KẾT THÚC CHƯƠNG TRÌNH");
+	}
+
+	public static void BackToMainMenu() {
+		nhap.nextLine();
+		System.out.println("Ấn Enter để về menu chính");
+		nhap.nextLine();
 	}
 
 }

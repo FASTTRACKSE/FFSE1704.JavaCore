@@ -1,4 +1,4 @@
-package ffse.quanlynhanvien.entity;
+package ffse.quanlycanbo.entity;
 
 public abstract class CanBo {
 	private String tenCanBo;

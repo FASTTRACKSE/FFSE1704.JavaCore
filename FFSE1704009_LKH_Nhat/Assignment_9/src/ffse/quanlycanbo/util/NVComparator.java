@@ -1,8 +1,8 @@
-package ffse.quanlynhanvien.util;
+package ffse.quanlycanbo.util;
 
 import java.util.Comparator;
 
-import ffse.quanlynhanvien.entity.CanBo;
+import ffse.quanlycanbo.entity.CanBo;
 
 public class NVComparator {
 
