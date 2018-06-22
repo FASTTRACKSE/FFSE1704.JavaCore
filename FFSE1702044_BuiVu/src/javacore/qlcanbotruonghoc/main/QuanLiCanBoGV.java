@@ -40,7 +40,7 @@ public class QuanLiCanBoGV {
 				} else {
 					throw new myException(2);
 				}
-			} catch (myException e) {	
+			} catch (myException e) {
 				System.out.print(e);
 				System.out.println("\n1 để nhập lại CT");
 				myInput.nextInt();
@@ -81,32 +81,47 @@ public class QuanLiCanBoGV {
 						int chonTrinhDo = 0;
 						boolean inputOK = false;
 						do {
-						try {
-							
-							System.out.print(
-									"\nNhập Trình Độ Giảng Viên :\n Chọn 1 Cử Nhân\n Chọn 2 Thạc Sĩ\n Chọn 3 Tiến Sĩ ");
-							inputOK=true;
-							chonTrinhDo = myInput.nextInt();
-							if (chonTrinhDo == 1) {
-								System.out.println("Đã Chọn CỬ Nhân");
-							} else if (chonTrinhDo == 2) {
-								System.out.println("Đã Chọn thạc SĨ");
-							} else if (chonTrinhDo == 3) {
-								System.out.println("Đã Chọn Tiến Sĩ");
-							} else {
-								throw new Exception();
+							try {
+
+								System.out.print(
+										"\nNhập Trình Độ Giảng Viên :\n Chọn 1 Cử Nhân\n Chọn 2 Thạc Sĩ\n Chọn 3 Tiến Sĩ ");
+								inputOK = true;
+								chonTrinhDo = myInput.nextInt();
+								if (chonTrinhDo == 1) {
+									System.out.println("Đã Chọn CỬ Nhân");
+								} else if (chonTrinhDo == 2) {
+									System.out.println("Đã Chọn thạc SĨ");
+								} else if (chonTrinhDo == 3) {
+									System.out.println("Đã Chọn Tiến Sĩ");
+								} else {
+									throw new Exception();
+								}
+							} catch (Exception e) {
+								System.out.println("Nhập từ 1 đến 3 thôi nhé");
+								myInput.next();
+								inputOK = false;
+
 							}
-						} catch (Exception e) {
-							System.out.println("Nhập từ 1 đến 3 thôi nhé");
-							myInput.next();
-							inputOK = false;
-							
-						}
-						}while (!inputOK);
-
-						System.out.print("\nNhập Số Tiết Dạy Giảng Viên :");
-						int soTietDay = myInput.nextInt();
-
+						} while (!inputOK);
+						int soTietDay=0;
+						boolean inputOK1;
+						do {
+							try {
+								inputOK1 = true;
+								System.out.print("\nNhập Số Tiết Dạy Giảng Viên :");
+								soTietDay = myInput.nextInt();
+								if(soTietDay >=0 && soTietDay <=150 ) {
+									System.out.println("Số Tiết Dạy Là :" + soTietDay);
+								}else {
+									throw new Exception();
+								}
+								
+							} catch (Exception e) {
+								System.out.println("Vui Lòng Nhập Số Tiết Dạy bé hơn 150");
+								myInput.next();
+								inputOK1 = false;
+							}
+						} while (!inputOK1);
 						dsCanBo.add(new GiangVien(hoTen, heSoLuong, khoa, chonTrinhDo, soTietDay));
 
 					} else if (F == 2) {
@@ -114,11 +129,11 @@ public class QuanLiCanBoGV {
 						System.out.print("Nhập Tên Nhân Viên :");
 						myInput.nextLine();
 						String hoTen = myInput.nextLine();
-					
+
 						System.out.print(
 								"\nNhập Trình Độ NV :\n Chọn 1 Nhân Viên\n Chọn 2 Phó Phòng\n Chọn 3 Trưởng Phòng ");
 						int chonChucVu = myInput.nextInt();
-						
+
 						System.out.print("\nNhập hệ số lương Dạy Nhân Viên :");
 						int heSoLuong = myInput.nextInt();
 
@@ -212,13 +227,15 @@ public class QuanLiCanBoGV {
 							((NhanVien) o).getChucVu(), "x", ((NhanVien) o).getSoNgayCong(),
 							((NhanVien) o).getHeSoLuong(), ((NhanVien) o).tinhLuong() + "\n");
 				}
-			}
+			} 
 
 		}
 	}
 
 	public static void KetThucCT() {
+		myInput.close();
 		System.out.println("Chương Trình Đã Kết Thúc");
+		
 		System.exit(0);
 	}
 }
