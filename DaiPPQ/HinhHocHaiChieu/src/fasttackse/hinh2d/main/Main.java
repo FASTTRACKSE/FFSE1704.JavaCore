@@ -20,7 +20,6 @@ public class Main {
 	static Scanner myInput = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		while (true) {
 			System.out.println(">> Menu Chương Trình <<");
@@ -70,13 +69,13 @@ public class Main {
 
 		int i = 0;
 		String msg = "";
-		for (HinhHoc2Chieu o : dsHinh) {
+		for (Hinh2D o : dsHinh) {
 			if (o instanceof HinhChuNhat) {
 				msg = "Hình chữ nhật(" + ((HinhChuNhat) o).getChieuDai() + ", " + ((HinhChuNhat) o).getChieuRong()
 						+ ")";
 			}
 			System.out.println(
-					"Hình Chữ nhật Thứ " + (++i) + ": Chu vi: " + o.tinhChuVi() + " - Diện Tích: " + o.tinhDienTich());
+					"Hình Chữ nhật Thứ " + (++i) + ": Chu vi: " + o.getChuVi() + " - Diện Tích: " + o.getDienTich());
 		}
 		System.out.println("******************************************************");
 	}
@@ -97,12 +96,12 @@ public class Main {
 
 		int i = 0;
 		String msg = "";
-		for (HinhHoc2Chieu o : dsHinh) {
+		for (Hinh2D o : dsHinh) {
 			if (o instanceof HinhTron) {
 				msg = "Hình chữ nhật(" + ((HinhTron) o).getBanKinh() + ")";
 			}
 			System.out.println(
-					"Hình Chữ nhật Thứ " + (++i) + ": Chu vi: " + o.tinhChuVi() + " - Diện Tích: " + o.tinhDienTich());
+					"Hình Chữ nhật Thứ " + (++i) + ": Chu vi: " + o.getChuVi() + " - Diện Tích: " + o.getDienTich());
 		}
 		System.out.println("******************************************************");
 	}
@@ -128,13 +127,13 @@ public class Main {
 		}
 		int i = 0;
 		String msg = "";
-		for (HinhHoc2Chieu o : dsHinh) {
+		for (Hinh2D o : dsHinh) {
 			if (o instanceof HinhTamGiac) {
 				msg = "Hình chữ nhật(" + ((HinhTamGiac) o).getCanhThu1() + ", " + ((HinhTamGiac) o).getCanhThu2() + ", "
 						+ ((HinhTamGiac) o).getCanhThu3() + ")";
 			}
 			System.out.println(
-					"Hình Chữ nhật Thứ " + (++i) + ": Chu vi: " + o.tinhChuVi() + " - Diện Tích: " + o.tinhDienTich());
+					"Hình Chữ nhật Thứ " + (++i) + ": Chu vi: " + o.getChuVi() + " - Diện Tích: " + o.getDienTich());
 		}
 		System.out.println("******************************************************");
 	}

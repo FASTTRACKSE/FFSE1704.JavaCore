@@ -242,7 +242,7 @@ public class QuanLySinhVien {
 		System.out.println(
 				"MỜI CHỌN KIỂU SV\n1. SINH VIÊN DÀI HẠN \n2. SINH VIÊN WED CẤP TỐC\n3. SINH VIÊN JAVA CẤP TỐC");
 		int k = sc.nextInt();
-		int i=0;
+		int i = 0;
 		System.out.println("SẮP XẾP \n");
 		if (k == 1) {
 			Collections.sort(dsSinhVien, new Comparator<SinhVien>() {

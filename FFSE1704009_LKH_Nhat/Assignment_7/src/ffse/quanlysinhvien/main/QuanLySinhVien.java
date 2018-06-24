@@ -3,10 +3,10 @@
  */
 package ffse.quanlysinhvien.main;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 import ffse.quanlysinhvien.entity.*;
@@ -20,6 +20,7 @@ public class QuanLySinhVien {
 
 	static int N;
 	static ArrayList<SinhVien> dsSinhVien = new ArrayList<SinhVien>();
+	static Random rd = new Random();
 
 	static Scanner myInput = new Scanner(System.in);
 
@@ -32,11 +33,11 @@ public class QuanLySinhVien {
 			System.out.println("|1.Nhập danh sách sinh viên                     |");
 			System.out.println("|2.Xuất thông tin danh sách sinh viên           |");
 			System.out.println("|3.Danh sách sinh viên có học lực giỏi          |");
-			System.out.println("|4.Sắp xếp sinh viên theo điểm của từng lớp     |");
+			System.out.println("|4.Danh sách ngẫu nhiên sinh viên toàn trường   |");
 			System.out.println("|5.Sắp xếp sinh viên theo điểm của toàn trường  |");
 			System.out.println("|6.Kết Thúc                                     |");
 			System.out.println("+-----------------------------------------------+");
-			System.out.println("Mời Bạn Chọn Chức Năng");
+			System.err.println("Mời Bạn Chọn Chức Năng");
 			N = myInput.nextInt();
 			if (N == 1) {
 				NhapThongTinSV();
@@ -45,7 +46,7 @@ public class QuanLySinhVien {
 			} else if (N == 3) {
 				SVGioi();
 			} else if (N == 4) {
-				SapXep();
+				Random();
 			} else if (N == 5) {
 				SapXepToanTruong();
 			} else {
@@ -103,7 +104,8 @@ public class QuanLySinhVien {
 				double diemLP6 = myInput.nextInt();
 
 				System.out.println("------------------------------------------------------------------");
-
+				((List<SinhVien>) rd).add(new SinhVienDaiHan(hoSV, tenSV, namSinh, diaChi, diemLP0, diemLP1, diemLP2, diemLP3, diemLP4,
+						diemLP5, diemLP6));
 				dsSinhVien.add(new SinhVienDaiHan(hoSV, tenSV, namSinh, diaChi, diemLP0, diemLP1, diemLP2, diemLP3,
 						diemLP4, diemLP5, diemLP6));
 			}
@@ -137,7 +139,7 @@ public class QuanLySinhVien {
 					double diemLP3 = myInput.nextInt();
 
 					System.out.println("------------------------------------------------------------------");
-
+					((List<SinhVien>) rd).add(new SinhVienWebCapToc(hoSV, tenSV, namSinh, diaChi, diemLP2, diemLP3));
 					dsSinhVien.add(new SinhVienWebCapToc(hoSV, tenSV, namSinh, diaChi, diemLP2, diemLP3));
 				}
 			} else {
@@ -170,11 +172,11 @@ public class QuanLySinhVien {
 						double diemLP5 = myInput.nextInt();
 
 						System.out.println("------------------------------------------------------------------");
-
+						((List<SinhVien>) rd).add(new SinhVienJavaCapToc(hoSV, tenSV, namSinh, diaChi, diemLP4, diemLP5));
 						dsSinhVien.add(new SinhVienJavaCapToc(hoSV, tenSV, namSinh, diaChi, diemLP4, diemLP5));
 					}
 				} else {
-					System.out.println("BẠN CHỈ ĐƯỢC NHẬP TỪ 1 ĐẾN 3. HÃY NHẬP LẠI !!!");
+					System.err.println("BẠN CHỈ ĐƯỢC NHẬP TỪ 1 ĐẾN 3. HÃY NHẬP LẠI !!!");
 				}
 			}
 		}
@@ -284,65 +286,50 @@ public class QuanLySinhVien {
 		System.out.println("******************************************************");
 	}
 
-	public static void SapXep() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println(
-				"MỜI CHỌN KIỂU SV\n1. SINH VIÊN DÀI HẠN \n2. SINH VIÊN WED CẤP TỐC\n3. SINH VIÊN JAVA CẤP TỐC");
-		int k = sc.nextInt();
+	public static void Random() {
 		int i = 0;
-		System.out.println("SẮP XẾP \n");
-		if (k == 1) {
-			Collections.sort(dsSinhVien, SVComparator.SinhVienDTBASComparator);
-			for (SinhVien o : dsSinhVien) {
+		System.out.println("Random  \n");
 
-				System.out.println("Sinh Viên  Thứ " + (++i) + ":\n Họ Sinh Viên: " + ((SinhVienDaiHan) o).getHoSV()
-						+ "\n - Tên Sinh Viên: " + ((SinhVienDaiHan) o).getTenSV() + " - năm Sinh: "
-						+ ((SinhVienDaiHan) o).getNamSinh() + "\n - Địa Chỉ: " + ((SinhVienDaiHan) o).getDiaChi()
-						+ "\n - Điểm LP0: " + ((SinhVienDaiHan) o).getDiemLP0() + "\n - Điểm LP1: "
-						+ ((SinhVienDaiHan) o).getDiemLP1() + "\n - Điểm LP2: " + ((SinhVienDaiHan) o).getDiemLP2()
-						+ "\n - Điểm LP3: " + ((SinhVienDaiHan) o).getDiemLP3() + "\n2 - Điểm LP4: "
-						+ ((SinhVienDaiHan) o).getDiemLP4() + "\n - Điểm LP5: " + ((SinhVienDaiHan) o).getDiemLP5()
-						+ "\n - Điểm LP6: " + ((SinhVienDaiHan) o).getDiemLP6() + "\n - Điểm Trung Bình: "
-						+ ((SinhVienDaiHan) o).tinhDTB() + "\n - Xếp Loại: " + ((SinhVienDaiHan) o).xepLoaiSV());
+		System.err.println(
+				"|-------------------------------------------------------------------DANH SÁCH SINH VIÊN-------------------------------------------------------------------------|");
+		System.out.printf("\n" + "%-10s %-20s %-15s %-12s  %-12s  %-8s %-8s %-8s %-8s %-8s %-8s %-8s %-10s %-15s",
+				"STT", "Họ và tên", "Năm Sinh", "Địa Chỉ", "Lớp", "LP0", "LP1", "LP2", "LP3", "LP4", "LP5", "LP6", "TB",
+				"XLoại\n");
+		System.out.println("");
+		System.out.println(
+				"-------------------------------------------------------------------*******************-------------------------------------------------------------------------");
+		for (SinhVien o : ((List<SinhVien>) rd)) {
 
-			}
-		} else {
-			if (k == 2) {
-				Collections.sort(dsSinhVien, SVComparator.SinhVienDTBASComparator);
-				for (SinhVien o : dsSinhVien) {
-
-					System.out.println(
-							"Sinh Viên  Thứ " + (++i) + ":\n Họ Sinh Viên: " + ((SinhVienWebCapToc) o).getHoSV()
-									+ " - Tên Sinh Viên: " + ((SinhVienWebCapToc) o).getTenSV() + "\n - năm Sinh: "
-									+ ((SinhVienWebCapToc) o).getNamSinh() + "\n - Địa Chỉ: "
-									+ ((SinhVienWebCapToc) o).getDiaChi() + "\n - Điểm LP2: "
-									+ ((SinhVienWebCapToc) o).getDiemLP2() + "\n - Điểm LP3: "
-									+ ((SinhVienWebCapToc) o).getDiemLP3() + "\n - Điểm Trung Bình: "
-									+ ((SinhVienWebCapToc) o).tinhDTB() + "\n - Xếp Loại: "
-									+ ((SinhVienWebCapToc) o).xepLoaiSV());
-				}
-
+			if (o instanceof SinhVienDaiHan) {
+				System.out.printf("\n" + "%-10s %-20s %10s %-12s  %-12s  %8s %8s %8s %8s %8s %8s %8s %10.3s %-15s",
+						(++i), ((SinhVien) o).getHoSV() + " " + ((SinhVien) o).getTenSV(), ((SinhVien) o).getNamSinh(),
+						((SinhVien) o).getDiaChi(), "Dài Hạn", ((SinhVienDaiHan) o).getDiemLP0(),
+						((SinhVienDaiHan) o).getDiemLP1(), ((SinhVienDaiHan) o).getDiemLP2(),
+						((SinhVienDaiHan) o).getDiemLP3(), ((SinhVienDaiHan) o).getDiemLP4(),
+						((SinhVienDaiHan) o).getDiemLP5(), ((SinhVienDaiHan) o).getDiemLP6(),
+						((SinhVienDaiHan) o).tinhDTB(), ((SinhVienDaiHan) o).xepLoaiSV() + "\n");
 			} else {
-				if (k == 3) {
-					Collections.sort(dsSinhVien, SVComparator.SinhVienDTBASComparator);
-
-					for (SinhVien o : dsSinhVien) {
-
-						System.out.println(
-								"Sinh Viên  Thứ " + (++i) + ":\n Họ Sinh Viên: " + ((SinhVienJavaCapToc) o).getHoSV()
-										+ " - Tên Sinh Viên: " + ((SinhVienJavaCapToc) o).getTenSV() + "\n - năm Sinh: "
-										+ ((SinhVienJavaCapToc) o).getNamSinh() + "\n - Địa Chỉ: "
-										+ ((SinhVienJavaCapToc) o).getDiaChi() + "\n - Điểm LP2: "
-										+ ((SinhVienJavaCapToc) o).getDiemLP4() + "\n - Điểm LP3: "
-										+ ((SinhVienJavaCapToc) o).getDiemLP5() + "\n - Điểm Trung Bình: "
-										+ ((SinhVienJavaCapToc) o).tinhDTB() + "\n - Xếp Loại: "
-										+ ((SinhVienJavaCapToc) o).xepLoaiSV());
-					}
-
+				if (o instanceof SinhVienWebCapToc) {
+					System.out.printf("\n" + "%-10s %-20s %10s %-12s  %-11s  %8s %8s %8s %8s %8s %8s %8s %10.3s %-15s",
+							(++i), ((SinhVien) o).getHoSV() + " " + ((SinhVien) o).getTenSV(),
+							((SinhVien) o).getNamSinh(), ((SinhVien) o).getDiaChi(), "Web cấp tốc", "x", "x",
+							((SinhVienWebCapToc) o).getDiemLP2(), ((SinhVienWebCapToc) o).getDiemLP3(), "x", "x", "x",
+							((SinhVienWebCapToc) o).tinhDTB(), ((SinhVienWebCapToc) o).xepLoaiSV() + "\n");
 				} else {
-					System.out.println(" Bạn phải nhập trong khoảng từ 1 đến 3. hãy nhập lại !!!");
+					if (o instanceof SinhVienJavaCapToc) {
+						System.out.printf(
+								"\n" + "%-10s %-20s %10s %-12s  %-11s  %8s %8s %8s %8s %8s %8s %8s %10.3s %-15s", (++i),
+								((SinhVien) o).getHoSV() + " " + ((SinhVien) o).getTenSV(), ((SinhVien) o).getNamSinh(),
+								((SinhVien) o).getDiaChi(), "Java Cấp Tốc", "x", "x", "x", "x",
+								((SinhVienJavaCapToc) o).getDiemLP4(), ((SinhVienJavaCapToc) o).getDiemLP5(), "x",
+								((SinhVienJavaCapToc) o).tinhDTB(), ((SinhVienJavaCapToc) o).xepLoaiSV() + "\n");
+					}
 				}
 			}
+			System.out.println("");
+			System.out.println(
+					"-------------------------------------------------------------------*******************-------------------------------------------------------------------------");
+
 		}
 
 	}
@@ -354,7 +341,7 @@ public class QuanLySinhVien {
 
 		Collections.sort(dsSinhVien, SVComparator.SinhVienDTBASComparator);
 
-		System.out.println(
+		System.err.println(
 				"|-------------------------------------------------------------------DANH SÁCH SINH VIÊN-------------------------------------------------------------------------|");
 		System.out.printf("\n" + "%-10s %-20s %-15s %-12s  %-12s  %-8s %-8s %-8s %-8s %-8s %-8s %-8s %-10s %-15s",
 				"STT", "Họ và tên", "Năm Sinh", "Địa Chỉ", "Lớp", "LP0", "LP1", "LP2", "LP3", "LP4", "LP5", "LP6", "TB",
@@ -395,53 +382,6 @@ public class QuanLySinhVien {
 					"-------------------------------------------------------------------*******************-------------------------------------------------------------------------");
 
 		}
-//		System.out.println("SẮP XẾP CỦA THẦY  \n");
-//		
-//int stt = 0;
-//		
-//		if (dsSinhVien.size() == 0) {
-//			System.out.println("Không có sinh viên nào");
-//		}
-//		else {
-//
-//		for (SinhVien sv : dsSinhVien) {
-//			System.out.printf("%03d %-20s%8d", ++stt, sv.getHoSinhVien() + " " + sv.getTenSinhVien(), sv.getNamSinh());
-//
-//			String sLP1 = "N/A";
-//			String sLP2 = "N/A";
-//			String sLP3 = "N/A";
-//			String sLP4 = "N/A";
-//			String sLP5 = "N/A";
-//			String sDTB = "N/A";
-//			DecimalFormat formatter = new DecimalFormat("#,###.0");
-//			for (tinhDTB x : sv.tinhDTB()) {
-//				String temp = formatter.format(x.getDiemThi());
-//				switch (x.getMonHoc().getMaMonHoc()) {
-//				case "LP1":
-//					sLP1 = temp;
-//					break;
-//
-//				case "LP2":
-//					sLP2 = temp;
-//					break;
-//
-//				case "LP3":
-//					sLP3 = temp;
-//					break;
-//
-//				case "LP4":
-//					sLP4 = temp;
-//					break;
-//
-//				case "LP5":
-//					sLP5 = temp;
-//					break;
-//				}
-//			}
-//			sDTB = formatter.format(sv.tinhDTB());
-//			System.out.printf("%10s%10s%10s%10s%10s%10s%n", sLP1, sLP2, sLP3, sLP4, sLP5, sDTB);
-//		}
-		
-		
+
 	}
 }

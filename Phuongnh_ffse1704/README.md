@@ -20,3 +20,12 @@ https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/Phuongnh_ffse1704/a
 
 -bài 6 asignment 5
 https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/Phuongnh_ffse1704/QuanLyTienDien/src/fasttrackse/javacore
+
+-bài 7 asignment 7
+
+-bài 8 asignment 8
+https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/Phuongnh_ffse1704/Asignment8/src/ffse/java
+
+-bài 9 asignment 9
+https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/Phuongnh_ffse1704/Asignment8/src/ffse/java
+

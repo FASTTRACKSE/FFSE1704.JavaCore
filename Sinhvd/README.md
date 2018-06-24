@@ -24,3 +24,5 @@ https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/Sinhvd/Assignment_5
 
 7. quản lý tiền điện
 https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/Sinhvd/Assignment%206/src/QuanLyTienDien
+8. quản lý cán bộ
+https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/Sinhvd/Assignment8/src/ffse/java/canbo

@@ -8,3 +8,5 @@
 5. Assignment 5: [Assignment 5](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/Quanlt/src/fasttrackse/bai3/quanlytiendien)
 5. Assignment 6: [Assignment 6](https://fb.me/quanltofficial)
 5. Assignment 7: [Assignment 7](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/Quanlt/src/fasttrackse/ass7)
+5. Assignment 8: [Assignment 8](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/Quanlt/src/fasttrackse/asm5plus)
+5. Assignment 9: [Assignment 9](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/Quanlt/src/fasttrackse/asm8)
