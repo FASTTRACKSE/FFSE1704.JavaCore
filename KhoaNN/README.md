@@ -22,4 +22,4 @@ https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/KhoaNN/src/ffse/kho
 https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhoaNN/src/ffse/quanlisinhvien
 
 8 Bài tập quản lý cán bộ : 
-   https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhoaNN/src/ffse/quanlithongtin
+https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhoaNN/src/ffse/quanlithongtin
