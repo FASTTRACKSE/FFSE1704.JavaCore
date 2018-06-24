@@ -9,3 +9,4 @@
 8. Assignment 6: [Biên lai tiền điện nâng cao](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ToanNT/Tiendiennangcao/src/ffse1703012/assignment)
 9. Assignment 7: [Quản lý sinh viên nâng cao](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ToanNT/QuanLySinhVien/src/ffse1703012/assignment)
 10. Assignment 8: [Quản lý nhân viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ToanNT/QuanLyNhanVien/src/ffse1703012/QuanLyNhanVien)
+11. Assignment 9: [Quản lý nhân viên nâng cao](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ToanNT/QuanLyNhanVien/src/ffse1703012/QuanLyNhanVien)
