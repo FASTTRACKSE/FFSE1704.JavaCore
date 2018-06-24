@@ -16,4 +16,7 @@
 
 7. [Assignment 7: Quản Lý Sinh Viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/HungHelloWorld/src/fasttrackse/qlsv2)
 
-8. [Assignment 8: Quản Lý Cán Bộ](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/HungHelloWorld/src/fasttrackse/qltt)
+8. [Assignment 8: Quản Lý Nhân Viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/HungHelloWorld/src/fasttrackse/qltt)
+
+9. [Assignment 9: Quản Lý Cán Bộ](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/QuanLyCanBo/src/fasttrackse/qltt)
+
