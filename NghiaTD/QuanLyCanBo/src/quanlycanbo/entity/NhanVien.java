@@ -4,9 +4,9 @@ public class NhanVien extends CanBo {
 		private String phongBan;
 		private int soNgayCong;
 		private String chucVu;
-	public NhanVien(String hoTen, double heSoLuong, int phuCap,String phongBan,
+	public NhanVien(String hoTen, double heSoLuong,String phongBan,
 			int soNgayCong,String chucVu) {
-		super(hoTen, heSoLuong, phuCap);
+		super(hoTen, heSoLuong);
 		this.phongBan=phongBan;
 		this.soNgayCong=soNgayCong;
 		this.chucVu=chucVu;
@@ -30,8 +30,18 @@ public class NhanVien extends CanBo {
 		this.chucVu = chucVu;
 	}
 	public double tinhLuong() {
-		return this.getHeSoLuong()*730+this.getPhuCap()+this.getSoNgayCong()*30;
 		
+		double tinhLuong=0;
+		if("Trưởng phòng".equals(getChucVu())) {
+			return (this.heSoLuong * 730) + (300) + (this.soNgayCong * 30);
+		}else if("Phó phòng".equals(getChucVu())) {
+			return (this.heSoLuong * 730) +(500) + (this.soNgayCong * 30);
+		}else if("Nhân viên".equals(getChucVu())) {
+			return (this.heSoLuong * 730) + (1000) + (this.soNgayCong * 30);
+		}
+		
+		return tinhLuong;
+
 	}
 
 }

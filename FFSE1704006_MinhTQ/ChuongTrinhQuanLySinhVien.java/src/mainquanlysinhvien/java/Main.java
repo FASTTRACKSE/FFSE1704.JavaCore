@@ -352,7 +352,7 @@ public class Main {
 						+ "\t    " + ((SinhVienJavaCapToc) o).getDiaChi() + "\t "
 						+ ((SinhVienJavaCapToc) o).getDiemLP4() + "\t    " + ((SinhVienJavaCapToc) o).getDiemLP5()
 						+ "\t    " + ((SinhVienJavaCapToc) o).tinhDiemTrungBinh() + "\n");
-
+  
 			}
 		}
 	}

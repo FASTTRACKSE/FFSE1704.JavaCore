@@ -4,11 +4,14 @@ import java.util.Scanner;
 public class BaiTap {
 
 	public static void main(String[] args) {
-		System.out.println("//************************//");
-		System.out.println("1.phuong trinh bac nhất");
-        System.out.println("2.phuong trinh bac hai");
-        System.out.println("3.kiểu mãng");
-        System.out.println("4.kết thúc");  
+		
+		System.out.println("//*****   Menu        ******//");
+		System.out.println("1.**|| phuong trinh bac nhất ||**");
+        System.out.println("2.**|| phuong trinh bac hai  ||**");
+        System.out.println("3.**|| kiểu mãng    ||**"            );
+        System.out.println("4.**|| sắp xếp mãng ||**");  
+        System.out.println("5.**|| kết thúc     ||**");  
+
 		System.out.println("//************************//");
 
         
@@ -21,6 +24,10 @@ public class BaiTap {
         	 giaiptbac2();
          }if(sinh==3) {
         	 kieumang();
+         }if(sinh==4) {
+        	sinh();
+         }if(sinh==5) {
+        	 ketthuc();
          }
          }
 
@@ -43,10 +50,13 @@ public class BaiTap {
 			}
 		} else {
 			nghiemX = -thamSoB * 1.0 / thamSoA;
-			System.out.println("phương trình" + thamSoA + "x +" + thamSoB + "  là " + nghiemX);
+			System.out.println("phương trình"  + thamSoA + "x + " + thamSoB + "  là " + nghiemX);
 
 		}
 
+	}
+	public static void BaiTap() {
+		
 	}
 
 	public static void giaiptbac2() {
@@ -139,6 +149,52 @@ Scanner myInput = new Scanner(System.in);
 				System.out.println("Giá Trị Lớn nhất là " + max + " Vị Trí của số lớn nhất là : " + a);
 				System.out.println("");
 				System.out.println("Giá Trị Nhỏ nhất là " + min + " Vị Trí của số nhỏ nhất là : " + b);
+	}
+	public static void sinh() {
+		//Khai báo
+				int n;
+				Scanner N = new Scanner(System.in);
+				System.out.println("Nhập vào số phần tử của mảng: ");
+				n = N.nextInt();
+				//-- khởi tạo và cấp phát bộ nhớ cho mảng
+				int array[] = new int[n];
+				
+				//phần thân trang code
+				System.out.println("Nhập các phần tử cho mảng: ");
+				for (int i = 0; i < n; i++) {
+					int j = i + 1;
+					System.out.print("Nhập phần tử thứ " + j + ": ");
+					array[i] = N.nextInt();
+				}
+
+				//-- Hiển thị mảng vừa nhập
+				System.out.println("Mảng đã nhập: ");
+				for (int i = 0; i < n; i++) {
+					System.out.print(array[i] + " ");
+				}
+				System.out.println(" ");
+				// --Tìm min max và vị trí
+				int max = array[0];
+				int min = array[0];
+				int a = 0;
+				int b = 0;	
+				for (int i = 0; i < n; i++) {
+					if (max < array[i]) {
+						max = array[i];
+						a = i;
+					}
+					if (min > array[i]) {
+						min = array[i];
+						b = i;
+					}
+				}
+				System.out.println("Giá Trị Lớn nhất là " + max + " Vị Trí của số lớn nhất là : " + a);
+				System.out.println("");
+				System.out.println("Giá Trị Nhỏ nhất là " + min + " Vị Trí của số nhỏ nhất là : " + b);
+	}
+
+	public static void ketthuc() {
+		
 	}
 
 

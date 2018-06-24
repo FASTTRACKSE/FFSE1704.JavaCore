@@ -96,7 +96,7 @@ public class SinhVienDaiHan extends SinhVien {
 //		} else if (tinhDTB() <= 7) {
 //			ketQua = "Trung bình";
 //			// System.out.println("Trung Bình");
-//
+// 
 //		} else if (tinhDTB() <= 8.5) {
 //			ketQua = "khá";
 //			// System.out.println("Khá");
