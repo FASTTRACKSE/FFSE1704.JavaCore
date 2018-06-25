@@ -25,4 +25,6 @@
 
 8. [Assgnment7] [quản lý cán bộ]
 (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/QuanLyCanBo/src/quanlycanbo)
+9. [Assgnment9] [Xư lý lỗi]
+(https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/QuanLyCanBo/src/quanlycanbo)
 
