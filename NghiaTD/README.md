@@ -21,10 +21,11 @@
 
 7.[Assgnment6]
   [Chương trình quản lý sinh viên nâng cao]
-(https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/HelloWorld/src/QLSVFACTTRACKSE/src/ffse1704)
+  (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/HelloWorld/src/QLSVFACTTRACKSE/src/ffse1704)
+  
 8. [Assgnment7] [quản lý cán bộ]
-(https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/QuanLyCanBo/src/quanlycanbo)
+  (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/QuanLyCanBo/src/quanlycanbo)
 
 9. [Assgnment9] [Xư lý lỗi]
-(https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/QuanLyCanBo/src/quanlycanbo)
+  (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/QuanLyCanBo/src/quanlycanbo)
 
