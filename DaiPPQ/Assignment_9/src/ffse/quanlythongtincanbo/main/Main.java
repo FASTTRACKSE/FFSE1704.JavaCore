@@ -227,7 +227,7 @@ public class Main {
 						System.out.print("Số Tiết Dạy Trong Tháng: ");
 						soTietDayTrongThang = myInput.nextInt();
 
-						if (soTietDayTrongThang <= 0) {
+						if (soTietDayTrongThang < 0) {
 							throw new CBException(2);
 						}
 					} catch (CBException e) {
@@ -253,14 +253,13 @@ public class Main {
 			System.out.println("+------------------------------+");
 			System.out.print("Nhập số lượng nhân viên: ");
 			N = myInput.nextInt();
-
+			
 			for (int i = 0; i < N; i++) {
 				System.out.print("Nhập thông tin nhân viên thứ " + (i + 1) + "\n");
 				myInput.nextLine();
 
-				System.out.print("Nhập họ tên nhân viên: ");
 				do {
-					System.out.print("Nhập họ tên giảng viên: ");
+					System.out.print("Nhập họ tên nhân viên: ");
 					try {
 						inputOK = true;
 						ten = myInput.nextLine();
@@ -357,7 +356,7 @@ public class Main {
 						System.out.print("Số Tiết Dạy Trong Tháng: ");
 						soNgayCong = myInput.nextInt();
 
-						if (soNgayCong <= 0) {
+						if (soNgayCong < 0) {
 							throw new CBException(2);
 						}
 					} catch (CBException e) {
