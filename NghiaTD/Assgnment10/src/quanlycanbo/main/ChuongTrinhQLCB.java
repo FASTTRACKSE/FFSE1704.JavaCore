@@ -11,15 +11,15 @@ import quanlycanbo.util.MyException;
 import java.util.Scanner;
 
 import quanlycanbo.entity.*;
-
+import quanlycanbo.util.SerializeFileFactory;
 public class ChuongTrinhQLCB {
 	static int N;
 	static ArrayList<CanBo> dsCanBo = new ArrayList<CanBo>();
 	static Scanner myInput = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		while (N != 5) {
+		
+		while (N != 7) {
 			try {
 				System.out.println(">> Menu Chương Trình <<");
 				System.out.println("+-------------------------------------------+");
@@ -41,7 +41,9 @@ public class ChuongTrinhQLCB {
 				} else if (N == 4) {
 					SapXepCanBo();
 				} else if (N == 5) {
-					KetThuc();
+					luuFile();
+				} else if (N == 6) {
+					readFile();
 				} else {
 					throw new Exception();
 				}
@@ -348,15 +350,15 @@ public class ChuongTrinhQLCB {
 
 	}
 
-	public static void KetThuc() {
-		System.out.println("KTCT");
+	public static void luuFile() {
+		
+		SerializeFileFactory.luuFile(dsCanBo, "danhsachcanbo.txt");
 
 	}
 
-	public static void Back() {
-		myInput.nextInt();
-		System.out.println("Ấn enter vê menu chính");
-		myInput.nextInt();
+	public static void readFile() {
+		dsCanBo.clear();
+		dsCanBo = SerializeFileFactory.docFile("danhsachcanbo.txt");
 
 	}
 
