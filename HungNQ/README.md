@@ -20,3 +20,4 @@
 
 9. [Assignment 9: Quản Lý Cán Bộ](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/QuanLyCanBo/src/fasttrackse/qltt)
 
+10. [Assignment 10: FileSample](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/QuanLyCanBo/src/fasttrackse/filesample)
