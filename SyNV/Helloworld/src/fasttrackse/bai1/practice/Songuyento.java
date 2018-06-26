@@ -1,4 +1,4 @@
-package fasttrackse.bai1.practice;
+rpackage fasttrackse.bai1.practice;
 
 import java.util.Scanner;
 

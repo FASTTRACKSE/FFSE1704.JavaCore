@@ -16,3 +16,4 @@
 
 8.[Assignment 7 : Chương trình quản lý sinh viên Fasttrack SE](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhanhCN/src/fasttrack/sinhvien)
 
+9.[Assignment 8,9 : Chương trình quản lý Cán Bộ](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhanhCN/src/fasttrack/quanlycanbo)

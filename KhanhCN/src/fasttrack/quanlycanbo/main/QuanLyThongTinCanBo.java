@@ -46,10 +46,10 @@ public class QuanLyThongTinCanBo {
 				} else if (myOption == 5) {
 					ketThuc();
 				} else {
-					throw new Exception();
+					throw new myException(7);
 				}
-			} catch (Exception e) {
-				System.out.println("Chỉ nhập từ 1 đến 5, nhập lại nhé bạn hiền!");
+			} catch (myException e) {
+				System.out.println(e);
 			} finally {
 				if (myOption != 5) {
 					backToMainMenu();
@@ -80,6 +80,7 @@ public class QuanLyThongTinCanBo {
 			int xl = 0;
 
 			// NHẬP SỐ GV
+			
 			System.out.println("Nhập số lượng  giảng viên : ");
 			n = myInput.nextInt();
 
@@ -89,7 +90,7 @@ public class QuanLyThongTinCanBo {
 				do {
 					try {
 						myInput.nextLine();
-						System.out.println("Mời bạn tên giảng viên thứ " + (i + 1));
+						System.out.println("Mời bạn nhập tên giảng viên thứ " + (i + 1));
 						hoTen = myInput.nextLine();
 						ketqua = true;
 
@@ -100,6 +101,7 @@ public class QuanLyThongTinCanBo {
 					} catch (myException e) {
 						System.out.println(e);
 						ketqua = false;
+						
 					}
 				} while (!ketqua);
 
@@ -188,7 +190,7 @@ public class QuanLyThongTinCanBo {
 			// HỌ TÊN NV
 			do {
 				try {
-					System.out.println("Mời bạn tên giảng viên thứ " + (i + 1));
+					System.out.println("Mời bạn tên nhân viên thứ " + (i + 1));
 					myInput.nextLine();
 					hoTen = myInput.nextLine();
 
@@ -250,6 +252,7 @@ public class QuanLyThongTinCanBo {
 				} catch (Exception e) {
 					System.out.println(e);
 					ketqua = false;
+					myInput.next();
 				}
 			} while (!ketqua);
 
@@ -360,10 +363,9 @@ public class QuanLyThongTinCanBo {
 
 		});
 		for (CanBo x : dsCanBo) {
+			System.out.println("----------------------DANH SÁCH CÁN BỘ ĐÃ ĐƯỢC SẮP XẾP ------------------------");
 
 			if (x instanceof NhanVien) {
-				System.out.println(
-						"------------------------DANH SÁCH NHÂN VIÊN------------------------------------------");
 				System.out.printf("\n" + "%-10s %-10s %-15s %-15s %-15s %-15s %-15s ", "Họ tên ", "PhongBan", "Chức Vụ",
 						"Ngày Công", "Phụ cấp", "Hệ số Lương", "Lương Nhận\n");
 
@@ -373,9 +375,7 @@ public class QuanLyThongTinCanBo {
 
 			} else if (x instanceof GiangVien) {
 
-				System.out.println(
-						"------------------------DANH SÁCH GIANG VIÊN------------------------------------------");
-				System.out.printf("\n" + "%-10s %-10s %-15s %-15s  %-15s  %-15s %-15s ", "Họ và", "Khoa", "Trình Độ",
+				System.out.printf("\n" + "%-10s %-10s %-15s %-15s  %-15s  %-15s %-15s ", "Họ tên", "Khoa", "Trình Độ",
 						"Số Tiết Dạy", "Phụ cấp", "Hệ số Lương", "Lương Nhận\n");
 
 				System.out.printf("\n" + "%-10s %-10s %-15s %-15s  %-15s  %-15s %-15s ", (x.getHoTen()),

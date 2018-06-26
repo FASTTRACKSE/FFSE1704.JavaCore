@@ -34,7 +34,12 @@
 [entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_7/src/fasttrackse/quanlysinhvien/entity)</br>
 [util](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_7/src/fasttrackse/quanlysinhvien/util)
 
-11. [Quản lý thông tin cán bộ]</br>
+11. [Assignment 8 - Quản lý thông tin cán bộ]</br>
 [main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QuanLyThongTinCanBo/src/ffse/quanlythongtincanbo/main)</br>
 [entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QuanLyThongTinCanBo/src/ffse/quanlythongtincanbo/entity)</br>
 [util](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QuanLyThongTinCanBo/src/ffse/quanlythongtincanbo/util)
+
+12. [Assignment 9 - Quản lý thông tin cán bộ với try ... catch]</br>
+[main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_9/src/ffse/quanlythongtincanbo/main)</br>
+[entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_9/src/ffse/quanlythongtincanbo/entity)</br>
+[util](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_9/src/ffse/quanlythongtincanbo/util)

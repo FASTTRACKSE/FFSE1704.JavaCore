@@ -13,7 +13,7 @@ public class myException extends Exception {
 		String msg = "Lỗi không xác định, mời chạy lại !!!";
 		switch (err) {
 		case 1:
-			msg = "Tên cần có độ dài từ 1 -> 40, xin vui lòng nhập lại!!! ";
+			msg = "Không được để trống và ko quá 40 kí tự, xin vui lòng nhập lại!!! \n ";
 			break;
 		case 2:
 			msg = "Bạn đã nhập sai, hãy chọn lại 1 2 hoặc 3 tương ứng !!!";
@@ -29,6 +29,9 @@ public class myException extends Exception {
 			break;
 		case 6:
 			msg = "Vui lòng hãy nhập kiểu số !!! ";
+			break;
+		case 7:
+			msg = "Chỉ nhập từ 1 đến 5, nhập lại nhé bạn hiền! ";
 			break;
 		}
 		return msg;

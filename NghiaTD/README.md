@@ -10,19 +10,23 @@
 4. [Thiết kê thực đơn]
 (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/ThietKeThucDon/ThucDon.java)
 
-  5.[Assgnment4]
+5. [Assgnment4]
 (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Entity/SinhVien.java)
 (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/QuanLySv/main.java)
 
- 6.[Assgnment5]
-[Biên lai](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Assgnment5/src/entity/BienLai.java)
-[Khách hàng](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Assgnment5/src/entity/KhachHang.java)
-[Main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Assgnment5/src/main/Main.java)
+6. [Assgnment5]
+  [Biên lai](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Assgnment5/src/entity/BienLai.java)
+  [Khách hàng](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Assgnment5/src/entity/KhachHang.java)
+  [Main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/NghiaTD/HelloWorld/src/Assgnment5/src/main/Main.java)
 
-7.[Assgnment6]
-[Chương trình quản lý sinh viên nâng cao]
-(https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/HelloWorld/src/QLSVFACTTRACKSE/src/ffse1704)
-
+7. [Assgnment6] [Chương trình quản lý sinh viên nâng cao]
+  (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/HelloWorld/src/QLSVFACTTRACKSE/src/ffse1704)
+  
 8. [Assgnment7] [quản lý cán bộ]
-(https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/QuanLyCanBo/src/quanlycanbo)
+  (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/QuanLyCanBo/src/quanlycanbo)
+
+9. [Assgnment9] [Xư lý lỗi]
+  (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/QuanLyCanBo/src/quanlycanbo)  
+  
+
 

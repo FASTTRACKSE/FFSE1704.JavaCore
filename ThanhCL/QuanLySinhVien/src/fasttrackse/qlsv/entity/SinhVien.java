@@ -25,7 +25,7 @@ public class SinhVien {
 		this.namSinh = namSinh;
 		this.diemThi = diemThi;
 	}
-	
+
 	public String getHoSinhVien() {
 		return hoSinhVien;
 	}
