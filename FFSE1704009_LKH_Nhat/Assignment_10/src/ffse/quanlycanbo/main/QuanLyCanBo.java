@@ -10,9 +10,12 @@ import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import ffse.quanlycanbo.entity.*;
+import ffse.quanlycanbo.entity.CanBo;
+import ffse.quanlycanbo.entity.GiangVien;
+import ffse.quanlycanbo.entity.NhanVien;
 import ffse.quanlycanbo.util.CBException;
 import ffse.quanlycanbo.util.NVComparator;
+import ffse.quanlycanbo.util.SerializeFileFactory;
 
 /**
  * @author Support
@@ -29,7 +32,7 @@ public class QuanLyCanBo {
 
 	public static void menu() {
 		int myOption = 0;
-		while (myOption != 5) {
+		while (myOption != 7) {
 			try {
 				System.out.println(">> Menu Chương Trình <<");
 				System.out.println("+----------------------------------------------------+");
@@ -37,7 +40,9 @@ public class QuanLyCanBo {
 				System.out.println("|2.Xuất thông tin cán bộ                             |");
 				System.out.println("|3.Tổng Tiền mà Nhà Trường phải trả cho toàn cán bộ  |");
 				System.out.println("|4.Danh sách cán bộ toàn trường theo lương           |");
-				System.out.println("|5.Kết Thúc                                          |");
+				System.out.println("|5.Ghi danh sách cán bộ vào file                     |");
+				System.out.println("|6.Đọc danh sách cán bộ qua file                     |");
+				System.out.println("|7.Kết Thúc                                          |");
 				System.out.println("+----------------------------------------------------+");
 
 				myOption = nhap.nextInt();
@@ -54,13 +59,19 @@ public class QuanLyCanBo {
 				} else if (myOption == 4) {
 					SapXep();
 
+				} else if (myOption == 5) {
+					ghiFile();
+
+				} else if (myOption == 6) {
+					docFile();
+
 				} else {
 					throw new Exception();
 				}
 			} catch (Exception e) {
-				System.out.println("Chỉ nhập từ 1 đến 5, nhập lại!");
+				System.out.println("Chỉ nhập từ 1 đến 7, nhập lại!");
 			} finally {
-				if (myOption != 5) {
+				if (myOption != 7) {
 					backToMainMenu();
 				}
 			}
@@ -126,30 +137,27 @@ public class QuanLyCanBo {
 				 *
 				 */
 
-				
-				
-				
 				do {
 					try {
-						
+
 						System.out.print("Nhập trình độ (1 - cử nhân, 2 - thạc sĩ, 3 -tiến sĩ): ");
 						choose = nhap.nextInt();
 
-						if(choose==1) {
+						if (choose == 1) {
 							trinhDo = "Cử nhân";
 							inputOK = true;
-						}else {
-							if(choose ==2) {
+						} else {
+							if (choose == 2) {
 								trinhDo = "Thạc sĩ";
 								inputOK = true;
-							}else {
-								if(choose == 3) {
+							} else {
+								if (choose == 3) {
 									trinhDo = "Tiến sĩ";
 									inputOK = true;
-								}else {
+								} else {
 									System.err.println("Nhập sai!!!");
 									inputOK = false;
-								} 
+								}
 							}
 						}
 					} catch (InputMismatchException e) {
@@ -177,8 +185,7 @@ public class QuanLyCanBo {
 					} catch (CBException e) {
 						System.err.println(e);
 						inputOK = false;
-					}
-					catch (InputMismatchException e) {
+					} catch (InputMismatchException e) {
 						System.err.println("Chỉ được nhập số");
 						nhap.next();
 						inputOK = false;
@@ -254,25 +261,25 @@ public class QuanLyCanBo {
 					 * 
 					 *
 					 */
-					
+
 					do {
 						try {
-							
+
 							System.out.print("Nhập chức vụ (1 - Trưởng phòng, 2 - Phó phòng, 3 -Nhân viên): ");
 							choose = nhap.nextInt();
 
-							if(choose==1) {
+							if (choose == 1) {
 								chucVu = "Trưởng phòng";
 								inputOK = true;
-							}else {
-								if(choose ==2) {
+							} else {
+								if (choose == 2) {
 									chucVu = "Phó phòng";
 									inputOK = true;
-								}else {
-									if(choose == 3) {
+								} else {
+									if (choose == 3) {
 										chucVu = "Nhân viên";
 										inputOK = true;
-									}else {
+									} else {
 										System.err.println("Nhập sai!!!");
 										inputOK = false;
 									}
@@ -284,8 +291,6 @@ public class QuanLyCanBo {
 							inputOK = false;
 						}
 					} while (!inputOK);
-					
-					
 
 					/**
 					 * 
@@ -426,4 +431,12 @@ public class QuanLyCanBo {
 
 	}
 
+	public static void ghiFile() {
+		SerializeFileFactory.luuFile(dsCanBo, "danhsachcanbo.txt");
+	}
+
+	public static void docFile() {
+		dsCanBo.clear();
+		dsCanBo = SerializeFileFactory.docFile("danhsachcanbo.txt");;
+	}
 }
