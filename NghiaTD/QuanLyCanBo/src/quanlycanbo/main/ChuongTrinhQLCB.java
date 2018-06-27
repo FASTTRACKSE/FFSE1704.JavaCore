@@ -27,8 +27,8 @@ public class ChuongTrinhQLCB {
 				System.out.println("|2.Xuất danh sách thông tin cán bộ          |");
 				System.out.println("|3.Tổng số tiền mà nhà trường phải trả      |");
 				System.out.println("|4.Sắp xếp danh sách Cán Bộ                 |");
-				System.out.println("|5.Xóa 1 Cán bộ                             |");
-				System.out.println("|6.Kết Thúc                                 |");
+				System.out.println("|5.Ghi file                                 |");
+				System.out.println("|6.Đọc file                                |");
 				System.out.println("+-------------------------------------------+");
 				System.out.println("Mời Bạn Chọn Chức Năng");
 				N = myInput.nextInt();

@@ -149,7 +149,7 @@ public class QuanLyCanBo {
 								}else {
 									System.err.println("Nhập sai!!!");
 									inputOK = false;
-								}
+								} 
 							}
 						}
 					} catch (InputMismatchException e) {
@@ -180,6 +180,7 @@ public class QuanLyCanBo {
 					}
 					catch (InputMismatchException e) {
 						System.err.println("Chỉ được nhập số");
+						nhap.next();
 						inputOK = false;
 					}
 				} while (!inputOK);
@@ -306,6 +307,7 @@ public class QuanLyCanBo {
 							inputOK = false;
 						} catch (InputMismatchException e) {
 							System.err.println("phải nhập kiểu số");
+							nhap.next();
 							inputOK = false;
 						}
 					} while (!inputOK);
