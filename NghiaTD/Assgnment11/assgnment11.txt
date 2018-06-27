@@ -1,0 +1,15 @@
+1. INSERT INTO sinhvien(id,name,age,class,gender)
+VALUES('1','H? Công L?nh','19','ffse1701','nam'),('2','Tr?n Thu Hà','19','ffse1701','N?'),
+('3','Tr?n Th? Tuy?t Nhung','19','ffse1701','N?'),('4','Tr?n Nguyên Nam','19','ffse1701','nam'),
+('5','Mai Tuy?t Loan','18','ffse1702','N?'),('6','Truong Ð?i Nghia','20','ffse1702','Nam'),
+('7','Ph?m Quang Nhân','21','ffse1702','Nam'),('8','Bùi Ng?c Qu?nh Nhi','20','ffse1703','N?'),
+('9','Nguy?n Minh Huy','22','ffse1704','Nam')
+
+2. SELECT * FROM `sinhvien` WHERE Gender = 0 AND age >19
+3. SELECT * FROM `sinhvien` WHERE Name Like  '%Nam'
+4. SELECT COUNT(*) FROM sinhvien WHERE class ='FFSE1701'
+5.DELETE FROM `sinhvien` WHERE age <18
+6. UPDATE sinhvien SET name= REPLACE(name, 'Nam', 'Trung') WHERE name LIKE '%Nam'
+7. SELECT * FROM sinhvien
+ORDER BY age DESC
+LIMIT 3
