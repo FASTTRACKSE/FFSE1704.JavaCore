@@ -1,11 +1,11 @@
 package javacore.fasttrackse.main;
 
 import java.util.ArrayList;
-
-
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import javacore.fasttrackse.entity.*;
+import javacore.fasttrackse.util.CBException;
 
 public class QuanLyThongTinCanBo {
 	static int N;
@@ -58,61 +58,196 @@ public class QuanLyThongTinCanBo {
 	public static void NhapDanhsachCB() {
 		Scanner myInput = new Scanner(System.in);
 		System.out.println(">> Bạn nhập cho Giảng Vien hay Nhân Viên <<");
-		System.out.println("+--------------------------------------+");
-		System.out.println("|1.Giảng Viên                          |");
-		System.out.println("|2.Nhân Viên                           |");
-		System.out.println("+--------------------------------------+");
+
+		System.out.println("1.Giảng Viên                       ");
+		System.out.println("2.Nhân Viên                         ");
+
 		int M = myInput.nextInt();
 		if (M == 1) {
+			boolean inputOK;
+			double heSoLuong = 0;
+			String hoTen = "";
+			String trinhDo = "";
+			int soTietDay = 0;
 			System.out.println(".Bạn đang nhập thông tin Giảng Viên ");
-			System.out.println("+--------------------------------------+");
+
 			System.out.println("Nhập số lượng Giảng Viên");
 			int X = myInput.nextInt();
 			for (int i = 0; i < X; i++) {
-				System.out.println("Nhập cán bộ Giảng viên thứ" + (i + 1) + "\n");
-				System.out.println("Nhập họ tên của Giảng viên");
 				myInput.nextLine();
-				String hoTen = myInput.nextLine();
 
-				System.out.println("Nhập hệ số lương Giảng viên");
-				double heSoLuong = myInput.nextDouble();
+				System.out.println("Nhập cán bộ Giảng viên thứ: " + (i + 1) + "\n");
+
+				// Input Exception Tên
+
+				do {
+					try {
+
+						System.out.println("Nhập họ tên của Giảng viên");
+
+						hoTen = myInput.nextLine();
+						inputOK = true;
+
+						if (hoTen.length() < 1 || hoTen.length() > 40) {
+							throw new CBException(1);
+						}
+					} catch (CBException e) {
+						System.out.println(e);
+						inputOK = false;
+					}
+				}
+
+				while (!inputOK);
+				// IE Lương
+				do {
+					try {
+						inputOK = true;
+						System.out.println("Nhập hệ số lương Giảng viên");
+						heSoLuong = myInput.nextDouble();
+					} catch (InputMismatchException e) {
+						System.out.println("Hệ số lương phải là số thực, Yêu cầu nhập lại!");
+						myInput.next();
+						inputOK = false;
+					}
+				} while (!inputOK);
 
 				System.out.println("Nhập Khoa của Giảng Viên");
 				myInput.nextLine();
 				String khoa = myInput.nextLine();
+				// IE Trình độ
 
-				System.out.println("Nhập Trình độ Giảng Viên");
-				String trinhDo = myInput.nextLine();
-				System.out.println("Nhập số tiết dạy Giảng Viên");
-				int soTietDay = myInput.nextInt();
+				do {
+					try {
+						System.out.println("Nhập trình độ: ");
+						System.out.println("1:CỬ NHÂN   2:THẠC SĨ    3:TIẾN SĨ ");
+						int nhap = myInput.nextInt();
+						if (nhap == 1) {
+							trinhDo = "Cử nhân";
+							inputOK = true;
+						} else if (nhap == 2) {
+							trinhDo = "Thạc sĩ";
+							inputOK = true;
+						} else if (nhap == 3) {
+							trinhDo = "Tiến sĩ";
+							inputOK = true;
+						} else {
+							System.out.println("Bạn đã nhập sai, mời bạn nhập lại");
+							inputOK = false;
+						}
+					} catch (InputMismatchException e) {
+						inputOK = false;
+						System.out.println("Hello. Nhập sai rồi nhập lại nhé!");
+						myInput.next();
+					}
+				} while (!inputOK);
+
+				// IE Số tiết dạy
+
+				do {
+					try {
+						inputOK = true;
+						System.out.println("Nhập số tiết dạy trong tháng của Giảng Viên");
+						soTietDay = myInput.nextInt();
+						if (soTietDay < 0) {
+							throw new CBException(2);
+						}
+					} catch (Exception e) {
+						System.err.println(e);
+						inputOK = false;
+						myInput.nextLine();
+					}
+
+				} while (!inputOK);
 
 				dsCanBo.add(new GiangVien(hoTen, heSoLuong, khoa, trinhDo, soTietDay));
-
 			}
 		} else if (M == 2) {
+			boolean inputOK;
+			double heSoLuong = 0;
+			String hoTen = "";
+			int soNgayCong = 0;
+			String chucVu = "";
 			System.out.println(".Bạn đang nhập thông tin Cán Bộ Nhân Viên ");
-			System.out.println("+--------------------------------------+");
+
 			System.out.println("Nhập số lượng Nhân viên");
 			int X = myInput.nextInt();
 			for (int i = 0; i < X; i++) {
-				System.out.println("Nhập cán bộ Nhân viên thứ" + (i + 1) + "\n");
-				System.out.println("Nhập họ tên của Nhân viên");
 				myInput.nextLine();
-				String hoTen = myInput.nextLine();
+				System.out.println("Nhập cán bộ Nhân viên thứ: " + (i + 1) + "\n");
 
-				System.out.println("Nhập hệ số lương Nhân viên");
-				double heSoLuong = myInput.nextDouble();
+				do {
+					try {
+						inputOK = true;
+
+						System.out.println("Nhập họ tên của Nhân viên: ");
+
+						hoTen = myInput.nextLine();
+						if (hoTen.length() < 1 || hoTen.length() > 40) {
+							throw new CBException(1);
+						}
+					} catch (Exception e) {
+						System.err.println(e);
+						inputOK = false;
+					}
+
+				} while (!inputOK);
+
+				do {
+					try {
+						inputOK = true;
+						System.out.println("Nhập hệ số lương Giảng viên");
+						heSoLuong = myInput.nextDouble();
+					} catch (InputMismatchException e) {
+						System.out.println("Hệ số lương phải là số thực ");
+						myInput.next();
+						inputOK = false;
+					}
+				} while (!inputOK);
+
 				System.out.println(" Phòng ban Nhân viên");
-
 				myInput.nextLine();
 				String phongBan = myInput.nextLine();
 
-				System.out.println("Nhập Số ngày công của Nhân Viên");
-				int soNgayCong = myInput.nextInt();
+				do {
+					try {
+						inputOK = true;
+						System.out.println("Nhập số tiết dạy Giảng Viên");
+						soNgayCong = myInput.nextInt();
+						if (soNgayCong < 0) {
+							throw new CBException(2);
+						}
+					} catch (Exception e1) {
+						System.err.println(e1);
+						inputOK = false;
+						myInput.nextLine();
+					}
 
-				System.out.println("Chức vụ");
-				myInput.nextLine();
-				String chucVu = myInput.nextLine();
+				} while (!inputOK);
+
+				do {
+					try {
+						System.out.println("Nhập trình độ: ");
+						System.out.println("1:TRƯỞNG PHÒNG     2:PHÓ PHÒNG    3:NHÂN VIÊN CÙI ");
+						int nhap = myInput.nextInt();
+						if (nhap == 1) {
+							chucVu = "Trưởng phòng";
+							inputOK = true;
+						} else if (nhap == 2) {
+							chucVu = "Phó phòng";
+							inputOK = true;
+						} else if (nhap == 3) {
+							chucVu = "Nhân viên";
+							inputOK = true;
+						} else {
+							System.out.println("Bạn đã nhập sai, mời bạn nhập lại");
+							inputOK = false;
+						}
+					} catch (InputMismatchException e) {
+						inputOK = false;
+						System.out.println(" Hello. Nhập sai rồi nhập lại nhé! ");
+						myInput.next();
+					}
+				} while (!inputOK);
 
 				dsCanBo.add(new NhanVienHanhChinh(hoTen, heSoLuong, phongBan, soNgayCong, chucVu));
 
@@ -177,4 +312,3 @@ public class QuanLyThongTinCanBo {
 	}
 
 }
-

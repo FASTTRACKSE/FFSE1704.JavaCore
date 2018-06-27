@@ -28,5 +28,6 @@
 9. [Assgnment9] [Xư lý lỗi]
   (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/QuanLyCanBo/src/quanlycanbo)  
   
-
+10.  [Assgnment10] [Lưu và xuất file,đọc file]
+  (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/Assgnment10)
 
