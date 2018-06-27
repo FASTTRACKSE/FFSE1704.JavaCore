@@ -30,4 +30,7 @@
   
 10.  [Assgnment10] [Lưu và xuất file,đọc file]
   (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/Assgnment10)
+  
+10.  [Bài tập ôn lại SQL] 
+  (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/Assgnment11)
 
