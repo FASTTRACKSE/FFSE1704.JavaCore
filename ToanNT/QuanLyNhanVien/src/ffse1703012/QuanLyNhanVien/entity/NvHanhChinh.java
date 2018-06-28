@@ -1,6 +1,10 @@
 package ffse1703012.QuanLyNhanVien.entity;
-
-public class NvHanhChinh extends NhanVien {
+import java.io.Serializable;
+public class NvHanhChinh extends NhanVien implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String phongBan;
 	private int soNgayCong;
 	private String chucVu;
