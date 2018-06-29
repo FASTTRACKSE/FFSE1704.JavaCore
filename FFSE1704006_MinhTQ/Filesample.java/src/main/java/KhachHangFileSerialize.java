@@ -1,32 +1,36 @@
 package main.java;
 
 import java.util.ArrayList;
+
+
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import quanglyluongnhanvien.java.entity.GiangVien;
-import quanglyluongnhanvien.java.entity.Luong;
-import quanglyluongnhanvien.java.entity.NhanVienVanPhong;
-import quanglyluongnhanvien.java.entity.until;
+import entity.java.CanBo;
+import entity.java.GiangVien;
+import entity.java.NhanVien;
+import until.java.SerializeFileFactory;
+import until.java.until;
 
-public class ChuongTrinhQuanLyNhanVien {
+public class KhachHangFileSerialize {
 	static int n, i, maNhanVien, soTietDay, soNgayCong;
 	static String hoVaTen, khoa, trinhDo, phongBan, chucVu;
 	static boolean inputOK;
 	static int choose;
 	static double tongtien, heSoLuong;
 	static Scanner nhap = new Scanner(System.in);
-	static ArrayList<Luong> dsLuong = new ArrayList<Luong>();
+	static ArrayList<CanBo> dsCanBo = new ArrayList<CanBo>();
 
 	public static void main(String[] args) {
 		menu();
-	}
+	}      
 
 	public static void menu() {
 
-		while (n != 5) {
+		while (n != 7) {
 
 			try {
 				System.out.println("\nHệ thống quản lý Sinh Viên");
@@ -35,7 +39,9 @@ public class ChuongTrinhQuanLyNhanVien {
 				System.out.println("2. Xuất danh sách giảng viên khoa x, hoặc nhân viên phòng ban y nào đó. ");
 				System.out.println("3. Tổng số lương trường phải trả cho cán bộ.");
 				System.out.println("4. Sắp xếp cán bộ theo lương, nếu lương bằng thì sắp xếp theo tên.");
-				System.out.println("5. Kết thúc chương trình");
+				System.out.println("5. ghiFile");
+				System.out.println("6. docFile");
+				System.out.println("7. Kết thúc chương trình");
 				System.out.println("---------------------------------------");
 				System.out.print("Mời bạn chọn chức năng: ");
 
@@ -53,6 +59,12 @@ public class ChuongTrinhQuanLyNhanVien {
 
 				} else if (n == 5) {
 
+					ghiFile();
+				} else if (n == 6) {
+
+					docFile();
+				} else if (n == 7) {
+
 					ketThuc();
 				} else {
 					throw new Exception();
@@ -60,7 +72,7 @@ public class ChuongTrinhQuanLyNhanVien {
 			} catch (Exception e) {
 				System.err.println("Vui lòng nhập lại bạn hiền !");
 			} finally {
-				if (n != 5) {
+				if (n != 7) {
 					backToMainMenu();
 				}
 			}
@@ -118,14 +130,14 @@ public class ChuongTrinhQuanLyNhanVien {
 							inputOK = false;
 						}
 					} while (!inputOK);
-//nhạp khoa giảng dạy
+					// nhạp khoa giảng dạy
 					do {
 
 						try {
 							inputOK = true;
 							System.out.print("Nhập khoa giảng dạy : ");
 							khoa = nhap.nextLine();
-							if (khoa.length() < 1 ) {
+							if (khoa.length() < 1) {
 
 								throw new until(5);
 							}
@@ -197,7 +209,7 @@ public class ChuongTrinhQuanLyNhanVien {
 
 						}
 					} while (!inputOK);
-					dsLuong.add(new GiangVien(maNhanVien, hoVaTen, khoa, trinhDo, soTietDay, heSoLuong));
+					dsCanBo.add(new GiangVien(maNhanVien, hoVaTen, khoa, trinhDo, soTietDay, heSoLuong));
 
 				}
 
@@ -241,7 +253,7 @@ public class ChuongTrinhQuanLyNhanVien {
 							inputOK = true;
 							System.out.print("Nhập phòng ban : ");
 							phongBan = nhap.nextLine();
-							if (phongBan.length() < 1 ) {
+							if (phongBan.length() < 1) {
 
 								throw new until(5);
 							}
@@ -251,7 +263,7 @@ public class ChuongTrinhQuanLyNhanVien {
 							nhap.nextLine();
 							inputOK = false;
 						}
-					} while (!inputOK);  
+					} while (!inputOK);
 					System.out.print("Nhập phòng ban : ");
 					khoa = nhap.nextLine();
 
@@ -310,7 +322,7 @@ public class ChuongTrinhQuanLyNhanVien {
 							inputOK = false;
 						}
 					} while (!inputOK);
-					dsLuong.add(new NhanVienVanPhong(maNhanVien, hoVaTen, phongBan, chucVu, soNgayCong, heSoLuong));
+					dsCanBo.add(new NhanVien(maNhanVien, hoVaTen, phongBan, chucVu, soNgayCong, heSoLuong));
 
 				}
 			} else {
@@ -330,29 +342,29 @@ public class ChuongTrinhQuanLyNhanVien {
 		nhap.nextLine();
 		System.out.print("Mời Nhập Khoa hoặc phòng ban mà bạn muốn in:");
 		M = nhap.nextLine();
-		for (i = 0; i < dsLuong.size(); i++) {
-			if (dsLuong.get(i) instanceof GiangVien) {
-				if (M.equals(((GiangVien) dsLuong.get(i)).getKhoa())) {
+		for (i = 0; i < dsCanBo.size(); i++) {
+			if (dsCanBo.get(i) instanceof GiangVien) {
+				if (M.equals(((GiangVien) dsCanBo.get(i)).getKhoa())) {
 
-					System.out.println((i + 1) + "\t " + ((GiangVien) dsLuong.get(i)).getMaNhanVien() + "\t "
-							+ ((GiangVien) dsLuong.get(i)).getHoVaTen() + "\t " + ((GiangVien) dsLuong.get(i)).getKhoa()
-							+ "\t  " + ((GiangVien) dsLuong.get(i)).getTrinhDo() + "\t "
-							+ ((GiangVien) dsLuong.get(i)).getSoTietDay() + "\t "
-							+ ((GiangVien) dsLuong.get(i)).getHeSoLuong() + "\t "
-							+ ((GiangVien) dsLuong.get(i)).tinhLuong() + " VNĐ");
+					System.out.println((i + 1) + "\t " + ((GiangVien) dsCanBo.get(i)).getMaNhanVien() + "\t "
+							+ ((GiangVien) dsCanBo.get(i)).getHoVaTen() + "\t " + ((GiangVien) dsCanBo.get(i)).getKhoa()
+							+ "\t  " + ((GiangVien) dsCanBo.get(i)).getTrinhDo() + "\t "
+							+ ((GiangVien) dsCanBo.get(i)).getSoTietDay() + "\t "
+							+ ((GiangVien) dsCanBo.get(i)).getHeSoLuong() + "\t "
+							+ ((GiangVien) dsCanBo.get(i)).tinhLuong() + " VNĐ");
 
 				}
 			}
-			if (dsLuong.get(i) instanceof NhanVienVanPhong) {
-				if (M.equals(((NhanVienVanPhong) dsLuong.get(i)).getPhongBan())) {
+			if (dsCanBo.get(i) instanceof NhanVien) {
+				if (M.equals(((NhanVien) dsCanBo.get(i)).getPhongBan())) {
 
-					System.out.println((i + 1) + "\t " + ((NhanVienVanPhong) dsLuong.get(i)).getMaNhanVien() + "\t "
-							+ ((NhanVienVanPhong) dsLuong.get(i)).getHoVaTen() + "\t "
-							+ ((NhanVienVanPhong) dsLuong.get(i)).getPhongBan() + "\t  "
-							+ ((NhanVienVanPhong) dsLuong.get(i)).getChucVu() + "\t"
-							+ ((NhanVienVanPhong) dsLuong.get(i)).getSoNgayCong() + "\t "
-							+ ((NhanVienVanPhong) dsLuong.get(i)).getHeSoLuong() + "\t "
-							+ ((NhanVienVanPhong) dsLuong.get(i)).tinhLuong() + " VNĐ");
+					System.out.println((i + 1) + "\t " + ((NhanVien) dsCanBo.get(i)).getMaNhanVien() + "\t "
+							+ ((NhanVien) dsCanBo.get(i)).getHoVaTen() + "\t "
+							+ ((NhanVien) dsCanBo.get(i)).getPhongBan() + "\t  "
+							+ ((NhanVien) dsCanBo.get(i)).getChucVu() + "\t"
+							+ ((NhanVien) dsCanBo.get(i)).getSoNgayCong() + "\t "
+							+ ((NhanVien) dsCanBo.get(i)).getHeSoLuong() + "\t "
+							+ ((NhanVien) dsCanBo.get(i)).tinhLuong() + " VNĐ");
 
 				}
 			}
@@ -362,8 +374,8 @@ public class ChuongTrinhQuanLyNhanVien {
 
 	public static void tinhTongluongNhanVien() {
 		double tongtien = 0;
-		for (i = 0; i < dsLuong.size(); i++) {
-			tongtien += dsLuong.get(i).tinhLuong();
+		for (i = 0; i < dsCanBo.size(); i++) {
+			tongtien += dsCanBo.get(i).tinhLuong();
 
 		}
 
@@ -379,10 +391,10 @@ public class ChuongTrinhQuanLyNhanVien {
 		System.out.println("2: Nhân viên văn phòng ");
 		System.out.println("--------------------------------------");
 		n = nhap.nextInt();
-		Collections.sort(dsLuong, new Comparator<Luong>() {
+		Collections.sort(dsCanBo, new Comparator<CanBo>() {
 
 			@Override
-			public int compare(Luong NV1, Luong NV2) {
+			public int compare(CanBo NV1, CanBo NV2) {
 				if (NV1.tinhLuong() < NV2.tinhLuong()) {
 					return 1;
 				} else if (NV1.tinhLuong() > NV2.tinhLuong()) {
@@ -394,11 +406,9 @@ public class ChuongTrinhQuanLyNhanVien {
 
 		});
 		if (n == 1) {
-			System.out.println(" danh sách giảng viên");
-			System.out.printf("%10s %10s %10s %10s %10s %10s %10s %10s ", "STT", "MaNhanVien", "HoVaTen", "PhongBan",
-					"ChucVu", "SoNgayCong", "HeSoLuong", "TongLuong");
-			System.out.println("");
-			for (Luong o : dsLuong) {
+			System.out.println(" Danh Sách Giảng Vien");
+			
+			for (CanBo o : dsCanBo) {
 
 				if (o instanceof GiangVien) {
 					System.out.println((i + 1) + "\t" + ((GiangVien) o).getMaNhanVien() + "\t"
@@ -408,21 +418,29 @@ public class ChuongTrinhQuanLyNhanVien {
 				}
 			}
 		} else if (n == 2) {
-			System.out.println(" Danh sách nhân viên văn phòng");
-			System.out.printf("%2s %10s %10s %10s %10s %10s %10s %10s ", "STT", "MaNhanVien", "HoVaTen", "PhongBan",
-					"ChucVu", "SoNgayCong", "HeSoLuong", "TongLuong");
-			System.out.println("");
-			for (Luong o : dsLuong) {
-				if (o instanceof NhanVienVanPhong) {
+			System.out.println(" Danh Sách Nhân Viên Văn Phòng");
+			
+			for (CanBo o : dsCanBo) {
+				if (o instanceof NhanVien) {
 
-					System.out.println((i + 1) + "\t" + ((NhanVienVanPhong) o).getMaNhanVien() + "\t"
-							+ ((NhanVienVanPhong) o).getHoVaTen() + "\t" + ((NhanVienVanPhong) o).getPhongBan() + "\t"
-							+ ((NhanVienVanPhong) o).getChucVu() + "\t" + ((NhanVienVanPhong) o).getSoNgayCong() + "\t"
-							+ ((NhanVienVanPhong) o).getHeSoLuong() + "\t" + ((NhanVienVanPhong) o).tinhLuong());
+					System.out.println((i + 1) + "\t" + ((NhanVien) o).getMaNhanVien() + "\t"
+							+ ((NhanVien) o).getHoVaTen() + "\t" + ((NhanVien) o).getPhongBan() + "\t"
+							+ ((NhanVien) o).getChucVu() + "\t" + ((NhanVien) o).getSoNgayCong() + "\t"
+							+ ((NhanVien) o).getHeSoLuong() + "\t" + ((NhanVien) o).tinhLuong());
 				}
 			}
 
 		}
 
+	}
+
+	public static void ghiFile() {
+		SerializeFileFactory.luuFile(dsCanBo, "danhsachcanbo.txt");
+	}
+
+	public static void docFile() {
+		dsCanBo.clear();
+		dsCanBo = SerializeFileFactory.docFile("danhsachcanbo.txt");
+		;
 	}
 }
