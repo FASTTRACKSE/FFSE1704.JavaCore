@@ -1,6 +1,5 @@
 package fasttrackse.qlkh.main;
 
-import java.sql.Connection;
 import java.util.ArrayList;
 
 import fasttrackse.qlkh.dao.KhachHangDAO;
@@ -11,11 +10,16 @@ public class QLKH {
 	static ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
 
 	public static void main(String[] args) {
-		Connection conn = khachHangDAO.getConnect("localhost", "qlkhjava", "qlkhjava", "qlkhjava123");
-		if (conn != null) {
+		khachHangDAO.getConnect("localhost", "qlkhjava", "qlkhjava", "qlkhjava123");
+		if (khachHangDAO.getConn() != null) {
 			System.out.println("Kết nối MYSQL thành công");
 		} else {
 			System.out.println("Kết nối MYSQL thất bại");
+		}
+		dsKH = khachHangDAO.getDSKhachHang();
+		
+		for (KhachHang x: dsKH) {
+			System.out.println(x.getID() + "-" + x.getMaKH() + "-" + x.getTenKH());
 		}
 	}
 
