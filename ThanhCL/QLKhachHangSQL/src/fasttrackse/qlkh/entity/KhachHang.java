@@ -23,7 +23,17 @@ public class KhachHang {
 		this.GioiTinh = gioiTinh;
 		this.soDT = soDT;
 	}
-	/**
+
+	public KhachHang(String maKH, String tenKH, String diaChi, String ngaySinh, String gioiTinh, String soDT) {
+		super();
+		this.MaKH = maKH;
+		this.TenKH = tenKH;
+		this.DiaChi = diaChi;
+		this.NgaySinh = ngaySinh;
+		this.GioiTinh = gioiTinh;
+		this.soDT = soDT;
+	}
+/**
 	 * @return the iD
 	 */
 	public int getID() {
