@@ -1,9 +1,9 @@
-/**
+/************************
  *	Prog: QUẢN LÝ THÔNG TIN CÁN BỘ
  *	@AUTHOR: Phan Phạm Quang Dai
- *	Date: 29/06/2018
- */
-package ffse.qlkh.util;
+ *	Date: 25/06/2018
+ **********************/
+package fasttrackse.quanlycanbo.util;
 
 public class CBException extends Exception {
 
@@ -20,17 +20,13 @@ public class CBException extends Exception {
 		
 		switch (errorCode) {
 		case 1:
-			msg = "\nLỗi chưa nhập dử liệu \nHảy nhập lại : ";
+			msg = "Lỗi Không Nhập Tên hoặc nhập tên trên 40 ký tự ";
 			break;
 		case 2:
-			msg = "\nLỗi Không Nhập Tên hoặc nhập tên trên 40 ký tự";
+			msg = "Các trường số chỉ được phép nhập số dương";
 			break;
-		case 3:
-			msg = "\nChỉ được phép nhập số nguyên dương";
-			break;
-		case 4:
-			msg = "\\nLổi lựa chọn \\nChỉ nhập số từ 1 đến 6!";
-			break;
+		
+		
 		} 
 		return msg;
 	}
