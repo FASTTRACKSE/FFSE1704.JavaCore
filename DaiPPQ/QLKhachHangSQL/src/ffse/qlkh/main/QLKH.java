@@ -229,7 +229,7 @@ public class QLKH {
 		System.out.print("Nhập số điện thoại khách hàng: ");
 		soDT = myInput.nextLine();
 		
-		khachHangDAO.edit(new KhachHang((N + 1), maKH, tenKH, diaChi, ngaySinh, gioiTinh, soDT));
+		khachHangDAO.edit(new KhachHang((N + 1), maKH, tenKH, diaChi, ngaySinh, gioiTinh, soDT), idKH);
 	}
 	
 	public static void DeleteKhachHang() {

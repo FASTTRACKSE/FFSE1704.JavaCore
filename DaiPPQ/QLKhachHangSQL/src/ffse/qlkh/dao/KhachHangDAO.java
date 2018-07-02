@@ -90,9 +90,9 @@ public class KhachHangDAO {
 		}
 	}
 
-	public void edit(KhachHang kh) {
+	public void edit(KhachHang kh, String idKH) {
 		try {
-			String queryString = "UPDATE khachhang SET MaKH = ?, TenKH = ?, DiaChi = ?, NgaySinh = ?, GioiTinh = ?, SoDT = ? WHERE iD = ?";
+			String queryString = "UPDATE khachhang SET MaKH = ?, TenKH = ?, DiaChi = ?, NgaySinh = ?, GioiTinh = ?, SoDT = ? WHERE MaKH = ?";
 			PreparedStatement statement = conn.prepareStatement(queryString);
 
 			statement.setString(1, kh.getMaKH());
@@ -102,7 +102,7 @@ public class KhachHangDAO {
 			statement.setString(5, kh.getGioiTinh());
 			statement.setString(6, kh.getSoDT());
 			
-			statement.setInt(7, kh.getID());
+			statement.setString(7, idKH);
 			int x = statement.executeUpdate();
 			if (x > 0) {
 				System.out.println("Update OK");
