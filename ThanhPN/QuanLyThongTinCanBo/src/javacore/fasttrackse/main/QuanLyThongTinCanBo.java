@@ -5,7 +5,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import javacore.fasttrackse.entity.*;
-import javacore.fasttrackse.util.CBException;
+
+import javacore.fasttrackse.util.*;
 
 public class QuanLyThongTinCanBo {
 	static int N;
@@ -37,9 +38,13 @@ public class QuanLyThongTinCanBo {
 
 					TongSoLuongPhaiTra();
 				} else if (myOption == 4) {
+					ghifile();
+				} else if (myOption == 5) {
+					docfile();
+				} else if (myOption == 6) {
 					SapXepCanBo();
 
-				} else if (myOption == 5) {
+				} else if (myOption == 7) {
 
 					KetThuc();
 				} else {
@@ -309,6 +314,17 @@ public class QuanLyThongTinCanBo {
 		myInput.nextLine();
 		System.out.println("Ấn Enter để về menu chính");
 		myInput.nextLine();
+	}
+
+	private static void ghifile() {
+		SerializeFileFactory.luuFile(dsCanBo, "danhsachcanbo.txt");
+
+	}
+
+	private static void docfile() {
+		dsCanBo.clear();
+		dsCanBo = SerializeFileFactory.docFile("danhsachcanbo.txt");
+
 	}
 
 }
