@@ -13,4 +13,4 @@
 10. [Assignment 8: CT Quản Lý Nhân Viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704006_MinhTQ/ChuongTrinhQuanLyNhanVien.java/src)
 11. [Assignment 9: CT Quản Lý Nhân Viên (Exception)](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704006_MinhTQ/ChuongTrinhQuanLyNhanVien.java/src)
 12. [Assignment 10: CT Quản Lý Nhân Viên (Filesample)](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704006_MinhTQ/Filesample.java/src)
-13. [Assignment 11: CT Quản Lý khách hàng (Filesample)](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704006_MinhTQ/QuangLyKhachHang.java/src/fasttrackse/qlkh/java)
+13. [Assignment 11: CT Quản Lý khách hàng (MySQL)](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704006_MinhTQ/QuangLyKhachHang.java/src/fasttrackse/qlkh/java)
