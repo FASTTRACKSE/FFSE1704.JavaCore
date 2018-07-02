@@ -75,7 +75,7 @@ public class KhachHangDAO {
 		try {
 			String queryString = "insert into khachhang(MaKH,TenKH,DiaChi,NgaySinh,GioiTinh,SoDT) values(?,?,?,?,?,?)";
 			PreparedStatement statement = conn.prepareStatement(queryString);
-			
+
 			statement.setString(1, kh.getMaKH());
 			statement.setString(2, kh.getTenKH());
 			statement.setString(3, kh.getDiaChi());
@@ -94,70 +94,62 @@ public class KhachHangDAO {
 
 	public void edit(KhachHang kh) {
 		//
-		try
-		{
-		String sql="update khachhang set TenKH=?,NgaySinh=? where id=?";
-		PreparedStatement statement=conn.prepareStatement(sql);
-		statement.setString(1, kh.getTenKH());
-		statement.setString(2, kh.getNgaySinh());
-		statement.setLong(3, kh.getID());
-		int x=statement.executeUpdate();
-		if(x>0)
-		{
-		System.err.println("Cập nhật OK");
-		}
-		}
-		catch(Exception ex)
-		{
-		ex.printStackTrace();
+		try {
+			String sql = "update khachhang set TenKH=?,NgaySinh=? where id=?";
+			PreparedStatement statement = conn.prepareStatement(sql);
+			statement.setString(1, kh.getTenKH());
+			statement.setString(2, kh.getNgaySinh());
+			statement.setLong(3, kh.getID());
+			int x = statement.executeUpdate();
+			if (x > 0) {
+				System.err.println("Cập nhật OK");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 	}
 
 	public void delete(int idKH) {
 		//
-		try
-		{
-		PreparedStatement statement=conn.prepareStatement
-		("DELETE FROM `khachhang` WHERE id=?");
-		statement.setLong(1, idKH);
-		int x=statement.executeUpdate();
-		if(x>0)
-		{
-		System.out.println("Xóa ok");
-		}
-		}
-		catch(Exception ex)
-		{
-		ex.printStackTrace();
+		try {
+			PreparedStatement statement = conn.prepareStatement("DELETE FROM `khachhang` WHERE id=?");
+			statement.setLong(1, idKH);
+			int x = statement.executeUpdate();
+			if (x > 0) {
+				System.out.println("Xóa ok");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 	}
 
-	public void read(int idKH) {
-		try {
-			PreparedStatement statement=conn.prepareStatement
-			("select * from khachhang where id=?",
-			ResultSet.TYPE_SCROLL_INSENSITIVE,
-			ResultSet.CONCUR_READ_ONLY);
-			statement.setLong(1, idKH);
-			
-			ResultSet result=statement.executeQuery();
-			
-			while(result.next())
-			{
-				System.out.println(result.getString("id"));
-				System.out.println(result.getString("TenKH"));
-				System.out.println(result.getString("MaKH"));
-				System.out.println(result.getString("NgaySinh"));
-				System.out.println(result.getString("DiaChi"));
-				System.out.println(result.getString("GioiTinh"));
-				System.out.println(result.getString("SoDT"));
-				
-			}
-			} catch (Exception e) {
-			e.printStackTrace();
-			}
+	public KhachHang read(int idKH) {
+		KhachHang kh = new KhachHang();
 
-		
+		try {
+			String queryString = "SELECT * FROM khachhang WHERE id = ?";
+			PreparedStatement statement = conn.prepareStatement(queryString);
+			statement.setInt(1, idKH);
+
+			ResultSet result = statement.executeQuery();
+
+			result.next();
+
+			int ID = result.getInt("ID");
+			String maKH = result.getString("MaKH");
+			String tenKH = result.getString("TenKH");
+			String diaChi = result.getString("DiaChi");
+			String ngaySinhKH = result.getString("NgaySinh");
+			String gioiTinhKH = result.getString("GioiTinh");
+			String sdt = result.getString("SoDT");
+
+			kh = new KhachHang(ID, maKH, tenKH, diaChi, ngaySinhKH, gioiTinhKH, sdt);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return kh;
 	}
 
 }

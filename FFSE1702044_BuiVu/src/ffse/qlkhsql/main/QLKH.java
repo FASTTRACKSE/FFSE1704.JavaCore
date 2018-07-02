@@ -80,6 +80,9 @@ public class QLKH {
 		for (KhachHang x : dsKH) {
 			System.out.println(x.getID() + "-" + x.getMaKH() + "-" + x.getTenKH());
 		}
+		/*for (int i=0; i<dsKH.size() ; i++) {
+			System.out.println(dsKH.get(i).getID());
+		}*/
 
 	}
 
@@ -305,7 +308,8 @@ public class QLKH {
 		} catch (myException e) {
 			System.out.println(e);
 		}
-		khachHangDAO.read(N);
+		KhachHang khachHangID =khachHangDAO.read(N);
+		System.out.println("ID : "+ khachHangID.getID()+  "- Tên KH: " + khachHangID.getTenKH()+"- Mã KH " +khachHangID.getMaKH() );
 	}
 
 	public static void Exit() {
