@@ -21,7 +21,7 @@ public class myException extends Exception{
 			msg = "Bạn đã nhập sai, hãy chọn lại 1 => 7 tương ứng !!!";
 			break;
 		case 3:
-			msg = "Vui lòng nhập lại số nguyên dương !!!";
+			msg = "Vui lòng nhập không để trống !!!";
 			break;
 		case 4:
 			msg = "Mã cán bộ đã bị trùng, vui lòng nhập lại !!!";
@@ -31,6 +31,12 @@ public class myException extends Exception{
 			break;
 		case 6:
 			msg = "Vui lòng Nhập Số Lượng!!! ";
+			break;
+		case 7:
+			msg = "Vui Lòng Nhập Từ 1-50 kí Tự!!! ";
+			break;
+		case 8:
+			msg = "Vui Lòng Nhập Từ 1-12 Số!!! ";
 			break;
 		}
 		return msg;

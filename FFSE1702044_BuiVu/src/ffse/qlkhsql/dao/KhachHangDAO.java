@@ -104,7 +104,7 @@ public class KhachHangDAO {
 		int x=statement.executeUpdate();
 		if(x>0)
 		{
-		System.out.println("Cập nhật OK");
+		System.err.println("Cập nhật OK");
 		}
 		}
 		catch(Exception ex)
