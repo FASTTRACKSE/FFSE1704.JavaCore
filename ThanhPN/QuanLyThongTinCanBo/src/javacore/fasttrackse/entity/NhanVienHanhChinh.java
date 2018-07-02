@@ -1,6 +1,8 @@
 package javacore.fasttrackse.entity;
 
-public class NhanVienHanhChinh extends CanBo {
+import java.io.Serializable;
+
+public class NhanVienHanhChinh extends CanBo implements Serializable {
 	private String phongBan;
 	private int soNgayCong;
 	private String chucVu;
