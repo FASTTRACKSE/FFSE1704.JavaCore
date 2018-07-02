@@ -1,3 +1,9 @@
+
+/**
+ *	Prog: QUẢN LÝ THÔNG TIN CÁN BỘ
+ *	@AUTHOR: Phan Phạm Quang Dai
+ *	Date: 29/06/2018
+ */
 package ffse.qlkh.dao;
 
 import java.sql.Connection;

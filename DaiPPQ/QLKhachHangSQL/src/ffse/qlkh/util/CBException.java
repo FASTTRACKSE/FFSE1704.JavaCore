@@ -1,7 +1,7 @@
 /**
  *	Prog: QUẢN LÝ THÔNG TIN CÁN BỘ
  *	@AUTHOR: Phan Phạm Quang Dai
- *	Date: 22/06/2018
+ *	Date: 29/06/2018
  */
 package ffse.qlkh.util;
 
