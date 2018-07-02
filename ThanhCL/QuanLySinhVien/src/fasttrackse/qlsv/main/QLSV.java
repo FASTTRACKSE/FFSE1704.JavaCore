@@ -94,6 +94,8 @@ public class QLSV {
 		diemSV3.add(new DiemMonHoc(LP3, 9));
 
 		dsSinhVien = new ArrayList<SinhVien>();
+		SinhVien x = new SinhVien();
+		
 		dsSinhVien.add(sv1);
 		dsSinhVien.add(sv2);
 		dsSinhVien.add(new SinhVien("Chu Cảnh", "Chiêu", 1992, diemSV3));
@@ -163,12 +165,12 @@ public class QLSV {
 		for (SinhVien sv : dsSinhVien) {
 			System.out.printf("%03d %-20s%8d", ++stt, sv.getHoSinhVien() + " " + sv.getTenSinhVien(), sv.getNamSinh());
 
-			String sLP1 = "N/A";
-			String sLP2 = "N/A";
-			String sLP3 = "N/A";
-			String sLP4 = "N/A";
-			String sLP5 = "N/A";
-			String sDTB = "N/A";
+			String sLP1 = "x";
+			String sLP2 = "x";
+			String sLP3 = "x";
+			String sLP4 = "x";
+			String sLP5 = "x";
+			String sDTB = "x";
 			DecimalFormat formatter = new DecimalFormat("#,###.0");
 			for (DiemMonHoc x : sv.getDiemThi()) {
 				String temp = formatter.format(x.getDiemThi());

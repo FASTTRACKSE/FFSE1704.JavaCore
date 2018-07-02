@@ -20,7 +20,7 @@ public class CBException extends Exception {
 		
 		switch (errorCode) {
 		case 1:
-			msg = "\nLỗi Không Nhập Tên hoặc nhập tên trên 40 ký tự ";
+			msg = "\nLỗi Không Nhập Tên hoặc nhập tên trên 40 ký tự";
 			break;
 		case 2:
 			msg = "\nChỉ được phép nhập số nguyên dương";
