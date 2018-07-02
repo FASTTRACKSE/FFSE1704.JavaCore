@@ -10,6 +10,6 @@
 6. [Assignment : Chương trình tính toán](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/SyNV/HelloWorld/src/fasttrackse/bai1/assignment/Chuongtrinhtinhtoan.java)
 7. [Assignment 4: SinhVien](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/SyNV/Ex/src/fasttrackse/javacore/entity/SinhVien.java)
 8. [Assignment 4: MainSinhVien](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/SyNV/Ex/src/fasttrackse/javacore/main/MainSinhVien.java)
-9. [Assignment 5: Chương trình quản lý tiền điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/SyNV/Ex/src/fasttrackse/javacore/main/MainSinhVien.java)
+9. [Assignment 5: Chương trình quản lý tiền điện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/blob/master/SyNV/asm5/src/fasttrackse/javacore/main/)
 
 

@@ -1,10 +1,15 @@
 package ffse1703012.QuanLyNhanVien.main;
 
 import java.util.ArrayList;
-import ffse1703012.QuanLyNhanVien.entity.*;
+import java.util.Collections;
 import java.util.Scanner;
 
-import ffse1703012.QuanLyNhanVien.comparator.*;
+import ffse1703012.QuanLyNhanVien.comparator.CbException;
+import ffse1703012.QuanLyNhanVien.comparator.LuuDocFile;
+import ffse1703012.QuanLyNhanVien.comparator.NvComparator;
+import ffse1703012.QuanLyNhanVien.entity.GiangVien;
+import ffse1703012.QuanLyNhanVien.entity.NhanVien;
+import ffse1703012.QuanLyNhanVien.entity.NvHanhChinh;
 
 public class QuanLyNhanVien {
 	static Scanner sc = new Scanner(System.in);
@@ -19,7 +24,9 @@ public class QuanLyNhanVien {
 			System.out.println("|2.Xuất thông tin Giảng Viên, Cán bộ hành chính     |");
 			System.out.println("|3.Tổng số lương phải trả cho cán bộ                |");
 			System.out.println("|4.Sắp xếp Cán bộ                                   |");
-			System.out.println("|5.Thoát chương trình                               |");
+			System.out.println("|5.Đọc file                                         |");
+			System.out.println("|6.Ghi file                                         |");
+			System.out.println("|7.Thoát chương trình                               |");
 			System.out.println("+---------------------------------------------------+");
 			System.out.println("Mời Bạn Chọn Chức Năng");
 			int option = sc.nextInt();
@@ -31,13 +38,26 @@ public class QuanLyNhanVien {
 				TongSoLuong();
 			} else if (option == 4) {
 				SapXepNV();
-			} else if (option == 5) {
+			}else if (option == 5) {
+				DocFile();
+			}else if(option == 6) {
+				GhiFile();
+			} else if (option == 7) {
 				KetThuc();
 			}
 		}
 	}
 
+	public static void DocFile() {
+		dsNhanVien.clear();
+		dsNhanVien = LuuDocFile.docFile("danhsachKH.txt");
+	}
+	
+	public static void GhiFile() {
+		LuuDocFile.luuFile(dsNhanVien, "danhsachKH.txt");
+	}
 	public static void NhapThongTinNv() {
+		System.out.println("    Nhập thông tin");
 		System.out.println("    Mời chọn Loại cán bộ:");
 		System.out.println("+----------------------------------------+");
 		System.out.println("|1.Cán bộ Giảng viên                     |");
@@ -63,6 +83,7 @@ public class QuanLyNhanVien {
 				}
 			} while (!inputOK);
 
+			// Nhập Họ Tên
 			String hoTen = "";
 			for (int i = 0; i < N; i++) {
 				System.out.print("Nhập Thông Tin Giảng viên thứ " + (i + 1) + "\n");
@@ -99,15 +120,40 @@ public class QuanLyNhanVien {
 					}
 				} while (!inputOK);
 				sc.nextLine();
+
+				// Nhập KHOA
 				String khoa = "";
-				System.out.print("Nhập Khoa: ");
-				khoa = sc.nextLine();
-				// sc.nextLine();
+				do {
+					try {
+						inputOK = true;
+						System.out.print("Nhập Khoa: ");
+						khoa = sc.nextLine();
+						if (khoa.length() == 0) {
+							throw new CbException(6);
+						}
+					} catch (Exception e) {
+						System.err.println(e);
+						inputOK = false;
+					}
+				} while (!inputOK);
+				
+				
+				// Nhập trình độ và phụ cấp
 				int phuCap = 0;
 				String trinhDo = null;
 				int choose;
 				do {
 					System.out.print("Nhập trình độ: 1.Cử nhân  2.Thạc sĩ  3.Tiến sĩ ");
+//					try {
+//						
+//						choose = sc.nextInt();
+//						if (choose > 3) {
+//							throw new CbException(3);
+//						}
+//					} catch (Exception e) {
+//						System.err.println(e);
+//						
+//					}
 					choose = sc.nextInt();
 					switch (choose) {
 					case 1:
@@ -141,8 +187,13 @@ public class QuanLyNhanVien {
 				// System.out.print("Phụ cấp: 1.000.000 VNĐ \n");
 				// phuCap = 1000000;
 				// }
-				sc.nextLine();
+//				sc.nextLine();
+//				sc.nextLine();
+//				sc.nextLine();
+//				sc.nextLine();
+//				sc.nextLine();
 
+				// Nhập số tiết dạy
 				int soTietDay = 0;
 				do {
 					try {
@@ -162,7 +213,7 @@ public class QuanLyNhanVien {
 				dsNhanVien.add(new GiangVien(hoTen, heSoLuong, phuCap, khoa, trinhDo, soTietDay));
 			}
 
-			// Nhap can bo
+			// Nhập Cán bộ hành chính
 		} else if (n == 2) {
 			boolean inputOK;
 			int N = 0;
@@ -181,6 +232,8 @@ public class QuanLyNhanVien {
 					inputOK = false;
 				}
 			} while (!inputOK);
+
+			// Nhập tên cán bộ
 			String hoTen = "";
 			for (int i = 0; i < N; i++) {
 				System.out.print("Nhập Thông Tin Cán bộ thứ " + (i + 1) + "\n");
@@ -201,6 +254,7 @@ public class QuanLyNhanVien {
 					}
 				} while (!inputOK);
 
+				// Nhập hệ số lương
 				double heSoLuong = 0;
 				do {
 					try {
@@ -217,9 +271,23 @@ public class QuanLyNhanVien {
 				} while (!inputOK);
 				sc.nextLine();
 
-				System.out.print("Nhập Phòng ban: ");
-				String phongBan = sc.nextLine();
+				// Nhập phòng ban
+				String phongBan = "";
+				do {
+					try {
+						inputOK = true;
+						System.out.print("Nhập Phòng ban: ");
+						phongBan = sc.nextLine();
+						if (phongBan.length() == 0) {
+							throw new CbException(6);
+						}
+					} catch (Exception e) {
+						System.err.println(e);
+						inputOK = false;
+					}
+				} while (!inputOK);
 
+				// nhap phu cap
 				int phuCap = 0;
 				String chucVu = null;
 				int choose;
@@ -267,6 +335,8 @@ public class QuanLyNhanVien {
 				// }
 				// System.out.print("Nhập Số ngày công: ");
 				// int soNgayCong = sc.nextInt();
+
+				// Nhập số ngày công
 				int soNgayCong = 0;
 				do {
 					try {
@@ -283,12 +353,13 @@ public class QuanLyNhanVien {
 				} while (!inputOK);
 				System.out.println("------------------------------------------------------------------");
 
-				dsNhanVien.add(new GiangVien(hoTen, heSoLuong, phuCap, chucVu, phongBan, soNgayCong));
+				dsNhanVien.add(new NvHanhChinh(hoTen, heSoLuong, phuCap, chucVu, soNgayCong, phongBan));
 			}
 		}
 	}
 
 	public static void XuatThongTin() {
+		System.out.println("    Xuất Thông Tin");
 		System.out.println("    Mời chọn Loại cán bộ:");
 		System.out.println("+----------------------------------------+");
 		System.out.println("|1.Cán bộ Giảng viên                     |");
@@ -316,7 +387,7 @@ public class QuanLyNhanVien {
 			String phongBan = sc.nextLine();
 			for (NhanVien x : dsNhanVien) {
 				System.out.println(
-						"+---------------------------------DANH SÁCH CÁN BỘ GIẢNG VIÊN--------------------------------------+");
+						"+---------------------------------DANH SÁCH CÁN BỘ HÀNH CHÍNH--------------------------------------+");
 				System.out.println(
 						"|   Tên CB    |     Phòng ban     |    Hệ số lương  |   Phụ cấp   | Chức vụ |  Số ngày công  |");
 				if (((NvHanhChinh) x).getPhongBan().equals(phongBan)) {
@@ -339,7 +410,26 @@ public class QuanLyNhanVien {
 	}
 
 	public static void SapXepNV() {
-
+		Collections.sort(dsNhanVien, NvComparator.CanBoLuongASComparator);
+		for (NhanVien x : dsNhanVien) {
+			if (x instanceof GiangVien) {
+				System.out.println(
+						"+---------------------------------DANH SÁCH CÁN BỘ GIẢNG VIÊN--------------------------------------+");
+				System.out.println(
+						"|   Tên GV     |     Trình độ      |Hệ số lương|   Phụ cấp   | Khoa |  Số tiết  |   Tiền lương   |");
+				System.out.printf("%-15s %-19s %-11s %-13s %-7s %-7s %-16s\n", x.getHoTen(),
+						((GiangVien) x).getTrinhDo(), x.getHeSoLuong(), x.getPhuCap(), ((GiangVien) x).getKhoa(),
+						((GiangVien) x).getSoTietDay(), ((GiangVien) x).tinhLuong());
+			} else if (x instanceof NvHanhChinh) {
+				System.out.println(
+						"+---------------------------------DANH SÁCH CÁN BỘ HÀNH CHÍNH--------------------------------------+");
+				System.out.println(
+						"|   Tên CB    |     Phòng ban     |    Hệ số lương  |   Phụ cấp   | Chức vụ |  Số ngày công  |");
+				System.out.printf("%-10s %-15s %-15s %-7s %-7s %-7s\n", x.getHoTen(), ((NvHanhChinh) x).getPhongBan(),
+						x.getHeSoLuong(), x.getPhuCap(), ((NvHanhChinh) x).getChucVu(),
+						((NvHanhChinh) x).getSoNgayCong());
+			}
+		}
 	}
 
 	public static void KetThuc() {

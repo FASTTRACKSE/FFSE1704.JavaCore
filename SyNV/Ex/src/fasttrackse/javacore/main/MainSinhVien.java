@@ -1,4 +1,4 @@
-package fasttrackse.javacore.main;
+ package fasttrackse.javacore.main;
 
 import java.util.Scanner;
 
