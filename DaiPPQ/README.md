@@ -49,7 +49,7 @@
 [entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_10/src/fasttrackse/quanlycanbo/entity)</br>
 [util](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/Assignment_10/src/fasttrackse/quanlycanbo/util)
 
-14. [[Assignment 10 - Quản lý thông tin khách hàng - Database]</br>]
+14. [Assignment 11 - Quản lý thông tin khách hàng - Database]</br>
 [main](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QLKhachHangSQL/src/ffse/qlkh/main)</br>
 [entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QLKhachHangSQL/src/ffse/qlkh/entity)</br>
 [util](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QLKhachHangSQL/src/ffse/qlkh/util)</br>
