@@ -19,3 +19,5 @@
 9.[Assignment 8,9 : Chương trình quản lý Cán Bộ](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhanhCN/src/fasttrack/quanlycanbo)
 
 10.[Assignment 10 : Chương trình quản lý Cán Bộ nâng cao](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhanhCN/src/fasttrack/quanlycanboluufile)
+
+11.[Assignment 11 : Chương trình quản lý Khách Hàng_Database](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhanhCN/src/fasttrack/quanlykhachhang)

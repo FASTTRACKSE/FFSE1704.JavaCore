@@ -13,3 +13,4 @@
 9. [Assignment 8: Chương trình quản lý cán bộ](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_8/src/ffse/quanlynhanvien)
 10. [Assignment 9: Chương trình quản lý cán bộ nâng cao](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_9/src/ffse/quanlycanbo)
 11. [Assignment 10: Chương trình quản lý cán bộ Lưu file](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/Assignment_10/src/ffse/quanlycanbo)
+12. [Assignment 11: Chương trình quản lý khách hàng qua database](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/FFSE1704009_LKH_Nhat/QLKhachHangSQL/src/ffse/qlkh)
