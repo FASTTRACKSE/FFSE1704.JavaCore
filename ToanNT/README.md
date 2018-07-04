@@ -11,3 +11,4 @@
 10. Assignment 8: [Quản lý nhân viên](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ToanNT/QuanLyNhanVien/src/ffse1703012/QuanLyNhanVien)
 11. Assignment 9: [Quản lý nhân viên nâng cao](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ToanNT/QuanLyNhanVien/src/ffse1703012/QuanLyNhanVien)
 12. Assignment 10: [Quản lý nhân viên Lưu và Đọc thông tin](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ToanNT/QuanLyNhanVien/src/ffse1703012/QuanLyNhanVien)
+12. Assignment 11: [Quản lý nhân viên Lưu và Đọc thông tin](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ToanNT/QuanLyKHMySql/src/ffse1703012/QuanlyKH)
