@@ -54,15 +54,17 @@ public class LoginUI extends JFrame {
 				JButton btn1=new JButton("Login");
 				btn1.setForeground(Color.BLUE);
 				pnBox.add(btn1);
+				
 				JButton btn2=new JButton("Reset");
 				btn2.setForeground(Color.RED);
 				pnBox.add(btn2);
-				JLabel pnkc=new JLabel("        ");				
+				JLabel pnkc=new JLabel("        ");	//tạo khoảng trắng giữa 2 buttton			
 				pnBox.add(btn1);
 				pnBox.add(pnkc);
 				pnBox.add(btn2);
 				
-				JPanel pnKCduoi=new JPanel();
+				JPanel pnKCduoi=new JPanel();//tạo khoảng trắng ở dưới button
+				
 				// add main panel vào container
 				pnMain.add(pnTitle);
 				pnMain.add(pnUserInfo);
