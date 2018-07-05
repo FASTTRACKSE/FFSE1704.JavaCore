@@ -15,3 +15,4 @@
 7. [Assignment 7: Bài Tập Quản lý Sinh Viên FasttrackSE](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ThanhPN/QuanLySinhVienFasttrackSE/src/javacore/fasttrackse)
 8. [Assignment 8+9: Bài Tập Quản Lý Cán Bộ](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ThanhPN/QuanLyThongTinCanBo/src/javacore/fasttrackse)
 9. [Assignment 10: Bài Tập Quản Lý Khách Hàng với SQL](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ThanhPN/QLKhachHangvoiSQL/src/fasttrackse/qlkh)
+10. [Asssignment 11: Bài Tập Giải BPT Bậc 1 (Swing)](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/ThanhPN/SwingGPTB1/src/fasttrackse/javacore)
