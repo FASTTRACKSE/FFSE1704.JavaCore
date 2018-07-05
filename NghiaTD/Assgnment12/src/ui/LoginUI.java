@@ -23,7 +23,8 @@ public class LoginUI extends JFrame {
 	JButton btndelete = new JButton("Xóa"); 
 	JButton btnThoat = new JButton("exit"); 
 	JButton btnNhap = new JButton("ENTER"); 
-	JTextField txtUser =new JTextField(20);
+	JTextField txtUser ;
+	JComboBox setclass;
 	DefaultTableModel dm ;
 	JTextField  txtPass , txtage;
 	JTable tbl;
@@ -33,7 +34,8 @@ public class LoginUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			dm.addRow(new String[] { txtUser.getText(), txtPass.getText(), txtage.getText() });
+			//dm.addRow(new String[] { txtUser.getText(), txtPass.getText(), txtage.getText() });
+			nhapthongtin();
 		}
 	};
 	
@@ -42,7 +44,7 @@ public class LoginUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			System.exit(0);
+			editdata();
 		}
 	};
 ActionListener deleteclick = new ActionListener() {
@@ -50,7 +52,7 @@ ActionListener deleteclick = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			ShowMessageHello();
+			deleteData();
 		}
 	};
 	MouseListener tblUserClick = new MouseListener() {
@@ -82,10 +84,18 @@ ActionListener deleteclick = new ActionListener() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			int row = tbl.getSelectedRow();
-			int col =1 ;
-			String s = (String) tbl.getValueAt(row, col);
-			txtUser.setText(s);
-			
+//			int col =1 ;
+//			String s = (String) tbl.getValueAt(row, col);
+//			txtUser.setText(s);
+//			String maSV = (String) tbl.getValueAt(row, 0);
+//			txtUser.setText(maSV);
+//			
+//			String tenSV = (String) tbl.getValueAt(row, 2);		
+//			txtPass.setText(tenSV);
+//		
+//		String tuoiSV = (String) tbl.getValueAt(row, 3);
+//			txtage.setText(tuoiSV);
+		
 		}
 	};
 	
@@ -114,7 +124,7 @@ ActionListener deleteclick = new ActionListener() {
 		// tạo sổ xuống để chọn lớp
 		JPanel pnchonlop = new JPanel();
 		JLabel lblclass = new JLabel("Chọn lớp:");
-		JComboBox setclass=new JComboBox();
+		 setclass=new JComboBox<String>();
 		
 		setclass.addItem("FFSE 1701");
 		setclass.addItem("FFSE 1702");
@@ -127,6 +137,7 @@ ActionListener deleteclick = new ActionListener() {
 		// Tạo panel User chứa dòng chữ user và textbox user
 		JPanel pnUserInfo = new JPanel();
 		JLabel lblUser = new JLabel("Mã sinh viên:");
+		txtUser = new JTextField(20);
 		pnUserInfo.add(lblUser);
 		pnUserInfo.add(txtUser);
 
@@ -153,12 +164,13 @@ ActionListener deleteclick = new ActionListener() {
 		
 		dm = new DefaultTableModel();
 		dm.addColumn("Mã");
+		dm.addColumn("Lớp");
 		dm.addColumn("Tên");
 		dm.addColumn("Tuổi");
 		
-		for(int i=0;i<5;i++) {
-			dm.addRow(new String[] {""+(i+1),"abc"+i,"20"});
-		}
+//		for(int i=0;i<5;i++) {
+//			dm.addRow(new String[] {""+(i+1),"abc"+i,"20"});
+//		}
 		tbl = new JTable(dm);		
 		JScrollPane sc = new JScrollPane(tbl);
 
@@ -176,7 +188,34 @@ ActionListener deleteclick = new ActionListener() {
 		con.add(pnMain);
 	
 	}
+	public void nhapthongtin() {
+		String TenSV= txtPass.getText();
+		String maSV= txtUser.getText();
+		String lop= setclass.getSelectedItem().toString();
+		String tuoiSV= txtage.getText();
+		dm.addRow(new String[] {maSV,lop,TenSV,tuoiSV});
+		
+	}
+	public void editdata() {
+		String TenSV = txtPass.getText();
+		String maSV = txtUser.getText();
+		String lop = setclass.getSelectedItem().toString();
+		String tuoiSV = txtage.getText();
+		int row = tbl.getSelectedRow();
+		tbl.setValueAt(maSV,row, 0);
+		tbl.setValueAt(lop,row, 1);
+		tbl.setValueAt(TenSV,row, 2);
+		tbl.setValueAt(tuoiSV,row, 3);
+		
+		
 	
+	}
+	public void deleteData() {
+		int[] rows = tbl.getSelectedRows();
+		for(int i=0;i<rows.length;i++) {
+			dm.removeRow(rows[i]-i);
+		}
+	}
 	
 	public void showWindow() {
 		this.setSize(600, 400);
