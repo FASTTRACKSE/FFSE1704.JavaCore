@@ -11,6 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -71,18 +72,23 @@ public class MyFlowLayoutUI extends JFrame implements Serializable { // Is- a
 		pnkq.add(txtkq);
 		pnTitle.add(lblTitle);
 
-		// tao button
+		// tao button CACL
 		JPanel pnBox = new JPanel();
 		pnBox.setLayout(new BoxLayout(pnBox, BoxLayout.X_AXIS));
 		btn1 = new JButton("CACL");
 		btn1.setForeground(Color.BLUE);
 		pnBox.add(btn1);
 		btn1.addActionListener(actionListener);
-
+		JLabel pnkc = new JLabel("        ");
+		pnBox.add(pnkc);
+		
+		// tao button EXIT
 		btn2 = new JButton("EXIT");
 		btn2.setForeground(Color.RED);
 		pnBox.add(btn2);
 		btn2.addActionListener(actionListener);
+		JLabel pnkc2 = new JLabel("        ");
+		pnBox.add(pnkc2);
 		// btn2.addActionListener(new ActionListener() {
 		// @Override
 		// public void actionPerformed(ActionEvent arg0) {
@@ -90,19 +96,14 @@ public class MyFlowLayoutUI extends JFrame implements Serializable { // Is- a
 		//
 		// }
 		// });
-		JLabel pnkc = new JLabel("        ");
-
+		
+		
+		// tao button HELP
 		btn3 = new JButton("HELP");
 		btn3.setForeground(Color.YELLOW);
 		pnBox.add(btn3);
 		btn3.addActionListener(actionListener);
-		JLabel pnkc2 = new JLabel("        ");
-
-		pnBox.add(btn1);
-		pnBox.add(pnkc);
-		pnBox.add(btn2);
-		pnBox.add(pnkc2);
-		pnBox.add(btn3);
+	
 		JPanel pnKCduoi = new JPanel();
 
 		// add main panel vào container
@@ -124,10 +125,10 @@ public class MyFlowLayoutUI extends JFrame implements Serializable { // Is- a
 				tinhToan();
 			}
 			if (e.getSource() == btn2) {
-				System.out.println("button 2");
+				System.exit(0);
 			}
 			if (e.getSource() == btn3) {
-				System.out.println("button 3");
+				JOptionPane.showMessageDialog(null, "Hello Joker");
 			}
 		}
 	};
