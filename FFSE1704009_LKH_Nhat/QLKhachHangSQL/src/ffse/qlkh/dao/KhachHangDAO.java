@@ -1,3 +1,8 @@
+/************************
+ *Prog: QUẢN LÝ KHÁCH HÀNG
+ *@AUTHOR: LÊ KHẢ HỒNG NHẬT
+ *Date: 22/06/2018
+ **********************/
 package ffse.qlkh.dao;
 
 import java.sql.Connection;
@@ -24,7 +29,7 @@ public class KhachHangDAO {
 
 	public void getConnect(String strServer, String strDatabase, String strUser, String strPwd) {
 
-		String strConnect = "jdbc:mysql://" + strServer + "/" + strDatabase;
+		String strConnect = "jdbc:mysql://" + strServer + "/" + strDatabase + "?useUnicode=true&characterEncoding=utf-8";
 		Properties pro = new Properties();
 		pro.put("user", strUser);
 		pro.put("password", strPwd);
@@ -37,7 +42,7 @@ public class KhachHangDAO {
 
 	}
 
-	public ArrayList<KhachHang> getDSKhachHang() {
+	public ArrayList<KhachHang> getDSKhachHang() {//kết quả khi gọi phương thức getDSkhachhang là mảng araylist khachhang
 		ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
 
 		try {

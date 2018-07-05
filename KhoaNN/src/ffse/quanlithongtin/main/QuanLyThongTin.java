@@ -181,7 +181,7 @@ public class QuanLyThongTin {
 							hoTen = nhap.nextLine();
 
 							if (hoTen.length() < 1 || hoTen.length() > 40) {
-								// bẵn lỗi
+								
 								throw new CBException(1);
 							}
 						} catch (Exception e) {

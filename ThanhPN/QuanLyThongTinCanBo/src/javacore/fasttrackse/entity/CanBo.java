@@ -1,12 +1,10 @@
 package javacore.fasttrackse.entity;
 
-import java.util.Scanner;
+import java.io.Serializable;
 
-public abstract class CanBo {
+public abstract class CanBo implements Serializable {
 	protected String hoTen;
 	protected double heSoLuong;
-
-	Scanner myInput = new Scanner(System.in);
 
 	public abstract double tinhLuong();
 
@@ -32,13 +30,4 @@ public abstract class CanBo {
 		this.heSoLuong = heSoLuong;
 	}
 
-	public void nhap() {
-
-		System.out.print("Nhập họ tên: ");
-		String hoTen = myInput.nextLine();
-
-		System.out.print("Nhập Hệ số lương: ");
-		double heSoLuong = myInput.nextInt();
-
-	}
 }
