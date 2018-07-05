@@ -31,8 +31,8 @@ public class LoginUI extends JFrame {
 		
 		// tạo panel chứa dòng user và 	text box user
 		JPanel pnUserInfo = new JPanel();
-		JLabel lblUser = new JLabel("User");
-		JTextField txtUser = new JTextField(30);
+		JLabel lblUser = new JLabel("User Name");
+		JTextField txtUser = new JTextField(20);
 		pnUserInfo.add(lblUser);
 		pnUserInfo.add(txtUser);
 		pnTitle.add(lblTitle);
@@ -41,14 +41,15 @@ public class LoginUI extends JFrame {
 		JPanel pnpass = new JPanel();
 		JLabel lblpass = new JLabel("Pass word");
 		JTextField txtpass = new JTextField(20);
-		pnUserInfo.add(lblpass);
-		pnUserInfo.add(txtpass);
+		pnpass.add(lblpass);
+		pnpass.add(txtpass);
 		
 		
 		// tạo button đăng nhập
 		JPanel pnbutton = new JPanel();
+		JLabel kc = new JLabel("   ");
 		JButton btn1 = new JButton("Login");
-		
+	
 		pnbutton.add(btn1);
 		JButton btn2 = new JButton("Register");
 		pnbutton.add(btn2);
