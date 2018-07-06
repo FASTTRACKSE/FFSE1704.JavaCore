@@ -22,11 +22,11 @@ public class QLKH {
 			try {
 				System.out.println(">> Menu Chương Trình <<");
 				
-				System.out.println("1.Kết Nối Database ");
-				System.out.println("2.In Danh Sách Database");
-				System.out.println("3.Thêm Thông Tin Khách Hàng");
-				System.out.println("4.Xóa Khách Hàng");
-				System.out.println("5.Sửa Khách Hàng");
+				System.out.println("|1.Kết Nối Database         |");
+				System.out.println("|2.In Danh Sách Database    |");
+				System.out.println("|3.Thêm Thông Tin Khách Hàng|");
+				System.out.println("|4.Xóa Khách Hàng           |");
+				System.out.println("|5.Sửa Khách Hàng           |");
 				N = myInput.nextInt();
 				if (N == 1) {
 
@@ -48,11 +48,7 @@ public class QLKH {
 				}
 			} catch (Exception e) {
 				System.out.println("Chỉ nhập từ 1 đến 5, nhập lại!");
-			} finally {
-				if (N != 5) {
-					backToMainMenu();
-				}
-			}
+			} 
 		}
 	
 	}
@@ -96,7 +92,7 @@ public class QLKH {
 				myInput.nextLine();
 				tenKH = myInput.nextLine();
 				if (tenKH.length() > 0 && tenKH.length() < 51) {
-					System.out.println("Sửa Tên Khách Hàng Oke!! : " + tenKH);
+					System.out.println("Sửa Tên Khách Hàng Oke : " + tenKH);
 				} else {
 					throw new CBException(7);
 				}
@@ -107,6 +103,81 @@ public class QLKH {
 				inputOK = false;
 			}
 		} while (!inputOK);
+		
+		do {
+
+			try {
+				inputOK = true;
+				System.out.print("Nhập địa chỉ Khách Hàng: ");
+				diaChi = myInput.nextLine();
+				if (diaChi.length() < 1 || diaChi.length() > 30) {
+					System.out.println("Sửa Địa Chỉ Khách Hàng : " + diaChi);
+					throw new CBException(7);
+				}
+			} catch (CBException e) {
+
+				System.err.println(e);
+				myInput.nextLine();
+				inputOK = false;
+			}
+		} while (!inputOK);
+		
+		do {
+
+			try {
+				inputOK = true;
+				System.out.println("m?i B?n nh?p nam sinh KH. Theo Th? t? YY/MM/DD");
+				namSinh = myInput.nextLine();
+				if (namSinh.length() > 0) {
+					System.out.println(" Sửa Nhập Năm Sinh  " + namSinh);
+				} else {
+					throw new CBException(3);
+				}
+			} catch (CBException e) {
+
+				System.err.println(e);
+				myInput.nextLine();
+				inputOK = false;
+			}
+		} while (!inputOK);
+		
+		do {
+
+			try {
+				inputOK = true;
+				System.out.println("Mời Bạn Nhập Giới Tính ");
+				gioiTinh = myInput.nextLine();
+				if (gioiTinh.length() > 0 && gioiTinh.length() <= 5) {
+					System.out.println("Sửa Giới Tính  : " + gioiTinh);
+				} else {
+					throw new CBException(3);
+				}
+			} catch (CBException e) {
+
+				System.err.println(e);
+				myInput.nextLine();
+				inputOK = false;
+			}
+		} while (!inputOK);
+		
+		do {
+			try {
+				myInput.nextLine();
+				inputOK = true;
+				System.out.print("Nh?p s? di?n tho?i khách hàng: ");
+				soDT = myInput.nextLine();
+
+				if (soDT.length() < 1 || soDT.length() > 11) {
+					System.out.println(" Sửa Ngày Sinh  " + namSinh);
+					throw new CBException(8);
+				}
+			} catch (CBException e) {
+				System.err.println(e);
+				myInput.nextLine();
+				inputOK = false;
+			}
+		} while (!inputOK);
+
 		KhachHang kh = new KhachHang(N, maKH, tenKH, diaChi, namSinh, gioiTinh, soDT );
 		khachHangDAO.edit(kh);
 
