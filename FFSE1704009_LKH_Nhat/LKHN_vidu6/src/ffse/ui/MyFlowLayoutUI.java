@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class MyFlowLayoutUI extends JFrame implements Serializable { // Is- a
 	private static final long serialVersionUID = 1L;
@@ -106,6 +107,9 @@ public class MyFlowLayoutUI extends JFrame implements Serializable { // Is- a
 	
 		JPanel pnKCduoi = new JPanel();
 
+		
+		
+		
 		// add main panel vào container
 		pnMain.add(pnTitle);
 		pnMain.add(pnUserInfo);
