@@ -14,7 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -157,7 +156,7 @@ public class SVUI extends JFrame implements Serializable {
 
 		// tao button HELP
 		btn4 = new JButton("RESET");
-		btn4.setForeground(Color.YELLOW);
+		btn4.setForeground(Color.GRAY);
 		pnBox.add(btn4);
 		btn4.addActionListener(actionListener);
 		JLabel pnkc4 = new JLabel("        ");
@@ -165,7 +164,7 @@ public class SVUI extends JFrame implements Serializable {
 
 		// tao button HELP
 		btn5 = new JButton("THOÁT");
-		btn5.setForeground(Color.PINK);
+		btn5.setForeground(Color.ORANGE);
 		pnBox.add(btn5);
 		btn5.addActionListener(actionListener);
 
@@ -211,7 +210,7 @@ public class SVUI extends JFrame implements Serializable {
 				xoaThongTin();
 			}
 			if (e.getSource() == btn4) {
-				JOptionPane.showMessageDialog(null, "Hello Joker");
+                reset();
 			}
 			if (e.getSource() == btn5) {
 				System.exit(0);
@@ -230,7 +229,7 @@ public class SVUI extends JFrame implements Serializable {
 	public void suaThongTin() {
 		String tenSinhVien = txtUser.getText();
 		String maSinhVien = txtpass.getText();
-		String lopSinhVien = classs.getSelectedItem().toString();
+		//String lopSinhVien = classs.getSelectedItem().toString();
 		String tuoiSinhVien = txttuoi.getText();
 		int row = tbl.getSelectedRow();
 		tbl.setValueAt(maSinhVien,row, 0);
@@ -244,6 +243,11 @@ public class SVUI extends JFrame implements Serializable {
 		     dm.removeRow(rows[i]-i);
 		   }
 	}
+    public void reset() {
+    		txtUser.setText("");
+    		txtpass.setText("");
+    		txttuoi.setText("");
+    }
 	public void showWindow() {
 		this.setSize(500, 500);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
