@@ -54,13 +54,21 @@ public class QuanLiDanhSach extends JFrame {
 	};
 	ActionListener btnEditClick = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			
+			String maSinhVien=txtMSV.getText();
+			String tenSinhVien=txtTSV.getText();
+			String tuoiSinhVien=txtTuoiSV.getText();
+			int row = tbl.getSelectedRow();
+			tbl.setValueAt(maSinhVien, row, 0);
+
+			tbl.setValueAt(tenSinhVien, row, 1);
+
+			tbl.setValueAt(tuoiSinhVien, row, 2);
 		}
 	};
 
 	ActionListener btnInputClick = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-
+			
 		}
 	};
 	MouseListener tblUserClick = new MouseListener() {
