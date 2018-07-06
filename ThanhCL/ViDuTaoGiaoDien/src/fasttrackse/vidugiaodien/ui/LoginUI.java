@@ -16,14 +16,29 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 public class LoginUI extends JFrame {
+	private static final long serialVersionUID = 1L;
 	JButton btnLogin = new JButton("Login");
 	JButton btnHelp = new JButton("Help");
 	JButton btnExit = new JButton("Exit");
 	JTextField txtUser = new JTextField(20);
 	JTable tbl;
+
+	ListSelectionListener tblSelectChangeEvent = new ListSelectionListener() {
+		public void valueChanged(ListSelectionEvent event) {
+			int row = tbl.getSelectedRow();
+
+			int col = 1;
+
+			String s = (String) tbl.getValueAt(row, col);
+
+			txtUser.setText(s);
+		}
+	};
 
 	ActionListener btnHelpClick = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -119,8 +134,8 @@ public class LoginUI extends JFrame {
 		for (int i = 0; i < 100; i++) {
 			dm.addRow(new String[] { "" + (i + 1), "Trần Văn T" + i, "20" });
 		}
-		
-		tbl = new JTable(dm);		
+
+		tbl = new JTable(dm);
 		JScrollPane sc = new JScrollPane(tbl);
 
 		// add main panel vào container
@@ -138,6 +153,7 @@ public class LoginUI extends JFrame {
 		btnHelp.addActionListener(btnHelpClick);
 		btnExit.addActionListener(btnExitClick);
 		tbl.addMouseListener(tblUserClick);
+		tbl.getSelectionModel().addListSelectionListener(tblSelectChangeEvent);
 	}
 
 	public void showWindow() {
