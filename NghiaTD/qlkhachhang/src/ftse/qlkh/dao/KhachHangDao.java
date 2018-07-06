@@ -43,7 +43,7 @@ public class KhachHangDao {
 		}
 	}
 
-	public ArrayList<KhachHang> getDSKhachHang() {
+	public static ArrayList<KhachHang> getDSKhachHang() {
 		ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
 
 		try {
@@ -59,9 +59,9 @@ public class KhachHangDao {
 				String diaChi = result.getString("DiaChi");
 				String ngaySinhKH = result.getString("NgaySinh");
 				String gioiTinhKH = result.getString("GioiTinh");
-				String sdt = result.getString("SoDT");
+				int soDT = result.getInt("SoDT");
 				
-				dsKH.add(new KhachHang(ID, maKH, tenKH, diaChi, ngaySinhKH, gioiTinhKH, sdt));
+				dsKH.add(new KhachHang(ID, maKH, tenKH, diaChi, ngaySinhKH, gioiTinhKH, soDT));
 			}
 
 		} catch (Exception e) {
@@ -78,9 +78,9 @@ public class KhachHangDao {
 		statement.setString(1, kh.getMaKH());
 		statement.setString(2, kh.getTenKH());
 		statement.setString(3, kh.getDiaChi());
-		statement.setString(3, kh.getNgaySinh());
-		statement.setString(4, kh.getGioiTinh());
-		statement.setString(5, kh.getSoDT());
+		statement.setString(4, kh.getNgaySinh());
+		statement.setString(5, kh.getGioiTinh());
+		statement.setInt(6, kh.getSoDT());
 		
 		
 		
@@ -98,15 +98,68 @@ public class KhachHangDao {
 	}
 
 	public void edit(KhachHang kh) {
-		//
+		try {
+			String queryString = "UPDATE khachhang SET  MaKH=?, TenKH=?, DiaChi=?, NgaySinh=?, GioiTinh=?, SoDT=? WHERE id=?";
+			PreparedStatement statement = conn.prepareStatement(queryString);
+
+			statement.setString(1, kh.getMaKH());
+			statement.setString(2, kh.getTenKH());
+			statement.setString(3, kh.getDiaChi());
+			statement.setString(4, kh.getNgaySinh());
+			statement.setString(5, kh.getGioiTinh());
+			statement.setInt(6, kh.getSoDT());
+			statement.setInt(7, kh.getID());
+			int x = statement.executeUpdate();
+			if (x > 0) {
+				System.err.println(" Sửa thành công rồi chúng mày ơi .");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
-	public void delete(int idKH) {
-		//
+	public void delete(int id) {
+		try {
+			String queryString = "delete from khachhang where id=?";
+			PreparedStatement statement = conn.prepareStatement(queryString);
+
+			statement.setInt(1, id);
+
+			int x = statement.executeUpdate();
+			if (x > 0) {
+				System.out.println("Delete OK");
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
-	public KhachHang read(int idKH) {
+
+	public KhachHang read(int id) {
 		KhachHang kh = new KhachHang();
+
+		try {
+			String queryString = "SELECT * FROM khachhang WHERE id = ?";
+			PreparedStatement statement = conn.prepareStatement(queryString);
+			statement.setInt(1, id);
+
+			ResultSet result = statement.executeQuery();
+
+			result.next();
+
+			int ID = result.getInt("ID");
+			String maKH = result.getString("MaKH");
+			String tenKH = result.getString("TenKH");
+			String diaChi = result.getString("DiaChi");
+			String ngaySinhKH = result.getString("NgaySinh");
+			String gioiTinhKH = result.getString("GioiTinh");
+			Integer sdt = result.getInt("SoDT");
+
+			kh = new KhachHang(id, maKH, tenKH, diaChi, ngaySinhKH, gioiTinhKH, sdt);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return kh;
 	}

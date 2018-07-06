@@ -23,3 +23,6 @@ https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhoaNN/src/ffse/qua
 
 8 Bài tập quản lý cán bộ : 
 https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhoaNN/src/ffse/quanlithongtin
+
+9 Bài tập quản lý khách hàng qua database : 
+https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhoaNN/src/ffse/qlkh
