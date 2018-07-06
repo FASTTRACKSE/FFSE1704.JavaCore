@@ -1,3 +1,8 @@
+/************************
+ *Prog: QUẢN LÝ KHÁCH HÀNG
+ *@AUTHOR: LÊ KHẢ HỒNG NHẬT
+ *Date: 22/06/2018
+ **********************/
 package ffse.qlkh.util;
 
 public class KHException extends Exception {

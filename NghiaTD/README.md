@@ -35,4 +35,6 @@
   (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/Assgnment11)
 11.  [Assgnment11] 
   (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/qlkhCanBoNangCao)
+12.  [Assgnment12] 
+  (https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/NghiaTD/Assgnment12/src)
 

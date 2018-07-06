@@ -8,13 +8,10 @@ public class ThietKeMenu {
 	
 	
 	 static int mang[] ;
-	 static int max = mang[0];
-	 static int min = mang[0];
-	 static int vitriMax = 0;
-	 static int vitriMin = 0;
+	 
 	
 	public static void main(String[] args) {
-				// TODO Auto-generated method stub
+				
 		while(true){
 		System.out.println(">> Menu Chương Trình <<");
 		System.out.println("+-----------------------------+");

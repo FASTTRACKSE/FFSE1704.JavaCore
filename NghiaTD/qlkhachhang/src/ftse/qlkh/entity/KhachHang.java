@@ -7,13 +7,13 @@ public class KhachHang {
 	String DiaChi;
 	String NgaySinh;
 	String GioiTinh;
-	String soDT;
+	int soDT;
 	
 	public KhachHang() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public KhachHang(int iD, String maKH, String tenKH, String diaChi, String ngaySinh, String gioiTinh, String soDT) {
+	public KhachHang(int iD, String maKH, String tenKH, String diaChi, String ngaySinh, String gioiTinh, int soDT) {
 		super();
 		this.ID = iD;
 		this.MaKH = maKH;
@@ -23,7 +23,7 @@ public class KhachHang {
 		this.GioiTinh = gioiTinh;
 		this.soDT = soDT;
 	}
-	public KhachHang( String maKH, String tenKH, String diaChi, String ngaySinh, String gioiTinh, String soDT) {
+	public KhachHang( String maKH, String tenKH, String diaChi, String ngaySinh, String gioiTinh, int soDT) {
 		super();
 		
 		this.MaKH = maKH;
@@ -108,13 +108,13 @@ public class KhachHang {
 	/**
 	 * @return the soDT
 	 */
-	public String getSoDT() {
+	public int getSoDT() {
 		return soDT;
 	}
 	/**
 	 * @param soDT the soDT to set
 	 */
-	public void setSoDT(String soDT) {
+	public void setSoDT(int soDT) {
 		this.soDT = soDT;
 	}
 }
