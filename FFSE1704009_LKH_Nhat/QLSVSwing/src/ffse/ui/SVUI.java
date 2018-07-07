@@ -7,20 +7,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class SVUI extends JFrame implements Serializable {
+import ffse.dao.SinhVienDAO;
+import ffse.entyti.SinhVien;
+
+public class SVUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JLabel lblTitle;
@@ -38,6 +42,10 @@ public class SVUI extends JFrame implements Serializable {
 	DefaultTableModel dm;
 	JTable tbl;
 	JComboBox<String> classs;
+	JComboBox<String> gender;
+
+	public static SinhVienDAO sinhVienDAO = new SinhVienDAO();
+	public static ArrayList<SinhVien> arr = new ArrayList<SinhVien>();
 
 	public SVUI(String tieude) {
 		super(tieude);
@@ -66,14 +74,12 @@ public class SVUI extends JFrame implements Serializable {
 
 			int row = tbl.getSelectedRow();
 
-			
-
 			String maSV = (String) tbl.getValueAt(row, 0);
 			txtpass.setText(maSV);
-			
+
 			String tenSV = (String) tbl.getValueAt(row, 2);
 			txtUser.setText(tenSV);
-			
+
 			String tuoiSV = (String) tbl.getValueAt(row, 3);
 			txttuoi.setText(tuoiSV);
 		}
@@ -85,7 +91,7 @@ public class SVUI extends JFrame implements Serializable {
 		JPanel pnMain = new JPanel();
 		pnMain.setLayout(new BoxLayout(pnMain, BoxLayout.Y_AXIS));
 
-		// Tạo panel title chứa dòng chữ Chương trình giải phương trình bậc nhất
+		// Tạo panel title chứa dòng chữ quản lý sinh viên fasttrack se
 		JPanel pnTitle = new JPanel();
 		lblTitle = new JLabel("Quản lý sinh viên FastTrack SE");
 		Font fontTitle = new Font("Arial", Font.BOLD, 20);
@@ -104,7 +110,7 @@ public class SVUI extends JFrame implements Serializable {
 		pnlist.add(lblclass);
 		pnlist.add(classs);
 
-		// Tạo panel pass chứa dòng chữ hệ số b và textbox hệ số b
+		// Tạo panel pass chứa dòng chữ mã sinh viên và textbox mã sinh viên
 		JPanel pnpass = new JPanel();
 		lblpass = new JLabel("Mã sinh viên");
 		txtpass = new JTextField(20);
@@ -112,7 +118,7 @@ public class SVUI extends JFrame implements Serializable {
 		pnpass.add(txtpass);
 		pnTitle.add(lblTitle);
 
-		// Tạo panel User chứa dòng chữ hệ số a
+		// Tạo panel User chứa dòng chữ tên sinh viên
 		JPanel pnUserInfo = new JPanel();
 		lblUser = new JLabel("Tên Sinh Viên");
 		txtUser = new JTextField(20);
@@ -120,7 +126,7 @@ public class SVUI extends JFrame implements Serializable {
 		pnUserInfo.add(txtUser);
 		pnTitle.add(lblTitle);
 
-		// Tạo panel pass chứa dòng chữ kết quả và textbox kết quả
+		// Tạo panel pass chứa dòng chữ tuổi sinh viên và textbox tuổi sinh viên
 		JPanel pntuoi = new JPanel();
 		lbltuoi = new JLabel("Tuổi Sinh Viên");
 		txttuoi = new JTextField(20);
@@ -128,7 +134,16 @@ public class SVUI extends JFrame implements Serializable {
 		pntuoi.add(txttuoi);
 		pnTitle.add(lblTitle);
 
-		// tao button CACL
+		// tao box gender
+		JPanel pnlistGender = new JPanel();
+		JLabel lblGender = new JLabel("Giới tính");
+		gender = new JComboBox<String>();
+		gender.addItem("Nam");
+		gender.addItem("Nữ");
+		pnlistGender.add(lblGender);
+		pnlistGender.add(gender);
+
+		// tao button Thêm
 		JPanel pnBox = new JPanel();
 		pnBox.setLayout(new BoxLayout(pnBox, BoxLayout.X_AXIS));
 		btn1 = new JButton("THÊM");
@@ -138,7 +153,7 @@ public class SVUI extends JFrame implements Serializable {
 		JLabel pnkc = new JLabel("        ");
 		pnBox.add(pnkc);
 
-		// tao button EXIT
+		// tao button Sửa
 		btn2 = new JButton("SỬA");
 		btn2.setForeground(Color.RED);
 		pnBox.add(btn2);
@@ -154,7 +169,7 @@ public class SVUI extends JFrame implements Serializable {
 		JLabel pnkc3 = new JLabel("        ");
 		pnBox.add(pnkc3);
 
-		// tao button HELP
+		// tao button Reset
 		btn4 = new JButton("RESET");
 		btn4.setForeground(Color.GRAY);
 		pnBox.add(btn4);
@@ -162,7 +177,7 @@ public class SVUI extends JFrame implements Serializable {
 		JLabel pnkc4 = new JLabel("        ");
 		pnBox.add(pnkc4);
 
-		// tao button HELP
+		// tao button thoát
 		btn5 = new JButton("THOÁT");
 		btn5.setForeground(Color.ORANGE);
 		pnBox.add(btn5);
@@ -176,11 +191,8 @@ public class SVUI extends JFrame implements Serializable {
 		dm.addColumn("Lớp");
 		dm.addColumn("Tên");
 		dm.addColumn("Tuổi");
-
-//		 for (int i = 0; i < 100; i++) {
-//		 dm.addRow(new String[] { "" + (i + 1), "Trần Văn T" + i, "20", "1998" });
-//		 }
-
+		dm.addColumn("Giới Tính");
+		this.getTable();
 		tbl = new JTable(dm);
 		JScrollPane sc = new JScrollPane(tbl);
 
@@ -190,6 +202,7 @@ public class SVUI extends JFrame implements Serializable {
 		pnMain.add(pnpass);
 		pnMain.add(pnUserInfo);
 		pnMain.add(pntuoi);
+		pnMain.add(pnlistGender);
 		pnMain.add(pnBox);
 		pnMain.add(pnKCduoi);
 		pnMain.add(sc);
@@ -210,46 +223,71 @@ public class SVUI extends JFrame implements Serializable {
 				xoaThongTin();
 			}
 			if (e.getSource() == btn4) {
-                reset();
+				reset();
 			}
 			if (e.getSource() == btn5) {
-				System.exit(0);
+				int ret = JOptionPane.showConfirmDialog(null, "Thoát hả?", "Thoát", JOptionPane.YES_NO_OPTION);
+				if (ret == JOptionPane.YES_OPTION) {
+					System.exit(0);
+				}
+
 			}
 		}
 	};
 
 	public void nhapThongTin() {
+
 		String tenSinhVien = txtUser.getText();
 		String maSinhVien = txtpass.getText();
 		String lopSinhVien = classs.getSelectedItem().toString();
 		String tuoiSinhVien = txttuoi.getText();
-
-		dm.addRow(new String[] { maSinhVien, lopSinhVien, tenSinhVien, tuoiSinhVien });
+		String gioiTinhSinhVien = gender.getSelectedItem().toString();
+		sinhVienDAO.add(new SinhVien(lopSinhVien, maSinhVien, tenSinhVien, tuoiSinhVien, gioiTinhSinhVien));
+		dm.addRow(new String[] { maSinhVien, lopSinhVien, tenSinhVien, tuoiSinhVien, gioiTinhSinhVien });
 	}
+
 	public void suaThongTin() {
 		String tenSinhVien = txtUser.getText();
 		String maSinhVien = txtpass.getText();
-		//String lopSinhVien = classs.getSelectedItem().toString();
+		String lopSinhVien = classs.getSelectedItem().toString();
 		String tuoiSinhVien = txttuoi.getText();
+		String gioiTinhSinhVien = gender.getSelectedItem().toString();
+		SinhVien sv = new SinhVien(lopSinhVien, maSinhVien, tenSinhVien, tuoiSinhVien, gioiTinhSinhVien);
+		sinhVienDAO.update(sv);
+
 		int row = tbl.getSelectedRow();
-		tbl.setValueAt(maSinhVien,row, 0);
-		tbl.setValueAt(tenSinhVien,row, 2);
-		tbl.setValueAt(tuoiSinhVien,row, 3);
-	
+		tbl.setValueAt(maSinhVien, row, 0);
+		tbl.setValueAt(tenSinhVien, row, 2);
+		tbl.setValueAt(tuoiSinhVien, row, 3);
+		tbl.setValueAt(gioiTinhSinhVien, row, 4);
+
 	}
+
 	public void xoaThongTin() {
+		String maSinhVien = txtpass.getText();
 		int[] rows = tbl.getSelectedRows();
-		   for(int i=0;i<rows.length;i++){
-		     dm.removeRow(rows[i]-i);
-		   }
+		for (int i = 0; i < rows.length; i++) {
+			dm.removeRow(rows[i] - i);
+			sinhVienDAO.delete(maSinhVien);
+		}
 	}
-    public void reset() {
-    		txtUser.setText("");
-    		txtpass.setText("");
-    		txttuoi.setText("");
-    }
+
+	public void reset() {
+		txtUser.setText("");
+		txtpass.setText("");
+		txttuoi.setText("");
+	}
+
+	public void getTable() {
+		arr = sinhVienDAO.getDSKSinhVien();
+		for (int i = 0; i < arr.size(); i++) {
+			dm.addRow(new String[] { arr.get(i).getMaSinhVien(), arr.get(i).getLopSinhVien(),
+					arr.get(i).getTenSinhVien(), arr.get(i).getTuoiSinhVien(), arr.get(i).getGioiTinhSinhVien() });
+		}
+	}
+
 	public void showWindow() {
-		this.setSize(500, 500);
+		this.setSize(600, 500);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
