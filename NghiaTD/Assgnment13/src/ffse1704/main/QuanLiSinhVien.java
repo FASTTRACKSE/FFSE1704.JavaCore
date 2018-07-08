@@ -1,6 +1,6 @@
 package ffse1704.main;
 
-import ffse.ui.LoginUI;
+import ffse1704.qlsv.ui.LoginUI;
 
 public class QuanLiSinhVien {
 

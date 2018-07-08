@@ -1,4 +1,4 @@
-package ffse.ui;
+package ffse1704.qlsv.ui;
 
 
 	
@@ -162,9 +162,9 @@ import ffse1704.qlsv.entity.SinhVien;
 			lblTitle.setFont(fontTitle);
 			pnTitle.add(lblTitle);
 			
-			// tạo sổ xuống để chọn lớp
+			// tạo sổ xuống để ch�?n lớp
 			JPanel pnchonlop = new JPanel();
-			JLabel lblclass = new JLabel("Chọn lớp:");
+			JLabel lblclass = new JLabel("Ch�?n lớp:");
 			 setclass=new JComboBox<String>();
 			
 			setclass.addItem("FFSE 1701");
@@ -182,9 +182,9 @@ import ffse1704.qlsv.entity.SinhVien;
 			pnUserInfo.add(lblUser);
 			pnUserInfo.add(txtUser);
 			
-			//tạo panel chứa họ sv
+			//tạo panel chứa h�? sv
 			JPanel pnHo = new JPanel();
-			JLabel lblHo = new JLabel("Họ sinh viên:");
+			JLabel lblHo = new JLabel("H�? sinh viên:");
 			txtHo = new JTextField(20);
 			pnHo.add(lblHo);
 			pnHo.add(txtHo);
@@ -222,7 +222,7 @@ import ffse1704.qlsv.entity.SinhVien;
 			
 			dm = new DefaultTableModel();
 			dm.addColumn("Mã");
-			dm.addColumn("Họ");
+			dm.addColumn("H�?");
 			dm.addColumn("Tên");
 			dm.addColumn("Giới tính");
 			dm.addColumn("Ngày sinh");
