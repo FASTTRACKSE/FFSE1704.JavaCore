@@ -89,10 +89,11 @@ public class SinhVienDAO {
 		try {
 			String sql = "update sinhvien set TenSV=?,TuoiSV=?,GioiTinh=? where MaSV=?";
 			PreparedStatement statement = conn.prepareStatement(sql);
-			statement.setString(1, sv.getMaSV());
-			statement.setString(2, sv.getTenSV());
-			statement.setString(3, sv.getTuoiSV());
-			statement.setString(4, sv.getGioiTinh());
+			
+			statement.setString(1, sv.getTenSV());
+			statement.setString(2, sv.getTuoiSV());
+			statement.setString(3, sv.getGioiTinh());
+			statement.setString(4, sv.getMaSV());
 			int x = statement.executeUpdate();
 			if (x > 0) {
 				System.out.println("Cập nhật OK");
