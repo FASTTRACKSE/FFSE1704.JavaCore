@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -18,6 +19,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import dao.SinhVienDAO;
+import entyti.SinhVien;
 
 public class GiaoDienSV extends JFrame implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -37,6 +41,9 @@ public class GiaoDienSV extends JFrame implements Serializable {
 	DefaultTableModel dm;
 	JTable tbl;
 	JComboBox<String> classs;
+	
+	public static SinhVienDAO sinhVienDAO = new SinhVienDAO();
+	public static ArrayList<SinhVien> arr = new ArrayList<SinhVien>();
 
 	
 	public GiaoDienSV(String title) {
@@ -66,16 +73,18 @@ public class GiaoDienSV extends JFrame implements Serializable {
 		public void mouseClicked(MouseEvent e) {
 
 			int row = tbl.getSelectedRow();
-
+			
+			String lopSV = (String) tbl.getValueAt(row, 0);
+			classs .setSelectedItem(lopSV);
 			
 
-			String maSV = (String) tbl.getValueAt(row, 0);
+			String maSV = (String) tbl.getValueAt(row, 1);
 			txtUserMSV .setText(maSV);
 			
-			String tenSV = (String) tbl.getValueAt(row, 1);
+			String tenSV = (String) tbl.getValueAt(row, 2);
 			txtUserTSV.setText(tenSV);
 			
-			String tuoiSV = (String) tbl.getValueAt(row, 2);
+			String tuoiSV = (String) tbl.getValueAt(row, 3);
 			txtUsertuoi.setText(tuoiSV);
 		}
 	};
@@ -133,6 +142,7 @@ public class GiaoDienSV extends JFrame implements Serializable {
 		pnUserInfotuoi.add(txtUsertuoi);
 		pnTitle.add(lblTitle);
 		
+
 		// tạo buttron
 		JPanel pnFlow = new JPanel();
 		pnMain.setLayout(new BoxLayout(pnMain, BoxLayout.Y_AXIS));
@@ -153,9 +163,11 @@ public class GiaoDienSV extends JFrame implements Serializable {
 		btn5.addActionListener(actionListener);
 		
 		dm = new DefaultTableModel();
+		dm.addColumn("Lớp");
 		dm.addColumn("Mã");
 		dm.addColumn("Tên");
 		dm.addColumn("Tuổi");
+		this.read();
 		
 	/*	for (int i = 0; i < 100; i++) {
 			dm.addRow(new String[] { "" + (i + 1), "Trần Văn T" + i, "20" });
@@ -175,7 +187,21 @@ public class GiaoDienSV extends JFrame implements Serializable {
 		con.add(pnMain);
 	}
 	
+
+	private void read() {
+		arr = sinhVienDAO.getDSKSinhVien();
+		for(int i=0;i<arr.size();i++) {
+				dm.addRow(new String[] {
+						arr.get(i).getMasinhvien(), arr.get(i).getTensinhvien(), arr.get(i).getTuoi(), arr.get(i).getLop()
+						
+				});
+		}
+		
+	}
+
 	ActionListener actionListener = new ActionListener() {
+
+		private String maSinhVien;
 
 		@Override
 		public void actionPerformed(ActionEvent a) {
@@ -202,28 +228,38 @@ public class GiaoDienSV extends JFrame implements Serializable {
 		}
 		
 		private void nhapthongtin() {
-			String tensinhvien = txtUserTSV.getText();
-			String masinhvien = txtUserMSV.getText();
-			String tuoisinhvien = txtUsertuoi.getText();
 			
-			dm.addRow(new String[] {masinhvien,tensinhvien,tuoisinhvien});
+			String masinhvien = txtUserMSV.getText();
+			String tensinhvien = txtUserTSV.getText();
+			String tuoisinhvien = txtUsertuoi.getText();
+			String lop = classs.getSelectedItem().toString();
+			
+			sinhVienDAO.add(new SinhVien(masinhvien,tensinhvien,tuoisinhvien,lop));
+			dm.addRow(new String[] {lop,masinhvien,tensinhvien,tuoisinhvien});
 		}
 		
 		private void suathongtin() {
+			String lop = classs.getSelectedItem().toString();
 			String tensinhvien = txtUserTSV.getText();
 			String masinhvien = txtUserMSV.getText();
 			String tuoisinhvien = txtUsertuoi.getText();
+		
+			SinhVien sv = new SinhVien(lop,masinhvien,tensinhvien,tuoisinhvien);
+			sinhVienDAO.update(sv);
 			int row = tbl.getSelectedRow();
-			tbl.setValueAt(masinhvien,row, 0);
-			tbl.setValueAt(tensinhvien,row, 1);
-			tbl.setValueAt(tuoisinhvien,row, 2);
+			
+			tbl.setValueAt(masinhvien,row, 1);
+			tbl.setValueAt(tensinhvien,row,2);
+			tbl.setValueAt(tuoisinhvien,row, 3);	 	
+			tbl.setValueAt(lop,row, 0);
 			
 		}
-		
 		private void xoathongtin() {
+			String maSinhVien = txtUserMSV.getText();
 			int[] rows = tbl.getSelectedRows();
 				for(int i=0;i<rows.length;i++) {
-					dm.removeRow(rows[i]-i);
+					dm.removeRow(rows[i] - i);
+					sinhVienDAO.delete(maSinhVien);
 				}
 			
 		}
@@ -232,7 +268,6 @@ public class GiaoDienSV extends JFrame implements Serializable {
 			txtUserTSV.setText("");
 			txtUserMSV.setText("");
 			txtUsertuoi.setText("");
-			
 		}
 		
 	};
@@ -243,4 +278,7 @@ public class GiaoDienSV extends JFrame implements Serializable {
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
+
+
+	
 }
