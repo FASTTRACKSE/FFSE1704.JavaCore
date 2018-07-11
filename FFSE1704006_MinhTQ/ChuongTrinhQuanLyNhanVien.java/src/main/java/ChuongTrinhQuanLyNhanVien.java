@@ -118,14 +118,14 @@ public class ChuongTrinhQuanLyNhanVien {
 							inputOK = false;
 						}
 					} while (!inputOK);
-//nhạp khoa giảng dạy
+					// nhạp khoa giảng dạy
 					do {
 
 						try {
 							inputOK = true;
 							System.out.print("Nhập khoa giảng dạy : ");
 							khoa = nhap.nextLine();
-							if (khoa.length() < 1 ) {
+							if (khoa.length() < 1) {
 
 								throw new until(5);
 							}
@@ -241,7 +241,7 @@ public class ChuongTrinhQuanLyNhanVien {
 							inputOK = true;
 							System.out.print("Nhập phòng ban : ");
 							phongBan = nhap.nextLine();
-							if (phongBan.length() < 1 ) {
+							if (phongBan.length() < 1) {
 
 								throw new until(5);
 							}
@@ -306,7 +306,7 @@ public class ChuongTrinhQuanLyNhanVien {
 
 						} catch (InputMismatchException e) {
 							System.err.println("Hệ số lương phải là số thực");
-							nhap.nextLine();
+							nhap.nextLine();	
 							inputOK = false;
 						}
 					} while (!inputOK);

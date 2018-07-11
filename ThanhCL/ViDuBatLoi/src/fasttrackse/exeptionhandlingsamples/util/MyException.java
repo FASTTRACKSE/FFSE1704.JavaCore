@@ -17,13 +17,13 @@ public class MyException extends Exception {
 		
 		switch (errorCode) {
 		case 1:
-			msg = "Lỗi chia cho 0";
+			msg = "Tên giảng viên không được để trống";
 			break;
 		case 2:
-			msg = "Lỗi tràn mảng";
+			msg = "Tên giảng viên không được dài hơn 40 ký tự";
 			break;
 		case 3:
-			msg = "Lỗi nhập sai kiểu dữ liệu";
+			msg = "Trình độ chỉ được chọn từ 1 -> 3";
 			break;
 		
 		} 
