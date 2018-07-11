@@ -25,7 +25,6 @@ import ffse.entyti.User;
 
 import ffse.util.SerializeFileFactory;
 
-
 public class Login extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -41,14 +40,16 @@ public class Login extends JFrame {
 
 	JCheckBox remember;
 
-
-	
-	
 	public Login(String tieude) {
 		super(tieude);
 		addControls();
-		
-		
+
+	}
+
+	public void docFile() {
+		admin.clear();
+		admin = SerializeFileFactory.docFile("username.txt");
+
 	}
 
 	public void addControls() {
@@ -111,7 +112,6 @@ public class Login extends JFrame {
 		con.add(pnMain);
 	}
 
-
 	ActionListener actionListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -129,7 +129,7 @@ public class Login extends JFrame {
 	public void login() {
 		String user = txtUser.getText();
 		String pass = txtpass.getText();
-		
+
 		try {
 			if (user.equals("") || pass.equals("")) {
 				JOptionPane.showMessageDialog(null, "Khong de trong!");
@@ -142,20 +142,22 @@ public class Login extends JFrame {
 				stm.setString(2, pass);
 				ResultSet rs = stm.executeQuery();
 				if (rs.next()) {
-					
+
 					if (remember.isSelected()) {
 						String userName = txtUser.getText();
 						String passWord = txtpass.getText();
 						admin.add(new User(userName, passWord));
-						SerializeFileFactory.luuFile(admin, "username.txt");
-						
+						SerializeFileFactory.luuFile( User(userName, passWord), "username.txt");
+
 						SVUI svui = new SVUI("Quản lý sinh viên");
 						svui.showWindow();
+						this.setVisible(false);
 					} else {
 						SVUI svui = new SVUI("Quản lý sinh viên");
 						svui.showWindow();
+						this.setVisible(false);
 					}
-					
+
 				} else {
 					JOptionPane.showMessageDialog(null, "Sai tài khoản hoặc mật khẩu");
 				}
@@ -165,6 +167,10 @@ public class Login extends JFrame {
 		}
 	}
 
+	private ArrayList<User> User(String userName, String passWord) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	public void showWindow() {
 		this.setSize(400, 300);

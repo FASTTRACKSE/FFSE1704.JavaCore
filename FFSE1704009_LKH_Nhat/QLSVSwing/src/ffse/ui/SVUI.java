@@ -29,6 +29,12 @@ import ffse.entyti.SinhVien;
 public class SVUI extends JFrame {
 	private static final long serialVersionUID = 1L;
 
+	JPanel pnlist;
+	JPanel pnpass;
+	JPanel pnUserInfo;
+	JPanel pntuoi;
+	JPanel pnlistGender;
+
 	private JLabel lblTitle;
 	private JLabel lblUser;
 	private JTextField txtUser;
@@ -36,15 +42,16 @@ public class SVUI extends JFrame {
 	private JTextField txtpass;
 	private JLabel lbltuoi;
 	private JTextField txttuoi;
-	private JButton btn1;
-	private JButton btn2;
-	private JButton btn3;// has - a
-	private JButton btn4;
-	private JButton btn5;
-	private JButton btn6;
-	private JButton btn7;
-	private JButton btn8;
-	private JButton btn9;
+
+	private JButton btnthem;
+	private JButton btnSua;
+	private JButton btnXoa;// has - a
+	private JButton btnReset;
+	private JButton btnExit;
+	private JButton btnHome;
+	private JButton btnActionThem;
+	private JButton btnActionSua;
+	private JButton btnActionXoa;
 	DefaultTableModel dm;
 	JTable tbl;
 	JComboBox<String> classs;
@@ -78,13 +85,12 @@ public class SVUI extends JFrame {
 		}
 
 		public void mouseClicked(MouseEvent e) {
-			txtpass.setEnabled(false);
-			
+
 			int row = tbl.getSelectedRow();
 
 			String lopSV = (String) tbl.getValueAt(row, 1);
 			classs.setSelectedItem(lopSV);
-			
+
 			String maSV = (String) tbl.getValueAt(row, 0);
 			txtpass.setText(maSV);
 
@@ -93,14 +99,14 @@ public class SVUI extends JFrame {
 
 			String tuoiSV = (String) tbl.getValueAt(row, 3);
 			txttuoi.setText(tuoiSV);
-			
+
 			String gioiTinhSV = (String) tbl.getValueAt(row, 4);
-			if(gioiTinhSV.equals("Nam")) {
+			if (gioiTinhSV.equals("Nam")) {
 				gender1.setSelected(true);
-			}else {
+			} else {
 				gender2.setSelected(true);
 			}
-			
+
 		}
 	};
 
@@ -118,7 +124,7 @@ public class SVUI extends JFrame {
 		pnTitle.add(lblTitle);
 
 		// tao box class
-		JPanel pnlist = new JPanel();
+		pnlist = new JPanel();
 		JLabel lblclass = new JLabel("Lớp");
 		classs = new JComboBox<String>();
 		classs.addItem("FFSE 1701");
@@ -128,38 +134,40 @@ public class SVUI extends JFrame {
 		classs.addItem("FFSE 1801");
 		pnlist.add(lblclass);
 		pnlist.add(classs);
+		pnlist.setVisible(false);
 
 		// Tạo panel pass chứa dòng chữ mã sinh viên và textbox mã sinh viên
-		JPanel pnpass = new JPanel();
+		pnpass = new JPanel();
 		lblpass = new JLabel("Mã sinh viên");
 		txtpass = new JTextField(20);
 		pnpass.add(lblpass);
 		pnpass.add(txtpass);
 		pnTitle.add(lblTitle);
 		txtpass.setEnabled(false);
-		
-		
+		pnpass.setVisible(false);
+
 		// Tạo panel User chứa dòng chữ tên sinh viên
-		JPanel pnUserInfo = new JPanel();
+		pnUserInfo = new JPanel();
 		lblUser = new JLabel("Tên Sinh Viên");
 		txtUser = new JTextField(20);
 		pnUserInfo.add(lblUser);
 		pnUserInfo.add(txtUser);
 		pnTitle.add(lblTitle);
 		txtUser.setEnabled(false);
-		
-		
+		pnUserInfo.setVisible(false);
+
 		// Tạo panel pass chứa dòng chữ tuổi sinh viên và textbox tuổi sinh viên
-		JPanel pntuoi = new JPanel();
+		pntuoi = new JPanel();
 		lbltuoi = new JLabel("Tuổi Sinh Viên");
 		txttuoi = new JTextField(20);
 		pntuoi.add(lbltuoi);
 		pntuoi.add(txttuoi);
 		pnTitle.add(lblTitle);
 		txttuoi.setEnabled(false);
-		
+		pntuoi.setVisible(false);
+
 		// tao box gender
-		JPanel pnlistGender = new JPanel();
+		pnlistGender = new JPanel();
 		JLabel lblGender = new JLabel("Giới tính");
 		gender1 = new JRadioButton("Nam");
 		gender2 = new JRadioButton("Nữ");
@@ -169,80 +177,84 @@ public class SVUI extends JFrame {
 		pnlistGender.add(lblGender);
 		pnlistGender.add(gender1);
 		pnlistGender.add(gender2);
+		pnlistGender.setVisible(false);
 
-		// tao button Thêm
+		// tao panel chua cac button menu
 		JPanel pnBox = new JPanel();
 		pnBox.setLayout(new BoxLayout(pnBox, BoxLayout.X_AXIS));
-		btn1 = new JButton("THÊM");
-		btn1.setForeground(Color.BLUE);
-		pnBox.add(btn1);
-		btn1.addActionListener(actionListener);
+		btnthem = new JButton("THÊM");
+		btnthem.setForeground(Color.BLUE);
+		pnBox.add(btnthem);
+		btnthem.addActionListener(actionListener);
 		JLabel pnkc = new JLabel("        ");
 		pnBox.add(pnkc);
 
 		// tao button Sửa
-		btn2 = new JButton("SỬA");
-		btn2.setForeground(Color.RED);
-		pnBox.add(btn2);
-		btn2.addActionListener(actionListener);
+		btnSua = new JButton("SỬA");
+		btnSua.setForeground(Color.RED);
+		pnBox.add(btnSua);
+		btnSua.addActionListener(actionListener);
 		JLabel pnkc2 = new JLabel("        ");
 		pnBox.add(pnkc2);
 
 		// tao button XÓA
-		btn3 = new JButton("XÓA");
-		btn3.setForeground(Color.GREEN);
-		pnBox.add(btn3);
-		btn3.addActionListener(actionListener);
+		btnXoa = new JButton("XÓA");
+		btnXoa.setForeground(Color.GREEN);
+		pnBox.add(btnXoa);
+		btnXoa.addActionListener(actionListener);
 		JLabel pnkc3 = new JLabel("        ");
 		pnBox.add(pnkc3);
 
-		// tao button thực hiện
-		btn7 = new JButton("Thực Hiện");
-		pnBox.add(btn7);
-		btn7.addActionListener(actionListener);
-		btn7.setVisible(false);
+		// tao button thoát
+		btnExit = new JButton("THOÁT");
+		btnExit.setForeground(Color.ORANGE);
+		pnBox.add(btnExit);
+		btnExit.addActionListener(actionListener);
+
+		// tao panel chua cac button action
+		JPanel pnButtonAction = new JPanel();
+		// tao button thực hiện them
+		btnActionThem = new JButton("Thêm");
+		pnButtonAction.add(btnActionThem);
+		btnActionThem.addActionListener(actionListener);
+		btnActionThem.setVisible(false);
 		JLabel pnkc6 = new JLabel("        ");
-		pnBox.add(pnkc6);
+		pnButtonAction.add(pnkc6);
+		btnActionThem.setVisible(false);
 
-		// tao button thực hiện
-		btn8 = new JButton("Thực Hiện");
-		pnBox.add(btn8);
-		btn8.addActionListener(actionListener);
-		btn8.setVisible(false);
-		JLabel pnkc7 = new JLabel("        ");
-		pnBox.add(pnkc7);
+		// tao button thực hiện sua
+		btnActionSua = new JButton("Sửa");
+		pnButtonAction.add(btnActionSua);
+		btnActionSua.addActionListener(actionListener);
+		btnActionSua.setVisible(false);
+		pnButtonAction.add(pnkc6);
+		btnActionSua.setVisible(false);
 
-		// tao button thực hiện
-		btn9 = new JButton("Thực Hiện");
-		pnBox.add(btn9);
-		btn9.addActionListener(actionListener);
-		btn9.setVisible(false);
-		JLabel pnkc8 = new JLabel("        ");
-		pnBox.add(pnkc8);
+		// tao button thực hiện xoa
+		btnActionXoa = new JButton("Xóa");
+		pnButtonAction.add(btnActionXoa);
+		btnActionXoa.addActionListener(actionListener);
+		btnActionXoa.setVisible(false);
+		pnButtonAction.add(pnkc6);
+		btnActionXoa.setVisible(false);
 
 		// tao button Reset
-		btn4 = new JButton("RESET");
-		btn4.setForeground(Color.GRAY);
-		pnBox.add(btn4);
-		btn4.addActionListener(actionListener);
+		btnReset = new JButton("RESET");
+		btnReset.setForeground(Color.GRAY);
+		pnButtonAction.add(btnReset);
+		btnReset.addActionListener(actionListener);
 		JLabel pnkc4 = new JLabel("        ");
-		pnBox.add(pnkc4);
-		btn4.setVisible(false);
+		pnButtonAction.add(pnkc4);
+		btnReset.setVisible(false);
 
 		// tao button home
-		btn6 = new JButton("Home");
-		btn6.setForeground(Color.ORANGE);
-		pnBox.add(btn6);
-		btn6.addActionListener(actionListener);
-		// btn6.setVisible(false);
-		JLabel pnkc5 = new JLabel("        ");
-		pnBox.add(pnkc5);
-
-		// tao button thoát
-		btn5 = new JButton("THOÁT");
-		btn5.setForeground(Color.ORANGE);
-		pnBox.add(btn5);
-		btn5.addActionListener(actionListener);
+		btnHome = new JButton("Home");
+		btnHome.setForeground(Color.ORANGE);
+		pnButtonAction.add(btnHome);
+		btnHome.addActionListener(actionListener);
+		btnHome.setVisible(false);
+		JLabel pnkc5 = new JLabel(" ");
+		pnButtonAction.add(pnkc5);
 
 		JPanel pnKCduoi = new JPanel();
 
@@ -265,6 +277,7 @@ public class SVUI extends JFrame {
 		pnMain.add(pntuoi);
 		pnMain.add(pnlistGender);
 		pnMain.add(pnBox);
+		pnMain.add(pnButtonAction);
 		pnMain.add(pnKCduoi);
 		pnMain.add(sc);
 		con.add(pnMain);
@@ -274,82 +287,100 @@ public class SVUI extends JFrame {
 	ActionListener actionListener = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == btn1) {
+			if (e.getSource() == btnthem) {
 				// nhapThongTin();
-				txtpass.setEnabled(true);
+
+				pnlist.setVisible(true);
+				pnUserInfo.setVisible(true);
+				pnpass.setVisible(true);
+				pntuoi.setVisible(true);
+				pnlistGender.setVisible(true);
+
 				txtUser.setEnabled(true);
-				txttuoi.setEnabled(true);
-				btn1.setVisible(false);
-				btn2.setVisible(false);
-				btn3.setVisible(false);
-				btn8.setVisible(false);
-				btn4.setVisible(true);
-				btn6.setVisible(true);
-				btn7.setVisible(true);
-			}
-			if (e.getSource() == btn2) {
 				txtpass.setEnabled(true);
-				txtUser.setEnabled(true);
 				txttuoi.setEnabled(true);
-				btn1.setVisible(false);
-				btn2.setVisible(false);
-				btn3.setVisible(false);
-				btn8.setVisible(false);
-				btn4.setVisible(true);
-				btn6.setVisible(true);
-				btn7.setVisible(true);
-				
+
+				btnthem.setEnabled(false);
+				btnSua.setEnabled(false);
+				btnXoa.setEnabled(false);
+				btnReset.setVisible(true);
+				btnActionThem.setVisible(true);
+				btnHome.setVisible(true);
+
 			}
-			if (e.getSource() == btn3) {
+			if (e.getSource() == btnSua) {
+
+				pnlist.setVisible(true);
+				pnUserInfo.setVisible(true);
+				pnpass.setVisible(true);
+				pntuoi.setVisible(true);
+				pnlistGender.setVisible(true);
+
+				txtUser.setEnabled(true);
 				txtpass.setEnabled(false);
-				txtUser.setEnabled(false);
-				txttuoi.setEnabled(false);
+				txttuoi.setEnabled(true);
 
-				btn1.setVisible(false);
-				btn2.setVisible(false);
-				btn3.setVisible(false);
-				btn4.setVisible(false);
-				btn6.setVisible(true);
-				btn8.setVisible(true);
+				btnthem.setEnabled(false);
+				btnSua.setEnabled(false);
+				btnXoa.setEnabled(false);
+				btnReset.setVisible(true);
+				btnActionSua.setVisible(true);
+				btnHome.setVisible(true);
+			}
+			if (e.getSource() == btnXoa) {
+				btnthem.setEnabled(false);
+				btnSua.setEnabled(false);
+				btnXoa.setEnabled(false);
+
+				btnActionXoa.setVisible(true);
+				btnHome.setVisible(true);
 
 			}
-			if (e.getSource() == btn4) {
+			if (e.getSource() == btnReset) {
 				reset();
 			}
-			if (e.getSource() == btn5) {
+			if (e.getSource() == btnExit) {
 				int ret = JOptionPane.showConfirmDialog(null, "Thoát hả?", "Thoát", JOptionPane.YES_NO_OPTION);
 				if (ret == JOptionPane.YES_OPTION) {
 					System.exit(0);
 				}
 
 			}
-			if (e.getSource() == btn6) {
-				btn1.setVisible(true);
-				btn2.setVisible(true);
-				btn3.setVisible(true);
-				btn4.setVisible(false);
-				btn8.setVisible(false);
-				btn7.setVisible(false);
-				txtpass.setEnabled(false);
-				txtUser.setEnabled(false);
-				txttuoi.setEnabled(false);
-				txtUser.setText("");
-				txtpass.setText("");
-				txttuoi.setText("");
-			}
-			if (e.getSource() == btn7) {
+			if (e.getSource() == btnActionThem) {
 
 				nhapThongTin();
 
 			}
-			if (e.getSource() == btn8) {
-				xoaThongTin();
+			if (e.getSource() == btnActionXoa) {
+				int ret = JOptionPane.showConfirmDialog(null, "Xác Nhận Xóa", "Xóa", JOptionPane.YES_NO_OPTION);
+				if (ret == JOptionPane.YES_OPTION) {
+					xoaThongTin();
+				}
 
 			}
-			if (e.getSource() == btn9) {
+			if (e.getSource() == btnActionSua) {
 				suaThongTin();
 
 			}
+			if (e.getSource() == btnHome) {
+
+				pnlist.setVisible(false);
+				pnUserInfo.setVisible(false);
+				pnpass.setVisible(false);
+				pntuoi.setVisible(false);
+				pnlistGender.setVisible(false);
+
+				btnthem.setEnabled(true);
+				btnSua.setEnabled(true);
+				btnXoa.setEnabled(true);
+
+				btnReset.setVisible(false);
+				btnActionThem.setVisible(false);
+				btnActionSua.setVisible(false);
+				btnActionXoa.setVisible(false);
+				btnHome.setVisible(false);
+			}
+
 		}
 	};
 
@@ -403,9 +434,15 @@ public class SVUI extends JFrame {
 	}
 
 	public void reset() {
-		txtUser.setText("");
-		txtpass.setText("");
-		txttuoi.setText("");
+		if (btnActionSua.isVisible()==true) {
+			txtUser.setText("");
+			txttuoi.setText("");
+		}
+		if (btnActionThem.isVisible()==true) {
+			txtUser.setText("");
+			txtpass.setText("");
+			txttuoi.setText("");
+		}
 	}
 
 	public void getTable() {
