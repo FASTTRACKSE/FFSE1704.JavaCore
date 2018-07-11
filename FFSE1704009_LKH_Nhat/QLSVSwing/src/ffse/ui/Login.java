@@ -5,6 +5,9 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import java.io.File;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -43,13 +46,31 @@ public class Login extends JFrame {
 	public Login(String tieude) {
 		super(tieude);
 		addControls();
+		docFile();
 
 	}
 
 	public void docFile() {
 		admin.clear();
-		admin = SerializeFileFactory.docFile("username.txt");
+		admin = SerializeFileFactory.docFile("Admin.txt");
+		File f = new File("D:\\FFSE1704_Java_core_LP04\\FFSE1704.JavaCore\\FFSE1704009_LKH_Nhat\\QLSVSwing\\Admin.txt");
+		if (f.exists()) {
+			if (admin.isEmpty()) {
+				txtUser.setText("");
+				txtpass.setText("");
+			} else {
+				txtUser.setText(admin.get(0).getName());
+				txtpass.setText(admin.get(0).getPass());
+			}
+			// System.out.println("tồn tại");
+		} else {
+			System.out.println("File không tồn tại!");
+		}
 
+		if (remember.isSelected() == false) {
+			txtUser.setText("");
+			txtpass.setText("");
+		}
 	}
 
 	public void addControls() {
@@ -83,7 +104,7 @@ public class Login extends JFrame {
 
 		JPanel pnRemember = new JPanel();
 		JCheckBox Remember = new JCheckBox("");
-		remember = new JCheckBox("Remember password?");
+		remember = new JCheckBox("Nhớ tài khoản");
 		pnRemember.add(remember);
 
 		// tao button login
@@ -102,6 +123,7 @@ public class Login extends JFrame {
 		pnBox.add(btn2);
 		btn2.addActionListener(actionListener);
 		JPanel pnKCduoi = new JPanel();
+
 		pnMain.add(pnTitle);
 		pnMain.add(pnUserInfo);
 		pnMain.add(pnpass);
@@ -132,7 +154,7 @@ public class Login extends JFrame {
 
 		try {
 			if (user.equals("") || pass.equals("")) {
-				JOptionPane.showMessageDialog(null, "Khong de trong!");
+				JOptionPane.showMessageDialog(null, "Không Để Trống!");
 			} else {
 				String Url = "jdbc:mysql://localhost/sinhvien";
 				Connection conn = DriverManager.getConnection(Url, "sv", "123456");
@@ -143,15 +165,22 @@ public class Login extends JFrame {
 				ResultSet rs = stm.executeQuery();
 				if (rs.next()) {
 
-					if (remember.isSelected()) {
+					if (remember.isSelected()==true) {
 						String userName = txtUser.getText();
 						String passWord = txtpass.getText();
-						admin.add(new User(userName, passWord));
-						SerializeFileFactory.luuFile( User(userName, passWord), "username.txt");
+						for (int i = 0; i < admin.size(); i++) {
+							if (userName.equals(admin.get(i).getName()) && passWord.equals(admin.get(i).getPass())) {
+								JOptionPane.showMessageDialog(null, "Tài khoản mật khẩu đã tồn tại");
+							} else {
+								admin.add(new User(userName, passWord));
+								SerializeFileFactory.luuFile(admin, "Admin.txt");
+								SVUI svui = new SVUI("Quản lý sinh viên");
+								svui.showWindow();
+								this.setVisible(false);
+								break;
+							}
+						}
 
-						SVUI svui = new SVUI("Quản lý sinh viên");
-						svui.showWindow();
-						this.setVisible(false);
 					} else {
 						SVUI svui = new SVUI("Quản lý sinh viên");
 						svui.showWindow();
@@ -165,11 +194,6 @@ public class Login extends JFrame {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-	}
-
-	private ArrayList<User> User(String userName, String passWord) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public void showWindow() {
