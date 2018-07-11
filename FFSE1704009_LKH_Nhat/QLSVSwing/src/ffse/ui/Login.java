@@ -9,32 +9,46 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import ffse.entyti.User;
+
+import ffse.util.SerializeFileFactory;
+
 
 public class Login extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-
+	static ArrayList<User> admin = new ArrayList<User>();
 	private JLabel lblTitle;
 	private JLabel lblUser;
 	private JTextField txtUser;
 	private JLabel lblpass;
-	private JTextField txtpass;
+	private JPasswordField txtpass;
 
 	private JButton btn1;
 	private JButton btn2;
 
+	JCheckBox remember;
+
+
+	
+	
 	public Login(String tieude) {
 		super(tieude);
 		addControls();
-		// addEvent();
+		
+		
 	}
 
 	public void addControls() {
@@ -61,10 +75,15 @@ public class Login extends JFrame {
 		// Tạo panel pass chứa dòng chữ pass và textbox pass
 		JPanel pnpass = new JPanel();
 		lblpass = new JLabel("Pass");
-		txtpass = new JTextField(20);
+		txtpass = new JPasswordField(20);
 		pnpass.add(lblpass);
 		pnpass.add(txtpass);
 		pnTitle.add(lblTitle);
+
+		JPanel pnRemember = new JPanel();
+		JCheckBox Remember = new JCheckBox("");
+		remember = new JCheckBox("Remember password?");
+		pnRemember.add(remember);
 
 		// tao button login
 		JPanel pnBox = new JPanel();
@@ -85,11 +104,13 @@ public class Login extends JFrame {
 		pnMain.add(pnTitle);
 		pnMain.add(pnUserInfo);
 		pnMain.add(pnpass);
+		pnMain.add(pnRemember);
 
 		pnMain.add(pnBox);
 		pnMain.add(pnKCduoi);
 		con.add(pnMain);
 	}
+
 
 	ActionListener actionListener = new ActionListener() {
 		@Override
@@ -104,32 +125,46 @@ public class Login extends JFrame {
 
 		}
 	};
+
 	public void login() {
 		String user = txtUser.getText();
 		String pass = txtpass.getText();
 		
 		try {
-			if(user.equals("") || pass.equals("")) {
+			if (user.equals("") || pass.equals("")) {
 				JOptionPane.showMessageDialog(null, "Khong de trong!");
-			}else {
+			} else {
 				String Url = "jdbc:mysql://localhost/sinhvien";
-				Connection conn = DriverManager.getConnection(Url,"sv","123456");
+				Connection conn = DriverManager.getConnection(Url, "sv", "123456");
 				String sql = "SELECT * FROM Users  WHERE Username=? AND Password=?";
 				PreparedStatement stm = conn.prepareStatement(sql);
 				stm.setString(1, user);
 				stm.setString(2, pass);
 				ResultSet rs = stm.executeQuery();
-				if(rs.next()) {
-					SVUI svui =new SVUI("Quản lý sinh viên");
-					svui.showWindow();
-				}else {
-					JOptionPane.showMessageDialog(null, "that bai");
+				if (rs.next()) {
+					
+					if (remember.isSelected()) {
+						String userName = txtUser.getText();
+						String passWord = txtpass.getText();
+						admin.add(new User(userName, passWord));
+						SerializeFileFactory.luuFile(admin, "username.txt");
+						
+						SVUI svui = new SVUI("Quản lý sinh viên");
+						svui.showWindow();
+					} else {
+						SVUI svui = new SVUI("Quản lý sinh viên");
+						svui.showWindow();
+					}
+					
+				} else {
+					JOptionPane.showMessageDialog(null, "Sai tài khoản hoặc mật khẩu");
 				}
 			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
+
 
 	public void showWindow() {
 		this.setSize(400, 300);

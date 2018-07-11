@@ -10,12 +10,14 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -39,10 +41,15 @@ public class SVUI extends JFrame {
 	private JButton btn3;// has - a
 	private JButton btn4;
 	private JButton btn5;
+	private JButton btn6;
+	private JButton btn7;
+	private JButton btn8;
+	private JButton btn9;
 	DefaultTableModel dm;
 	JTable tbl;
 	JComboBox<String> classs;
-	JComboBox<String> gender;
+	JRadioButton gender1;
+	JRadioButton gender2;
 
 	public static SinhVienDAO sinhVienDAO = new SinhVienDAO();
 	public static ArrayList<SinhVien> arr = new ArrayList<SinhVien>();
@@ -71,9 +78,13 @@ public class SVUI extends JFrame {
 		}
 
 		public void mouseClicked(MouseEvent e) {
-
+			txtpass.setEnabled(false);
+			
 			int row = tbl.getSelectedRow();
 
+			String lopSV = (String) tbl.getValueAt(row, 1);
+			classs.setSelectedItem(lopSV);
+			
 			String maSV = (String) tbl.getValueAt(row, 0);
 			txtpass.setText(maSV);
 
@@ -82,6 +93,14 @@ public class SVUI extends JFrame {
 
 			String tuoiSV = (String) tbl.getValueAt(row, 3);
 			txttuoi.setText(tuoiSV);
+			
+			String gioiTinhSV = (String) tbl.getValueAt(row, 4);
+			if(gioiTinhSV.equals("Nam")) {
+				gender1.setSelected(true);
+			}else {
+				gender2.setSelected(true);
+			}
+			
 		}
 	};
 
@@ -117,7 +136,9 @@ public class SVUI extends JFrame {
 		pnpass.add(lblpass);
 		pnpass.add(txtpass);
 		pnTitle.add(lblTitle);
-
+		txtpass.setEnabled(false);
+		
+		
 		// Tạo panel User chứa dòng chữ tên sinh viên
 		JPanel pnUserInfo = new JPanel();
 		lblUser = new JLabel("Tên Sinh Viên");
@@ -125,7 +146,9 @@ public class SVUI extends JFrame {
 		pnUserInfo.add(lblUser);
 		pnUserInfo.add(txtUser);
 		pnTitle.add(lblTitle);
-
+		txtUser.setEnabled(false);
+		
+		
 		// Tạo panel pass chứa dòng chữ tuổi sinh viên và textbox tuổi sinh viên
 		JPanel pntuoi = new JPanel();
 		lbltuoi = new JLabel("Tuổi Sinh Viên");
@@ -133,15 +156,19 @@ public class SVUI extends JFrame {
 		pntuoi.add(lbltuoi);
 		pntuoi.add(txttuoi);
 		pnTitle.add(lblTitle);
-
+		txttuoi.setEnabled(false);
+		
 		// tao box gender
 		JPanel pnlistGender = new JPanel();
 		JLabel lblGender = new JLabel("Giới tính");
-		gender = new JComboBox<String>();
-		gender.addItem("Nam");
-		gender.addItem("Nữ");
+		gender1 = new JRadioButton("Nam");
+		gender2 = new JRadioButton("Nữ");
+		ButtonGroup gd = new ButtonGroup();
+		gd.add(gender1);
+		gd.add(gender2);
 		pnlistGender.add(lblGender);
-		pnlistGender.add(gender);
+		pnlistGender.add(gender1);
+		pnlistGender.add(gender2);
 
 		// tao button Thêm
 		JPanel pnBox = new JPanel();
@@ -169,6 +196,30 @@ public class SVUI extends JFrame {
 		JLabel pnkc3 = new JLabel("        ");
 		pnBox.add(pnkc3);
 
+		// tao button thực hiện
+		btn7 = new JButton("Thực Hiện");
+		pnBox.add(btn7);
+		btn7.addActionListener(actionListener);
+		btn7.setVisible(false);
+		JLabel pnkc6 = new JLabel("        ");
+		pnBox.add(pnkc6);
+
+		// tao button thực hiện
+		btn8 = new JButton("Thực Hiện");
+		pnBox.add(btn8);
+		btn8.addActionListener(actionListener);
+		btn8.setVisible(false);
+		JLabel pnkc7 = new JLabel("        ");
+		pnBox.add(pnkc7);
+
+		// tao button thực hiện
+		btn9 = new JButton("Thực Hiện");
+		pnBox.add(btn9);
+		btn9.addActionListener(actionListener);
+		btn9.setVisible(false);
+		JLabel pnkc8 = new JLabel("        ");
+		pnBox.add(pnkc8);
+
 		// tao button Reset
 		btn4 = new JButton("RESET");
 		btn4.setForeground(Color.GRAY);
@@ -176,6 +227,16 @@ public class SVUI extends JFrame {
 		btn4.addActionListener(actionListener);
 		JLabel pnkc4 = new JLabel("        ");
 		pnBox.add(pnkc4);
+		btn4.setVisible(false);
+
+		// tao button home
+		btn6 = new JButton("Home");
+		btn6.setForeground(Color.ORANGE);
+		pnBox.add(btn6);
+		btn6.addActionListener(actionListener);
+		// btn6.setVisible(false);
+		JLabel pnkc5 = new JLabel("        ");
+		pnBox.add(pnkc5);
 
 		// tao button thoát
 		btn5 = new JButton("THOÁT");
@@ -214,13 +275,43 @@ public class SVUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == btn1) {
-				nhapThongTin();
+				// nhapThongTin();
+				txtpass.setEnabled(true);
+				txtUser.setEnabled(true);
+				txttuoi.setEnabled(true);
+				btn1.setVisible(false);
+				btn2.setVisible(false);
+				btn3.setVisible(false);
+				btn8.setVisible(false);
+				btn4.setVisible(true);
+				btn6.setVisible(true);
+				btn7.setVisible(true);
 			}
 			if (e.getSource() == btn2) {
-				suaThongTin();
+				txtpass.setEnabled(true);
+				txtUser.setEnabled(true);
+				txttuoi.setEnabled(true);
+				btn1.setVisible(false);
+				btn2.setVisible(false);
+				btn3.setVisible(false);
+				btn8.setVisible(false);
+				btn4.setVisible(true);
+				btn6.setVisible(true);
+				btn7.setVisible(true);
+				
 			}
 			if (e.getSource() == btn3) {
-				xoaThongTin();
+				txtpass.setEnabled(false);
+				txtUser.setEnabled(false);
+				txttuoi.setEnabled(false);
+
+				btn1.setVisible(false);
+				btn2.setVisible(false);
+				btn3.setVisible(false);
+				btn4.setVisible(false);
+				btn6.setVisible(true);
+				btn8.setVisible(true);
+
 			}
 			if (e.getSource() == btn4) {
 				reset();
@@ -232,8 +323,45 @@ public class SVUI extends JFrame {
 				}
 
 			}
+			if (e.getSource() == btn6) {
+				btn1.setVisible(true);
+				btn2.setVisible(true);
+				btn3.setVisible(true);
+				btn4.setVisible(false);
+				btn8.setVisible(false);
+				btn7.setVisible(false);
+				txtpass.setEnabled(false);
+				txtUser.setEnabled(false);
+				txttuoi.setEnabled(false);
+				txtUser.setText("");
+				txtpass.setText("");
+				txttuoi.setText("");
+			}
+			if (e.getSource() == btn7) {
+
+				nhapThongTin();
+
+			}
+			if (e.getSource() == btn8) {
+				xoaThongTin();
+
+			}
+			if (e.getSource() == btn9) {
+				suaThongTin();
+
+			}
 		}
 	};
+
+	public String gioiTinh() {
+		String gender;
+		if (gender1.isSelected()) {
+			gender = "Nam";
+		} else {
+			gender = "Nữ";
+		}
+		return gender;
+	}
 
 	public void nhapThongTin() {
 
@@ -241,7 +369,7 @@ public class SVUI extends JFrame {
 		String maSinhVien = txtpass.getText();
 		String lopSinhVien = classs.getSelectedItem().toString();
 		String tuoiSinhVien = txttuoi.getText();
-		String gioiTinhSinhVien = gender.getSelectedItem().toString();
+		String gioiTinhSinhVien = gioiTinh();
 		sinhVienDAO.add(new SinhVien(lopSinhVien, maSinhVien, tenSinhVien, tuoiSinhVien, gioiTinhSinhVien));
 		dm.addRow(new String[] { maSinhVien, lopSinhVien, tenSinhVien, tuoiSinhVien, gioiTinhSinhVien });
 	}
@@ -251,12 +379,13 @@ public class SVUI extends JFrame {
 		String maSinhVien = txtpass.getText();
 		String lopSinhVien = classs.getSelectedItem().toString();
 		String tuoiSinhVien = txttuoi.getText();
-		String gioiTinhSinhVien = gender.getSelectedItem().toString();
+		String gioiTinhSinhVien = gioiTinh();
 		SinhVien sv = new SinhVien(lopSinhVien, maSinhVien, tenSinhVien, tuoiSinhVien, gioiTinhSinhVien);
 		sinhVienDAO.update(sv);
 
 		int row = tbl.getSelectedRow();
 		tbl.setValueAt(maSinhVien, row, 0);
+		tbl.setValueAt(lopSinhVien, row, 1);
 		tbl.setValueAt(tenSinhVien, row, 2);
 		tbl.setValueAt(tuoiSinhVien, row, 3);
 		tbl.setValueAt(gioiTinhSinhVien, row, 4);
@@ -264,6 +393,7 @@ public class SVUI extends JFrame {
 	}
 
 	public void xoaThongTin() {
+
 		String maSinhVien = txtpass.getText();
 		int[] rows = tbl.getSelectedRows();
 		for (int i = 0; i < rows.length; i++) {
