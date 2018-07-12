@@ -1,13 +1,10 @@
-/**
- *	Prog: QUẢN LÝ THÔNG TIN CÁN BỘ
- *	@AUTHOR: Phan Phạm Quang Dai
- *	Date: 29/06/2018
- */
+
 package fasttrackse.database.quanlysinhvien.entity;
 
 public class SinhVien {
 
 	int ID;
+	String MaSV;
 	String Ho;
 	String Ten;
 	String GioiTinh;
@@ -18,9 +15,9 @@ public class SinhVien {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public SinhVien(int iD, String ho, String ten, String gioiTinh, String namSinh, String lop) {
+	public SinhVien(String maSV, String ho, String ten, String gioiTinh, String namSinh, String lop) {
 		super();
-		this.ID = iD;
+		this.MaSV = maSV;
 		this.Ho = ho;
 		this.Ten = ten;
 		this.GioiTinh = gioiTinh;
@@ -28,15 +25,16 @@ public class SinhVien {
 		this.Lop = lop;
 	}
 	
+
 	/**
 	 * @return the iD
 	 */
 	
-	public int getID() {
-		return ID;
+	public String getMaSV() {
+		return MaSV;
 	}
-	public void setID(int iD) {
-		ID = iD;
+	public void setMaSV(String maSV) {
+		Ho = maSV;
 	}
 	
 	public String getHo() {

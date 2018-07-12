@@ -1,9 +1,4 @@
 
-/**
- *	Prog: QUẢN LÝ THÔNG TIN CÁN BỘ
- *	@AUTHOR: Phan Phạm Quang Dai
- *	Date: 29/06/2018
- */
 package fasttrackse.database.quanlysinhvien.dao;
 
 import java.sql.Connection;
@@ -23,6 +18,24 @@ public class QuanLySinhVienDAO {
 	/**
 	 * @return the conn
 	 */
+	
+	// Kết nối database
+	public QuanLySinhVienDAO() {
+		this.getConnect("localhost", "ffse1704002", "mido", "0933237480");
+	}
+	
+	//ngắt kết nối database
+	public void disConnection() {
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public Connection getConn() {
 		return conn;
 	}
@@ -48,43 +61,44 @@ public class QuanLySinhVienDAO {
 		}
 	}
 
-	public ArrayList<SinhVien> getDSKhachHang() {
-		ArrayList<SinhVien> dsKH = new ArrayList<SinhVien>();
+	public ArrayList<SinhVien> getDSSinhVien() {
+		ArrayList<SinhVien> dsSV = new ArrayList<SinhVien>();
 		try {
-			String queryString = "SELECT * FROM khachhang";
+			String queryString = "SELECT * FROM sinhvien";
 			PreparedStatement statement = conn.prepareStatement(queryString);
 
 			ResultSet result = statement.executeQuery();
 
 			while (result.next()) {
-				int iD = result.getInt("ID");
+				String maSV = result.getString("MaSV");
 				String ho = result.getString("Ho");
 				String ten = result.getString("Ten");
 				String gioiTinh = result.getString("GioiTinh");
 				String namSinh = result.getString("NamSinh");
 				String lop = result.getString("Lop");
 				
-				dsKH.add(new SinhVien(iD , ho, ten, gioiTinh, namSinh, lop));
+				dsSV.add(new SinhVien(maSV, ho, ten, gioiTinh, namSinh, lop));
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return dsKH;
+		return dsSV;
 	}
 
-	public void add(SinhVien kh) {
-		ArrayList<SinhVien> dsKH = new ArrayList<SinhVien>();
+	public void add(SinhVien sv) {
+		ArrayList<SinhVien> dsSV = new ArrayList<SinhVien>();
 		try {
-			String queryString = "INSERT INTO khachhang(`Ho`, `Ten`, `GioiTinh`, `NamSinh`, 'Lop') VALUES (?, ?, ?, ?, ?)";
+			String queryString = "INSERT INTO sinhvien('MaSV', `Ho`, `Ten`, `GioiTinh`, `NamSinh`, 'Lop') VALUES (?, ?, ?, ?, ?, ?)";
 			PreparedStatement statement = conn.prepareStatement(queryString);
 
-			statement.setString(1, kh.getHo());
-			statement.setString(2, kh.getTen());
-			statement.setString(3, kh.getGioiTinh());
-			statement.setString(4, kh.getNamSinh());
-			statement.setString(5, kh.getLop());
+			statement.setString(1, sv.getMaSV());
+			statement.setString(2, sv.getHo());
+			statement.setString(3, sv.getTen());
+			statement.setString(4, sv.getGioiTinh());
+			statement.setString(5, sv.getNamSinh());
+			statement.setString(6, sv.getLop());
 			int x = statement.executeUpdate();
 			if (x > 0) {
 				System.out.println("Lưu xong");
@@ -94,18 +108,18 @@ public class QuanLySinhVienDAO {
 		}
 	}
 
-	public void edit(SinhVien kh, String idKH) {
+	public void edit(SinhVien sv) {
 		try {
-			String queryString = "UPDATE khachhang SET Ho = ?, Ten = ?, GioiTinh = ?, NamSinh = ?, Lop = ? WHERE ID = ?";
+			String queryString = "UPDATE sinhvien SET Ho = ?, Ten = ?, GioiTinh = ?, NamSinh = ?, Lop = ? WHERE MaSV = ?";
 			PreparedStatement statement = conn.prepareStatement(queryString);
 
-			statement.setString(1, kh.getHo());
-			statement.setString(2, kh.getTen());
-			statement.setString(3, kh.getGioiTinh());
-			statement.setString(4, kh.getNamSinh());
-			statement.setString(5, kh.getLop());
+			statement.setString(1, sv.getHo());
+			statement.setString(2, sv.getTen());
+			statement.setString(3, sv.getGioiTinh());
+			statement.setString(4, sv.getNamSinh());
+			statement.setString(5, sv.getLop());		
+			statement.setString(6, sv.getMaSV());
 			
-			statement.setString(6, idKH);
 			int x = statement.executeUpdate();
 			if (x > 0) {
 				System.out.println("Update OK");
@@ -115,12 +129,12 @@ public class QuanLySinhVienDAO {
 		}
 	}
 
-	public SinhVien delete(String idKH) {
+	public SinhVien delete(String maSV) {
 		try {
-			String queryString = "delete from khachhang where ID = ?";
+			String queryString = "delete from sinhvien where MaSV = ?";
 			PreparedStatement statement = conn.prepareStatement(queryString);
 
-			statement.setString(1, idKH);
+			statement.setString(1, maSV);
 
 			int x = statement.executeUpdate();
 			if (x > 0) {
@@ -132,25 +146,26 @@ public class QuanLySinhVienDAO {
 		return null;
 	}
 
-	public SinhVien read(String idKH) {
+	public SinhVien read(String idsv) {
 		SinhVien kh = new SinhVien();
 		try {
-			String queryString = "SELECT * FROM khachhang WHERE ID = ?";
+			String queryString = "SELECT * FROM sinhvien WHERE ID = ?";
 			PreparedStatement statement = conn.prepareStatement(queryString);
-			statement.setString(1, idKH);
+			statement.setString(1, idsv);
 
 			ResultSet result = statement.executeQuery();
 
 			result.next();
 
 			int iD = result.getInt("ID");
+			String maSV = result.getString("MaSV");
 			String ho = result.getString("Ho");
 			String ten = result.getString("Ten");
 			String gioiTinh = result.getString("GioiTinh");
 			String namSinh = result.getString("NamSInh");
 			String lop = result.getString("Lop");
 
-			kh = new SinhVien(iD, ho, ten, gioiTinh, namSinh, lop);
+			kh = new SinhVien(maSV, ho, ten, gioiTinh, namSinh, lop);
 
 		} catch (Exception e) {
 			e.printStackTrace();
