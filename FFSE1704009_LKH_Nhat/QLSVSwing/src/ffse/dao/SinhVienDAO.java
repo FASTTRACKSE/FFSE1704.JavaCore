@@ -107,7 +107,7 @@ public class SinhVienDAO {
 
 	public void update(SinhVien sv) {
 		try {
-			String sql = "update sinhvien set TenSV=? , Tuoi=?, GioiTinh=? where MaSV=?";
+			String sql = "update sinhvien set  TenSV=? , Tuoi=?, GioiTinh=? where MaSV=?";
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setString(1, sv.getTenSinhVien());
 			statement.setString(2, sv.getTuoiSinhVien());

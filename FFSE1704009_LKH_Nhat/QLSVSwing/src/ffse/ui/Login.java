@@ -5,36 +5,72 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import java.io.File;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import ffse.entyti.User;
+
+import ffse.util.SerializeFileFactory;
 
 public class Login extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-
+	static ArrayList<User> admin = new ArrayList<User>();
 	private JLabel lblTitle;
 	private JLabel lblUser;
 	private JTextField txtUser;
 	private JLabel lblpass;
-	private JTextField txtpass;
+	private JPasswordField txtpass;
 
 	private JButton btn1;
 	private JButton btn2;
 
+	JCheckBox remember;
+
 	public Login(String tieude) {
 		super(tieude);
 		addControls();
-		// addEvent();
+		docFile();
+
+	}
+
+	public void docFile() {
+		admin.clear();
+		admin = SerializeFileFactory.docFile("Admin.txt");
+		File f = new File("D:\\FFSE1704_Java_core_LP04\\FFSE1704.JavaCore\\FFSE1704009_LKH_Nhat\\QLSVSwing\\Admin.txt");
+		if (f.exists()) {
+			if (admin.isEmpty()) {
+				txtUser.setText("");
+				txtpass.setText("");
+			} else {
+				txtUser.setText(admin.get(0).getName());
+				txtpass.setText(admin.get(0).getPass());
+			}
+			// System.out.println("tồn tại");
+		} else {
+			System.out.println("File không tồn tại!");
+		}
+
+		if (remember.isSelected() == false) {
+			txtUser.setText("");
+			txtpass.setText("");
+		}
 	}
 
 	public void addControls() {
@@ -61,10 +97,15 @@ public class Login extends JFrame {
 		// Tạo panel pass chứa dòng chữ pass và textbox pass
 		JPanel pnpass = new JPanel();
 		lblpass = new JLabel("Pass");
-		txtpass = new JTextField(20);
+		txtpass = new JPasswordField(20);
 		pnpass.add(lblpass);
 		pnpass.add(txtpass);
 		pnTitle.add(lblTitle);
+
+		JPanel pnRemember = new JPanel();
+		JCheckBox Remember = new JCheckBox("");
+		remember = new JCheckBox("Nhớ tài khoản");
+		pnRemember.add(remember);
 
 		// tao button login
 		JPanel pnBox = new JPanel();
@@ -82,9 +123,11 @@ public class Login extends JFrame {
 		pnBox.add(btn2);
 		btn2.addActionListener(actionListener);
 		JPanel pnKCduoi = new JPanel();
+
 		pnMain.add(pnTitle);
 		pnMain.add(pnUserInfo);
 		pnMain.add(pnpass);
+		pnMain.add(pnRemember);
 
 		pnMain.add(pnBox);
 		pnMain.add(pnKCduoi);
@@ -104,26 +147,48 @@ public class Login extends JFrame {
 
 		}
 	};
+
 	public void login() {
 		String user = txtUser.getText();
 		String pass = txtpass.getText();
-		
+
 		try {
-			if(user.equals("") || pass.equals("")) {
-				JOptionPane.showMessageDialog(null, "Khong de trong!");
-			}else {
+			if (user.equals("") || pass.equals("")) {
+				JOptionPane.showMessageDialog(null, "Không Để Trống!");
+			} else {
 				String Url = "jdbc:mysql://localhost/sinhvien";
-				Connection conn = DriverManager.getConnection(Url,"sv","123456");
+				Connection conn = DriverManager.getConnection(Url, "sv", "123456");
 				String sql = "SELECT * FROM Users  WHERE Username=? AND Password=?";
 				PreparedStatement stm = conn.prepareStatement(sql);
 				stm.setString(1, user);
 				stm.setString(2, pass);
 				ResultSet rs = stm.executeQuery();
-				if(rs.next()) {
-					SVUI svui =new SVUI("Quản lý sinh viên");
-					svui.showWindow();
-				}else {
-					JOptionPane.showMessageDialog(null, "that bai");
+				if (rs.next()) {
+
+					if (remember.isSelected()==true) {
+						String userName = txtUser.getText();
+						String passWord = txtpass.getText();
+						for (int i = 0; i < admin.size(); i++) {
+							if (userName.equals(admin.get(i).getName()) && passWord.equals(admin.get(i).getPass())) {
+								JOptionPane.showMessageDialog(null, "Tài khoản mật khẩu đã tồn tại");
+							} else {
+								admin.add(new User(userName, passWord));
+								SerializeFileFactory.luuFile(admin, "Admin.txt");
+								SVUI svui = new SVUI("Quản lý sinh viên");
+								svui.showWindow();
+								this.setVisible(false);
+								break;
+							}
+						}
+
+					} else {
+						SVUI svui = new SVUI("Quản lý sinh viên");
+						svui.showWindow();
+						this.setVisible(false);
+					}
+
+				} else {
+					JOptionPane.showMessageDialog(null, "Sai tài khoản hoặc mật khẩu");
 				}
 			}
 		} catch (Exception e) {
