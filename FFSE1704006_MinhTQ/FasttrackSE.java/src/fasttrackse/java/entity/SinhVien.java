@@ -7,8 +7,8 @@ public class SinhVien {
 	private String tuoiSinhVien;
 	private String gioiTinhSinhVien;
 
-	public SinhVien(String maSinhVien, String lopSinhVien, String tenSinhVien,String tuoiSinhVien, String GioiTinhSinhVien
-			) {
+	public SinhVien(String maSinhVien, String lopSinhVien, String tenSinhVien, 
+			String GioiTinhSinhVien, String tuoiSinhVien) {
 
 		this.maSinhVien = maSinhVien;
 		this.lopSinhVien = lopSinhVien;

@@ -93,7 +93,7 @@ public class ModelDAO {
 
 			int x = statement.executeUpdate();
 			if (x > 0) {
-				System.err.println(" Bạn đã xóa thành công");
+				JOptionPane.showMessageDialog(null, "Bạn đã xóa thành công ");
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -113,7 +113,7 @@ public class ModelDAO {
 
 			int x = statement.executeUpdate();
 			if (x > 0) {
-				System.err.println(" Bạn Update thành công rồi ! .");
+				JOptionPane.showMessageDialog(null, "Bạn đã update thành công ");
 			}else {
 				System.out.println("chưa được");
 			}
@@ -134,7 +134,7 @@ public class ModelDAO {
 
 			int x = statement.executeUpdate();
 			if (x > 0) {
-				System.err.println("WoW...Thành công rồi anh em ơi !");
+				JOptionPane.showMessageDialog(null, "Bạn đã thêm thành công ");
 			}
 			
 		} catch (Exception ex) {

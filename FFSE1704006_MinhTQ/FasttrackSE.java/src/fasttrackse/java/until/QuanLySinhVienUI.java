@@ -85,26 +85,43 @@ public class QuanLySinhVienUI extends JFrame {
 
 	ActionListener btnExitClick = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-
-			System.exit(0);
+			int ret = JOptionPane.showConfirmDialog(null, "YES", "NO", JOptionPane.YES_NO_OPTION);
+			if (ret == JOptionPane.YES_OPTION) {
+				System.exit(0);
+			}
 
 		}
 	};
 	ActionListener btAddClick = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			themSinhVien();
+			if (txtCode.getText().equals("")) {
+				JOptionPane.showMessageDialog(null, "Bạn chưa nhập thông tin ");
+			} else {
+				themSinhVien();
+			}
 
 		}
 	};
 	ActionListener btdeleteClick = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			xoaSinhVien();
+
+			if (txtCode.getText().equals("")) {
+				JOptionPane.showMessageDialog(null, "Bạn chưa nhập thông tin ");
+			} else {
+				xoaSinhVien();
+
+			}
 
 		}
 	};
 	ActionListener bteditClick = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			suaSinhVien();
+
+			if (txtCode.getText().equals("")) {
+				JOptionPane.showMessageDialog(null, "Bạn chưa nhập thông tin ");
+			} else {
+				suaSinhVien();
+			}
 
 		}
 	};
@@ -123,7 +140,7 @@ public class QuanLySinhVienUI extends JFrame {
 		String lopSinhVien = cbo.getSelectedItem().toString();
 		String tuoiSinhVien = txtArg.getText();
 		String gioiTinh = gioiTinh();
-		sinhVienDAO.add(new SinhVien(tenSinhVien, maSinhVien, lopSinhVien, gioiTinh, tuoiSinhVien));
+		sinhVienDAO.add(new SinhVien(maSinhVien, lopSinhVien, tenSinhVien, gioiTinh, tuoiSinhVien));
 		table.addRow(new String[] { maSinhVien, lopSinhVien, tenSinhVien, gioiTinh, tuoiSinhVien });
 	}
 
@@ -144,7 +161,7 @@ public class QuanLySinhVienUI extends JFrame {
 		String gioiTinh = gioiTinh();
 		String tuoiSinhVien = txtArg.getText();
 
-		SinhVien sv = new SinhVien(maSinhVien, lopSinhVien, tenSinhVien, tuoiSinhVien, gioiTinh);
+		SinhVien sv = new SinhVien(maSinhVien, lopSinhVien, tenSinhVien, gioiTinh, tuoiSinhVien);
 
 		sinhVienDAO.edit(sv);
 
