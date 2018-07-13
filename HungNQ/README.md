@@ -27,3 +27,5 @@
 12. [Assignment 11: Giải PTB1](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/PTBacNhat/src/fasttrackse/ptb1)
 
 13. [Assignment 12a: Giao Diện](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/TaoGiaoDien/src/fasttrackse/giaodien)
+
+14. [Assignment 14: CRUD java](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/edit/master/HungNQ/LoginApp/src/fasttrackse/loginapp)
