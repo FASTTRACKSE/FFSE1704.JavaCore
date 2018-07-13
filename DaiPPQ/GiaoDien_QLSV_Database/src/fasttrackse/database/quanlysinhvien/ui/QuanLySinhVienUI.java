@@ -84,6 +84,7 @@ public class QuanLySinhVienUI extends JFrame {
 
 			String maSV = (String) tbl.getValueAt(row, 0);
 			txtMaSV.setText(maSV);
+			txtMaSV.setEnabled(false);
 			
 			String ho = (String) tbl.getValueAt(row, 1);
 			txtHo.setText(ho);
@@ -94,13 +95,20 @@ public class QuanLySinhVienUI extends JFrame {
 			String gtSV = (String) tbl.getValueAt(row, 3);
 			if (gtSV.equals("Nam")) {
 				radNam.setSelected(true);
-			} else {
+			} else if (gtSV.equals("Nữ")){
 				radNu.setSelected(true);
-			}
+			}			
 			
 			String namSinh = (String) tbl.getValueAt(row, 4);
 			txtNamSinh.setText(namSinh);
 			
+			String lopSV = (String) tbl.getValueAt(row, 5);
+			classs.setSelectedItem(lopSV);
+			
+			btnAdd.setEnabled(false);
+			btnEdit.setEnabled(true);
+			btnDelete.setEnabled(true);
+			btnReset.setEnabled(true);
 		}
 	};
 
@@ -157,6 +165,7 @@ public class QuanLySinhVienUI extends JFrame {
 		pnlistGender.add(radNam);
 		pnlistGender.add(radNu);
 		add(pnlistGender);
+		radNam.setSelected(true);
 		
 		// Tạo panel pass chứa dòng chữ năm sinh và textbox năm sinh
 		JPanel pnNamSinh = new JPanel();
@@ -194,6 +203,7 @@ public class QuanLySinhVienUI extends JFrame {
 		btnEdit.addActionListener(actionListener);
 		JLabel pnkc2 = new JLabel("        ");
 		pnBox.add(pnkc2);
+		btnEdit.setEnabled(false);
 
 		// tao button XÓA
 		btnDelete = new JButton("XÓA");
@@ -202,6 +212,7 @@ public class QuanLySinhVienUI extends JFrame {
 		btnDelete.addActionListener(actionListener);
 		JLabel pnkc3 = new JLabel("        ");
 		pnBox.add(pnkc3);
+		btnDelete.setEnabled(false);
 
 		// tao button Reset
 		btnReset = new JButton("RESET");
@@ -210,6 +221,7 @@ public class QuanLySinhVienUI extends JFrame {
 		btnReset.addActionListener(actionListener);
 		JLabel pnkc4 = new JLabel("        ");
 		pnBox.add(pnkc4);
+		btnReset.setEnabled(false);
 
 		// tao button thoát
 		btnExit = new JButton("THOÁT");
@@ -261,6 +273,14 @@ public class QuanLySinhVienUI extends JFrame {
 			}
 			if (e.getSource() == btnReset) {
 				reset();
+				
+				btnAdd.setEnabled(true);
+				btnEdit.setEnabled(false);
+				btnDelete.setEnabled(false);
+				btnReset.setEnabled(false);	
+				
+				radNam.setSelected(true);
+				classs.setSelectedItem("FFSE 1701");
 			}
 			if (e.getSource() == btnExit) {
 				int ret = JOptionPane.showConfirmDialog(null, "Bạn muốn thoát chương trình?", "Thoát", JOptionPane.YES_NO_OPTION);
@@ -306,14 +326,13 @@ public class QuanLySinhVienUI extends JFrame {
 	}
 
 	public String gioiTinh() {
-		String gioiTinh;
+		String gender;
 		if (radNam.isSelected()) {
-			return gioiTinh = "Nam";
-		} else if (radNu.isSelected()) {
-			return gioiTinh = "Nữ";
+			gender = "Nam";
 		} else {
-			return gioiTinh = "null";
+			gender = "Nữ";
 		}
+		return gender;
 	}
 	
 	public void xoaThongTin() {

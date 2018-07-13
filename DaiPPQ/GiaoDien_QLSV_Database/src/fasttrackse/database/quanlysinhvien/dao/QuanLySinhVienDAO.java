@@ -88,9 +88,8 @@ public class QuanLySinhVienDAO {
 	}
 
 	public void add(SinhVien sv) {
-		ArrayList<SinhVien> dsSV = new ArrayList<SinhVien>();
 		try {
-			String queryString = "INSERT INTO sinhvien('MaSV', `Ho`, `Ten`, `GioiTinh`, `NamSinh`, 'Lop') VALUES (?, ?, ?, ?, ?, ?)";
+			String queryString = "INSERT INTO sinhvien(MaSV, Ho, Ten, GioiTinh, NamSinh, Lop) VALUES (?, ?, ?, ?, ?, ?)";
 			PreparedStatement statement = conn.prepareStatement(queryString);
 
 			statement.setString(1, sv.getMaSV());
