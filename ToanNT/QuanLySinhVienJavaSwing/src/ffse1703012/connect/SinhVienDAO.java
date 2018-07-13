@@ -65,7 +65,6 @@ public class SinhVienDAO {
 		}
 		return dsSv;
 	}
-
 	public boolean add(SinhVien sv) {
 		try {
 			String queryString = "insert into sinhvien(MaSV,TenSV, TuoiSV, LopSV, GioiTinh) values (?,?,?,?,?)";
@@ -115,6 +114,27 @@ public class SinhVienDAO {
 			ex.printStackTrace();
 		}
 		return true;
+	}
+	
+	public boolean login(String username, String password) {
+		try {
+			PreparedStatement statement = conn.prepareStatement("select * from user where user_name = ? and user_password = ?");
+			statement.setString(1, username);
+			statement.setString(2, password);
+			ResultSet result = statement.executeQuery();
+			if(result.next()) {
+				return true;
+				
+			}else {
+				return false;
+			}
+				
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
 	}
 
 }

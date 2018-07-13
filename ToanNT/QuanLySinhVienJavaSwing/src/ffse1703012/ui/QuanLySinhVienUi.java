@@ -1,7 +1,5 @@
 package ffse1703012.ui;
 
-import ffse1703012.entity.*;
-import ffse1703012.connect.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -29,6 +27,9 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
+import ffse1703012.connect.SinhVienDAO;
+import ffse1703012.entity.SinhVien;
+
 public class QuanLySinhVienUi extends JFrame {
 	/**
 	 * 
@@ -52,11 +53,16 @@ public class QuanLySinhVienUi extends JFrame {
 	JRadioButton r2;
 	String gioiTinh;
 
-	public QuanLySinhVienUi(String title) {
-		super(title);
+	public QuanLySinhVienUi() {
+		super("Quản lý Sinh viên");
 		connect();
 		addControl();
 		addEvent();
+		setSize(800, 600);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 
 	public void connect() {
@@ -82,6 +88,8 @@ public class QuanLySinhVienUi extends JFrame {
 		lblTitle.setFont(fontTitle);
 		pnTitle.add(lblTitle);
 
+		// JPanel pnInput = new JPanel();
+		// pnInput.setLayout(new GridLayout(4, 2));
 		// tạo Radiobox
 		JPanel pnRbo = new JPanel();
 		JLabel lblRbo = new JLabel("Giới Tính");
@@ -101,7 +109,6 @@ public class QuanLySinhVienUi extends JFrame {
 		cbo.addItem("FFSE1702");
 		cbo.addItem("FFSE1703");
 		cbo.addItem("FFSE1704");
-
 		pnCbo.add(lblCbo);
 		pnCbo.add(cbo);
 
@@ -113,6 +120,7 @@ public class QuanLySinhVienUi extends JFrame {
 		// Nhập Mã Sinh viên
 		JPanel pnMa = new JPanel();
 		JLabel lblMa = new JLabel("Nhập mã Sinh Viên:");
+		lblMa.setBounds(80, 70, 200, 30);
 		txtMa = new JTextField(20);
 		pnMa.add(lblMa);
 		pnMa.add(txtMa);
@@ -121,6 +129,7 @@ public class QuanLySinhVienUi extends JFrame {
 		// Nhập Tên Sinh Viên
 		JPanel pnTen = new JPanel();
 		JLabel lblTen = new JLabel("Nhập tên Sinh Viên:");
+		lblTen.setBounds(80, 70, 200, 30);
 		txtTen = new JTextField(20);
 		pnTen.add(lblTen);
 		pnTen.add(txtTen);
@@ -129,6 +138,7 @@ public class QuanLySinhVienUi extends JFrame {
 		// Nhập tuổi
 		JPanel pnTuoi = new JPanel();
 		JLabel lblTuoi = new JLabel("Nhập tuổi:");
+		lblTuoi.setBounds(80, 70, 200, 30);
 		txtTuoi = new JTextField(20);
 		pnTuoi.add(lblTuoi);
 		pnTuoi.add(txtTuoi);
@@ -148,6 +158,7 @@ public class QuanLySinhVienUi extends JFrame {
 		TitledBorder borderTitle = BorderFactory.createTitledBorder(border, "Danh sách");
 		pnTbl.setLayout(new BorderLayout());
 		pnTbl.add(sc, BorderLayout.CENTER);
+		pnTbl.setBorder(borderTitle);
 
 		// Các nút bấm
 		JPanel pnButton = new JPanel();
@@ -196,62 +207,58 @@ public class QuanLySinhVienUi extends JFrame {
 
 	public void nhapThongTin() {
 		String lopSv = cbo.getSelectedItem().toString();
-		String maSv = txtMa.getText();
+		String maSv  = txtMa.getText();
 		String tenSv = txtTen.getText();
-		String tuoi = txtTuoi.getText();
+		String tuoi  = txtTuoi.getText();
 		String gioiTinh = "";
-		if (r1.isSelected()) {
+		if (r1.isSelected()) {    
 			gioiTinh = r1.getText().toString();
 		}
 		if (r2.isSelected()) {
 			gioiTinh = r2.getText().toString();
 		}
-		dm.addRow(new String[] { maSv, tenSv, tuoi,lopSv, gioiTinh });
-		if(KetNoi.add(new SinhVien(maSv, tenSv, tuoi,lopSv, gioiTinh))) {
+		dm.addRow(new String[] { maSv, tenSv, tuoi, lopSv, gioiTinh });
+		if (KetNoi.add(new SinhVien(maSv, tenSv, tuoi, lopSv, gioiTinh))) {
 			JOptionPane.showMessageDialog(null, "Đã Lưu");
 
-            //CLEAR TXT
-            txtTen.setText("");
-            txtMa.setText("");
-            txtTuoi.setText("");
+			// CLEAR TXT
+			txtTen.setText("");
+			txtMa.setText("");
+			txtTuoi.setText("");
 
-        } else {
-            JOptionPane.showMessageDialog(null, "Lưu thất bại");
-        }
-		};
-
-
-
-		public String ktgt() {
-			String gioiTinh = "";
-			if (r1.isSelected()) {
-				gioiTinh = "Nam";
-			}
-			if (r2.isSelected()) {
-				gioiTinh = "Nữ";
-			}
-			return gioiTinh;
-			
+		} else {
+			JOptionPane.showMessageDialog(null, "Lưu thất bại");
 		}
+	};
+
+	public String ktgt() {
+		String gioiTinh = "";
+		if (r1.isSelected()) {
+			gioiTinh = "Nam";
+		}
+		if (r2.isSelected()) {
+			gioiTinh = "Nữ";
+		}
+		return gioiTinh;
+
+	}
 
 	public void suaThongTin() {
 		String lopSv = cbo.getSelectedItem().toString();
 		String maSv = txtMa.getText();
 		String tenSv = txtTen.getText();
 		String tuoi = txtTuoi.getText();
-		String gioiTinh = ktgt() ;
-		KetNoi.edit(new SinhVien(maSv,tenSv, tuoi ,lopSv, gioiTinh));
+		String gioiTinh = ktgt();
+		KetNoi.edit(new SinhVien(maSv, tenSv, tuoi, lopSv, gioiTinh));
 		int row = tbl.getSelectedRow();
 		tbl.setValueAt(maSv, row, 0);
 		tbl.setValueAt(tenSv, row, 2);
 		tbl.setValueAt(tuoi, row, 3);
 		tbl.setValueAt(gioiTinh, row, 4);
 		txtTen.setText("");
-        txtMa.setText("");
-        txtTuoi.setText("");
-		
+		txtMa.setText("");
+		txtTuoi.setText("");
 
-		
 	}
 
 	public void xoaThongTin() {
@@ -259,7 +266,7 @@ public class QuanLySinhVienUi extends JFrame {
 		int[] rows = tbl.getSelectedRows();
 		for (int i = 0; i < rows.length; i++) {
 			dm.removeRow(rows[i] - i);
-			if(KetNoi.delete(maSV)) {
+			if (KetNoi.delete(maSV)) {
 				JOptionPane.showMessageDialog(null, "Xoá Thành Công!");
 			}
 		}
@@ -304,7 +311,7 @@ public class QuanLySinhVienUi extends JFrame {
 
 			String maSV = (String) tbl.getValueAt(row, 0);
 			txtMa.setText(maSV);
-				
+
 			String tenSV = (String) tbl.getValueAt(row, 2);
 			txtTen.setText(tenSV);
 
@@ -315,9 +322,6 @@ public class QuanLySinhVienUi extends JFrame {
 	};
 
 	public void showWindows() {
-		setSize(600, 400);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		setVisible(true);
+	
 	}
 }
