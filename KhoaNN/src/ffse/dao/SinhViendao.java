@@ -11,7 +11,7 @@ import com.mysql.jdbc.Driver;
 
 import ffse.qlkh.entity.KhachHang;
 
-public class SinhVienDAO {
+public class SinhViendao {
 	static Connection conn = null;
 
 	public static Connection getConn() {
