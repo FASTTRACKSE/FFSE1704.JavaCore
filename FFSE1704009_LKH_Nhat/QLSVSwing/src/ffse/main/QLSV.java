@@ -1,11 +1,15 @@
 package ffse.main;
 
+
+
 import ffse.ui.*;
 
-public class QLSV {
 
+public class QLSV {
+	
 	public static void main(String[] args) {
-		SVUI myUI = new SVUI("Quản Lý Sinh Viên");
+		
+		Login myUI = new Login("Login Admin");
 		myUI.showWindow();
 
 	}

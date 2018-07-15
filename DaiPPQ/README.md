@@ -54,3 +54,5 @@
 [entity](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QLKhachHangSQL/src/ffse/qlkh/entity)</br>
 [util](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QLKhachHangSQL/src/ffse/qlkh/util)</br>
 [dao](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/QLKhachHangSQL/src/ffse/qlkh/dao)
+
+15. [Assignment 12 - Quản lý sinh viên - Database](https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/DaiPPQ/GiaoDien_QLSV_Database/src/fasttrackse/database/quanlysinhvien)

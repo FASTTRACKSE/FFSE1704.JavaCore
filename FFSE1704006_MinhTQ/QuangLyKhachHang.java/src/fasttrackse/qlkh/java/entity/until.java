@@ -34,7 +34,9 @@ public class until extends Exception {
 			msg = "bạn phải nhập chữ vào trường này." + "\nnhập lại.";
 			break;
 
-			
+		case 7:
+			msg = "bạn phải nhập đúng số điện thoại." + "\nnhập lại.";
+			break;
 		}
 		return msg; 
 	}

@@ -100,17 +100,17 @@ ActionListener exit = new ActionListener() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			int row = tbl.getSelectedRow();
-//			int col =1 ;
-//			String s = (String) tbl.getValueAt(row, col);
-//			txtUser.setText(s);
-//			String maSV = (String) tbl.getValueAt(row, 0);
-//			txtUser.setText(maSV);
-//			
-//			String tenSV = (String) tbl.getValueAt(row, 2);		
-//			txtPass.setText(tenSV);
-//		
-//		String tuoiSV = (String) tbl.getValueAt(row, 3);
-//			txtage.setText(tuoiSV);
+			int col =1 ;
+			String s = (String) tbl.getValueAt(row, col);
+			txtUser.setText(s);
+			String maSV = (String) tbl.getValueAt(row, 0);
+			txtUser.setText(maSV);
+			
+			String tenSV = (String) tbl.getValueAt(row, 2);		
+			txtPass.setText(tenSV);
+		
+		String tuoiSV = (String) tbl.getValueAt(row, 3);
+			txtage.setText(tuoiSV);
 		
 		}
 	};

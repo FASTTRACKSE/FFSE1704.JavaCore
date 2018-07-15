@@ -21,7 +21,9 @@ public class Test extends JFrame{
 	private JTextField textUser;
 	private JPasswordField txtPass;
 
-	
+	/**
+	 * Launch the application.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -35,14 +37,18 @@ public class Test extends JFrame{
 		});
 	}
 
-	
+	/**
+	 * Create the application.
+	 */
 	public Test() {
 		initialize();
 	}
 
-	
+	/**
+	 * Initialize the contents of the frame.
+	 */
 	private void initialize() {
-		frame = new JFrame("Login");
+		frame = new JFrame();
 		frame.setBounds(100, 100, 312, 287);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -60,7 +66,7 @@ public class Test extends JFrame{
 		frame.getContentPane().add(textUser);
 		textUser.setColumns(10);
 
-		JCheckBox Remember = new JCheckBox("Ghi nhớ pass");
+		JCheckBox Remember = new JCheckBox("Remember password?");
 		Remember.setBounds(41, 143, 164, 23);
 		frame.getContentPane().add(Remember);
 
@@ -70,10 +76,20 @@ public class Test extends JFrame{
 		frame.getContentPane().add(lblMessager);
 
 		JButton btnLogin = new JButton("Login");
-		
+		btnLogin.addActionListener(new ActionListener() {
 
-		
-		
+			public void actionPerformed(ActionEvent e) {
+				if (textUser.getText().equalsIgnoreCase("admin") && txtPass.getText().equals("12345")) {
+					if (Remember.isSelected()) {
+						lblMessager.setText("Login successfully with remembering option");
+					} else {
+						lblMessager.setText("Login successfully without remembering option");
+					}
+				} else {
+					lblMessager.setText("Login false!");
+				}
+			}
+		});
 		btnLogin.setBounds(62, 173, 71, 23);
 		frame.getContentPane().add(btnLogin);
 

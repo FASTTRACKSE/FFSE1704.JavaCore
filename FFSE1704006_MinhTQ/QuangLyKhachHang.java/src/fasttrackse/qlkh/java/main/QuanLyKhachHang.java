@@ -18,6 +18,7 @@ public class QuanLyKhachHang {
 	static String MaKH, TenKH, DiaChi, GioiTinh, NgaySinh;
 
 	public static void main(String[] args) {
+		khachHangDAO.getConnect("localhost", "quanlykhachhang", "quanlykhachhang", "quangminh123");
 		menu();
 	}
 
@@ -79,7 +80,7 @@ public class QuanLyKhachHang {
 
 	// xem toàn bộ khách hàng
 	public static void select() {
-		khachHangDAO.getConnect("localhost", "quanlykhachhang", "quanlykhachhang", "quangminh123");
+
 		dsKH = khachHangDAO.getDSKhachHang();
 		System.out.printf("%2s %10s %12s %20s %17s %12s %9s ", "Id", "MaKH", "TenKH", "DiaChi", "NgaySinh", "GioiTinh",
 				"SoDT");
@@ -95,7 +96,7 @@ public class QuanLyKhachHang {
 	// Thêm Một Khách Hàng
 
 	public static void add() {
-		khachHangDAO.getConnect("localhost", "quanlykhachhang", "quanlykhachhang", "quangminh123");
+
 		System.out.println("NHẬP THÔNG TIN KHÁCH HÀNG");
 		System.out.println("-------------------------------");
 		System.out.print("Nhập số lượng khách hàng :");
@@ -211,14 +212,14 @@ public class QuanLyKhachHang {
 					GioiTinh = "Nữ";
 
 					break;
-				
+
 				default:
 					System.err.println("Chọn không đúng!" + "\nMời chọn lại:");
 
 					break;
 				}
 			} while (choose < 1 || choose > 3);
-			
+
 			// nhập số điện thoại của khách hàng
 
 			do {
@@ -230,7 +231,7 @@ public class QuanLyKhachHang {
 
 				} catch (InputMismatchException e) {
 
-					System.err.println("số điện thoại là số thực");
+					System.err.println("bạn phải nhập đúng số điện thoại ");
 					nhap.nextLine();
 					inputOK = false;
 
@@ -245,7 +246,7 @@ public class QuanLyKhachHang {
 
 	// Sửa Một Khách Hàng
 	public static void edit() {
-		khachHangDAO.getConnect("localhost", "quanlykhachhang", "quanlykhachhang", "quangminh123");
+
 		System.out.print("Mời bạn nhập (Id) khách hàng mà bạn muốn sửa:");
 		id = nhap.nextInt();
 		KhachHang khachHang = khachHangDAO.read(id);
@@ -347,7 +348,7 @@ public class QuanLyKhachHang {
 				GioiTinh = "Nữ";
 
 				break;
-			
+
 			default:
 				System.err.println("Chọn không đúng!" + "\nMời chọn lại:");
 
@@ -365,7 +366,7 @@ public class QuanLyKhachHang {
 
 			} catch (InputMismatchException e) {
 
-				System.err.println("Số điện thoại phải là số thực");
+				System.err.println("bạn phải nhập đúng số điện thoại");
 				nhap.nextLine();
 				inputOK = false;
 
@@ -377,18 +378,17 @@ public class QuanLyKhachHang {
 
 	// xóa Một Khách Hàng
 	public static void delete() {
-		khachHangDAO.getConnect("localhost", "quanlykhachhang", "quanlykhachhang", "quangminh123");
+
 		System.out.print("Mời bạn nhập (Id) khách hàng mà bạn muốn xóa: ");
 		id = nhap.nextInt();
 
 		khachHangDAO.delete(id);
-
 	}
 
 	// Xem Thông tinh khách hàng
 
 	public static void read() {
-		khachHangDAO.getConnect("localhost", "quanlykhachhang", "quanlykhachhang", "quangminh123");
+
 		System.out.print("Mời bạn nhập (Id) khách hàng mà bạn muốn xem:");
 		id = nhap.nextInt();
 		KhachHang khachHang = khachHangDAO.read(id);
@@ -399,5 +399,6 @@ public class QuanLyKhachHang {
 		System.out.println(khachHang.getId() + "\t " + khachHang.getMaKH() + "\t  " + khachHang.getTenKH() + "\t"
 				+ khachHang.getDiaChi() + "\t" + khachHang.getNgaySinh() + "\t" + khachHang.getGioiTinh() + "\t   "
 				+ khachHang.getSoDT());
+
 	}
 }
