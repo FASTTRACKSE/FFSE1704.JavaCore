@@ -26,3 +26,6 @@ https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhoaNN/src/ffse/qua
 
 9 Bài tập quản lý khách hàng qua database : 
 https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhoaNN/src/ffse/qlkh
+
+10 Bài tập quản lý sinh viên Java Desktop : 
+https://github.com/FASTTRACKSE/FFSE1704.JavaCore/tree/master/KhoaNN/src/ffse/javadecktop/quanlisinhvien
