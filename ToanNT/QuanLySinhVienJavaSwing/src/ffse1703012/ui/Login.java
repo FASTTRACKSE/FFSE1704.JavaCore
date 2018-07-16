@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import ffse1703012.connect.SinhVienDAO;
@@ -20,7 +21,7 @@ public class Login extends JFrame{
 	private static final long serialVersionUID = 1L;
 	static SinhVienDAO KetNoi= new SinhVienDAO();
 	JTextField txtUserName ;
-	JTextField txtPassword;
+	JPasswordField txtPassword;
 	JButton btnLogin = new JButton("Đăng nhập");
 	JButton btnCancel = new JButton("Hủy");
 	public Login(String title) {
@@ -60,7 +61,7 @@ public class Login extends JFrame{
 		
 		JPanel pnPass = new JPanel();
 		JLabel lblPass = new JLabel("Password");
-		txtPassword = new JTextField(20);
+		txtPassword = new JPasswordField(20);
 		pnPass.add(lblPass);
 		pnPass.add(txtPassword);
 		
@@ -85,12 +86,12 @@ public class Login extends JFrame{
 			if(e.getSource()==btnLogin) {
 				if(txtUserName.getText().length() == 0) {
 					JOptionPane.showMessageDialog(null, "Vui lòng nhập Tài khoản");
-				}else if(txtPassword.getText().length() == 0) {
+				}else if(txtPassword.getPassword().length == 0) {
 					JOptionPane.showMessageDialog(null, "Vui lòng nhập mật khẩu");
 				}else {
 				
 				String username = txtUserName.getText();
-				String password = txtPassword.getText();
+				char[] password = txtPassword.getPassword();
 				String pwd = String.valueOf(password);
 				if(KetNoi.login(username, pwd)) {
 					JOptionPane.showMessageDialog(null, "Đăng nhập thành công");
@@ -115,12 +116,12 @@ public class Login extends JFrame{
 	public boolean dangNhap() {
 		if(txtUserName.getText().length() == 0) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập Tài khoản");
-		}else if(txtPassword.getText().length() == 0) {
+		}else if(txtPassword.getPassword().length == 0) {
 			JOptionPane.showMessageDialog(null, "Vui lòng nhập mật khẩu");
 		}else {
 		
 		String username = txtUserName.getText();
-		String password = txtPassword.getText();
+		char[] password = txtPassword.getPassword();
 		String pwd = String.valueOf(password);
 		if(KetNoi.login(username, pwd)) {
 			JOptionPane.showMessageDialog(null, "Đăng nhập thành công");
