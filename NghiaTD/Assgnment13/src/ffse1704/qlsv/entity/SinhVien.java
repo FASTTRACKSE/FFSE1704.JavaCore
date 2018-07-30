@@ -25,7 +25,6 @@ public class SinhVien {
 		
 	}
 public SinhVien(String HoSV,String TenSV,String GioiTinh,String NgaySinh,String Lop) {
-	this.MaSV = MaSV;
 	this.HoSV = HoSV;
 	this.TenSV = TenSV;
 	this.GioiTinh = GioiTinh;

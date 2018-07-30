@@ -2,22 +2,28 @@ package ffse1704.qlsv.ui;
 
 
 	
-	import java.awt.Container;
-	import java.awt.Font;
+	import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
 	import java.awt.event.ActionEvent;
 	import java.awt.event.ActionListener;
 	import java.awt.event.MouseEvent;
 	import java.awt.event.MouseListener;
 	import java.util.ArrayList;
+import java.util.Enumeration;
 
-	import javax.swing.BoxLayout;
-	import javax.swing.JButton;
+import javax.swing.AbstractButton;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 	import javax.swing.JComboBox;
 	import javax.swing.JFrame;
 	import javax.swing.JLabel;
 	import javax.swing.JOptionPane;
 	import javax.swing.JPanel;
-	import javax.swing.JScrollPane;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 	import javax.swing.JTable;
 	import javax.swing.JTextField;
 	import javax.swing.table.DefaultTableModel;
@@ -31,13 +37,16 @@ import ffse1704.qlsv.entity.SinhVien;
 		static SinhVienDao sinhVienDao = new SinhVienDao();
 		static ArrayList<SinhVien> dsSV = new ArrayList<SinhVien>();
 		
-		JButton btnadd = new JButton("Thêm"); 
-		JButton btnedit = new JButton("Sửa"); 
-		JButton btndelete = new JButton("Xóa"); 
-		JButton btnThoat = new JButton("exit"); 
-		JButton btnNhap = new JButton("ENTER"); 
+		JButton btnadd = new JButton("ADD"); 
+		JButton btnedit = new JButton("EDIT"); 
+		JButton btndelete = new JButton("DELETE"); 
+		JButton btnThoat = new JButton("EXIT"); 
+		JButton btnNhap = new JButton("RESET"); 
+		JButton btnHome = new JButton("HOME"); 
 		JTextField txtUser ,txtHo ,txtgt ,txtns ;
 		JComboBox setclass;
+		JRadioButton option1, option2;
+		ButtonGroup group;
 		
 		DefaultTableModel dm ;
 		JTextField  txtPass ;
@@ -49,7 +58,22 @@ import ffse1704.qlsv.entity.SinhVien;
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				//dm.addRow(new String[] { txtUser.getText(), txtPass.getText(), txtage.getText() });
-				nhapthongtin();
+				 
+				
+				
+					if (txtUser.getText().equals("")||txtPass.getText().equals("")||txtHo.getText().equals("")||
+							txtns.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "Bạn chưa nhập thông tin ");
+					} else {
+						nhapthongtin();
+//						btnadd.setVisible(false);
+						btnedit.setEnabled(true);
+						btndelete.setEnabled(true);
+					}
+					
+//					nhapthongtin();
+//					btnedit.setEnabled(true);
+//					btndelete.setEnabled(true);
 			}
 		};
 		
@@ -58,7 +82,16 @@ import ffse1704.qlsv.entity.SinhVien;
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				editdata();
+				if (txtUser.getText().equals("")||txtPass.getText().equals("")||txtHo.getText().equals("")||
+						txtns.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Bạn Phải chọn đối tượng sửa ");
+				} else {
+					editdata();
+					btnadd.setVisible(false);
+//					btnedit.setVisible(true);
+//					btndelete.setVisible(true);
+				}
+				
 			}
 		};
 	ActionListener deleteclick = new ActionListener() {
@@ -66,15 +99,29 @@ import ffse1704.qlsv.entity.SinhVien;
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				deleteData();
+				if (txtUser.getText().equals("")||txtPass.getText().equals("")||txtHo.getText().equals("")||
+						txtgt.getText().equals("")||txtns.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Bạn hãy chọn đối tượng xóa");
+				} else {
+					int ret = JOptionPane.showConfirmDialog(null, "Xác Nhận Xóa", "Xóa", JOptionPane.YES_NO_OPTION);
+					if (ret == JOptionPane.YES_OPTION) {
+						deleteData();
+					}
+					
+					btnadd.setVisible(false);
+//					btnedit.setVisible(true);
+//					btndelete.setVisible(true);
+				}
 			}
+			
 		};
 	ActionListener enter = new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				enterData();
+				clean();
+				txtUser.setEditable(true);
 			}
 		};
 	ActionListener exit = new ActionListener() {
@@ -83,6 +130,20 @@ import ffse1704.qlsv.entity.SinhVien;
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				System.exit(0);
+			}
+		};
+	ActionListener home = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				txtUser.setText("") ;
+				txtPass.setText("") ;
+				txtHo.setText("");
+				txtns.setText("") ;
+				LoginUI.getWindows();
+				btnadd.setVisible(true);
+				txtUser.setEditable(true);
 			}
 		};
 		MouseListener tblUserClick = new MouseListener() {
@@ -115,8 +176,12 @@ import ffse1704.qlsv.entity.SinhVien;
 			public void mouseClicked(MouseEvent e) {
 				int row = tbl.getSelectedRow();
 				int col =1 ;
+				txtUser.setEditable(false);
 //				String s = (String) tbl.getValueAt(row, col);
 //				txtUser.setText(s);
+				
+				
+				
 				String maSV = (String) tbl.getValueAt(row, 0);
 				txtUser.setText(maSV);
 				
@@ -127,12 +192,18 @@ import ffse1704.qlsv.entity.SinhVien;
 				txtPass.setText(tenSV);
 			
 				String GioiTinh = (String) tbl.getValueAt(row, 3);
-				txtgt.setText(GioiTinh);
+				 if(GioiTinh.equals("Nam")) {
+					 option1.setSelected(true);
+				 }
+				 else {
+					 option2.setSelected(true);
+				 }
 				
 				
 				String NgaySinh = (String) tbl.getValueAt(row, 4);
 				txtns.setText(NgaySinh);
-				
+				String lop = (String) tbl.getValueAt(row, 5);
+				setclass.setSelectedItem(lop);
 			
 			
 			}
@@ -148,6 +219,7 @@ import ffse1704.qlsv.entity.SinhVien;
 			btndelete.addActionListener(deleteclick);
 			btnNhap.addActionListener(enter);
 			btnThoat.addActionListener(exit);
+			btnHome.addActionListener(home);
 			tbl.addMouseListener(tblUserClick);
 		}
 		
@@ -157,14 +229,16 @@ import ffse1704.qlsv.entity.SinhVien;
 			pnMain.setLayout(new BoxLayout(pnMain, BoxLayout.Y_AXIS));
 			// tạo title chứa dòng đăng nhâp
 			JPanel pnTitle = new JPanel();
-			JLabel lblTitle = new JLabel("CHương trình quản lý sinh viên");
-			Font fontTitle = new Font("Arial", Font.BOLD, 20);	
+			JLabel lblTitle = new JLabel("Chương trình quản lý sinh viên");
+			lblTitle.setForeground(Color.red);
+			Font fontTitle = new Font("Italic ", Font.PLAIN, 20);
+			
 			lblTitle.setFont(fontTitle);
 			pnTitle.add(lblTitle);
 			
-			// tạo sổ xuống để ch�?n lớp
+			// tạo sổ xuống để ch�?n lớp
 			JPanel pnchonlop = new JPanel();
-			JLabel lblclass = new JLabel("Ch�?n lớp:");
+			JLabel lblclass = new JLabel("Chọn lớp:");
 			 setclass=new JComboBox<String>();
 			
 			setclass.addItem("FFSE 1701");
@@ -178,13 +252,14 @@ import ffse1704.qlsv.entity.SinhVien;
 			// Tạo panel User chứa dòng chữ user và textbox user
 			JPanel pnUserInfo = new JPanel();
 			JLabel lblUser = new JLabel("Mã sinh viên:");
+			lblUser.setPreferredSize(new Dimension(80, 10));
 			txtUser = new JTextField(20);
 			pnUserInfo.add(lblUser);
 			pnUserInfo.add(txtUser);
 			
-			//tạo panel chứa h�? sv
+			//tạo panel chứa h�? sv
 			JPanel pnHo = new JPanel();
-			JLabel lblHo = new JLabel("H�? sinh viên:");
+			JLabel lblHo = new JLabel("Họ sinh viên:");
 			txtHo = new JTextField(20);
 			pnHo.add(lblHo);
 			pnHo.add(txtHo);
@@ -198,10 +273,14 @@ import ffse1704.qlsv.entity.SinhVien;
 			
 			// Tạo panel User chứa dòng giới tính
 						JPanel pngt = new JPanel();
-						JLabel lblgt = new JLabel("Giơi tính:");
-						txtgt = new JTextField(20);
-						pngt.add(lblgt);
-						pngt.add(txtgt);
+						 option1 = new JRadioButton("Nam");
+				        option2 = new JRadioButton("Nữ");
+				         group = new ButtonGroup();
+				        group.add(option1);
+				        group.add(option2);
+				        pngt.add(option1);
+				        pngt.add(option2);
+				        
 			
 						// Tạo panel User chứa dòng giới tính
 						JPanel pnns = new JPanel();
@@ -219,10 +298,20 @@ import ffse1704.qlsv.entity.SinhVien;
 			pnActions.add(btndelete);
 			pnActions.add(btnThoat);
 			pnActions.add(btnNhap);
+			pnActions.add(btnHome);
+			btnadd.setForeground(Color.BLUE);
+			btnedit.setForeground(Color.GREEN);
+			btndelete.setForeground(Color.RED);
+			
+//			btnedit.setVisible(false);
+//			btndelete.setVisible(false);
+			btnedit.setEnabled(false);
+			btndelete.setEnabled(false);
 			
 			dm = new DefaultTableModel();
+			
 			dm.addColumn("Mã");
-			dm.addColumn("H�?");
+			dm.addColumn("Họ");
 			dm.addColumn("Tên");
 			dm.addColumn("Giới tính");
 			dm.addColumn("Ngày sinh");
@@ -259,7 +348,7 @@ import ffse1704.qlsv.entity.SinhVien;
 		}
 		public void nhapthongtin() {
 			String HoSV= txtHo.getText();
-			String GioiTinh= txtgt.getText();
+			String GioiTinh= gioiTinh();
 			String TenSV= txtPass.getText();
 			String NgaySinh= txtns.getText();
 			String maSV= txtUser.getText();
@@ -272,13 +361,22 @@ import ffse1704.qlsv.entity.SinhVien;
 			
 			
 			
-			
+		}
+		public String gioiTinh() {
+			String GioiTinh;
+			if(option1.isSelected()) {
+				GioiTinh = "Nam";
+			}
+			else {
+				GioiTinh = "Nữ";
+			}
+			return GioiTinh;
 		}
 		public void editdata() {
 			String MaSV = txtUser.getText();
 			String HoSV = txtHo.getText();
 			String TenSV = txtPass.getText();
-			String GioiTinh = txtgt.getText();
+			String GioiTinh = gioiTinh();
 			String NgaySinh = txtns.getText();
 			String lop = setclass.getSelectedItem().toString();
 			
@@ -306,12 +404,13 @@ import ffse1704.qlsv.entity.SinhVien;
 				
 			}
 		}
-		public void enterData() {
+		public void clean() {
 			txtUser.setText("") ;
 			txtPass.setText("") ;
-			
+			txtHo.setText("");
 			txtns.setText("") ;
-			txtgt.setText("") ;
+			
+			
 			
 		}
 		public void getTable() {
