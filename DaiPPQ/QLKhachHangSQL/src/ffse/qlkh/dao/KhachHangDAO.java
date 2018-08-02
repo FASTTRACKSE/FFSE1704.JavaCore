@@ -159,7 +159,6 @@ public class KhachHangDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return kh;
 	}
 

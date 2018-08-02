@@ -80,4 +80,5 @@ public class KhachHang {
 		this.SoDT = SoDT;
 	}
 
+	
 }
