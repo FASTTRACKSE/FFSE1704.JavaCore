@@ -46,7 +46,7 @@ public class SinhVienDao {
 	}
 
 	public void getConnect(String strServer, String strDatabase, String strUser, String strPwd) {
-		String strConnect = "jdbc:mysql://" + strServer + "/" + strDatabase;
+		String strConnect = "jdbc:mysql://" + strServer + "/" + strDatabase+"?characterEncoding=UTF-8";
 		Properties pro = new Properties();
 		pro.put("user", strUser);
 		pro.put("password", strPwd);
@@ -88,6 +88,7 @@ public class SinhVienDao {
 
 	public static void add(SinhVien sv) {
 		try {
+			
 		String queryString="insert into sinhvien(MaSV,HoSV,TenSV,GioiTinh,NgaySinh,Lop) values(?,?,?,?,?,?)";
 		PreparedStatement statement=conn.prepareStatement(queryString);
 		statement.setString(1, sv.getMaSV());
