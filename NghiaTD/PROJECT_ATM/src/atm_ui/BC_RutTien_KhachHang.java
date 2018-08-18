@@ -278,4 +278,7 @@ public class BC_RutTien_KhachHang extends JFrame {
 
 		con.add(pnBorder);
 	}
+	public void CloseFrame(){
+	    super.dispose();
+	}
 }

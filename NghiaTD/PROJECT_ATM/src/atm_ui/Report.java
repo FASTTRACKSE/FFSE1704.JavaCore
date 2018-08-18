@@ -322,4 +322,7 @@ public class Report extends JFrame {
 
 		con.add(pnBorder);
 	}
+	public void CloseFrame(){
+	    super.dispose();
+	}
 }

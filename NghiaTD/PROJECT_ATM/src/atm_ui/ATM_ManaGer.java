@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +16,7 @@ import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -45,7 +47,9 @@ public class ATM_ManaGer extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-
+			Admin_Manager login1 = new Admin_Manager("HỆ THỐNG ADMIN");
+			login1.showWindow();
+			CloseFrame();
 		}
 	};
 
@@ -54,7 +58,9 @@ public class ATM_ManaGer extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-
+			Admin login = new Admin("HỆ THỐNG ĐĂNG NHẬP ADMIN");
+			login.showWindow();
+			CloseFrame();
 		}
 	};
 	ActionListener addClick = new ActionListener() {
@@ -332,6 +338,24 @@ public class ATM_ManaGer extends JFrame {
 		delete.setMargin(new Insets(10, 20, 10, 20));
 		reset.setMargin(new Insets(10, 20, 10, 20));
 		
+		//ảnh thêm sửa xóa
+				ImageIcon update = new ImageIcon(
+						new ImageIcon("image/add.png").getImage().getScaledInstance(20, 25, Image.SCALE_SMOOTH));
+				add= new JButton("THÊM",update);
+				
+				ImageIcon update1 = new ImageIcon(
+						new ImageIcon("image/edit.png").getImage().getScaledInstance(20, 25, Image.SCALE_SMOOTH));
+				edit= new JButton("SỬA",update1);
+				
+				ImageIcon update2 = new ImageIcon(
+						new ImageIcon("image/xoa.png").getImage().getScaledInstance(20, 25, Image.SCALE_SMOOTH));
+				delete= new JButton("XÓA",update2);
+				
+				ImageIcon update3 = new ImageIcon(
+						new ImageIcon("image/reset.png").getImage().getScaledInstance(20, 25, Image.SCALE_SMOOTH));
+				reset= new JButton("RESET",update3);
+
+		
 		JPanel pnbutton = new JPanel();
 		pnbutton.setLayout(new BoxLayout(pnbutton, BoxLayout.X_AXIS));
 		//pnbutton.setPreferredSize(new Dimension(300, 400));
@@ -340,9 +364,9 @@ public class ATM_ManaGer extends JFrame {
 		edit.setFont(fontsize11);
 		delete.setFont(fontsize11);
 		reset.setFont(fontsize11);
-		add.setBackground(Color.GREEN);
-		edit.setBackground(Color.BLUE);
-		delete.setBackground(Color.RED);
+		add.setBackground(Color.CYAN);
+		edit.setBackground(Color.CYAN);
+		delete.setBackground(Color.CYAN);
 		reset.setBackground(Color.CYAN);
 		pnbutton.add(add);
 		pnbutton.add(kc22);
@@ -372,4 +396,8 @@ public class ATM_ManaGer extends JFrame {
 
 		con.add(pnBorder);
 	}
-}
+
+	public void CloseFrame(){
+	    super.dispose();
+	}
+	}

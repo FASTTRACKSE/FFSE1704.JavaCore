@@ -72,8 +72,9 @@ ActionListener changePassClick = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
-			
+			dangnhapkh_ui login = new dangnhapkh_ui("HỆ THỐNG ĐĂNG NHẬP KHÁCH HÀNG");
+				login.showWindow();
+				CloseFrame();
 		}
 	};
 	ActionListener soduClick = new ActionListener() {
@@ -149,7 +150,7 @@ ActionListener chuyenkhoanClick = new ActionListener() {
 		//btnchange_pass.addActionListener(changePassClick);
 		btn_info.addActionListener(infoClick);
 		different.addActionListener(differentClick);
-		cancel.addActionListener(differentClick);
+		cancel.addActionListener(cancelClick);
 		sodu.addActionListener(soduClick);
 		ruttien.addActionListener(ruttienClick);
 		naptien.addActionListener(naptienClick);
@@ -303,5 +304,8 @@ ActionListener chuyenkhoanClick = new ActionListener() {
 		con.add(pnBorder);
 
 	}
-
+	public void CloseFrame(){
+	    super.dispose();
+	}
+	
 }

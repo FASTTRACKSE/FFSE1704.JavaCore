@@ -42,7 +42,9 @@ public class Admin_Manager extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-
+			Customer_CRUD login1 = new Customer_CRUD("HỆ THỐNG ADMIN");
+			login1.showWindow();
+			CloseFrame();
 		}
 	};
 
@@ -51,7 +53,9 @@ public class Admin_Manager extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-
+			ATM_ManaGer login = new ATM_ManaGer("HÊ THỐNG QUẢN LÝ ATM");
+			login.showWindow();
+			CloseFrame();
 		}
 	};
 	ActionListener tien3Click = new ActionListener() {
@@ -99,7 +103,9 @@ public class Admin_Manager extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-
+			Admin login = new Admin("HỆ THỐNG ĐĂNG NHẬP ADMIN");
+			login.showWindow();
+			CloseFrame();
 		}
 	};
 	MouseListener tblUserClick = new MouseListener() {
@@ -322,5 +328,8 @@ public class Admin_Manager extends JFrame {
 		pnBorder.add(pnCenter, BorderLayout.CENTER);
 
 		con.add(pnBorder);
+	}
+	public void CloseFrame(){
+	    super.dispose();
 	}
 }

@@ -66,7 +66,8 @@ ActionListener enterClick = new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			
+			txtTK.setText("");
+			txtMK.setText("");
 			
 		}
 	};
@@ -78,6 +79,7 @@ ActionListener enterClick = new ActionListener() {
 			
 			Login_ui login = new Login_ui("Máy ATM");
 			login.showWindow();
+			CloseFrame();
 		}
 	};
 	MouseListener tblUserClick = new MouseListener() {
@@ -196,7 +198,8 @@ ActionListener enterClick = new ActionListener() {
 		return false ;
 	}
 	
-	
-	
+	}
+	public void CloseFrame(){
+	    super.dispose();
 	}
 }

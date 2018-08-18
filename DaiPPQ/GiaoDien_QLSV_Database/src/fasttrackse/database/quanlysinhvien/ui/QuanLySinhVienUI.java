@@ -153,9 +153,10 @@ public class QuanLySinhVienUI extends JFrame {
 		// tao box gender cho giới tính sinh viên
 		JPanel pnlistGender = new JPanel();
 		pnlistGender.setLayout(new BoxLayout(pnlistGender, BoxLayout.X_AXIS));
-		Border raisedBevel = BorderFactory.createRaisedBevelBorder();
-		TitledBorder lblGender = new TitledBorder(raisedBevel, "Giới tính");
-		pnlistGender.setBorder(lblGender);
+		//Border raisedBevel = BorderFactory.createRaisedBevelBorder();
+		
+		//TitledBorder lblGender = new TitledBorder(raisedBevel, "Giới tính");
+		//pnlistGender.setBorder(lblGender);
 		radNam = new JRadioButton("Nam");
 		radNu = new JRadioButton("Nữ");
 		

@@ -311,4 +311,7 @@ public class Report_Customer extends JFrame {
 
 		con.add(pnBorder);
 	}
+	public void CloseFrame(){
+	    super.dispose();
+	}
 }

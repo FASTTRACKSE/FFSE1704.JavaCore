@@ -278,4 +278,7 @@ public class Transaction extends JFrame {
 
 		con.add(pnBorder);
 	}
+	public void CloseFrame(){
+	    super.dispose();
+	}
 }

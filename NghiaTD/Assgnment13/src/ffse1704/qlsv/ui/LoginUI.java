@@ -354,7 +354,7 @@ import ffse1704.qlsv.entity.SinhVien;
 			String maSV= txtUser.getText();
 			String lop= setclass.getSelectedItem().toString();
 
-			dm.addRow(new String[] {maSV,HoSV,TenSV,GioiTinh,NgaySinh,lop});
+			//dm.addRow(new String[] {maSV,HoSV,TenSV,GioiTinh,NgaySinh,lop});
 			
 	
 			sinhVienDao.add(new SinhVien(maSV,HoSV,TenSV,GioiTinh,NgaySinh,lop));

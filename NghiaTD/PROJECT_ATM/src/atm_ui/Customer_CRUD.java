@@ -10,22 +10,30 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+
+import ATM_entity.ChooseItem;
+import ATM_entity.KhachHang;
+import atm_model.DatabaseDiaChi;
+import atm_model.DatabaseKhachHang;
+
 
 public class Customer_CRUD extends JFrame {
 
@@ -36,16 +44,39 @@ public class Customer_CRUD extends JFrame {
 	JButton delete = new JButton("XÓA");
 	JButton reset = new JButton("RESET");
 	JLabel kc1, kc2, kc3, kc4, kc5;
-	JTextField txtMa, txtTen, txtPhuong, txtDiaChi, txtSDT, txtEmail, txtSothe, txtSTK_NH, txtPhone, txtSoDu, txtMaPin;
+	JTextField txtMa, txtTen, txtPhuong, txtDiaChi, txtEmail, txtSothe, txtSTK_NH, txtPhone, txtSoDu, txtMaPin;
 	JComboBox setPhuong, setquan;
 	DefaultTableModel dm ;
+	private static int stt = 0;
 	JTable tbl;
+	private ArrayList<ChooseItem> arrPhuong = new ArrayList<>();
+	private ArrayList<ChooseItem> arrPhuong1 = new ArrayList<>();
+	private static ArrayList<KhachHang> arrKH = new ArrayList<KhachHang>();
+	private DatabaseKhachHang connectKH = new DatabaseKhachHang();
+	
+	
+	void duLieu() {
+
+		arrKH = connectKH.selectKhachHang();
+		
+		dm.setRowCount(0);
+		for (KhachHang kh : arrKH) {
+
+			String[] row = { kh.getMaKH(), kh.getTenKH(), kh.getDiaCHi() + "," + kh.getPhuong() + "," + kh.getQuan(),
+					kh.getEmail(), kh.getSDT(),kh.getSTk_NH() };
+			dm.addRow(row);
+		}
+		
+	}
+
 	ActionListener chucnangkhaccl = new ActionListener() {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-
+			Admin_Manager login1 = new Admin_Manager("HỆ THỐNG ADMIN");
+			login1.showWindow();
+			CloseFrame();
 		}
 	};
 
@@ -54,15 +85,149 @@ public class Customer_CRUD extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-
+			Admin login = new Admin("HỆ THỐNG ĐĂNG NHẬP ADMIN");
+			login.showWindow();
+			CloseFrame();
 		}
 	};
 	ActionListener addClick = new ActionListener() {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-
+			//arrKH = connectKH.selectKhachHang();
+			int ktTontaiMaKH = 0;
+			int ktTontaiSoThe = 0;
+			int ktTontaiSoTK_NH = 0;
+			
+			
+			String maKh= txtMa.getText();
+			
+			String tenKh= txtTen.getText();
+			String maPin= txtMaPin.getText();
+			ChooseItem check_district = (ChooseItem) setquan.getSelectedItem();
+			int id_quan = check_district.getId();
+			
+			ChooseItem check_ward = (ChooseItem) setPhuong.getSelectedItem();
+			int id_phuong = check_ward.getId();
+			
+			String diaChi= txtDiaChi.getText();
+			String sdt= txtPhone.getText();
+			String eMail= txtEmail.getText();
+			String sothe= txtSothe.getText();
+			String soTK_NH= txtSoDu.getText();
+			String sodu= txtSTK_NH.getText();
+			int checkSizeMa = maKh.length();
+			int checkSizeSothe = sothe.length();
+			int checkSizeSTK_NH = soTK_NH.length();
+			int checksodu = 0;
+			
+			int checkSoThe = 0;
+			int checkSoTK_NH = 0;
+			int CheckSotien = 0;
+			if(!sodu.isEmpty()) {
+				checksodu =	Integer.parseInt(sodu);
+			}
+			// kiểm tra có tồn tại mã , số thẻ, số tk k
+			for (int i =0;i<arrKH.size();i++) {
+				if(maKh.equals(arrKH.get(i).getMaKH())) {
+					ktTontaiMaKH = 1;
+				}
+				if(sothe.equals(arrKH.get(i).getSothe_ATM())) {
+					ktTontaiSoThe = 1;
+				}
+				if(soTK_NH.equals(arrKH.get(i).getSTk_NH())) {
+					ktTontaiSoTK_NH = 1;
+				}
+			}
+			// kiểm tra k được nhập chữ cho thẻ
+			try {
+				
+				Double soTheATM = Double.parseDouble(sothe);
+			}catch (Exception ex){
+				checkSoThe = 1;
+			}
+			// kiểm tra k được nhập chữ cho số tk
+			try {
+						
+							Double soTKATM = Double.parseDouble(sodu);
+			}catch (Exception ex){
+							checkSoTK_NH = 1;
+			}
+						// kiểm tra k được nhập chữ cho số tk
+			try {
+							
+							Double sotien = Double.parseDouble(soTK_NH);
+			}catch (Exception ex){
+							CheckSotien = 1;
+						}		
+			
+				try {
+					if (maKh.isEmpty() || tenKh.isEmpty() || maPin.isEmpty() || diaChi.isEmpty()
+							|| sdt.isEmpty() || eMail.isEmpty() || sothe.isEmpty() || soTK_NH.isEmpty()
+							|| sodu.isEmpty()) {
+						String msg = "Vui lòng nhập đầy đủ thông tin";
+						JOptionPane.showMessageDialog(null, msg, "Lỗi Nhập Thiếu", JOptionPane.INFORMATION_MESSAGE);
+				}
+					else if(checkSizeMa!=4){
+						String msg = " Mã Khách Hàng phải 4 kí tự!!";
+						JOptionPane.showMessageDialog(null, msg, "Lỗi nhập", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else if(!(Pattern.matches("^\\+?[0-9. ()-]{10,12}$",sdt ))){
+						String msg = " Số điện thoại không đúng!!";
+						JOptionPane.showMessageDialog(null, msg, "Lỗi nhập", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else if(checkSizeSothe!=12){
+						String msg = " Số thẻ phải là 12 số!!";
+						JOptionPane.showMessageDialog(null, msg, "Lỗi nhập", JOptionPane.INFORMATION_MESSAGE);
+					}
+					
+					else if(checkSoThe>0){
+						String msg = " Số thẻ không được nhập kí tự!!";
+						JOptionPane.showMessageDialog(null, msg, "Lỗi nhập", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else if(checkSizeSTK_NH!=14){
+						String msg = " Số tài khoản phải là 14 số!!";
+						JOptionPane.showMessageDialog(null, msg, "Lỗi nhập", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else if(checkSoTK_NH>0){
+						String msg = " Số tài khoản không được nhập kí tự,phải là số!!";
+						JOptionPane.showMessageDialog(null, msg, "Lỗi nhập", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else if(CheckSotien>0){
+						String msg = " Số tiền không được nhập kí tự,phải là số!!";
+						JOptionPane.showMessageDialog(null, msg, "Lỗi nhập", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else if(checksodu< 50000){
+						String msg = " Số tiền không phải trên 50.000vnđ!!";
+						JOptionPane.showMessageDialog(null, msg, "Lỗi nhập", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", eMail))) {
+						String msg = " Địa chỉ emai ko hợp lệ!!";
+						JOptionPane.showMessageDialog(null, msg, "Lỗi nhập", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else if (ktTontaiMaKH>0) {
+						String msg = " Mã khách hàng đã tồn tại!!";
+						JOptionPane.showMessageDialog(null, msg, "Lỗi nhập", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else if (ktTontaiSoThe>0) {
+						String msg = " số thẻ đã tồn tại!";
+						JOptionPane.showMessageDialog(null, msg, "Lỗi nhập", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else if (ktTontaiSoTK_NH>0) {
+						String msg = " số tài khoản ngân hàng đã tồn tại!!";
+						JOptionPane.showMessageDialog(null, msg, "Lỗi nhập", JOptionPane.INFORMATION_MESSAGE);
+					}
+					else {
+						
+						DatabaseKhachHang.add(new KhachHang(maKh,tenKh,maPin,id_quan,id_phuong,diaChi,sdt,eMail,sothe,soTK_NH,sodu));
+						
+					}
+					
+			}catch (Exception ex) {
+				
+			}
+			
+			
 		}
 	};
 	ActionListener editClick = new ActionListener() {
@@ -86,7 +251,22 @@ public class Customer_CRUD extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+			txtMa.setText("");
+			txtTen.setText("");
+			txtDiaChi.setText("");
+			txtPhone.setText("");
+			txtEmail.setText("");
+			txtSothe.setText("");
+			txtSTK_NH.setText("");
+			txtSoDu.setText("");
+			txtMaPin.setText("");
 
+//			txtSoThe.setEditable(true);
+//			txtMaKH.setEditable(true);
+//			txtTK.setEditable(true);
+			add.setEnabled(true);
+			edit.setEnabled(false);
+			delete.setEnabled(false);
 		}
 	};
 
@@ -117,18 +297,101 @@ public class Customer_CRUD extends JFrame {
 
 		}
 	};
-	
-	
 
+	// làm click vào 1 hàng nào đó
+		ListSelectionListener ChooseRow  = new ListSelectionListener() {
+		
+
+		@Override
+		public void valueChanged(ListSelectionEvent e) {
+			// TODO Auto-generated method stub
+			int i =tbl.getSelectedRow();
+			if(i>=0 && !e.getValueIsAdjusting()) {
+				String ma = tbl.getValueAt(1, 0).toString();
+//				setTextToInput(ma);
+				add.setEnabled(false);
+				for (int j=0;j< arrKH.size();j++) {
+					if(ma.equals(arrKH.get(i).getMaKH())) {
+						stt = i;
+					}
+				}
+			}
+		}
+
+//		private void setTextToInput(String i) {
+//			// TODO Auto-generated method stub
+//			for (KhachHang kh : arrKH) {
+//				if(i.equals(kh.getMaKH())) {
+//					txtMa.setText(kh.getMaKH());
+//					txtTen.setText(kh.getTenKH());
+//					txtMaPin.setText(kh.getmaPin());
+//					txtDiaChi.setText(kh.getDiaCHi());
+//					txtPhone.setText(kh.getSDT());
+//					txtEmail.setText(kh.getEmail());
+//					txtSothe.setText(kh.getSothe_ATM());
+//					txtSoDu.setText(kh.getSTk_NH());
+//					txtSTK_NH.setText(kh.getSoTien());
+//					
+//					//các trường không được sửa 
+//					
+//					txtMa.setEditable(false);
+//					txtSothe.setEditable(false);
+//					txtSoDu.setEditable(false);
+//					add.setFocusable(false);
+//					edit.setEnabled(true);
+//					delete.setEnabled(true);
+//					
+//					//quận 
+//					int quan = kh.getQuan();
+//					for (int j=0;j<setquan.getItemCount();j++) {
+//						if(quan.equals(setquan.getItemAt(j).toString())) {
+//							setquan.setSelectedIndex(j);
+//						}
+//					}
+//					
+//					// phường
+//					for (int j=0;j<setPhuong.getItemCount();j++) {
+//						if(quan.equals(setPhuong.getItemAt(j).toString())) {
+//							setPhuong.setSelectedIndex(j);
+//						}
+//					}
+//				}
+//			}
+//		}
+	};
+	// làm danh sách cho phường
+	public void selectPhuong() {
+		arrPhuong.clear();
+		int itemCount = setPhuong.getItemCount();
+		for(int i =0;i<itemCount;i++) {
+			setPhuong.removeItemAt(0);
+		}
+		ChooseItem itemD = (ChooseItem) setquan.getSelectedItem();
+		int id  = itemD.getId();
+		arrPhuong = DatabaseDiaChi.getPhuong(id);
+		for (ChooseItem o : arrPhuong) {
+			setPhuong.addItem(o);
+		}
+	}
+	ActionListener chonPhuong = new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			selectPhuong();
+		}
+	};
+	
 	public void addEvents() {
-		// btnchange_pass.addActionListener(changePassClick);
+		
 		chucnangkhac.addActionListener(chucnangkhaccl);
 		thoat.addActionListener(thoatcl);
 		add.addActionListener(addClick);
 		edit.addActionListener(editClick);
 		delete.addActionListener(deleteClick);
 		reset.addActionListener(resetClick);
-		tbl.addMouseListener(tblUserClick);
+		//tbl.addMouseListener(tblUserClick);
+		setquan.addActionListener(chonPhuong);
+		tbl.getSelectionModel().addListSelectionListener(ChooseRow);
 
 		// tbl.addMouseListener(tblUserClick);
 	}
@@ -140,7 +403,7 @@ public class Customer_CRUD extends JFrame {
 	}
 
 	public void showWindow() {
-		this.setSize(900, 600);
+		this.setSize(920, 600);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -154,9 +417,9 @@ public class Customer_CRUD extends JFrame {
 
 		JPanel pnNorth=new JPanel();
 		pnNorth.setBackground(Color.blue);
-		JLabel right = new JLabel("@ 2003 - 2007 ĐÔNG Á,Bank, All right reserved");
-		right.setForeground(Color.red);
-		pnNorth.add(right);
+		//JLabel right = new JLabel("@ 2003 - 2007 ĐÔNG Á,Bank, All right reserved");
+		//right.setForeground(Color.red);
+		//pnNorth.add(right);
 		pnBorder.add(pnNorth,BorderLayout.NORTH);
 		
 
@@ -244,53 +507,21 @@ public class Customer_CRUD extends JFrame {
 		pnDiaChi.add(lbldiachi);
 		pnDiaChi.add(txtDiaChi);
 
-		// pnCentercon.add(pnDiaChi);
-
-		// tạo lưới cho quận
-		// JPanel pnCenterCon2 = new JPanel();
-		// JLabel lblMS = new JLabel(" CHỌN QUẬN: ");
-		// DefaultListModel fruitsName = new DefaultListModel();
-		//
-		// fruitsName.addElement("HOÀNG SA");
-		// fruitsName.addElement("CẨM LỆ");
-		// fruitsName.addElement("HÒA VANG");
-		// fruitsName.addElement("THANH KHÊ");
-		// fruitsName.addElement("SƠN TRÀ");
-		// fruitsName.addElement("NGŨ HÀNH SƠN");
-		// fruitsName.addElement("LIÊN CHIỂU");
-		// fruitsName.addElement("HẢI CHÂU");
-		//
-		// final JList fruitList = new JList(fruitsName);
-		// fruitList.setSelectionBackground(Color.RED);
-		// fruitList.setSelectionForeground(Color.WHITE);
-		//
-		// fruitList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		// fruitList.setSelectedIndex(0);
-		// fruitList.setVisibleRowCount(3);
-		//
-		// JScrollPane fruitListScrollPane = new JScrollPane(fruitList);
-		// fruitListScrollPane.setPreferredSize(new Dimension(225, 50));
-		// pnCenterCon2.add(lblMS);
-		// pnCenterCon2.add(fruitListScrollPane);
-		// pnCentercon.add(pnCenterCon2);
-
+		
 		// chon quận
 		JPanel pnquan = new JPanel();
-		pnquan.setPreferredSize(new Dimension(100, 20));
+		pnquan.setPreferredSize(new Dimension(100, 30));
 		JLabel lblquan = new JLabel("CHỌN QUẬN:  ");
 		lblquan.setForeground(Color.BLUE);
-		setquan = new JComboBox<String>();
-		setquan.setPreferredSize(new Dimension(100, 20));
-
-		setquan.addItem("HOÀNG SA");
-		setquan.addItem("CẨM LỆ");
-		setquan.addItem("HÒA VANG");
-		setquan.addItem("THANH KHÊ");
-		setquan.addItem("SƠN TRÀ");
-		setquan.addItem("NGŨ HÀNH SƠN");
-		setquan.addItem("LIÊN CHIỂU");
-		setquan.addItem("HẢI CHÂU");
-		// setquan.addItem("HẢI CHÂU");
+		setquan = new JComboBox();
+		setquan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.blue));
+		setquan.setPreferredSize(new Dimension(120, 20));
+		ArrayList<ChooseItem> quan = new ArrayList<ChooseItem>();
+		quan = DatabaseDiaChi.getQuan();
+		for (ChooseItem x : quan) {
+			setquan.addItem(x);
+		}
+	
 
 		pnquan.add(lblquan);
 		pnquan.add(setquan);
@@ -302,20 +533,10 @@ public class Customer_CRUD extends JFrame {
 		pnPhuong.setPreferredSize(new Dimension(100, 20));
 		JLabel lblPhuong = new JLabel("CÁC PHƯỜNG:  ");
 		lblPhuong.setForeground(Color.BLUE);
-		setPhuong = new JComboBox<String>();
+		setPhuong = new JComboBox();
 		setPhuong.setPreferredSize(new Dimension(100, 20));
-
-		setPhuong.addItem("Hòa An");
-		setPhuong.addItem("Hòa Phát");
-		setPhuong.addItem("Hòa Thọ Đông");
-		setPhuong.addItem("Hòa Xuân");
-		setPhuong.addItem("Hòa Cường Bắc");
-		setPhuong.addItem("Hòa Cường Nam");
-		setPhuong.addItem("Hòa Bắc");
-		setPhuong.addItem("Hòa Châu");
-		setPhuong.addItem("Hòa Khương");
-		// setPhuong.addItem("Hòa Khương");
-		// setPhuong.addItem("Hòa Khương");
+		selectPhuong();
+		setPhuong.addItem("Chọn Phường");
 		pnPhuong.add(lblPhuong);
 		pnPhuong.add(setPhuong);
 		// pnPhuong.add(setPhuong);
@@ -357,8 +578,8 @@ public class Customer_CRUD extends JFrame {
 		// pnCentercon.add(pnSoThe);
 
 		JPanel pnTK = new JPanel();
-		pnTK.setOpaque(false);
-		JLabel naneTK = new JLabel("SỐ TK NGÂN HÀNG :");
+		
+		JLabel naneTK = new JLabel("SỐ DƯ :");
 		naneTK.setForeground(Color.BLUE);
 		txtSTK_NH = new JTextField(15);
 		txtSTK_NH.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
@@ -367,7 +588,7 @@ public class Customer_CRUD extends JFrame {
 
 		JPanel pnSoDu = new JPanel();
 		pnSoDu.setOpaque(false);
-		JLabel naneSoDu = new JLabel("     SỐ DƯ :");
+		JLabel naneSoDu = new JLabel("     SỐ TK NGÂN HÀNG :");
 		naneSoDu.setForeground(Color.BLUE);
 		naneSoDu.setPreferredSize(lblTen.getPreferredSize());
 		txtSoDu = new JTextField(15);
@@ -392,11 +613,11 @@ public class Customer_CRUD extends JFrame {
 		ImageIcon update1 = new ImageIcon(
 				new ImageIcon("image/edit.png").getImage().getScaledInstance(20, 25, Image.SCALE_SMOOTH));
 		edit= new JButton("SỬA",update1);
-		
+		edit.setEnabled(false);
 		ImageIcon update2 = new ImageIcon(
 				new ImageIcon("image/xoa.png").getImage().getScaledInstance(20, 25, Image.SCALE_SMOOTH));
 		delete= new JButton("XÓA",update2);
-		
+		delete.setEnabled(false);
 		ImageIcon update3 = new ImageIcon(
 				new ImageIcon("image/reset.png").getImage().getScaledInstance(20, 25, Image.SCALE_SMOOTH));
 		reset= new JButton("RESET",update3);
@@ -418,9 +639,12 @@ public class Customer_CRUD extends JFrame {
 		pnCenterRight.add(pnSoDu);
 		pnCenterRight.add(pnMaPin);
 		pnCenterRight.add(pnSoThe);
-
+		pnCenterRight.add(pnTK);
+		
 		pnCentercon.add(pnCenterleft);
+		
 		pnCentercon.add(pnCenterRight);
+		
 
 		//
 		pnCenter.add(pnCentercon);
@@ -465,11 +689,11 @@ public class Customer_CRUD extends JFrame {
 		dm.addColumn("Phường");
 		dm.addColumn("Địa chỉ");
 		dm.addColumn("Số điện thoại");
-		dm.addColumn("Email");
-		dm.addColumn("Số mã thẻ ATM");
+		dm.addColumn("Email");	
 		dm.addColumn("Số TK Ngân Hàng");
-		dm.addColumn("Mã pin");
-		//this.getTable();
+		dm.addColumn("Số dư");
+		this.getTable();
+		
 		
 		tbl = new JTable(dm);		
 		JScrollPane sc = new JScrollPane(tbl);
@@ -478,5 +702,26 @@ public class Customer_CRUD extends JFrame {
 		pnBorder.add(pnCenter, BorderLayout.CENTER);
 
 		con.add(pnBorder);
+	}
+	public void getTable() {
+		arrKH = DatabaseKhachHang.selectKhachHang();
+		for(int i = 0; i<arrKH.size();i++) {
+			dm.addRow(new String[] {arrKH.get(i).getMaKH(),arrKH.get(i).getTenKH(),
+					DatabaseDiaChi.getNameQuan(arrKH.get(i).getQuan()),
+					DatabaseDiaChi.getNamePhuong(arrKH.get(i).getPhuong()),
+					arrKH.get(i).getDiaCHi(),arrKH.get(i).getSDT(),arrKH.get(i).getEmail(),arrKH.get(i).getSTk_NH(),arrKH.get(i).getSoTien()});
+		}
+	}
+	public boolean checkInt(String nhap) {
+		try {
+			Integer.parseInt(nhap);
+			return true;
+		}catch (Exception e) {
+		return false;
+		}
+		
+	}
+	public void CloseFrame(){
+	    super.dispose();
 	}
 }
