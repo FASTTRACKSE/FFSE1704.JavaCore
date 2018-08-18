@@ -133,7 +133,7 @@ public class QuanLySinhVienUI extends JFrame{
 		dm.addColumn("Tên sinh viên");
 		dm.addColumn("Tuổi");
 		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 40; i++) {
 			dm.addRow(new String[] { "FFSE00"+ (i + 1), "Trần Văn T" + i, "20" });
 		}
 		
