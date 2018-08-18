@@ -21,10 +21,11 @@ public class GDHome extends JFrame {
 	JButton bienLai;
 	JButton dsKhachHang;
 	JButton gDChung;
+	JButton btNBL;
 	JButton Exit;
 
 	public GDHome(String tieude) {
-		super();
+		super("Home");
 		this.addControls();
 		this.conect();
 
@@ -90,6 +91,17 @@ public class GDHome extends JFrame {
 		gDChung.add(lblCSKhachHang);
 		gDChung.setMargin(new Insets(0, 18, 0, 0));
 		gDChung.addActionListener(actionListener);
+		
+		btNBL = new JButton("");
+		ImageIcon iconNhapBL = new ImageIcon(
+				new ImageIcon("icon/nhapbl.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+		JLabel lblNhapBL = new JLabel("         Nhập thông tin tiêu thụ");
+		btNBL.setPreferredSize(new Dimension(185, 50));
+		JLabel nhapBL = new JLabel(iconNhapBL);
+		btNBL.add(nhapBL);
+		btNBL.add(lblNhapBL);
+		btNBL.setMargin(new Insets(0, 18, 0, 0));
+		btNBL.addActionListener(actionListener);
 
 		Exit = new JButton("Exit");
 		Exit.setPreferredSize(new Dimension(110, 50));
@@ -103,6 +115,7 @@ public class GDHome extends JFrame {
 		pnbt.add(bienLai);
 		pnbt.add(dsKhachHang);
 		pnbt.add(gDChung);
+		pnbt.add(btNBL);
 		pnbt.add(Exit);
 		
 //		 ImageIcon background=new ImageIcon("icon/bg1.jpg");
@@ -146,6 +159,11 @@ public class GDHome extends JFrame {
 			if (e.getSource() == gDChung) {
 				GDChinh chinh = new GDChinh("");
 				chinh.showWindow();
+				setVisible(false);
+			}
+			if (e.getSource() == btNBL) {
+				GDNhapBienLai nhapBL = new GDNhapBienLai("");
+				nhapBL.showWindow();
 				setVisible(false);
 			}
 			if (e.getSource() == Exit) {

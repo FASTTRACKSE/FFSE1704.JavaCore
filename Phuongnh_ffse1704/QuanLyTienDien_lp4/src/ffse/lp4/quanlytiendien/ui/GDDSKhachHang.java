@@ -9,6 +9,11 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -23,13 +28,16 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import ffse.lp4.quanlytiendien.dao.KhachHangModel;
+import ffse.lp4.quanlytiendien.entity.KhachHang;
+import ffse.lp4.quanlytiendien.entity.QuanPhuong;
+
 public class GDDSKhachHang extends JFrame {
-	private JComboBox<String> quan;
-	private JComboBox<String> phuong;
-	JComboBox cbQuan;
-	JComboBox cbPhuong;
+	private JComboBox<QuanPhuong> cbQuan;
+	private JComboBox<QuanPhuong> cbPhuong;
 	JButton btCSDS;
 	JButton btKTBL;
+	JButton btNBL;
 	JButton btHome;
 	JButton btExit;
 	JButton btApDung;
@@ -44,27 +52,28 @@ public class GDDSKhachHang extends JFrame {
 	JTextField txtTen;
 	DefaultTableModel dm;
 	JTable tbl;
+	JPanel pnA4;
+	JPanel pnB4;
+	KhachHangModel tienDienDao;
+	ArrayList<KhachHang> dSKH = new ArrayList<KhachHang>();
+	ArrayList<QuanPhuong> dSPhuong = new ArrayList<QuanPhuong>();
 
 	public GDDSKhachHang(String tieude) {
-		super();
-		this.addControls();
+		super("Kiểm tra thông tin khách hàng");
 		this.conect();
+		this.addControls();
 
 	}
 
 	public void conect() {
-		// loginDAO.getConnect("localhost", "ffse1703009", "phuonghanh",
-		// "phuonghanh123");
+		tienDienDao = new KhachHangModel();
+		tienDienDao.getConnect("localhost", "quanlytiendien", "phuongadmin", "phuong321");
 
 	}
 
 	public void addControls() {
 
 		Container con = getContentPane();
-		// JPanel pnBorder = new JPanel();
-		// pnBorder.setLayout(new BorderLayout());
-		//
-		//
 		// ****** tạo panel chứa tittle********//
 		JPanel pntt = new JPanel();
 		ImageIcon iconlogo = new ImageIcon(
@@ -86,6 +95,7 @@ public class GDDSKhachHang extends JFrame {
 		JLabel lblApDung = new JLabel("            Áp dụng");
 		btApDung.add(apDung);
 		btApDung.add(lblApDung);
+		btApDung.addActionListener(actionListener);
 
 		btReset = new JButton("");
 		ImageIcon iconReset = new ImageIcon(
@@ -103,10 +113,9 @@ public class GDDSKhachHang extends JFrame {
 		pnDuoi.add(btApDung);
 		pnDuoi.add(btReset);
 
-
 		// ****** tạo panel giữa chứa các ô nhập
 		JPanel pnCenter = new JPanel();
-		
+
 		pnCenter.setLayout(new BoxLayout(pnCenter, BoxLayout.Y_AXIS));
 		pnCenter.setPreferredSize(new Dimension(500, 200));
 
@@ -125,13 +134,17 @@ public class GDDSKhachHang extends JFrame {
 		JLabel lblQuan = new JLabel("Quận:  ");
 		txtQuan = new JTextField(20);
 
-		JPanel pnA4 = new JPanel();
-		pnA4.setPreferredSize(new Dimension(40, 5));
-		cbQuan = new JComboBox<String>();
+		pnA4 = new JPanel();
+		cbQuan = new JComboBox();
+		ArrayList<QuanPhuong> tenQuan = new ArrayList<QuanPhuong>();
+		tenQuan = tienDienDao.getQuanKH();
+		for (QuanPhuong x : tenQuan) {
+			cbQuan.addItem(x);
+		}
 		cbQuan.setPreferredSize(new Dimension(220, 21));
-		cbQuan.addItem("Tất cả Khách Hàng");
-		cbQuan.addItem("Khu Vực");
-		cbQuan.addItem("Khu Vực Cụ Thể");
+		cbQuan.addItemListener(chonQuan);
+		cbQuan.setPreferredSize(new Dimension(220, 21));
+		cbQuan.addItemListener(chonQuan);
 		pnA4.add(lblQuan);
 		pnA4.add(cbQuan);
 
@@ -139,16 +152,13 @@ public class GDDSKhachHang extends JFrame {
 
 		// ****** panel phải
 
-		JPanel pnB4 = new JPanel();
-		pnB4.setPreferredSize(new Dimension(40, 5));
-		cbPhuong = new JComboBox<String>();
+		pnB4 = new JPanel();
+		cbPhuong = new JComboBox();
+
 		cbPhuong.setPreferredSize(new Dimension(220, 21));
-		cbPhuong.addItem("Tất cả Khách Hàng");
-		cbPhuong.addItem("Khu Vực");
-		cbPhuong.addItem("Khu Vực Cụ Thể");
+		loadDataPhuong();
 		pnB4.add(lblPhuong);
 		pnB4.add(cbPhuong);
-
 		// *******
 
 		pnCenterCon.add(pnA4);
@@ -158,41 +168,55 @@ public class GDDSKhachHang extends JFrame {
 
 		// ****** tạo panel phải chứa hai button
 		JPanel pnBTL = new JPanel();
-		pnBTL.setPreferredSize(new Dimension(175, 600));
+		pnBTL.setPreferredSize(new Dimension(180, 600));
 		JLabel pnPlace1 = new JLabel("              ");
 		JLabel pnPlace2 = new JLabel("              ");
 		JLabel pnPlace3 = new JLabel("              ");
-		JLabel pnPlace = new JLabel("              ");
 		JLabel pnPlace4 = new JLabel("              ");
 		JLabel pnPlace5 = new JLabel("              ");
 		JLabel pnPlace6 = new JLabel("              ");
 		pnBTL.setLayout(new BoxLayout(pnBTL, BoxLayout.Y_AXIS));
+
 		btCSDS = new JButton("");
 		btCSDS.setPreferredSize(new Dimension(110, 50));
 		ImageIcon iconCSDS = new ImageIcon(
 				new ImageIcon("icon/csdanhsach.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblCSDS = new JLabel("                 Chỉnh sửa DSKH");
 		JLabel chinhsua = new JLabel(iconCSDS);
 		btCSDS.add(chinhsua);
-		btCSDS.setMargin(new Insets(8, 60, 8, 60));
+		btCSDS.add(lblCSDS);
+		btCSDS.setMargin(new Insets(8, 0, 8, 28));
 		btCSDS.addActionListener(actionListener);
 
+		btNBL = new JButton("");
+		ImageIcon iconNhapBL = new ImageIcon(
+				new ImageIcon("icon/nhapbl.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblNhapBL = new JLabel("                Nhập thông tin tiêu thụ");
+		JLabel nhapBL = new JLabel(iconNhapBL);
+		btNBL.add(nhapBL);
+		btNBL.add(lblNhapBL);
+		btNBL.setMargin(new Insets(8, 0, 8, 0));
+		btNBL.addActionListener(actionListener);
+
 		btKTBL = new JButton("");
-		btKTBL.setPreferredSize(new Dimension(110, 50));
 		ImageIcon iconThongKe = new ImageIcon(
 				new ImageIcon("icon/thongke.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblThongKe = new JLabel("                 Thống kê báo cáo");
 		JLabel thongKe = new JLabel(iconThongKe);
 		btKTBL.add(thongKe);
-		btKTBL.setMargin(new Insets(8, 60, 8, 60));
+		btKTBL.add(lblThongKe);
 		btKTBL.addActionListener(actionListener);
+		btKTBL.setMargin(new Insets(8, 0, 8, 22));
 
 		pnBTL.add(pnPlace1);
 		pnBTL.add(pnPlace3);
-		pnBTL.add(pnPlace4);
 		pnBTL.add(btCSDS);
 		pnBTL.add(pnPlace2);
 		pnBTL.add(pnPlace5);
-		pnBTL.add(pnPlace6);
 		pnBTL.add(btKTBL);
+		pnBTL.add(pnPlace4);
+		pnBTL.add(pnPlace6);
+		pnBTL.add(btNBL);
 
 		// ****** tạo panel Trái chứa hai button
 		JPanel pnBTR = new JPanel();
@@ -206,21 +230,25 @@ public class GDDSKhachHang extends JFrame {
 
 		pnBTR.setLayout(new BoxLayout(pnBTR, BoxLayout.Y_AXIS));
 
-		btHome = new JButton("Home");
+		btHome = new JButton("");
 		ImageIcon iconHome = new ImageIcon(
 				new ImageIcon("icon/home.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblHome = new JLabel("                    Home");
 		JLabel home = new JLabel(iconHome);
 		btHome.add(home);
-		btHome.setMargin(new Insets(8, 60, 8, 60));
+		btHome.add(lblHome);
+		btHome.setMargin(new Insets(8, 10, 8, 65));
 		btHome.addActionListener(actionListener);
 
 		btExit = new JButton("");
 		ImageIcon iconExit = new ImageIcon(
 				new ImageIcon("icon/exit.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblExit = new JLabel("                      Exit");
 		JLabel exit = new JLabel(iconExit);
 		btExit.add(exit);
+		btExit.add(lblExit);
 		btExit.addActionListener(actionListener);
-		btExit.setMargin(new Insets(8, 60, 8, 60));
+		btExit.setMargin(new Insets(8, 10, 8, 71));
 
 		pnBTR.add(pnPlacea);
 		pnBTR.add(pnPlaceb);
@@ -235,8 +263,11 @@ public class GDDSKhachHang extends JFrame {
 		dm.addColumn("Mã Khách Hàng");
 		dm.addColumn("Họ Tên");
 		dm.addColumn("Địa Chỉ");
-		dm.addColumn("Thời Gian");
-		tbl = new JTable(dm);
+		dm.addColumn("Mã công tơ");
+		dm.addColumn("Email");
+		dm.addColumn("Số ĐT");
+		dm.addColumn("Quận");
+		dm.addColumn("Phường");
 		JScrollPane sc = new JScrollPane(tbl);
 
 		JPanel pnBorder = new JPanel();
@@ -259,8 +290,8 @@ public class GDDSKhachHang extends JFrame {
 
 		pnCenter.setBackground(Color.GRAY);
 		pnBorder.add(pnCenter, BorderLayout.CENTER);
-		
-		getContentPane().add(pnBorder);
+
+		con.add(pnBorder);
 
 	}
 
@@ -278,10 +309,19 @@ public class GDDSKhachHang extends JFrame {
 				bienLai.showWindow();
 				setVisible(false);
 			}
+			if (e.getSource() == btNBL) {
+				GDNhapBienLai nhapBL = new GDNhapBienLai("Chỉnh Sửa Danh Sách");
+				nhapBL.showWindow();
+				setVisible(false);
+
+			}
 			if (e.getSource() == btHome) {
 				GDHome home = new GDHome("Home");
 				home.showWindow();
 				setVisible(false);
+			}
+			if (e.getSource() == btApDung) {
+				seachAndInKH();
 			}
 			if (e.getSource() == btExit) {
 				System.exit(0);
@@ -289,16 +329,60 @@ public class GDDSKhachHang extends JFrame {
 
 		}
 	};
+	ItemListener chonQuan = new ItemListener() {
 
-	// public void itemStateChanged(ItemEvent event) {
-	// if (event.getStateChange() == ItemEvent.SELECTED) {
-	// Object item = event.getItem();
-	// // do something with object
-	// }
-	// }
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			if (e.getStateChange() == ItemEvent.SELECTED) {
+				loadDataPhuong();
+			}
+		}
+	};
+
+	public void loadDataPhuong() {
+		dSPhuong.clear();
+		int itemPhuong = cbPhuong.getItemCount();
+		for (int i = 0; i < itemPhuong; i++) {
+			cbPhuong.removeItemAt(0);
+
+		}
+		QuanPhuong itemID = (QuanPhuong) cbQuan.getSelectedItem();
+		int iD = itemID.getId();
+		dSPhuong = tienDienDao.getPhuongKH(iD);
+		for (QuanPhuong o : dSPhuong) {
+			cbPhuong.addItem(o);
+		}
+	}
+
+	public void seachAndInKH() {
+		 dSKH = tienDienDao.getDSKhachHangTheoQuanPhuong();
+		 for (int i = 0; i < dSKH.size(); i++) {
+		 dm.addRow(new String[] { dSKH.get(i).getMaKH(), dSKH.get(i).getTenKH(),
+		 dSKH.get(i).getDiaChi(),
+		 dSKH.get(i).getMaCongTo(), dSKH.get(i).getEmail(), dSKH.get(i).getsDT(),
+		 KhachHangModel.getNameQuan(dSKH.get(i).getMaQuan()),
+		 KhachHangModel.getNamePhuong(dSKH.get(i).getMaPhuong()) });
+		 System.out.println("ok!");
+		 }
+
+	}
+
+//	public void getTable() {
+//		
+//		 dSKH = tienDienDao.getDSKhachHangTheoQuanPhuong();
+//		 for (int i = 0; i < dSKH.size(); i++) {
+//		 dm.addRow(new String[] { dSKH.get(i).getMaKH(), dSKH.get(i).getTenKH(),
+//		 dSKH.get(i).getDiaChi(),
+//		 dSKH.get(i).getMaCongTo(), dSKH.get(i).getEmail(), dSKH.get(i).getsDT(),
+//		 KhachHangModel.getNameQuan(dSKH.get(i).getMaQuan()),
+//		 KhachHangModel.getNamePhuong(dSKH.get(i).getMaPhuong()) });
+//		
+//		
+//		 }
+//	}
 
 	public void showWindow() {
-		this.setSize(1000, 600);
+		this.setSize(1000, 650);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);

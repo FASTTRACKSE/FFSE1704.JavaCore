@@ -9,8 +9,12 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -25,15 +29,17 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import ffse.lp4.quanlytiendien.dao.QuanLyTienDienDAO;
+import ffse.lp4.quanlytiendien.dao.KhachHangModel;
 import ffse.lp4.quanlytiendien.entity.KhachHang;
+import ffse.lp4.quanlytiendien.entity.QuanPhuong;
 
 public class GDChinh extends JFrame {
 
-	private JComboBox<String>cbQuan;
-	private JComboBox<String>cbPhuong;
+	JComboBox<QuanPhuong> cbQuan;
+	JComboBox<QuanPhuong> cbPhuong;
 	JButton btKTDS;
 	JButton btKTBL;
+	JButton btNBL;
 	JButton btHome;
 	JButton btExit;
 	JButton btThem;
@@ -50,27 +56,33 @@ public class GDChinh extends JFrame {
 	JTextField txtTen;
 	DefaultTableModel dm;
 	JTable tbl;
-	
-	QuanLyTienDienDAO tienDienDao;
+	String tieuchi;
+
+	KhachHangModel tienDienDao;
+	ArrayList<KhachHang> dSKH = new ArrayList<KhachHang>();
+	ArrayList<QuanPhuong> dSPhuong = new ArrayList<QuanPhuong>();
 
 	public GDChinh(String tieude) {
-		super();
-		addControls();
+		super("Chỉnh sửa thông tin khách hàng");
 		conect();
+		addControls();
 		addEvent();
+		 inThongTin();
 
 	}
+
 	public void conect() {
-		tienDienDao = new QuanLyTienDienDAO();
-		tienDienDao.getConnect("localhost", "quanlytiendien", "phuongadmin","phuong321");
+		tienDienDao = new KhachHangModel();
+		tienDienDao.getConnect("localhost", "quanlytiendien", "phuongadmin", "phuong321");
 
 	}
+
 	public void addEvent() {
 		tbl.addMouseListener(tblUserClick);
 	}
 
 	MouseListener tblUserClick = new MouseListener() {
-		
+
 		public void mouseReleased(MouseEvent e) {
 		}
 
@@ -95,22 +107,29 @@ public class GDChinh extends JFrame {
 
 			String diaChi = (String) tbl.getValueAt(row, 2);
 			txtDiaChi.setText(diaChi);
-			
+
+			String maCongTo = (String) tbl.getValueAt(row, 3);
+			txtMaCongTo.setText(maCongTo);
+
 			String email = (String) tbl.getValueAt(row, 4);
 			txtEmail.setText(email);
-			
+
 			String sDT = (String) tbl.getValueAt(row, 5);
 			txtSDT.setText(sDT);
 			
-			String maCongTo = (String) tbl.getValueAt(row, 6);
-			txtMaCongTo.setText(maCongTo);
+			String quan = (String) tbl.getValueAt(row, 6);
+			cbQuan.setSelectedItem(quan);
+			
+			String phuong = (String) tbl.getValueAt(row, 7);
+			cbPhuong.setSelectedItem(phuong);
+
 		}
 	};
 
 	public void addControls() {
 
 		Container con = getContentPane();
-		
+
 		// ****** tạo panel chứa tittle********//
 		JPanel pntt = new JPanel();
 		ImageIcon iconlogo = new ImageIcon(
@@ -230,21 +249,22 @@ public class GDChinh extends JFrame {
 		pnA3.add(txtDiaChi);
 		JPanel pnA4 = new JPanel();
 		pnA4.setPreferredSize(new Dimension(40, 5));
-		
-		cbQuan = new JComboBox<String>();
-		cbQuan.addItem("Tất cả Khách Hàng");
-		cbQuan.addItem("Khu Vực");
-		cbQuan.addItem("Khu Vực Cụ Thể");
+
+		cbQuan = new JComboBox();
+		ArrayList<QuanPhuong> tenQuan = new ArrayList<QuanPhuong>();
+		tenQuan = tienDienDao.getQuanKH();
+		for (QuanPhuong x : tenQuan) {
+			cbQuan.addItem(x);
+		}
 		cbQuan.setPreferredSize(new Dimension(220, 21));
+		cbQuan.addItemListener(chonQuan);
 		pnA4.add(lblQuan);
 		pnA4.add(cbQuan);
+		// cbQuan.addActionListener(eventQuan1);
 
-		// *******
+		// lay thong tin cac quan trong database
 
-		pnLeft.add(pnA1);
-		pnLeft.add(pnA2);
-		pnLeft.add(pnA3);
-		pnLeft.add(pnA4);
+		// set data cho combobox quan
 
 		// ****** panel phải
 		JPanel pnRight = new JPanel();
@@ -265,19 +285,26 @@ public class GDChinh extends JFrame {
 		pnB3.add(txtMaCongTo);
 		JPanel pnB4 = new JPanel();
 		pnB4.setPreferredSize(new Dimension(40, 5));
-		cbPhuong = new JComboBox<String>();
-		cbPhuong.addItem("Tất cả Khách Hàng");
-		cbPhuong.addItem("Khu Vực");
-		cbPhuong.addItem("Khu Vực Cụ Thể");
+		cbPhuong = new JComboBox();
+		// cbPhuong.addItem("Chọn phường");
 		cbPhuong.setPreferredSize(new Dimension(220, 21));
+		loadDataPhuong();
 		pnB4.add(lblPhuong);
 		pnB4.add(cbPhuong);
+		// cbPhuong.addActionListener(chonPhuong);
+
+		// *******
+
+		pnLeft.add(pnA1);
+		pnLeft.add(pnA2);
+		pnLeft.add(pnA3);
+		pnLeft.add(pnB3);
 
 		// *******
 
 		pnRight.add(pnB1);
 		pnRight.add(pnB2);
-		pnRight.add(pnB3);
+		pnRight.add(pnA4);
 		pnRight.add(pnB4);
 
 		pnCenterCon.add(pnLeft);
@@ -285,9 +312,9 @@ public class GDChinh extends JFrame {
 		pnCenter.add(pnCenterCon);
 		pnCenter.add(pnDuoi);
 
-		// ****** tạo panel phải chứa hai button
+		// ****** tạo panel Trái chứa hai button
 		JPanel pnBTL = new JPanel();
-		pnBTL.setPreferredSize(new Dimension(178, 600));
+		pnBTL.setPreferredSize(new Dimension(180, 600));
 		JLabel pnPlace1 = new JLabel("              ");
 		JLabel pnPlace2 = new JLabel("              ");
 		JLabel pnPlace3 = new JLabel("              ");
@@ -295,32 +322,48 @@ public class GDChinh extends JFrame {
 		JLabel pnPlace5 = new JLabel("              ");
 		JLabel pnPlace6 = new JLabel("              ");
 		pnBTL.setLayout(new BoxLayout(pnBTL, BoxLayout.Y_AXIS));
+
 		btKTDS = new JButton("");
 		ImageIcon iconDSKH = new ImageIcon(
-				new ImageIcon("icon/danhsach.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+				new ImageIcon("icon/tracuukh.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblDSKH = new JLabel("                    Kiểm Tra DSKH");
 		JLabel dSKhachHang = new JLabel(iconDSKH);
 		btKTDS.add(dSKhachHang);
-		btKTDS.setMargin(new Insets(8, 60, 8, 60));
+		btKTDS.add(lblDSKH);
+		btKTDS.setMargin(new Insets(8, 0, 8, 26));
 		btKTDS.addActionListener(actionListener);
+
+		btNBL = new JButton("");
+		ImageIcon iconNhapBL = new ImageIcon(
+				new ImageIcon("icon/nhapbl.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblNhapBL = new JLabel("                Nhập thông tin tiêu thụ");
+		JLabel nhapBL = new JLabel(iconNhapBL);
+		btNBL.add(nhapBL);
+		btNBL.add(lblNhapBL);
+		btNBL.setMargin(new Insets(8, 0, 8, 0));
+		btNBL.addActionListener(actionListener);
 
 		btKTBL = new JButton("");
 		ImageIcon iconThongKe = new ImageIcon(
 				new ImageIcon("icon/thongke.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblThongKe = new JLabel("                 Thống kê báo cáo");
 		JLabel thongKe = new JLabel(iconThongKe);
 		btKTBL.add(thongKe);
+		btKTBL.add(lblThongKe);
 		btKTBL.addActionListener(actionListener);
-		btKTBL.setMargin(new Insets(8, 60, 8, 60));
+		btKTBL.setMargin(new Insets(8, 0, 8, 22));
 
 		pnBTL.add(pnPlace1);
 		pnBTL.add(pnPlace3);
-		pnBTL.add(pnPlace4);
 		pnBTL.add(btKTDS);
 		pnBTL.add(pnPlace2);
 		pnBTL.add(pnPlace5);
-		pnBTL.add(pnPlace6);
 		pnBTL.add(btKTBL);
+		pnBTL.add(pnPlace4);
+		pnBTL.add(pnPlace6);
+		pnBTL.add(btNBL);
 
-		// ****** tạo panel Trái chứa hai button
+		// ****** tạo panel Phải chứa hai button
 		JPanel pnBTR = new JPanel();
 		pnBTR.setPreferredSize(new Dimension(175, 600));
 		JLabel pnPlacea = new JLabel("              ");
@@ -332,21 +375,25 @@ public class GDChinh extends JFrame {
 
 		pnBTR.setLayout(new BoxLayout(pnBTR, BoxLayout.Y_AXIS));
 
-		btHome = new JButton("Home");
+		btHome = new JButton("");
 		ImageIcon iconHome = new ImageIcon(
 				new ImageIcon("icon/home.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblHome = new JLabel("                    Home");
 		JLabel home = new JLabel(iconHome);
 		btHome.add(home);
-		btHome.setMargin(new Insets(8, 60, 8, 60));
+		btHome.add(lblHome);
+		btHome.setMargin(new Insets(8, 10, 8, 65));
 		btHome.addActionListener(actionListener);
 
 		btExit = new JButton("");
 		ImageIcon iconExit = new ImageIcon(
 				new ImageIcon("icon/exit.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblExit = new JLabel("                      Exit");
 		JLabel exit = new JLabel(iconExit);
 		btExit.add(exit);
+		btExit.add(lblExit);
 		btExit.addActionListener(actionListener);
-		btExit.setMargin(new Insets(8, 60, 8, 60));
+		btExit.setMargin(new Insets(8, 10, 8, 71));
 
 		pnBTR.add(pnPlacea);
 		pnBTR.add(pnPlaceb);
@@ -361,11 +408,11 @@ public class GDChinh extends JFrame {
 		dm.addColumn("Mã Khách Hàng");
 		dm.addColumn("Họ Tên");
 		dm.addColumn("Địa Chỉ");
-		dm.addColumn("Quận");
-		dm.addColumn("Phường");
+		dm.addColumn("Mã công tơ");
 		dm.addColumn("Email");
 		dm.addColumn("Số ĐT");
-		dm.addColumn("Mã công tơ");
+		dm.addColumn("Quận");
+		dm.addColumn("Phường");
 		tbl = new JTable(dm);
 		JScrollPane sc = new JScrollPane(tbl);
 
@@ -393,41 +440,72 @@ public class GDChinh extends JFrame {
 		con.add(pnBorder);
 
 	}
-	
+
 	public void nhapThongTin() {
-		String maKhachHang = txtMaKH.getText();
-		String tenKhachHang = txtTen.getText();
-		String diaChi = txtDiaChi.getText();
-		String quan = cbQuan.getSelectedItem().toString();
-		String email = txtEmail.getText();
-		String soDT = txtSDT.getText();
-		String maCongTo = txtMaCongTo.getText();
-		String phuong = cbPhuong.getSelectedItem().toString();
-		dm.addRow(new String[] { maKhachHang,tenKhachHang,diaChi,quan,email,soDT,maCongTo,phuong});
-		QuanLyTienDienDAO.add(new KhachHang(maKhachHang,tenKhachHang,diaChi,quan,email,soDT,maCongTo,phuong));
-	}
-	
-	public void suaThongTin() {
-		String maKhachHang = txtMaKH.getText();
-		String tenKhachHang = txtTen.getText();
-		String diaChi = txtDiaChi.getText();
-		String quan = cbQuan.getSelectedItem().toString();
-		String email = txtEmail.getText();
-		String soDT = txtSDT.getText();
-		String maCongTo = txtMaCongTo.getText();
-		String phuong = cbPhuong.getSelectedItem().toString();
-		QuanLyTienDienDAO.update(new KhachHang(maKhachHang,tenKhachHang,diaChi,quan,email,soDT,maCongTo,phuong));
-		int row = tbl.getSelectedRow();
-		tbl.setValueAt(tenKhachHang, row, 1);
-		tbl.setValueAt(diaChi, row, 2);
-		tbl.setValueAt(quan, row, 3);
-		tbl.setValueAt(phuong, row, 4);
-		tbl.setValueAt(email, row, 5);
-		tbl.setValueAt(soDT, row, 6);
-		tbl.setValueAt(maCongTo, row, 7);
+		 String maKhachHang = txtMaKH.getText();
+		 String tenKhachHang = txtTen.getText();
+		 String diaChi = txtDiaChi.getText();
+		 int idquan = ((QuanPhuong)cbQuan.getSelectedItem()).getId();
+		 int idphuong = ((QuanPhuong) cbPhuong.getSelectedItem()).getId();
+		 String email = txtEmail.getText();
+		 String soDT = txtSDT.getText();
+		 String maCongTo = txtMaCongTo.getText();
+		 String phuong = cbPhuong.getSelectedItem().toString();
+		 String quan = cbQuan.getSelectedItem().toString();
+		 dm.addRow(new String[] { maKhachHang, tenKhachHang, diaChi, maCongTo, email,
+		 soDT,quan, phuong});
+		 tienDienDao.add(new KhachHang(maKhachHang, tenKhachHang, diaChi, maCongTo,
+		 email, soDT,idquan ,idphuong));
 	}
 
-	ActionListener actionListener = new ActionListener() {
+	public void suaThongTin() {
+		 String maKhachHang = txtMaKH.getText();
+		 String tenKhachHang = txtTen.getText();
+		 String diaChi = txtDiaChi.getText();
+		 String email = txtEmail.getText();
+		 String soDT = txtSDT.getText();
+		 String maCongTo = txtMaCongTo.getText();
+		 int idquan = ((QuanPhuong) cbQuan.getSelectedItem()).getId();
+		 int idphuong = ((QuanPhuong) cbPhuong.getSelectedItem()).getId();
+		 String phuong = cbPhuong.getSelectedItem().toString();
+		 String quan = cbQuan.getSelectedItem().toString();
+		 tienDienDao.update(new KhachHang(maKhachHang, tenKhachHang, diaChi, maCongTo,
+		 email, soDT,idquan ,idphuong));
+		 int row = tbl.getSelectedRow();
+		 tbl.setValueAt(tenKhachHang, row, 1);
+		 tbl.setValueAt(diaChi, row, 2);
+		 tbl.setValueAt(maCongTo, row, 3);
+		 tbl.setValueAt(email, row, 4);
+		 tbl.setValueAt(soDT, row, 5);
+		 tbl.setValueAt(quan, row, 6);
+		 tbl.setValueAt(phuong, row, 7);
+	}
+
+	 public void inThongTin() {
+	 dSKH = tienDienDao.getDSKhachHang();
+	 dSPhuong = tienDienDao.getQuanKH();
+//	 dSPhuong = tienDienDao.getPhuongKH();
+	 for (int i = 0; i < dSKH.size(); i++) {
+	 dm.addRow(new String[] { dSKH.get(i).getMaKH(), dSKH.get(i).getTenKH(),
+	 dSKH.get(i).getDiaChi(),
+	 dSKH.get(i).getMaCongTo(), dSKH.get(i).getEmail(), dSKH.get(i).getsDT(),
+					KhachHangModel.getNameQuan(dSKH.get(i).getMaQuan()),
+							KhachHangModel.getNamePhuong(dSKH.get(i).getMaPhuong()) });
+	
+	 }
+	 }
+
+
+	public void xoaThongTin() {
+		String maKhachHang = txtMaKH.getText();
+		int[] rows = tbl.getSelectedRows();
+		for (int i = 0; i < rows.length; i++) {
+			dm.removeRow(rows[i] - i);
+			tienDienDao.delete(maKhachHang);
+		}
+	}
+
+	ActionListener actionListener = new ActionListener() {// phan code giao dien do nam dau em
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == btKTDS) {
@@ -441,6 +519,11 @@ public class GDChinh extends JFrame {
 				bienLai.showWindow();
 				setVisible(false);
 			}
+			if (e.getSource() == btNBL) {
+				GDNhapBienLai nhapBienLai = new GDNhapBienLai("Thống Kê Biên Lai");
+				nhapBienLai.showWindow();
+				setVisible(false);
+			}
 			if (e.getSource() == btHome) {
 				GDHome home = new GDHome("Home");
 				home.showWindow();
@@ -449,25 +532,70 @@ public class GDChinh extends JFrame {
 			if (e.getSource() == btExit) {
 				System.exit(0);
 			}
+			if (e.getSource() == btHome) {
+				GDHome home = new GDHome("Home");
+				home.showWindow();
+				setVisible(false);
+			}
+			if (e.getSource() == btExit) {
+				// inThongTin();
+
+			}
 			if (e.getSource() == btThem) {
 				nhapThongTin();
 			}
 			if (e.getSource() == btSua) {
 				suaThongTin();
 			}
+			if (e.getSource() == btXoa) {
+				xoaThongTin();
+			}
 
 		}
 	};
 
-	// public void itemStateChanged(ItemEvent event) {
-	// if (event.getStateChange() == ItemEvent.SELECTED) {
-	// Object item = event.getItem();
-	// // do something with object
+	ItemListener chonQuan = new ItemListener() {
+
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			if (e.getStateChange() == ItemEvent.SELECTED) {
+				loadDataPhuong();
+			}
+		}
+	};
+
+	public void loadDataPhuong() {
+		dSPhuong.clear();
+		int itemPhuong = cbPhuong.getItemCount();
+		for (int i = 0; i < itemPhuong; i++) {
+			cbPhuong.removeItemAt(0);
+
+		}
+		QuanPhuong itemID = (QuanPhuong) cbQuan.getSelectedItem();
+		int iD = itemID.getId();
+		dSPhuong = tienDienDao.getPhuongKH(iD);
+		for (QuanPhuong o : dSPhuong) {
+			cbPhuong.addItem(o);
+		}
+	}
+	// private void addComboBoxCounty(ResultSet county, JComboBox<String> cb) throws
+	// SQLException {
+	// while (county.next()) {
+	//// cbQuan.addItem(cb);
+	//
+	// cb.addItem(county.getString("tenquan"));
+	// }
+	// }
+	//
+	// private void addComboBoxWard(ResultSet wardList, JComboBox<Quan> cb) throws
+	// SQLException {
+	// while (wardList.next()) {
+	//// cb.addItem(wardList.getString("tenphuong"));
 	// }
 	// }
 
 	public void showWindow() {
-		this.setSize(1000, 600);
+		this.setSize(1000, 650);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);

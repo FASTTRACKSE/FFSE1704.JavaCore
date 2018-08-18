@@ -5,23 +5,32 @@ public class KhachHang {
 	private String maKH;
 	private String tenKH;
 	private String diaChi;
-	private String MaQuan;
-	private String MaPhuong;
+	private int maPhuong;
+	private int maQuan;
 	private String sDT;
 	private String email;
 	private String maCongTo;
-	public KhachHang(String maKH, String tenKH, String diaChi, String MaQuan,String email, String sDT, 
-			String maCongTo, String MaPhuong) {
+	public KhachHang(String maKH, String tenKH, String diaChi,String maCongTo, String email, String sDT, 
+			int maQuan,int maPhuong) {
 		super();
 //		this.ID =ID;
 		this.maKH = maKH;
 		this.tenKH = tenKH;
 		this.diaChi = diaChi;
-		this.MaQuan = MaQuan;
-		this.MaPhuong = MaPhuong;
+		this.maPhuong = maPhuong;
+		this.maQuan = maQuan;
 		this.sDT = sDT;
 		this.email = email;
 		this.maCongTo = maCongTo;
+	}
+	public int getMaQuan() {
+		return maQuan;
+	}
+	public void setMaQuan(int maQuan) {
+		maQuan = maQuan;
+	}
+	public KhachHang() {
+		// TODO Auto-generated constructor stub
 	}
 	public String getMaKH() {
 		return maKH;
@@ -41,17 +50,11 @@ public class KhachHang {
 	public void setDiaChi(String diaChi) {
 		this.diaChi = diaChi;
 	}
-	public String getMaPhuong() {
-		return MaPhuong;
+	public int getMaPhuong() {
+		return maPhuong;
 	}
-	public void setMaPhuong(String phuong) {
-		this.MaPhuong = phuong;
-	}
-	public String getMaQuan() {
-		return MaQuan;
-	}
-	public void setMaQuan(String quan) {
-		this.MaQuan = quan;
+	public void setMaPhuong(int phuong) {
+		this.maPhuong = phuong;
 	}
 	public String getsDT() {
 		return sDT;

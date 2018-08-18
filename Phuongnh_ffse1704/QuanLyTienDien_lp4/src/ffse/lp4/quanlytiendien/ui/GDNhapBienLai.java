@@ -9,10 +9,15 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Locale;
-
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Properties;
+import java.sql.SQLException;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -20,60 +25,138 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
-import ffse.lp4.quanlytiendien.dao.QuanLyTienDienDAO;
-import ffse.lp4.quanlytiendien.entity.KhachHang;
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Driver;
+import com.toedter.calendar.JMonthChooser;
+import com.toedter.calendar.JYearChooser;
+
+import ffse.lp4.quanlytiendien.dao.BienLaiModel;
+import ffse.lp4.quanlytiendien.entity.BienLai;
+import ffse.lp4.quanlytiendien.entity.QuanPhuong;
 
 public class GDNhapBienLai extends JFrame {
-	private JComboBox<String>cbQuan;
-	private JComboBox<String>cbPhuong;
 	JButton btKTDS;
+	JButton btCSDS;
 	JButton btKTBL;
 	JButton btHome;
 	JButton btExit;
 	JButton btThem;
+	JButton btThemBL;
+	JButton btTimKiem;
 	JButton btSua;
 	JButton btXoa;
 	JButton btReset;
+	JTextField txtCSCu;
+	JTextField txtCSMoi;
+	JTextField txtMCT;
+	JTextField txtHoTen;
 	JTextField txtMaKH;
 	JTextField txtDiaChi;
-	JTextField txtPhuong;
-	JTextField txtQuan;
-	JTextField txtSDT;
-	JTextField txtEmail;
-	JTextField txtMaCongTo;
-	JTextField txtTen;
+	JTextField txtNM;
+	JTextField txtShowMKH;
+	JTextField txtShowTKH;
+	JTextField txtShowDC;
+	JTextField txtShowSDT;
+	JTextField txtShowMCTCu;
+	JTextField txtNgayNhap;
+	JLabel lblNM;
 	DefaultTableModel dm;
 	JTable tbl;
-	 DefaultTableModel model;
-	  Calendar cal = new GregorianCalendar();
-	  JLabel label;
-	  JPanel pnCalendar ; 
-	
-	QuanLyTienDienDAO tienDienDao;
+	DefaultTableModel model;
+	JLabel label;
+	JPanel pnCalendar;
+	BienLaiModel bienLaiModel = new BienLaiModel();
+	JPanel pnNgayNhap;
+	JMonthChooser jmc;
+	JYearChooser jyc;
+	JPanel pnChuKy;
+	JPanel pnA1;
+	JPanel pnA2;
+	JPanel pnA3;
+	JPanel pnA4;
+	JPanel pnA5;
+	JPanel pnA6;
+	JPanel pnA7;
+	JPanel pnA8;
+	JPanel pnA9;
+
+	BienLaiModel bienLaiDao;
+	ArrayList<BienLai> dSBL = new ArrayList<BienLai>();
+	String smactKH;
+	String shotenKH;
+	String sdiachiKH;
+	String ssdtKH;
+	String maCT;
+	String ngayNhap;
+	String thangNhap;
+	String namNhap;
+	int chisoctmoicheck;
+
+	int chiSoCTCu;
+	int tienDien;
+	int chiSoCT;
+	int chiSoMoi;
+	String stringChiSoCT;
+	String schisoCTcu;
+	String chukycheck ;
+	String sthangnhapKH;
+	String snamnhapKH;
+	String chuKy;
+	JPanel pnLeft;
+	Date date;
 
 	public GDNhapBienLai(String tieude) {
-		super();
+		super("Nhập biên lai");
 		addControls();
 		conect();
 
 	}
+
 	public void conect() {
-		tienDienDao = new QuanLyTienDienDAO();
-		tienDienDao.getConnect("localhost", "quanlytiendien", "phuongadmin","phuong321");
+		bienLaiDao = new BienLaiModel();
+		bienLaiDao.getConnect("localhost", "quanlytiendien", "phuongadmin", "phuong321");
 
 	}
 
-	public void addControls() {
+	static Connection connn = (Connection) ffse.lp4.quanlytiendien.dao.BienLaiModel.getConnect("localhost",
+			"quanlytiendien", "phuongadmin", "phuong321");
 
+	public Connection getConn() {
+		return connn;
+	}
+
+	public void setConn(Connection conn) {
+		this.connn = conn;
+	}
+
+	public void getConnect(String strServer, String strDatabase, String strUser, String strPwd) {
+		String strConnect = "jdbc:mysql://" + strServer + "/" + strDatabase
+				+ "?useUnicode=true&characterEncoding=utf-8";
+		Properties pro = new Properties();
+		pro.put("user", strUser);
+		pro.put("password", strPwd);
+		try {
+			com.mysql.jdbc.Driver driver = new Driver();
+			connn = (Connection) driver.connect(strConnect, pro);
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	public void addControls() {
+		if (connn != null) {
+		} else {
+			System.out.println(0);
+		}
 		Container con = getContentPane();
-		
+
 		// ****** tạo panel chứa tittle********//
 		JPanel pntt = new JPanel();
 		ImageIcon iconlogo = new ImageIcon(
@@ -136,14 +219,9 @@ public class GDNhapBienLai extends JFrame {
 		btSua.addActionListener(actionListener);
 		btXoa.addActionListener(actionListener);
 		btReset.addActionListener(actionListener);
-		
-		
-		 
-		  
-		
-		
+
 		// ****** tạo panel giữa chứa các ô nhập
-		
+
 		JPanel pnCenter = new JPanel();
 
 		pnCenter.setLayout(new BoxLayout(pnCenter, BoxLayout.Y_AXIS));
@@ -158,106 +236,144 @@ public class GDNhapBienLai extends JFrame {
 		// chia ra hai panel đối xứng
 
 		// ******* panel Trái
-		JPanel pnLeft = new JPanel();
+		pnLeft = new JPanel();
 		pnLeft.setLayout(new BoxLayout(pnLeft, BoxLayout.Y_AXIS));
 		pnLeft.setPreferredSize(new Dimension(200, 150));
 
-		JLabel lblMaKH = new JLabel("Mã KH:");
-		txtMaKH = new JTextField(20);
-
-		JLabel lblTen = new JLabel("Họ tên:");
-		txtTen = new JTextField(20);
-
-		JLabel lblDiaChi = new JLabel("Địa chỉ:");
-		txtDiaChi = new JTextField(20);
-
-		JLabel lblPhuong = new JLabel("Phường:");
-		txtPhuong = new JTextField(20);
-
-		JLabel lblQuan = new JLabel("Quận:  ");
-		txtQuan = new JTextField(20);
-
-		JLabel lblSDT = new JLabel("SĐT:   ");
-		txtSDT = new JTextField(20);
-
-		JLabel lblEmail = new JLabel("Email:  ");
-		txtEmail = new JTextField(20);
+		JPanel pnPlaces = new JPanel();
+		JLabel lblPlaces = new JLabel("   ");
+		pnPlaces.add(lblPlaces);
+		pnPlaces.setPreferredSize(new Dimension(20, 5));
 
 		JLabel lblMaCongTo = new JLabel("MCT:");
-		txtMaCongTo = new JTextField(20);
 
-		JPanel pnA1 = new JPanel();
+		txtMCT = new JTextField(14);
+		btTimKiem = new JButton("");
+		ImageIcon iconTimKiem = new ImageIcon(
+				new ImageIcon("icon/timkiem.png").getImage().getScaledInstance(16, 16, Image.SCALE_SMOOTH));
+		iconThem.setImageObserver(btThem);
+		JLabel timKiem = new JLabel(iconTimKiem);
+		btTimKiem.add(timKiem);
+		btTimKiem.addActionListener(btnTimKiemEvents);
+
+		JLabel lblCSCu = new JLabel("CS Cũ:   ");
+		txtCSCu = new JTextField(21);
+
+		JLabel lblCSMoi = new JLabel("CS Mới:  ");
+		txtCSMoi = new JTextField(22);
+
+		JLabel lblMKH = new JLabel("Mã KH:  ");
+		txtShowMKH = new JTextField(10);
+		JLabel lblTenKH = new JLabel("Tên KH:  ");
+		txtShowTKH = new JTextField(10);
+		JLabel lblDiaChi = new JLabel("Địa chỉ:  ");
+		txtShowDC = new JTextField(10);
+		JLabel lblSDT = new JLabel("Số ĐT:  ");
+		txtShowSDT = new JTextField(10);
+
+		btThemBL = new JButton("");
+		ImageIcon iconThemBL = new ImageIcon(
+				new ImageIcon("icon/them.png").getImage().getScaledInstance(15, 15, Image.SCALE_SMOOTH));
+		iconThem.setImageObserver(btThem);
+		JLabel ThemBL = new JLabel(iconThemBL);
+		JLabel themMoi = new JLabel("     Thêm mới Biên lai");
+		btThemBL.add(ThemBL);
+		btThemBL.add(themMoi);
+		btThemBL.addActionListener(actionListener);
+
+		pnA1 = new JPanel();
 		pnA1.setPreferredSize(new Dimension(40, 5));
-		pnA1.add(lblMaKH);
-		pnA1.add(txtMaKH);
-		JPanel pnA2 = new JPanel();
+		pnA1.add(lblMaCongTo);
+		pnA1.add(txtMCT);
+		pnA1.add(btTimKiem);
+		pnA2 = new JPanel();
 		pnA2.setPreferredSize(new Dimension(40, 5));
-		pnA2.add(lblTen);
-		pnA2.add(txtTen);
-		JPanel pnA3 = new JPanel();
+		pnA2.add(lblCSCu);
+		pnA2.add(txtCSCu);
+
+		pnNgayNhap = new JPanel();
+		txtNM = new JTextField(6);
+		lblNM = new JLabel("Ngày nhập: ");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		date = new Date();
+		txtNM.setText(dateFormat.format(date));
+		pnNgayNhap.add(lblNM);
+		pnNgayNhap.add(txtNM);
+		pnNgayNhap.setVisible(false);
+		txtNM.setEnabled(false);
+		pnNgayNhap.setPreferredSize(new Dimension(100, 5));
+
+		pnChuKy = new JPanel();
+		pnChuKy.setPreferredSize(new Dimension(100, 5));
+		JLabel lblMonth = new JLabel("Chu kì nhập");
+		lblMonth.setPreferredSize(new Dimension(100, 15));
+
+		jmc = new JMonthChooser();
+		jyc = new JYearChooser();
+		pnChuKy.add(lblMonth);
+		pnChuKy.add(jmc);
+		pnChuKy.add(jyc);
+		pnChuKy.setVisible(false);
+
+		pnA3 = new JPanel();
 		pnA3.setPreferredSize(new Dimension(40, 5));
-		pnA3.add(lblDiaChi);
-		pnA3.add(txtDiaChi);
-		JPanel pnA4 = new JPanel();
-		pnA4.setPreferredSize(new Dimension(40, 5));
+		pnA3.add(lblCSMoi);
+		pnA3.add(txtCSMoi);
+
+		pnA5 = new JPanel();
+		pnA5.add(lblMKH);
+		pnA5.add(txtShowMKH);
+		pnA6 = new JPanel();
+		pnA6.add(lblTenKH);
+		pnA6.add(txtShowTKH);
+		pnA7 = new JPanel();
+		pnA7.add(lblDiaChi);
+		pnA7.add(txtShowDC);
+		pnA8 = new JPanel();
+		pnA8.add(lblSDT);
+		pnA8.add(txtShowSDT);
+
+		pnA4 = new JPanel();
+		pnA4.add(btThemBL);
+
+		txtCSCu.setEnabled(false);
+		txtCSMoi.setEnabled(false);
+
+		pnA3.setVisible(false);
+		pnA5.setVisible(false);
+		pnA6.setVisible(false);
+		pnA7.setVisible(false);
+		pnA8.setVisible(false);
+		pnA2.setVisible(false);
+		pnA4.setVisible(false);
 		
-		cbQuan = new JComboBox<String>();
-		cbQuan.addItem("Tất cả Khách Hàng");
-		cbQuan.addItem("Khu Vực");
-		cbQuan.addItem("Khu Vực Cụ Thể");
-		cbQuan.setPreferredSize(new Dimension(220, 21));
-		pnA4.add(lblQuan);
-		pnA4.add(cbQuan);
+		txtCSCu.setEnabled(false);
+		txtShowDC.setEnabled(false);
+		txtShowTKH.setEnabled(false);
+		txtShowMKH.setEnabled(false);
+		txtShowSDT.setEnabled(false);
 
 		// *******
 
+		pnLeft.add(pnPlaces);
 		pnLeft.add(pnA1);
-		pnLeft.add(pnA2);
+		pnLeft.add(pnNgayNhap);
+		pnLeft.add(pnChuKy);
 		pnLeft.add(pnA3);
+		pnLeft.add(pnA5);
+		pnLeft.add(pnA6);
+		pnLeft.add(pnA7);
+		pnLeft.add(pnA8);
+		pnLeft.add(pnA2);
 		pnLeft.add(pnA4);
 
-		// ****** panel phải
-		JPanel pnRight = new JPanel();
-		pnRight.setLayout(new BoxLayout(pnRight, BoxLayout.Y_AXIS));
-		pnRight.setPreferredSize(new Dimension(200, 150));
-
-		JPanel pnB1 = new JPanel();
-		pnB1.setPreferredSize(new Dimension(40, 5));
-		pnB1.add(lblEmail);
-		pnB1.add(txtEmail);
-		JPanel pnB2 = new JPanel();
-		pnB2.setPreferredSize(new Dimension(40, 5));
-		pnB2.add(lblSDT);
-		pnB2.add(txtSDT);
-		JPanel pnB3 = new JPanel();
-		pnB3.setPreferredSize(new Dimension(40, 5));
-		pnB3.add(lblMaCongTo);
-		pnB3.add(txtMaCongTo);
-		JPanel pnB4 = new JPanel();
-		pnB4.setPreferredSize(new Dimension(40, 5));
-		cbPhuong = new JComboBox<String>();
-		cbPhuong.addItem("Tất cả Khách Hàng");
-		cbPhuong.addItem("Khu Vực");
-		cbPhuong.addItem("Khu Vực Cụ Thể");
-		cbPhuong.setPreferredSize(new Dimension(220, 21));
-		pnB4.add(lblPhuong);
-		pnB4.add(cbPhuong);
-
-		// *******
-
-		pnRight.add(pnB1);
-		pnRight.add(pnB2);
-		pnRight.add(pnB3);
-		pnRight.add(pnB4);
-
 		pnCenterCon.add(pnLeft);
-		pnCenterCon.add(pnRight);
 		pnCenter.add(pnCenterCon);
 		pnCenter.add(pnDuoi);
 
 		// ****** tạo panel phải chứa hai button
 		JPanel pnBTL = new JPanel();
-		pnBTL.setPreferredSize(new Dimension(178, 600));
+		pnBTL.setPreferredSize(new Dimension(180, 600));
 		JLabel pnPlace1 = new JLabel("              ");
 		JLabel pnPlace2 = new JLabel("              ");
 		JLabel pnPlace3 = new JLabel("              ");
@@ -265,27 +381,44 @@ public class GDNhapBienLai extends JFrame {
 		JLabel pnPlace5 = new JLabel("              ");
 		JLabel pnPlace6 = new JLabel("              ");
 		pnBTL.setLayout(new BoxLayout(pnBTL, BoxLayout.Y_AXIS));
+
+		btCSDS = new JButton("");
+		btCSDS.setPreferredSize(new Dimension(110, 50));
+		ImageIcon iconCSDS = new ImageIcon(
+				new ImageIcon("icon/csdanhsach.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblCSDS = new JLabel("                 Chỉnh sửa DSKH");
+		JLabel chinhsua = new JLabel(iconCSDS);
+		btCSDS.add(chinhsua);
+		btCSDS.add(lblCSDS);
+		btCSDS.setMargin(new Insets(8, 0, 8, 28));
+		btCSDS.addActionListener(actionListener);
+
 		btKTDS = new JButton("");
 		ImageIcon iconDSKH = new ImageIcon(
-				new ImageIcon("icon/danhsach.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+				new ImageIcon("icon/tracuukh.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblDSKH = new JLabel("                    Kiểm Tra DSKH");
 		JLabel dSKhachHang = new JLabel(iconDSKH);
 		btKTDS.add(dSKhachHang);
-		btKTDS.setMargin(new Insets(8, 60, 8, 60));
+		btKTDS.add(lblDSKH);
+		btKTDS.setMargin(new Insets(8, 0, 8, 26));
 		btKTDS.addActionListener(actionListener);
 
 		btKTBL = new JButton("");
 		ImageIcon iconThongKe = new ImageIcon(
 				new ImageIcon("icon/thongke.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblThongKe = new JLabel("                 Thống kê báo cáo");
 		JLabel thongKe = new JLabel(iconThongKe);
 		btKTBL.add(thongKe);
+		btKTBL.add(lblThongKe);
 		btKTBL.addActionListener(actionListener);
-		btKTBL.setMargin(new Insets(8, 60, 8, 60));
+		btKTBL.setMargin(new Insets(8, 0, 8, 22));
 
 		pnBTL.add(pnPlace1);
+		pnBTL.add(pnPlace2);
+		pnBTL.add(btCSDS);
 		pnBTL.add(pnPlace3);
 		pnBTL.add(pnPlace4);
 		pnBTL.add(btKTDS);
-		pnBTL.add(pnPlace2);
 		pnBTL.add(pnPlace5);
 		pnBTL.add(pnPlace6);
 		pnBTL.add(btKTBL);
@@ -302,21 +435,25 @@ public class GDNhapBienLai extends JFrame {
 
 		pnBTR.setLayout(new BoxLayout(pnBTR, BoxLayout.Y_AXIS));
 
-		btHome = new JButton("Home");
+		btHome = new JButton("");
 		ImageIcon iconHome = new ImageIcon(
 				new ImageIcon("icon/home.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblHome = new JLabel("                    Home");
 		JLabel home = new JLabel(iconHome);
 		btHome.add(home);
-		btHome.setMargin(new Insets(8, 60, 8, 60));
+		btHome.add(lblHome);
+		btHome.setMargin(new Insets(8, 10, 8, 65));
 		btHome.addActionListener(actionListener);
 
 		btExit = new JButton("");
 		ImageIcon iconExit = new ImageIcon(
 				new ImageIcon("icon/exit.png").getImage().getScaledInstance(50, 30, Image.SCALE_SMOOTH));
+		JLabel lblExit = new JLabel("                      Exit");
 		JLabel exit = new JLabel(iconExit);
 		btExit.add(exit);
+		btExit.add(lblExit);
 		btExit.addActionListener(actionListener);
-		btExit.setMargin(new Insets(8, 60, 8, 60));
+		btExit.setMargin(new Insets(8, 10, 8, 71));
 
 		pnBTR.add(pnPlacea);
 		pnBTR.add(pnPlaceb);
@@ -328,14 +465,12 @@ public class GDNhapBienLai extends JFrame {
 		pnBTR.add(btExit);
 		// ***** tạo panel chứa table
 		dm = new DefaultTableModel();
-		dm.addColumn("Mã Khách Hàng");
-		dm.addColumn("Họ Tên");
-		dm.addColumn("Địa Chỉ");
-		dm.addColumn("Quận");
-		dm.addColumn("Phường");
-		dm.addColumn("Email");
-		dm.addColumn("Số ĐT");
 		dm.addColumn("Mã công tơ");
+		dm.addColumn("Ngày Nhập");
+		dm.addColumn("Chu kỳ");
+		dm.addColumn("Chỉ số");
+		dm.addColumn("Thành tiền");
+		tbl = new JTable(dm);
 		tbl = new JTable(dm);
 		JScrollPane sc = new JScrollPane(tbl);
 
@@ -358,80 +493,14 @@ public class GDNhapBienLai extends JFrame {
 		pnBorder.add(pnBTR, BorderLayout.EAST);
 
 		pnCenter.setBackground(Color.GRAY);
-		pnBorder.add(pnCenter, BorderLayout.CENTER);
+		pnBorder.add(pnCenter, BorderLayout.CENTER);// ok !
 
 		con.add(pnBorder);
-		//tạo panel chứa calendar
-		 label = new JLabel();
-		    label.setHorizontalAlignment(SwingConstants.CENTER);
-		 
-		    JButton b1 = new JButton("<-");
-		    b1.addActionListener(new ActionListener() {
-		      public void actionPerformed(ActionEvent ae) {
-		        cal.add(Calendar.MONTH, -1);
-		        updateMonth();
-		      }
-		    });
-		 
-		    JButton b2 = new JButton("->");
-		    b2.addActionListener(new ActionListener() {
-		      public void actionPerformed(ActionEvent ae) {
-		        cal.add(Calendar.MONTH, +1);
-		        updateMonth();
-		      }
-		    });
-		 
-		    JPanel panel = new JPanel();
-		    panel.setLayout(new BorderLayout());
-		    panel.add(b1,BorderLayout.WEST);
-		    panel.add(label,BorderLayout.CENTER);
-		    panel.add(b2,BorderLayout.EAST);
-		 
-		 
-		    String [] columns = {"Sun","Mon","Tue","Wed","Thu","Fri","Sat"};
-		    model = new DefaultTableModel(null,columns);
-		    JTable table = new JTable(model);
-		    JScrollPane pane = new JScrollPane(table);
-		 
-		    this.add(panel,BorderLayout.NORTH);
-		    this.add(pane,BorderLayout.CENTER);
-		 
-		    this.updateMonth();
-		 
-		  }
-		 
-		  void updateMonth() {
-		    cal.set(Calendar.DAY_OF_MONTH, 1);
-		    String month = cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US);
-		    int year = cal.get(Calendar.YEAR);
-		    label.setText(month + " " + year);
-		 
-		    int startDay = cal.get(Calendar.DAY_OF_WEEK);
-		    int numberOfDays = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-		    int weeks = cal.getActualMaximum(Calendar.WEEK_OF_MONTH);
-		 
-		    model.setRowCount(0);
-		    model.setRowCount(weeks);
-		 
-		    int i = startDay-1;
-		    for(int day=1;day<=numberOfDays;day++){
-		      model.setValueAt(day, i/7 , i%7 );    
-		      i = i + 1;
-		    }
-		   
-	}
-	
-	public void nhapThongTin() {
-		String maKhachHang = txtMaKH.getText();
-		String tenKhachHang = txtTen.getText();
-		String diaChi = txtDiaChi.getText();
-		String quan = cbQuan.getSelectedItem().toString();
-		String email = txtEmail.getText();
-		String soDT = txtSDT.getText();
-		String maCongTo = txtMaCongTo.getText();
-		String phuong = cbPhuong.getSelectedItem().toString();
-		dm.addRow(new String[] { maKhachHang,tenKhachHang,diaChi,quan,email,soDT,maCongTo,phuong});
-		QuanLyTienDienDAO.add(new KhachHang(maKhachHang,tenKhachHang,diaChi,quan,email,soDT,maCongTo,phuong));
+
+		txtShowMCTCu = new JTextField();
+
+		///////// ************************************************************************************************
+
 	}
 
 	ActionListener actionListener = new ActionListener() {
@@ -448,6 +517,11 @@ public class GDNhapBienLai extends JFrame {
 				bienLai.showWindow();
 				setVisible(false);
 			}
+			if (e.getSource() == btCSDS) {
+				GDChinh cSDanhSach = new GDChinh("Thống Kê Biên Lai");
+				cSDanhSach.showWindow();
+				setVisible(false);
+			}
 			if (e.getSource() == btHome) {
 				GDHome home = new GDHome("Home");
 				home.showWindow();
@@ -456,25 +530,420 @@ public class GDNhapBienLai extends JFrame {
 			if (e.getSource() == btExit) {
 				System.exit(0);
 			}
+			if (e.getSource() == btThemBL) {
+				pnA1.setVisible(true);
+				pnA3.setVisible(true);
+				pnA5.setVisible(false);
+				pnA6.setVisible(false);
+				pnA7.setVisible(false);
+				pnA8.setVisible(false);
+				pnA2.setVisible(true);
+
+				txtCSMoi.setEnabled(true);
+				pnNgayNhap.setVisible(true);
+				pnChuKy.setVisible(true);
+				btThemBL.setVisible(false);
+				btTimKiem.setVisible(false);
+
+			}
 			if (e.getSource() == btThem) {
-				nhapThongTin();
+				pnA1.setVisible(true);
+				pnA2.setVisible(false);
+				pnA3.setVisible(false);
+				pnA4.setVisible(false);
+				pnA5.setVisible(false);
+				pnA6.setVisible(false);
+				pnA7.setVisible(false);
+				pnA8.setVisible(false);
+				btThemBL.setVisible(false);
+				pnNgayNhap.setVisible(false);
+				btTimKiem.setVisible(true);
+				pnChuKy.setVisible(false);
+//				xoaTable();
+				add();
+			}if (e.getSource() == btXoa) {
+				xoaTable();
+			}if (e.getSource() == btSua) {
+				pnA1.setVisible(true);
+				pnA3.setVisible(true);
+				pnA5.setVisible(false);
+				pnA6.setVisible(false);
+				pnA7.setVisible(false);
+				pnA8.setVisible(false);
+				pnA2.setVisible(true);
+
+				txtCSMoi.setEnabled(true);
+				pnNgayNhap.setVisible(true);
+				pnChuKy.setVisible(true);
+				btThemBL.setVisible(false);
+				btTimKiem.setVisible(false);
+				suaThongTin();
+				
 			}
 
 		}
 	};
+	ActionListener btnTimKiemEvents = new ActionListener() {
 
-	// public void itemStateChanged(ItemEvent event) {
-	// if (event.getStateChange() == ItemEvent.SELECTED) {
-	// Object item = event.getItem();
-	// // do something with object
-	// }
-	// }
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			try {
+				pnA1.setVisible(false);
+				pnA3.setVisible(false);
+
+				pnA5.setVisible(true);
+				pnA6.setVisible(true);
+				pnA7.setVisible(true);
+				pnA8.setVisible(true);
+				pnA2.setVisible(true);
+				pnA4.setVisible(true);
+
+				
+				search();
+				showThongTin();
+				
+
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+
+		}
+	};
+	
+
+	private int chisoctcucheck;	public void noMatching() {
+		pnA1.setVisible(true);
+		pnA2.setVisible(false);
+		pnA3.setVisible(false);
+		pnA4.setVisible(false);
+		pnA5.setVisible(false);
+		pnA6.setVisible(false);
+		pnA7.setVisible(false);
+		pnA8.setVisible(false);
+		btThemBL.setVisible(false);
+		pnNgayNhap.setVisible(false);
+		btTimKiem.setVisible(true);
+		pnChuKy.setVisible(false);
+		
+	}
+
+	public void nhap() {
+		maCT = txtMCT.getText();
+//		System.out.println(maCT);
+
+		stringChiSoCT = txtCSMoi.getText();
+		chiSoMoi = Integer.parseInt(stringChiSoCT);
+
+		ngayNhap = txtNM.getText();
+
+		DateFormat MM = new SimpleDateFormat("MM");
+
+		thangNhap = MM.format(date);
+
+		DateFormat yyyy = new SimpleDateFormat("yyyy");
+
+		namNhap = yyyy.format(date);
+
+		chiSoCTCu = Integer.parseInt(schisoCTcu);
+
+		chiSoCT = chiSoMoi - chiSoCTCu;
+
+	}
+
+	public void search() throws SQLException {
+
+		if (!checkMaCT(txtCSMoi.getText())) {
+
+			try {
+
+				String str = txtMCT.getText();
+				PreparedStatement st = connn.prepareStatement(
+						"SELECT khachhang.MaKhachHang, khachhang.TenKhachHang , khachhang.DiaChi, khachhang.SDT , bienlai.ChiSoMoi, bienlai.Thang, bienlai.Nam FROM khachhang INNER JOIN bienlai ON khachhang.MaCongTo = bienlai.MaCongTo WHERE bienlai.MaCongTo=? order by Date DESC limit 1");
+
+				st.setString(1, str);
+				System.out.println(st);
+
+				ResultSet rs = st.executeQuery();
+
+				if (rs.next()) {
+
+					chiSoCTCu = rs.getInt(5);
+
+					schisoCTcu = String.valueOf(chiSoCTCu);
+					smactKH = rs.getString(1);
+					System.out.println(smactKH);
+
+					shotenKH = rs.getString(2);
+
+					sdiachiKH = rs.getString(3);
+
+					ssdtKH = rs.getString(4);
+
+					sthangnhapKH = rs.getString(6);
+
+					snamnhapKH = rs.getString(7);
+
+					chuKy = sthangnhapKH + "-" + snamnhapKH;
+
+					txtShowMKH.setText(smactKH);
+
+					txtShowTKH.setText(shotenKH);
+
+					txtShowDC.setText(sdiachiKH);
+
+					txtShowSDT.setText(ssdtKH);
+
+					txtCSCu.setText(schisoCTcu);
+
+				} else {
+
+					String str1 = txtMCT.getText();
+					PreparedStatement st1 = connn.prepareStatement(
+							"SELECT khachhang.MaKhachHang, khachhang.TenKhachHang, khachhang.DiaChi, khachhang.SDT FROM khachhang WHERE MaCongTo=?");
+					st1.setString(1, str1);
+					System.out.println(st1);
+
+					ResultSet rs1 = st1.executeQuery();
+					if (rs1.next()) {
+
+						schisoCTcu = "0";
+						txtCSCu.setText(schisoCTcu);
+						smactKH = rs1.getString(1);
+
+						shotenKH = rs1.getString(2);
+
+						sdiachiKH = rs1.getString(3);
+
+						ssdtKH = rs1.getString(4);
+
+						chuKy = "Chưa Có";
+
+						txtShowMKH.setText(smactKH);
+
+						txtShowTKH.setText(shotenKH);
+
+						txtShowDC.setText(sdiachiKH);
+
+						txtShowSDT.setText(ssdtKH);
+
+						txtShowMCTCu.setText(schisoCTcu);
+
+					} else {
+						JOptionPane.showMessageDialog(null, "Mã công tơ không tồn tại ! vui lòng nhập lại  ");
+						noMatching();
+					}
+
+				}
+			} catch (Exception ex) {
+
+				System.out.println(ex);
+
+			}
+		}
+	}
+
+	public static boolean checkMaCT(String maCT) throws SQLException {
+		ResultSet maCTKH = BienLaiModel.getMaCT();
+		while (maCTKH.next()) {
+			if (maCT.equals(maCTKH.getString("MaCongTo"))) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public void add() {
+		nhap();
+		maCT = txtMCT.getText();
+		System.out.println(maCT);
+		int kw0to50 = 77450;
+		int kw50to100 = kw0to50 + 80000;
+		int kw100to200 = kw50to100 + 185800;
+		int kw200to300 = kw100to200 + 2340000;
+		int kw300to400 = kw200to300 + 261500;
+
+		if (chiSoCT < 50) {
+			tienDien = chiSoCT * 1549;
+		} else if (chiSoCT > 50 && chiSoCT < 100) {
+			tienDien = kw0to50 + (chiSoCT * 1600);
+		} else if (chiSoCT > 100 && chiSoCT < 200) {
+			tienDien = kw50to100 + (chiSoCT * 1858);
+		} else if (chiSoCT > 200 && chiSoCT < 300) {
+			tienDien = kw100to200 + (chiSoCT * 2340);
+		} else if (chiSoCT > 300 && chiSoCT < 400) {
+			tienDien = kw200to300 + (chiSoCT * 2615);
+		} else if (chiSoCT > 400) {
+			tienDien = kw300to400 + (chiSoCT * 2710);
+		} else {
+			JOptionPane.showMessageDialog(null, "");
+		}
+
+		String stringtiendien = String.valueOf(tienDien);
+		nhap();
+
+		dm.addRow(new String[] { maCT, ngayNhap, chuKy, stringChiSoCT, stringtiendien });
+		bienLaiModel.addBL(new BienLai(maCT, thangNhap, namNhap, ngayNhap, chuKy, chiSoCT, tienDien));
+
+	}
+	
+
+	public void xoaThongTin() {
+		maCT = txtMCT.getText();
+		ngayNhap = txtNM.getText();
+		int ret = JOptionPane.showConfirmDialog(null, "Xóa khách hàng này", "Xóa", JOptionPane.YES_NO_OPTION);
+
+		if (ret == JOptionPane.YES_OPTION) {
+			String maCongTo = txtMCT.getText();
+			int[] rows = tbl.getSelectedRows();
+			for (int i = 0; i < rows.length; i++) {
+				dm.removeRow(rows[i] - i);
+				bienLaiDao.deleteBL(maCongTo);
+			}
+		}
+	}
+
+	public void showThongTin() {
+		if (dm.getRowCount() > 0) {
+			for (int i = dm.getRowCount() - 1; i > -1; i--) {
+				dm.removeRow(i);
+			}
+		}
+		dSBL = bienLaiModel.getDSBienLai();
+		for (int i = 0; i < dSBL.size(); i++) {
+			String stringchisoctmoi = String.valueOf(dSBL.get(i).getChiSoMoi());
+			String stringtiendien = String.valueOf(dSBL.get(i).getTienDien());
+			dm.addRow(new String[] { dSBL.get(i).getMaCongTo(), dSBL.get(i).getNgayNhap(), dSBL.get(i).getChuKy(),
+					stringchisoctmoi, stringtiendien });
+
+		}
+
+	}
+	
+
+	public void xoaTable() {
+		int[] rows = tbl.getSelectedRows();
+		for (int i = 0; i < rows.length; i++) {
+			dm.removeRow(rows[i] - i);
+		}
+		
+	}
+	
+	
+	
+	 public void suaThongTin() {
+		 nhap();
+
+		maCT = txtMCT.getText();
+		ngayNhap = txtNM.getText();
+		chiSoCT = chiSoMoi - chiSoCTCu;
+
+		ngayNhap = txtNM.getText();
+
+		DateFormat MM = new SimpleDateFormat("MM");
+
+		thangNhap = MM.format(date);
+
+		DateFormat yyyy = new SimpleDateFormat("yyyy");
+
+		namNhap = yyyy.format(date);
+
+		chiSoMoi = Integer.parseInt(txtCSMoi.getText());
+		chuKy = chukycheck;
+		stringChiSoCT = String.valueOf(chiSoMoi);
+
+		int kw0to50 = 77450;
+		int kw50to100 = kw0to50 + 80000;
+		int kw100to200 = kw50to100 + 185800;
+		int kw200to300 = kw100to200 + 2340000;
+		int kw300to400 = kw200to300 + 261500;
+
+		if (chiSoCT < 50) {
+			tienDien = chiSoCT * 1549;
+		} else if (chiSoCT > 50 && chiSoCT < 100) {
+			tienDien = kw0to50 + (chiSoCT * 1600);
+		} else if (chiSoCT > 100 && chiSoCT < 200) {
+			tienDien = kw50to100 + (chiSoCT * 1858);
+		} else if (chiSoCT > 200 && chiSoCT < 300) {
+			tienDien = kw100to200 + (chiSoCT * 2340);
+		} else if (chiSoCT > 300 && chiSoCT < 400) {
+			tienDien = kw200to300 + (chiSoCT * 2615);
+		} else if (chiSoCT > 400) {
+			tienDien = kw300to400 + (chiSoCT * 2710);
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Lỗi tính tiền điện !!!");
+		}
+		
+		
+		if(chiSoMoi<0) {
+			JOptionPane.showMessageDialog(null, "Mã CT mới phải lớn hơn mã CT cũ !!!");
+		}else {
+		String stringtiendien = String.valueOf(tienDien);
+		
+		BienLai bl = new BienLai(maCT, ngayNhap, thangNhap, namNhap, chuKy, chiSoMoi, tienDien);
+
+		bienLaiDao.updateBL(bl);
+		int row = tbl.getSelectedRow();
+		tbl.setValueAt(maCT, row, 0);
+		tbl.setValueAt(ngayNhap, row, 1);
+		tbl.setValueAt(chuKy, row, 2);
+		tbl.setValueAt(stringChiSoCT, row, 3);
+		tbl.setValueAt(stringtiendien, row, 4);
+		}
+	 }
+
+		public void checkEdit() throws SQLException {
+			String str = maCT;
+			PreparedStatement st = connn.prepareStatement(
+					"SELECT chisoCT , chukyKH FROM bienlai WHERE mactKH=? order by ngaynhapKH DESC limit 1");
+
+			st.setString(1, str);
+			System.out.println(st);
+
+			ResultSet rs = st.executeQuery();
+
+			if (rs.next()) {
+				chisoctmoicheck = rs.getInt(1);
+				chukycheck = rs.getString(2);
+
+				System.out.println(chisoctmoicheck);
+				chiSoMoi = chiSoMoi;
+				if (chisoctmoicheck == chiSoMoi) {
+
+					System.out.println("bằng nhau");
+					btSua.setVisible(true);
+				} else {
+					btSua.setVisible(false);
+					System.out.println("đéo nhau");
+				}
+			}
+			String str1 = maCT;
+			PreparedStatement st1 = connn.prepareStatement(
+					"SELECT chisoCT FROM bienlai WHERE mactKH=? order by ngaynhapKH DESC limit 1 OFFSET 1");
+
+			st1.setString(1, str1);
+			System.out.println(st1);
+			ResultSet rs1 = st1.executeQuery();
+			if (rs1.next()) {
+				chisoctcucheck = rs1.getInt(1);
+				System.out.println(chisoctcucheck);
+			}
+		}
+
+	
+	public void resetNhap() {
+		txtMCT.setText("");
+		txtCSMoi.setText("");
+		txtCSCu.setText("");
+
+	}
 
 	public void showWindow() {
-		this.setSize(1000, 600);
+		this.setSize(1000, 700);
 		this.setTitle("Swing Calandar");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
 	}
+
 }
