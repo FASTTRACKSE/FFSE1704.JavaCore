@@ -362,4 +362,7 @@ public class ThucHienRutTien extends JFrame {
 
 		con.add(pnBorder);
 	}
+	public void CloseFrame(){
+	    super.dispose();
+	}
 }

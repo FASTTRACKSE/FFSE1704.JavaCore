@@ -20,27 +20,42 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import atm_model.User_Admin_Model;
 public class dangnhapkh_ui extends JFrame {
 	JButton enTer = new JButton("ENTER"); 
 	JButton clear = new JButton("CLEAR"); 
 	JButton canCel = new JButton("CANCEL");
-	JTextField txt_sothe ,txtPin ;
+	JTextField txt_sothe ,txtPin,htLoi ;
 	
 	
 ActionListener enterClick = new ActionListener() {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
-			RutTien_ui login = new RutTien_ui("HỆ THỐNG RÚT TIỀN DÀNH CHO KHÁCH HÀNG");
-			login.showWindow();
-			
+//			// TODO Auto-generated method stub
+//			
+//			RutTien_ui login = new RutTien_ui("HỆ THỐNG RÚT TIỀN DÀNH CHO KHÁCH HÀNG");
+//			login.showWindow();
+			String	SoThe = txt_sothe.getText();
+			String	MaPin= txtPin.getText();
+			if(SoThe.isEmpty()||MaPin.isEmpty()) {
+				htLoi.setText("SỐ THẺ HOẶC MÃ PIN KHÔNG ĐƯỢC ĐỂ TRỐNG !!");
+			}
+			else	if(login()) {
+				dispose();
+				RutTien_ui login1 = new RutTien_ui("HỆ THỐNG KHÁCH HÀNG");
+				login1.showWindow();
+			}
+			else {
+				htLoi.setText("SỐ THẺ HOẶC MÃ PIN KHÔNG CHÍNH XÁC");
+			}
 	
 		}
 	};
@@ -61,7 +76,7 @@ ActionListener enterClick = new ActionListener() {
 			// TODO Auto-generated method stub
 			Login_ui login = new Login_ui("Máy ATM");
 			login.showWindow();
-			
+			CloseFrame();
 		}
 	};
 	MouseListener tblUserClick = new MouseListener() {
@@ -110,7 +125,7 @@ ActionListener enterClick = new ActionListener() {
 		addEvents();
 	}
 	public void showWindow() {
-		this.setSize(400, 200);
+		this.setSize(470, 220);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setVisible(true);
@@ -134,13 +149,26 @@ ActionListener enterClick = new ActionListener() {
 		
 		soThe_atm.add(txt_sothe);
 		
+		//tạo pannel hiển thị lỗi
+		JPanel pnLoi = new JPanel();
+		pnLoi.setBackground(Color.CYAN);
+		htLoi =new JTextField(30);
+		htLoi.setBackground(Color.CYAN);
+		htLoi.setForeground(Color.RED);
+		htLoi.setHorizontalAlignment(JLabel.CENTER);
+		htLoi.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.LIGHT_GRAY));
+		Font font = new Font("Arial", Font.BOLD | Font.ITALIC, 16);
+		
+		htLoi.setFont(font);
+		//htLoi.setEditable(false);
+		pnLoi.add(htLoi);
 		
 		// tạo mã pin khách hàng đăng nhập'
 		JPanel pnPin = new JPanel();
 		pnPin.setBorder(BorderFactory.createEmptyBorder(40, 10, 10, 10));
 		JLabel lblPin = new JLabel("NHẬP MÃ PIN") ;
 		lblPin.setForeground(Color.blue);
-		txtPin = new JTextField(20);
+		txtPin = new JPasswordField(20);
 		pnPin.add(lblPin);
 		pnPin.add(txtPin);
 		
@@ -155,6 +183,20 @@ ActionListener enterClick = new ActionListener() {
 		pnMain.add(soThe_atm);
 		pnMain.add(pnPin);
 		pnMain.add(pnActions);
+		pnMain.add(pnLoi);
 		con.add(pnMain);
+	}
+	public boolean login() {
+		
+		if(User_Admin_Model.checkLoginKH(txt_sothe.getText(), txtPin.getText())) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+	public void CloseFrame(){
+	    super.dispose();
 	}
 }

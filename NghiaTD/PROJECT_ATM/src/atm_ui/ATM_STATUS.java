@@ -359,5 +359,8 @@
 	
 			con.add(pnBorder);
 		}
+		public void CloseFrame(){
+		    super.dispose();
+		}
 	}
 	

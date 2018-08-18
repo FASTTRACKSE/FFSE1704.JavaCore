@@ -31,7 +31,7 @@ public class User_Admin_Model {
 	}
 	public static boolean checkLoginKH(String SoThe, String MaPin) {
 		try {
-			String sql = "select * from user where user_name = ? and password = ?";
+			String sql = "select * from khachhang_id where sothe_atm = ? and code_pin = ?";
 			PreparedStatement stm = (PreparedStatement) conn.prepareStatement(sql);
 			stm.setString(1, SoThe);
 			stm.setString(2, MaPin);
