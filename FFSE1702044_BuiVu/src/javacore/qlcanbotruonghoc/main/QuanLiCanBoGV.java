@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import javacore.qlcanbotruonghoc.entity.*;
 import javacore.qlcanbotruonghoc.util.NVComparator;
+import javacore.qlcanbotruonghoc.util.SerializeFileFactory;
 import javacore.qlcanbotruonghoc.myexception.*;
 
 public class QuanLiCanBoGV {
@@ -17,13 +18,16 @@ public class QuanLiCanBoGV {
 	public static void main(String[] args) {
 		while (true) {
 			try {
-				System.out.println(">> Menu Chương Trình <<");
+				
+				System.err.println(">> Menu Chương Trình <<");
 				System.out.println("+---------------------------+");
 				System.out.println("|1.Nhập Thông Tin Cán Bộ	|");
 				System.out.println("|2.In danh sách Sinh Viên   |");
 				System.out.println("|3.Xuất danh sách Sv Giỏi   |");
 				System.out.println("|4.Sắp Xếp DS SV theo Điểm  |");
-				System.out.println("|5.Kết Thúc                 |");
+				System.out.println("|5.Kết Thúc CT				|");
+				System.out.println("|6. Lưu File				|");
+				System.out.println("|7. Đọc File				|");
 				System.out.println("+---------------------------+");
 				System.out.println("Mời Bạn Chọn Chức Năng");
 				N = myInput.nextInt();
@@ -37,15 +41,22 @@ public class QuanLiCanBoGV {
 					SapXepCanBo();
 				} else if (N == 5) {
 					KetThucCT();
-				} else {
+				}else if(N==6) {
+					luuFile();
+				}else if(N==7) {
+					docFile();
+				}else if(N==8) {
+					inDs();
+				}
+				else {
 					throw new myException(2);
 				}
 			} catch (myException e) {
-				System.out.print(e);
-				System.out.println("\n1 để nhập lại CT");
+				System.err.print(e);
+				System.err.println("\n1 để nhập lại CT");
 				myInput.nextInt();
 			} catch (InputMismatchException e) {
-				System.out.println("Vui Lòng Nhập Kiểu Số");
+				System.err.println("Vui Lòng Nhập Kiểu Số\n");
 				myInput.next();
 			}
 		}
@@ -97,27 +108,26 @@ public class QuanLiCanBoGV {
 									throw new Exception();
 								}
 							} catch (Exception e) {
-								System.out.println("Nhập từ 1 đến 3 thôi nhé");
+								System.err.println("Nhập từ 1 đến 3 thôi nhé");
 								myInput.next();
 								inputOK = false;
-
 							}
 						} while (!inputOK);
-						int soTietDay=0;
+						int soTietDay = 0;
 						boolean inputOK1;
 						do {
 							try {
 								inputOK1 = true;
 								System.out.print("\nNhập Số Tiết Dạy Giảng Viên :");
 								soTietDay = myInput.nextInt();
-								if(soTietDay >=0 && soTietDay <=150 ) {
-									System.out.println("Số Tiết Dạy Là :" + soTietDay);
-								}else {
-									throw new Exception();
+								if (soTietDay >= 0 && soTietDay <= 150) {
+									System.err.println("Số Tiết Dạy Là :" + soTietDay);
+								} else {
+									throw new myException(6);
 								}
-								
-							} catch (Exception e) {
-								System.out.println("Vui Lòng Nhập Số Tiết Dạy bé hơn 150");
+
+							} catch (myException e) {
+								System.out.println(e);
 								myInput.next();
 								inputOK1 = false;
 							}
@@ -148,13 +158,7 @@ public class QuanLiCanBoGV {
 					} else {
 						throw new Exception();
 					}
-					/*
-					 * catch (Exception e) {
-					 * 
-					 * System.out.println("Vui Long Nhap Lai Tu 1 => 2");
-					 * 
-					 * }
-					 */
+
 				}
 			} catch (Exception e) {
 
@@ -227,15 +231,27 @@ public class QuanLiCanBoGV {
 							((NhanVien) o).getChucVu(), "x", ((NhanVien) o).getSoNgayCong(),
 							((NhanVien) o).getHeSoLuong(), ((NhanVien) o).tinhLuong() + "\n");
 				}
-			} 
+			}
 
 		}
 	}
-
+	public static void luuFile() {
+		// Lưu thông tin khách hàng ra file
+		SerializeFileFactory.luuFile(dsCanBo, "danhsachkhachhang.txt");
+	}
+	public static void docFile() {
+		dsCanBo.clear();
+		dsCanBo = SerializeFileFactory.docFile("danhsachkhachhang.txt");
+	}
 	public static void KetThucCT() {
 		myInput.close();
 		System.out.println("Chương Trình Đã Kết Thúc");
-		
+
 		System.exit(0);
+	}
+	public static void inDs() {
+		for(QuanLiCanBo x : dsCanBo) {
+			System.out.println(x.toString());
+		}
 	}
 }

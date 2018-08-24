@@ -1,10 +1,11 @@
 package javacore.qlcanbotruonghoc.entity;
 
-public abstract class QuanLiCanBo {
+import java.io.Serializable;
+
+public abstract class QuanLiCanBo implements Serializable{
 	private String hoTen;
 	private int heSoLuong;
 
-	
 	public QuanLiCanBo(String hoTen, int heSoLuong) {
 		this.hoTen = hoTen;
 		this.heSoLuong = heSoLuong;
@@ -22,5 +23,8 @@ public abstract class QuanLiCanBo {
 		this.heSoLuong = heSoLuong;
 	}
 	public abstract double tinhLuong();
-	
+	public String toString() {
+		return hoTen + "\t" + heSoLuong +"\n";
+		
+	}
 }

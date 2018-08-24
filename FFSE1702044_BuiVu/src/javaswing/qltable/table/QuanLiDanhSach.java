@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -14,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,7 +23,8 @@ import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
-import javafx.scene.layout.Border;
+import ffse.qlkhsql.utity.KhachHang;
+
 
 public class QuanLiDanhSach extends JFrame {
 	/**
@@ -37,6 +40,10 @@ public class QuanLiDanhSach extends JFrame {
 	JTable tbl;
 	DefaultTableModel tableDSSV = new DefaultTableModel();
 	JTextField txtMSV, txtTSV, txtTuoiSV;
+	ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
+	
+	
+	
 	ActionListener btnExitClick = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			System.exit(0);
@@ -86,25 +93,16 @@ public class QuanLiDanhSach extends JFrame {
 
 		public void mouseClicked(MouseEvent e) {
 
-			int row1 = tbl.getSelectedRow();
-
-			int col1 = 1;
-
-			String s = (String) tbl.getValueAt(row1, col1);
+			int row = tbl.getSelectedRow();
+			String s = (String) tbl.getValueAt(row, 1);
 
 			txtTSV.setText(s);
-			int row0 = tbl.getSelectedRow();
-
-			int col0 = 0;
-
-			String x = (String) tbl.getValueAt(row0, col0);
+			
+			String x = (String) tbl.getValueAt(row, 0);
 
 			txtMSV.setText(x);
-			int row2 = tbl.getSelectedRow();
-
-			int col2 = 2;
-
-			String z = (String) tbl.getValueAt(row2, col2);
+			
+			String z = (String) tbl.getValueAt(row, 2);
 
 			txtTuoiSV.setText(z);
 		}
@@ -169,9 +167,7 @@ public class QuanLiDanhSach extends JFrame {
 		tableDSSV.addColumn("Tên SV");
 		tableDSSV.addColumn("Tuổi");
 
-		for (int i = 0; i < 5; i++) {
-			tableDSSV.addRow(new String[] { "" + (i + 1), "Trần Văn T" + i, "20" });
-		}
+		
 
 		tbl = new JTable(tableDSSV);
 		JScrollPane sc = new JScrollPane(tbl);
@@ -186,6 +182,7 @@ public class QuanLiDanhSach extends JFrame {
 				border, "Danh sách");
 
 				sc.setBorder(borderTitle);
+				
 		// add vào main
 		pnMain.add(pnTitle);
 		pnMain.add(pnTitle1);
@@ -207,7 +204,9 @@ public class QuanLiDanhSach extends JFrame {
 		btnExit.addActionListener(btnExitClick);
 		tbl.addMouseListener(tblUserClick);
 	}
-
+	public void showKetNoiSQL(){
+		JOptionPane.showMessageDialog(null,"Kết Nối DB Thành Công!");
+	}
 	public void showWindow() {
 		this.setSize(600, 400);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

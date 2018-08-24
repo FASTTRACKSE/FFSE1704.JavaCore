@@ -1,6 +1,8 @@
 package javacore.qlcanbotruonghoc.entity;
 
-public class GiangVien extends QuanLiCanBo {
+import java.io.Serializable;
+
+public class GiangVien extends QuanLiCanBo implements Serializable {
 	private String khoa;
 	private int soTietDay;
 	private int chonTrinhDo;
