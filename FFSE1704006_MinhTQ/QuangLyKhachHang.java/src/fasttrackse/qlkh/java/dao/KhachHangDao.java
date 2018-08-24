@@ -98,9 +98,10 @@ public class KhachHangDao {
 			statement.setString(5, kh.getGioiTinh());
 			statement.setInt(6, kh.getSoDT());
 			statement.setInt(7, kh.getId());
+		
 			int x = statement.executeUpdate();
 			if (x > 0) {
-				System.err.println(" Bạn Update thành công rồi ae ơi .");
+				System.err.println(" Bạn Update thành công rồi ! .");
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();

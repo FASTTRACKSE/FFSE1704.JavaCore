@@ -25,12 +25,16 @@ public class QLSV {
 			
 			System.out.print("Nhap nam sinh sinh vien: ");
 			int namsinh = myInput.nextInt();
+			
 			System.out.print("nhập điểm lp1: ");
 			int diemlp1 = myInput.nextInt();
+			
 			System.out.print("nhập điểm lp2: ");
 			int diemlp2 = myInput.nextInt();
+			
 			System.out.print("nhập điểm lp3: ");
 			int diemlp3 = myInput.nextInt();
+			 
 			System.out.println("------------------------- ");
 			sinhvien[i] = new SinhVien(ten, gioitinh, namsinh, diemlp1, diemlp2, diemlp3);
 			

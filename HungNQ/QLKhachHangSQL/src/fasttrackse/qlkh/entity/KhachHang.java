@@ -9,7 +9,30 @@ public class KhachHang {
 	String GioiTinh;
 	String soDT;
 
-	
+	public KhachHang() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public KhachHang(int iD, String maKH, String tenKH, String diaChi, String ngaySinh, String gioiTinh, String soDT) {
+		super();
+		this.ID = iD;
+		this.MaKH = maKH;
+		this.TenKH = tenKH;
+		this.DiaChi = diaChi;
+		this.NgaySinh = ngaySinh;
+		this.GioiTinh = gioiTinh;
+		this.soDT = soDT;
+	}
+
+	public KhachHang(String maKH, String tenKH, String diaChi, String ngaySinh, String gioiTinh, String soDT) {
+		super();
+		this.MaKH = maKH;
+		this.TenKH = tenKH;
+		this.DiaChi = diaChi;
+		this.NgaySinh = ngaySinh;
+		this.GioiTinh = gioiTinh;
+		this.soDT = soDT;
+	}
 	
 	public int getID() {
 		return ID;
