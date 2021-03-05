@@ -17,8 +17,8 @@ public class QLKH {
 			System.out.println("Kết nối MYSQL thất bại");
 		}
 
-		int maKHCanXoa = 16;
-		khachHangDAO.delete(maKHCanXoa);
+//		int maKHCanXoa = 16;
+//		khachHangDAO.delete(maKHCanXoa);
 		
 		dsKH = khachHangDAO.getDSKhachHang();
 		

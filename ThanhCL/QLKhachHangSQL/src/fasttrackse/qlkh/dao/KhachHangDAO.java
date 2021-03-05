@@ -23,7 +23,8 @@ public class KhachHangDAO {
 	}
 
 	public void getConnect(String strServer, String strDatabase, String strUser, String strPwd) {
-		String strConnect = "jdbc:mysql://" + strServer + "/" + strDatabase + "?useUnicode=true&characterEncoding=utf-8";
+		String strConnect = "jdbc:mysql://" + strServer + "/" + strDatabase
+				+ "?useUnicode=true&characterEncoding=utf-8";
 		Properties pro = new Properties();
 		pro.put("user", strUser);
 		pro.put("password", strPwd);
@@ -36,7 +37,7 @@ public class KhachHangDAO {
 	}
 
 	public ArrayList<KhachHang> getDSKhachHang() {
-		ArrayList<KhachHang> dsKH = new ArrayList<KhachHang>();
+		ArrayList<KhachHang> danhSachKhachHang = new ArrayList<KhachHang>();
 
 		try {
 			String queryString = "SELECT * FROM khachhang";
@@ -53,14 +54,14 @@ public class KhachHangDAO {
 				String gioiTinhKH = result.getString("GioiTinh");
 				String sdt = result.getString("SoDT");
 
-				dsKH.add(new KhachHang(ID, maKH, tenKH, diaChi, ngaySinhKH, gioiTinhKH, sdt));
+				danhSachKhachHang.add(new KhachHang(ID, maKH, tenKH, diaChi, ngaySinhKH, gioiTinhKH, sdt));
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return dsKH;
+		return danhSachKhachHang;
 	}
 
 	public void add(KhachHang kh) {
